@@ -16,3 +16,8 @@ cp $r/movie_sixpanel_specriver/TIC_141146667_science/specriver_141146667_Hα_001
 # Animated supporting: Movie of spectral timeseries
 cp $r/movie_sixpanel_specriver/TIC_141146667_science/TIC141146667_sixpanel.mov movies/m2.mov
 
+##########################################
+# supplementary
+
+# sf1: The data are nearly but not exactly simultaneous
+cp $r/tic1411_obsepoch/tic1411_obsepoch.pdf figures/sf1.pdf

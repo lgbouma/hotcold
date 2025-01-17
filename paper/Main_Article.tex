@@ -56,29 +56,26 @@
 
 \begin{abstract}
 \normalfont
+% v1: removed a sentence for wordcount.  v0 is under abstract_title.txt
 Approximately one percent of red dwarfs younger than 100 million years
-show structured, periodic optical light curves suggestive of transiting
-clumps of opaque circumstellar material that corotate with the star
-\cite{Rebull2016,Stauffer2017,Rebull2018,Bouma2024}.  The composition,
-origin, and even the existence of this material are uncertain. The main
-alternative hypothesis is that these stars are explained by complex
-distributions of dark starspots or bright faculae distributed across
-their surfaces \cite{Koen2021}.  Here, we present time-series
-spectroscopy and photometry of a \stagemyr\ million year old complex
-periodic variable (CPV), TIC 141146667. The spectra show coherent
-sinusoidal Balmer emission at up to four times the star's equatorial
-velocity, demonstrating the presence of extended clumps of circumstellar
-plasma --- a plasma torus. These data rule out ``starspot-only'' and
-``dust-only'' origin scenarios for CPVs, instead supporting either a
-purely stellar origin for the phenomenon or extrinsic scenarios
-involving long-lived disks or outgassing rocky bodies capable of
-supplying sufficient gas.  Given that long-lived condensations of cool
-($10^4$ K) plasma can persist in the hot ($10^6$ K) coronae of stars
-with a wide range of masses
+show structured, periodic optical light curves suggestive of
+transiting clumps of opaque circumstellar material that corotate
+with the star \cite{Rebull2016,Stauffer2017,Rebull2018,Bouma2024}.
+The composition, origin, and even the existence of this material are
+uncertain. The main alternative hypothesis is that these stars are
+explained by complex distributions of dark starspots or bright
+faculae distributed across their surfaces \cite{Koen2021}.  Here, we
+present time-series spectroscopy and photometry of a \stagemyr\
+million year old complex periodic variable (CPV), TIC~141146667. The
+spectra show coherent sinusoidal Balmer emission at up to four times
+the star's equatorial velocity, demonstrating the presence of
+extended clumps of circumstellar plasma --- a plasma torus.  Given
+that long-lived condensations of cool ($10^4$ K) plasma can persist
+in the hot ($10^6$ K) coronae of stars with a wide range of masses
 \cite{CollierCameron1989,Townsend2005,Dunstone2006,Petit2013,Waugh2022,Daley-Yates2024},
-these data support the idea that such condensations can become optically
-thick around the lowest-mass stars, although the exact source of 
-opacity remains unclear.
+these data support the idea that such condensations can become
+optically thick around the lowest-mass stars, although the exact
+source of opacity remains unclear.
 \end{abstract}
 
 \maketitle
@@ -86,38 +83,114 @@ opacity remains unclear.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Main text – up to 3,000 words, excluding abstract, Methods,
+% references and figure legends.
+
 \section{Main}
 \label{sec:main}
 
-\subsection{Introduction}
+%\subsection{Introduction}
+M dwarfs, stars with masses below about half that of the Sun, are the
+only type of star to offer near-term prospects for detecting the
+atmospheres of rocky exoplanets with water on their surfaces (CITE).
+Investment with JWST has proceeded accordingly (CITE CITE).  It is
+therefore important to consider how the evolution of an M dwarf might
+impact the evolution of its planets.  Previous work has established
+that most M dwarfs host close-in planets (CITE), and that these
+planets are often subject to long circumstellar disk lifetimes (CITE),
+to large doses of UV radiation (CITE), and to a high incidence of
+flares and coronal mass ejections (CITE).  However, despite excellent
+work in these areas, the properties of the circumstellar plasma
+and magnetospheric environments to which young, close-in exoplanets
+are subject remain largely unexplored. 
 
-Lorem ipsum whatever...
+One glaring example of our current ignorance is the complex periodic
+variables (CPVs).  Figure~\ref{fig:lc} highlights the main object of
+interest in this article, but over one hundred analogous objects have
+now been discovered by K2 and TESS (CITE, CITE, CITE, CITE).  These CPVs are
+defined by their highly structured and periodic optical light curves, 
+and most are M dwarfs with rotation periods shorter than two days.
+Within current sensitivity limits, none have primordial disks (CITE).
+However, $\approx$3\% of stars a few million years old show this
+behavior (CITE), and the observed fraction decreases to $\approx$0.3\%
+by $\approx$150\,Myr (CITE).
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.7\textwidth]{figures/f1.png}
-\caption[]{{\bf Figure 1 (Movie):  TIC 141146667 is a complex periodic
-variable (CPV).} For the best experience, please view the online movie
-available
-\href{https://lgbouma.com/movies/movie_TIC1411_flux_phase.mp4}{here},
-which spans a baseline of 5{,}784 cycles irregularly sampled over three
-years.  The TESS light curve is phased to the \periodhr\ hour period in
-groups of a few cycles per frame.  Raw data acquired with two minute
-sampling are in gray; black is their average.  Similar to other members
-of this class, the sharp photometric features persist for tens to
-thousands of rotational cycles. }
-\label{fig:lc}
+The two leading hypotheses to explain the CPVs are either that we are
+in the shadow of transiting clumps of circumstellar material that
+corotate with the star (CITE, CITE, CITE), or that these stars
+represent an extreme in naturally-occurring distributions of starspots
+or faculae for young M dwarfs \cite{Koen2021}.  Currently, the main
+argument against a starspot-only explanation invokes the timescales
+and amplitudes of the sharpest photometric features (CITE).  However,
+there has yet to be any direct independent evidence for the presence of
+circumstellar material in any of these objects.  Since transiting
+circumstellar clumps would geometrically imply an occcurrence rate a
+few to ten times the observed rate (CITE), this phenomenon has the
+potential to affect 10-30\% of M dwarfs during their early lives.
+
+The dearth of evidence for circumstellar material around CPVs is
+surprising given that separate studies of young BAFGKM stars have, for
+decades, reported that stellar coronae contain both hot ($10^6$ K) and
+cool ($10^4$ K) plasma. In particular, time-series spectroscopy has
+shown periodic high-velocity absorption and emission in Balmer lines
+such as H$\alpha$, implying long-lived, corotating clumps of cool
+plasma (CITE, CITE, CITE).  Such clumps are forced into corotation by
+the magnetic field, and the geometry of where the plasma can
+accumulate is thought to be dictated by the magnetic field's topology.
+For instance, a tilted dipole field tends to yield an accumulation
+surface of a warped torus \cite{Townsend2005}, whereas in the limit of
+a single strong discrete field line, accumulation occurs along a fixed
+point \cite{Waugh2022}.  However, none of these stars have shown any
+photometric anomalies (CITE), leaving open the issue of whether these
+two separate areas of study have any direct connection.  Nonetheless,
+CPVs do respond to sudden magnetic field changes: there are many
+documented cases of otherwise long-lived eclipse features disappearing
+immediately following stellar flares (CITE, CITE).
+
+In this study, we present the first observations of corotating clumps
+of cool plasma around a CPV.  We identified TIC~141146667 in previous
+work \cite{Bouma2024} by searching the TESS two-minute data for stars
+showing periodic variability with at least three sharp dips.  We
+selected it from the resulting fifty high-quality CPVs for follow-up
+observations because it was the brightest source for which a full
+cycle could be observed in a half-night.  We observed it for five
+hours on UT 2024-02-17 using the High Resolution Echelle Spectrometer
+(HIRES; \cite{vogt_hires_1994}) on the Keck I 10m telescope, roughly
+contemporaneous with TESS, which observed the star from UT 2024-02-05
+to UT 2024-02-26 with a duty cycle of XX\%.  In detail, TESS was
+finishing a data downlink during the HIRES observations, and
+photometric data collection resumed three cycle periods (12 hours)
+after the spectra were acquired.  
+Extended Data Figure~\ref{fig:fulllc} shows the detailed photometric
+behavior of the star before and after the exact epoch of observation;
+the star remained sufficiently stable to not affect any of the
+interpretation that follows.
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/f1.png}
+  \caption[]{{\bf Figure 1 (Movie):  TIC~141146667 is a complex periodic
+  variable (CPV).} For the best experience, please view the online movie
+  available
+  \href{https://lgbouma.com/movies/movie_TIC1411_flux_phase.mp4}{here},
+  which spans a baseline of 5{,}784 cycles irregularly sampled over three
+  years.  The TESS light curve is phased to the \periodhr\ hour period in
+  groups of a few cycles per frame.  This is the period both of
+  stellar rotation, and (we hypothesize) of corotating clumps of
+  circumstellar material.  Raw data acquired with two minute
+  sampling are in gray; black is their average.  Similar to other members
+  of this class, the sharp photometric features persist for tens to
+  thousands of rotational cycles. }
+  \label{fig:lc}
 \end{figure}
 
 
 \subsection{Results}
 
-
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.99\textwidth]{figures/f2.png}
-\caption[]{{\bf Figure 2 (Movie):}  
+\begin{figure}[!tp]
+  \centering
+  \includegraphics[width=0.99\textwidth]{figures/f2.png}
+  \caption[]{{\bf Figure 2 (Movie):}  
   Hydrogen emission from circumstellar plasma orbiting TIC 141146667.
   {(\bf TODO)}For the best experience, please view the online movie
   available
@@ -126,7 +199,7 @@ thousands of rotational cycles. }
   2024-02-26 folded on the \periodhr\ hour period.  Black points are
   averaged; gray are the raw data.
   {\bf Panel b:} Keck/HIRES H$\alpha$ spectra
-  acquired on UT 2024-02-17.  The continuum is set at unity, and the
+  acquired on UT 2024-02-17.  The continuum is set to unity, and the
   darkest color is set at twice the continuum to accentuate emission
   outside the line core ($|v/v_{\rm eq}|>1$, for $v_{\rm eq}$=130\,\kms).
   While emission in the line core originates in the stellar
@@ -143,11 +216,42 @@ thousands of rotational cycles. }
   is set to match the dynamic range of the data.
   {\bf Panel f:} Individual epochs of Panel e, visible in the online
   movie.}
-\label{fig:spec}
+  \label{fig:spec}
 \end{figure}
+
+Figure~\ref{fig:spec} shows the available photometry and spectroscopy from
+February 2024.
+While the star's photometric shape changed from February 2022,
+its behavior remained complex:
+the average photometric signal shows a smooth brightening over 45\% of
+the period, followed by a complex eclipse-like feature spanning 55\%
+of the period.
+This photometric eclipse shows two to three local minima, 
+and one to two local maxima at times near the spectroscopic
+observation.
+
+The novelty is the spectroscopy.  Emission from material well beyond
+the star's equatorial velocity ($v_{\rm eq}$=130\,\kms) is visible by
+eye in the raw spectrogram.
+The emission is complex...
+%TODO: what are the features you need to quantify / quote?
+
+slightly less than half the period, 
+
+While the two are not exactly simultaneous, 
+
+
+
+
+
 
 
 \subsection{Discussion}
+
+These data rule out ``starspot-only'' and ``dust-only''
+origin scenarios for CPVs, instead supporting either a purely stellar
+origin for the phenomenon or extrinsic scenarios involving long-lived
+disks or outgassing rocky bodies capable of supplying sufficient gas.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -163,6 +267,33 @@ thousands of rotational cycles. }
 
 
 \subsection{Observations}
+
+\begin{figure}[!b]
+  \centering
+  \includegraphics[width=0.99\textwidth]{figures/sf1.pdf}
+  \caption{Detailed photometric evolution of TIC 141146667 near the
+  epoch of spectroscopic observation (green). 
+  {\bf Panel a}: Subset of TESS SAP\_FLUX acquired near time of
+  Keck/HIRES observation.
+  TESS downlinked data to the Deep Space Network from BTJD XXX to
+  YYY, and was affected by scattered light from the Earth from BTJD
+  3359.4 to 3360.15.
+  %TODO: VERIFY!  Was it scattered light?  Or a legit flare?
+  {\bf Panels b,c}: Folded light curve before and after spectroscopy.
+  {\bf Panel d}: Zoom-in of Panel a, showing decreasing photometric
+  scatter in the over three days (18 cycles).
+  }
+  \label{fig:fulllc}
+\end{figure}
+
+{\bf TESS:}
+
+{\bf Keck/HIRES:}
+We observed using the standard setup and reduction techniques of the
+California Planet Survey \cite{Howard2010}.
+Winds of 30 mph contributed to
+1\farcs2$\pm$0\farcs2 seeing over the spectroscopic observations.  
+
 
 \subsection{Data Reduction}
 

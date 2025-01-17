@@ -1,4 +1,72 @@
 ----------
+TEXT PLAN
+
+(3k words, say 150 words/p -> 20p's)
+
+* Intro
+  * p1: variable stars teach us about circumstellar envts, & define phot CPVs
+      - no __direct__ evidence for circumst mat
+  * p2: separate studies of young FGKM stars have, for decades...
+    * rosetta stone btwn two subfields
+  * p3: in this study...
+
+  -m dwarfs are uniquely important. & there seems to be a dramatic gap in our
+        understanding of their circumstellar envts early in their lives.
+  -understanding the physical origins of stellar variability has history...
+
+  -introduce reader to CPVs + properties
+  -argue against starspots forcefully (but qualitatively)
+  -introduce cartoons of clumps vs prominence arcs
+  -describe origin differences btwn two pictures
+  -theoretical import of the corotation radius
+  -despite theory, CPVs have been hard to discover + characterize. bc...
+  -in this work, we do x
+
+
+* Results
+  ** keck/hires: emission beyond v/veq>1 (2-3 paragraphs)
+  * keck/hires: absorption within v/veq<1
+  * keck/hires: emission within v/veq<1
+  * keck/hires: (no) other spec variability
+      (?)No evidence for doppler shadows in the line profiles
+  * photometric variability
+
+* Discussion + Conclusions (4 para? 5?)
+  * spot-only is no more.
+  * mass estimate
+  * macrophysics: star, disk, planet. 
+  * role of B: comparison to, and need for, RMHD models
+    * massive B star / jupiter cnxn
+  * more wavelengths:
+      Radio detection.   Relevance for B measurement.
+      UV?  xray?
+      need for jwst
+  * microphysics: the (probable) need for dust
+      W1,W2,W3 no dust evidence.
+      W4 detection questionable based on WISE images.
+
+* Methods
+  * phot observations
+  * spec observations
+  * stellar properties
+  * assocation membership
+
+----------
+earlier 2024 paper intro (1200 word!) was:
+
+  -reminder about variable star types
+  -introduce reader to CPVs + properties
+  -argue against starspots forcefully (but qualitatively)
+  -introduce cartoons of clumps vs prominence arcs
+  -describe origin differences btwn two pictures
+  -theoretical import of the corotation radius
+  -despite theory, CPVs have been hard to discover + characterize. bc...
+  -in this work, we do x
+  -nomenclature comments
+
+
+
+----------
 FIGURE PLAN
 
 -f1: TIC 141146667 is a complex periodic variable.
@@ -6,7 +74,7 @@ FIGURE PLAN
   -Animated supporting: Movie of S41, S48, S75 TESS photometry, cycle-grouped
     (This should be fig1?  Will nicely show shape evolution.  e.g. the cycle-by-color)
 
-f2: Money movie plot.  Panel layout:
+-f2: Money movie plot.  Panel layout:
   -Still: index 0012.  t=3.1hr
   (Feb'24 TESS)              (Feb'24 TESS, Ha overlay)
   (HIRES raw river)          (HIRES med-subtr river)
