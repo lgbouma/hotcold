@@ -1,0 +1,18 @@
+r="/Users/luke/Dropbox/proj/cpv/results"
+
+##########################################
+# figure1: TIC 141146667 is a complex periodic variable.
+# still: c1265-1268, s48, 2022-02-16 to 2022-02-17
+cp $r/movie_phase_timegroups/TIC_141146667/TIC_141146667_0081_2min_phase_timegroups.png figures/f1.png
+
+# Animated supporting: Movie of S41, S48, S75 TESS photometry, cycle-grouped
+cp $r/movie_phase_timegroups/TIC_141146667/movie_TIC1411_flux_phase_bow.mov movies/m1.mov
+
+##########################################
+# figure2: Hydrogen emission from circumstellar plasma orbiting TIC 141146667.
+# -still: index 0012.  t=3.1hr
+cp $r/movie_sixpanel_specriver/TIC_141146667_science/specriver_141146667_Hα_0012_2min_remove25pct_normbyveq_showlinecoresum.png figures/f2.png
+
+# Animated supporting: Movie of spectral timeseries
+cp $r/movie_sixpanel_specriver/TIC_141146667_science/TIC141146667_sixpanel.mov movies/m2.mov
+

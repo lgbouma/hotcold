@@ -1,58 +1,13 @@
-Title: A Plasma Torus Around a Young Low-Mass Star
-
-Abstract:
-
-Approximately one percent of red dwarfs younger than 100 million years
-show structured, periodic optical light curves suggestive of transiting
-clumps of opaque circumstellar material that corotate with the star
-[1-4]. The composition, origin, and even the existence of this material
-are uncertain. The main alternative hypothesis is that these stars are
-explained by complex distributions of dark starspots or bright faculae
-distributed across their surfaces [5]. Here, we present time-series
-spectroscopy and photometry of a 40 million year old complex periodic
-variable (CPV), TIC 141146667. The spectra show coherent sinusoidal
-Balmer emission at up to four times the star's equatorial velocity,
-demonstrating the presence of extended clumps of circumstellar plasma —
-a plasma torus. These data rule out "starspot-only" and "dust-only"
-origin scenarios for CPVs, instead supporting either a purely stellar
-origin for the phenomenon or extrinsic scenarios involving long-lived
-disks or outgassing rocky bodies capable of supplying sufficient gas.
-Given that long-lived condensations of cool (10^4 K) plasma can persist
-in the hot (10^6 K) coronae of stars with a wide range of masses [6-11],
-these data support the idea that such condensations can become optically
-thick around the lowest-mass stars, although the exact source of the
-opacity remains unclear.
-
-
-----------
-[1] Rebull, L. M., Stauffer, J. R., Bouvier, J., et al. 2016, AJ, 152, 114
-[2] Stauffer, J., Collier Cameron, A., Jardine, M., et al. 2017, AJ, 153, 152
-[3] Rebull, L. M., Stauffer, J. R., Cody, A. M., et al. 2018, AJ, 155, 196
-[4] Bouma, L. G., Jayaraman, R., Rappaport, S., et al. 2024, AJ, 167, 38
-[5] Koen, C. 2021, MNRAS, 500, 1366
-[6] Collier Cameron, A., Robinson, R. D. 1989, MNRAS, 236 57
-[7] Townsend, R. H. D., & Owocki, S. P. 2005, MNRAS, 357, 251
-[8] Dunstone, N. J., Collier Cameron, A., Barnes, J. R., & Jardine, M. 2006, MNRAS, 373, 1308
-[9] Petit, V., Owocki, S. P., Wada, G. A., et al. 2013, MNRAS, 429, 398
-[10] Waugh, R. F. P., & Jardine, M. M., 2022, MNRAS, 514, 5465
-[11] Daley-Yates & Jardine 2024, MNRAS, under review, arXiv:2409.07297
-
-
-----------
-  ((optional: These discoveries shed light on novel processes happening in the
-  magnetospheres of young, low-mass stars, while also teaching us about the
-  plasma and magnetospheric conditions faced by young close-in exoplanets.))
-
 ----------
 FIGURE PLAN
 
-f1: TIC 141146667 is a complex periodic variable.
+-f1: TIC 141146667 is a complex periodic variable.
   -Still: c1265-1268, s48, 2022-02-16 to 2022-02-17
   -Animated supporting: Movie of S41, S48, S75 TESS photometry, cycle-grouped
     (This should be fig1?  Will nicely show shape evolution.  e.g. the cycle-by-color)
 
 f2: Money movie plot.  Panel layout:
-
+  -Still: index 0012.  t=3.1hr
   (Feb'24 TESS)              (Feb'24 TESS, Ha overlay)
   (HIRES raw river)          (HIRES med-subtr river)
   (HIRES raw fλ vs Δv)       (HIRES med-subtr fλ vs Δv)
