@@ -33,8 +33,8 @@ TEXT PLAN
 
 * Discussion + Conclusions (4 para? 5?)
   * spot-only is no more.
-  * mass estimate
   * macrophysics: star, disk, planet. 
+  * mass estimate
   * role of B: comparison to, and need for, RMHD models
     * massive B star / jupiter cnxn
   * more wavelengths:

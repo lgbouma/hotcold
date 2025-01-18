@@ -115,56 +115,19 @@ However, $\approx$3\% of stars a few million years old show this
 behavior (CITE), and the observed fraction decreases to $\approx$0.3\%
 by $\approx$150\,Myr (CITE).
 
-The two leading hypotheses to explain the CPVs are either that we are
-in the shadow of transiting clumps of circumstellar material that
-corotate with the star (CITE, CITE, CITE), or that these stars
-represent an extreme in naturally-occurring distributions of starspots
-or faculae for young M dwarfs \cite{Koen2021}.  Currently, the main
-argument against a starspot-only explanation invokes the timescales
-and amplitudes of the sharpest photometric features (CITE).  However,
-there has yet to be any direct independent evidence for the presence of
-circumstellar material in any of these objects.  Since transiting
-circumstellar clumps would geometrically imply an occcurrence rate a
-few to ten times the observed rate (CITE), this phenomenon has the
-potential to affect 10-30\% of M dwarfs during their early lives.
-
-The dearth of evidence for circumstellar material around CPVs is
-surprising given that separate studies of young BAFGKM stars have, for
-decades, reported that stellar coronae contain both hot ($10^6$ K) and
-cool ($10^4$ K) plasma. In particular, time-series spectroscopy has
-shown periodic high-velocity absorption and emission in Balmer lines
-such as H$\alpha$, implying long-lived, corotating clumps of cool
-plasma (CITE, CITE, CITE).  Such clumps are forced into corotation by
-the magnetic field, and the geometry of where the plasma can
-accumulate is thought to be dictated by the magnetic field's topology.
-For instance, a tilted dipole field tends to yield an accumulation
-surface of a warped torus \cite{Townsend2005}, whereas in the limit of
-a single strong discrete field line, accumulation occurs along a fixed
-point \cite{Waugh2022}.  However, none of these stars have shown any
-photometric anomalies (CITE), leaving open the issue of whether these
-two separate areas of study have any direct connection.  Nonetheless,
-CPVs do respond to sudden magnetic field changes: there are many
-documented cases of otherwise long-lived eclipse features disappearing
-immediately following stellar flares (CITE, CITE).
-
-In this study, we present the first observations of corotating clumps
-of cool plasma around a CPV.  We identified TIC~141146667 in previous
-work \cite{Bouma2024} by searching the TESS two-minute data for stars
-showing periodic variability with at least three sharp dips.  We
-selected it from the resulting fifty high-quality CPVs for follow-up
-observations because it was the brightest source for which a full
-cycle could be observed in a half-night.  We observed it for five
-hours on UT 2024-02-17 using the High Resolution Echelle Spectrometer
-(HIRES; \cite{vogt_hires_1994}) on the Keck I 10m telescope, roughly
-contemporaneous with TESS, which observed the star from UT 2024-02-05
-to UT 2024-02-26 with a duty cycle of XX\%.  In detail, TESS was
-finishing a data downlink during the HIRES observations, and
-photometric data collection resumed three cycle periods (12 hours)
-after the spectra were acquired.  
-Extended Data Figure~\ref{fig:fulllc} shows the detailed photometric
-behavior of the star before and after the exact epoch of observation;
-the star remained sufficiently stable to not affect any of the
-interpretation that follows.
+The two leading hypotheses to explain the CPVs are either that
+transiting clumps of circumstellar material corotate with the star
+(CITE, CITE, CITE), or that these stars represent an extreme in
+naturally-occurring distributions of starspots or faculae for young M
+dwarfs \cite{Koen2021}.  Currently, the main argument against a
+starspot-only explanation invokes the timescales and amplitudes of the
+sharpest photometric features (CITE).  However, no independent
+evidence has yet been presented for the presence of circumstellar
+material in these objects.  Since transiting circumstellar
+clumps would geometrically imply an occcurrence rate a few to ten
+times the observed rate (CITE), the question of whether it is there
+could potentially teach us about 10-30\% of M dwarfs during their
+early lives.
 
 \begin{figure}[!t]
   \centering
@@ -183,6 +146,46 @@ interpretation that follows.
   thousands of rotational cycles. }
   \label{fig:lc}
 \end{figure}
+
+
+
+The dearth of evidence for circumstellar material around CPVs is
+surprising given that separate studies of young BAFGKM stars have, for
+decades, reported that stellar coronae contain both hot ($10^6$ K) and
+cool ($10^4$ K) plasma. In particular, time-series spectroscopy has
+shown periodic high-velocity absorption and emission in Balmer lines
+such as H$\alpha$, caused by long-lived, corotating clumps of cool
+plasma (CITE, CITE, CITE).  Such clumps are forced into corotation by
+the magnetic field, and the exact geometry of where the plasma can
+accumulate is dictated by the magnetic field's topology.
+For instance, a tilted dipole field tends to yield an accumulation
+surface of a warped torus \cite{Townsend2005}, whereas in the limit of
+a single strong discrete field line, accumulation occurs along a fixed
+point \cite{Waugh2022}.  However, none of these stars have shown any
+photometric anomalies (CITE), leaving open the issue of whether these
+two separate areas of study have any direct connection.  Nonetheless,
+CPVs do respond to sudden magnetic field changes: there are many
+documented cases of otherwise long-lived eclipse features disappearing
+immediately following stellar flares (CITE, CITE).
+
+In this study, we present the first observations of corotating clumps
+of cool plasma around a CPV.  We identified TIC~141146667 in previous
+work \cite{Bouma2024} by searching the TESS two-minute data for stars
+showing periodic variability with at least three sharp dips per cycle.  We
+selected it from the resulting fifty high-quality CPVs for
+spectroscopic observations because it was the brightest source for
+which a full cycle could be observed in a half-night.  We observed it
+for five hours on UT 2024-02-17 using the High Resolution Echelle
+Spectrometer (HIRES; \cite{vogt_hires_1994}) on the Keck I 10m
+telescope, roughly contemporaneous with TESS, which observed the star
+from UT 2024-02-05 to UT 2024-02-26 with a duty cycle of XX\%.  In
+detail, TESS was finishing a data downlink during the HIRES
+observations, and photometric data collection resumed three rotation cycles
+(12 hours) after the spectra were acquired.  Extended Data
+Figure~\ref{fig:fulllc} shows the detailed photometric behavior of the
+star before and after the exact epoch of observation; the star
+remained sufficiently stable to not affect any of the interpretation
+that follows.
 
 
 \subsection{Results}
@@ -219,39 +222,95 @@ interpretation that follows.
   \label{fig:spec}
 \end{figure}
 
-Figure~\ref{fig:spec} shows the available photometry and spectroscopy from
-February 2024.
-While the star's photometric shape changed from February 2022,
-its behavior remained complex:
-the average photometric signal shows a smooth brightening over 45\% of
+% photometry
+Figure~\ref{fig:spec} shows the data from February 2024.  As expected
+based on other CPVs \cite{Bouma2024}, the photometric shape of
+TIC~141146667 evolved over the years following the 2022 discovery
+data, while nonetheless remaining complex.  In February 2024, the
+average photometric signal showed a gradual brightening over 45\% of
 the period, followed by a complex eclipse-like feature spanning 55\%
-of the period.
-This photometric eclipse shows two to three local minima, 
-and one to two local maxima at times near the spectroscopic
-observation.
+of the period.  This eclipse-like feature shows two to three
+local photometric minima, and one to two local maxima.
 
-The novelty is the spectroscopy.  Emission from material well beyond
-the star's equatorial velocity ($v_{\rm eq}$=130\,\kms) is visible by
-eye in the raw spectrogram.
-The emission is complex...
-%TODO: what are the features you need to quantify / quote?
+% ** keck/hires: emission beyond v/veq>1 (2-3 paragraphs)
+The spectroscopy shows emission well outside the star's
+equatorial velocity ($v_{\rm eq}$=130\,\kms).  There are at least two
+distinct emission components, each spaced half a cycle apart in phase.  The
+first has clearer sinusoidal behaviour and is double-peaked, with
+semi-amplitudes of $K_1$=2.1\,$v_{\rm eq}$ and 2.7\,$v_{\rm eq}$.  The
+flux excesses from these two peaks are correlated with one another,
+with amplitudes varying from 100\% of the continuum flux early in the
+observation sequence to 30\% by its end.  The component 180$^\circ$
+opposite in phase is only detected from $\phi$=0.2-1.0, and 
+from $\phi$=0.2-0.5, this latter component appears connected to the
+star in velocity space.  While its peak semi-amplitude of
+$K_1$=3.9\,$v_{\rm eq}$ is achieved at both $\phi$=0.25 and 0.75, its
+amplitude decreases from a 60\% excess beyond the continuum to a 10\%
+excess.   The sinusoidal period in all cases where emission is seen is
+consistent with the photometric \periodhr\ hour period.  As we shall
+discuss below, the only plausible explanation for the behavior at
+$|\Delta v / v_{\rm eq}|>1$ is that circumstellar clumps of hydrogen
+are corotating with the star.  These clumps transit in front of the
+star when passing from negative to positive velocity.
 
-slightly less than half the period, 
-
-While the two are not exactly simultaneous, 
-
-
-
-
-
+% * keck/hires: absorption within v/veq<1
+% * keck/hires: emission within v/veq<1
+Within the stellar H$\alpha$ line core, at $|\Delta v / v_{\rm
+eq}|<1$, the behavior is more complex.  Generally, one would
+expect this region to be generated by the net superposition of bright
+and dark regions on the stellar surface, and then modulated by any
+occulting material capable of absorbing or emitting in H$\alpha$.  In
+Figure~\ref{fig:spec}e, the behavior from $\phi$=0.4-1.2, is most easily
+interpreted: from $\phi$=0.4-0.9, a hot region first gradually crosses
+the stellar line profile, following from $\phi$=0.7-1.2 by the transit
+of a cool region.  The phases $\phi$$<$0.4 seem to be a mix of similar
+events, though the time sampling is sufficiently coarse that the
+interpretation is less clear.
+A final exercise to quantify the behavior in the line core is
+shown in Figure~\ref{fig:spec}d, where $f_{\rm H\alpha\ core}$ denotes
+the summed flux in the at $|\Delta v / v_{\rm eq}|<1$.
+Changes in the line core flux are usually correlated with the
+broadband variability, except at $\phi$=0.5, during the transit of the
+higher-velocity clump and the occultation of the lower-velocity clump.
 
 
 \subsection{Discussion}
 
-These data rule out ``starspot-only'' and ``dust-only''
-origin scenarios for CPVs, instead supporting either a purely stellar
-origin for the phenomenon or extrinsic scenarios involving long-lived
-disks or outgassing rocky bodies capable of supplying sufficient gas.
+The sinusoidal emission features require clumps of partially-ionized
+hydrogen to be corotating with the star.
+The velocity semi-amplitude of the sinusoids directly gives the
+distance of these clumps from the stellar surface: 2.1-2.7\,$R_\star$
+for one clump, and 3.9\,$R_\star$ for the other.
+Their motion, rather than being Keplerian, can only be explained by
+plasma being dragged along with the rotating stellar magnetic field.
+
+The new data rule out two plausible origin scenarios for CPVs.
+The ``starspot-only'' scenario \cite{Koen2021} has no means of
+explaining this type of spectroscopic emission.
+Similarly, a ``dust-only'' scenario in which the circumstellar
+material would have a pure dust composition is also ruled out:
+to explain the H$\alpha$ emission, the circumstellar clumps need to be
+made of either a pure plasma, or a dusty plasma.
+A priori, there are three plausible sources of such material:
+the star, an old and undetected disk, or outgassing rocky bodies.
+
+% * mass estimate
+The density and mass of the material...
+
+% TODO TODO: the rest!
+* role of B: comparison to, and need for, RMHD models
+  * massive B star / jupiter cnxn
+
+* more wavelengths:
+    Radio detection.   Relevance for B measurement.
+    UV?  xray?
+    need for jwst
+
+* microphysics: the (probable) need for dust
+    W1,W2,W3 no dust evidence.
+    W4 detection questionable based on WISE images.
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
