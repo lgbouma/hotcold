@@ -298,7 +298,9 @@ Parameter & Description & Value & Source\\
 \hline 
 %
 $T_{\rm eff}$\dotfill                   & Effective Temperature (K) \hspace{9pt}\dotfill                 & 2972 $\pm$ 40    & 1 \\
-%$\log{g_{\star}}$\dotfill              & Surface Gravity (cgs)\hspace{9pt}\dotfill                      & 4.53 $\pm$ 0.05  & 6 \\
+%
+%$\log{g_{\star}}$\dotfill              & Surface Gravity (cgs)\hspace{9pt}\dotfill                      & YYY              & X \\
+%
 $R_\star$\dotfill                       & Stellar radius ($R_\odot$)\dotfill                             & 0.42$\pm$0.02    & 1 \\
 %
 $M_\star$\dotfill                       & Stellar mass ($M_\odot$)\dotfill                               & XXX  & 6 \\
@@ -482,8 +484,7 @@ M dwarfs -- the rapidly rotating ones with centrifugal magnetospheres
 \setcounter{table}{0}  
 \setcounter{figure}{0}  
 
-
-\section{Observations}
+\subsection{Observations \& Data Reduction}
 
 \begin{figure}[!b]
   \centering
@@ -503,18 +504,109 @@ M dwarfs -- the rapidly rotating ones with centrifugal magnetospheres
   \label{fig:fulllc}
 \end{figure}
 
-{\bf TESS:}
+{\it TESS:} TESS observed TIC~141146667 ($T$=13.3) in Sectors 14, 15, 21, 41, 48,
+and 75.  Two-minute data were acquired during Sectors 41, 48 (TESS
+DDT039, PI: M.~Kunimoto), and 75 (TESS Program G06030, PI: L.~Bouma);
+the earlier data had a 30-minute cadence, which significantly
+phase-smears sharp features over a $<$4\,hour period (see
+\cite{Gunther2022}).
+The nearest star in the TESS images, TIC~141146666 ($T$14.5), is 
+25$''$ from TIC~141146667 and does not appear to photometrically vary.
 
-{\bf Keck/HIRES:}
+{\it Keck/HIRES:}
 We observed using the standard setup and reduction techniques of the
 California Planet Survey \cite{Howard2010}.
 Winds of 30 mph contributed to
 1\farcs2$\pm$0\farcs2 seeing over the spectroscopic observations.  
+% TODO: mention deblazing 20241115_tic1411_deblazing_notes.txt
+
+\subsection{Stellar Parameters}
+{\it Age}
+While most CPVs can be spatially and kinematically associated with known young
+moving groups using tools such as BANYAN\,$\Sigma$ \cite[v1.2;][]{Gagne2018},
+TIC~141146667 cannot \cite{Bouma2024}.
+%.\footnote{\url{https://github.com/jgagneastro/banyan_sigma},
+%git commit \texttt{394b486}}
+
+Isochrone age: $\sim$TucHor or younger.  Maybe 30-35myr?
+NB color puts it at ~M4.5 (main seq).
+BP-RP=3.3..
+
+Lithium?
+Frankly, it's not obviously there!  (but maybe this is bc of the blending, and
+a pEW would show smth small)
+% We have K=10.47, d=57pc - > DM ~= 3.78 -> M_K ~= 6.67
+Figure7 of Wood23 suggests from the Feiden Li depletion curves that no lithium would imply $t$>37Myr.
+However Figure5 frmo the same work suggests maybe try binning up the spectrum, and then comparing against Bochanski+2007 for a lithium-free template.
+
+This is weird.  Are you 100\% sure it's not a binary?  Ups the need for
+the RV analysis.
 
 
-\section{Data Reduction}
 
-\section{Modeling the Emitting Clump}
+{\it Effective temperature, radius, and mass}
+We adopt the results from the spectral energy distribution fitting
+exercise described by \cite{Bouma2024}.
+In brief, this approach used
+\texttt{astroARIADNE}...
+\cite{Vines2022} with the BT-Settl stellar
+atmosphere models \cite{Allard2012} assuming the
+\cite{Asplund2009} solar abundances, and the
+\cite{Barber2006} water line lists.  
+We used broadband magnitudes from Gaia DR2, APASS, 2MASS, SDSS, and WISE
+  $W1$ and $W2$.  (explain)...
+%%%%%%%%
+%\texttt{astroARIADNE} compares the measured broadband flux
+%measurements against pre-computed model grids, and by default fits for
+%six parameters: $\{ T_{\rm eff}, R_\star, A_{\rm V}, \log g, [{\rm
+%Fe/H}], d \}$.  The distance  prior is drawn from
+%\citet{2021AJ....161..147B}.  The surface gravity and metallicity are
+%generally unconstrained.  Given our selection criteria for the stars,
+%we assumed the following priors for the temperature, stellar size, and
+%extinction:
+%\begin{align}
+%  T_{\rm eff} / {\rm K}    &\sim \mathcal{U}(2000, 8000), \\
+%  R_\star / R_\odot  &\sim \mathcal{U}(0.1, 1.5), \\
+%  A_{\rm V} / {\rm mag}    &\sim \mathcal{U}(0, 0.2),
+%\end{align}
+%for \deleted{$\mathcal{N}$ the Gaussian and }$\mathcal{U}$ the uniform
+%distribution\deleted{s, and $\mathcal{T}_{\rm N}(\mu, \sigma, a, b)$ a
+%truncated normal distribution with mean $\mu$, standard deviation
+%$\sigma$, and lower and upper bounds $a$ and $b$}.  We validated our
+%chosen upper bound on $A_{\rm V}$ using a 2MASS color-color diagram.
+%Finally, using \texttt{Dynesty} \citep{2020MNRAS.493.3132S}, we
+%sampled the posterior probability assuming the default Gaussian
+%likelihood, and set a stopping threshold of ${\rm d}\log \mathcal{Z} <
+%0.01$, where $\mathcal{Z}$ denotes the evidence.
+
+
+
+
+{\it Binarity}
+
+\subsection{Spectral Behavior of Other Lines}
+
+First, chromospheric:
+
+{\it H$\gamma$, H$\delta$}
+Line ratios.
+
+{\it Ca [K]}
+{\it Also} shows some high-velocity emission.  So, the emitting material has
+calcium ions.
+
+{\it He 5880}
+Also variable...
+
+{\it Magnesium b orders}
+Shows some variability that is horrendously blended.
+
+{\it K[I] 7700}
+Literally the only obvious photospheric line.
+
+
+
+\subsection{Modeling the Emitting Clump}
 \label{subsec:model}
 
 % * mass estimate
