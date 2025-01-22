@@ -31,4 +31,4 @@ ax.legend(fontsize='x-small')
 
 plt.show();
 
-savefig(fig, 'quality_lc.png')
+savefig(fig, 'results/quality_lc.png')
