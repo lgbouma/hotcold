@@ -10,3 +10,5 @@ paper/*out
 paper/*synctex.gz
 *SECRET*
 *secret*
+*png
+drivers/*pdf
