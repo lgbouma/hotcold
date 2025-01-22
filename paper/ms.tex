@@ -509,32 +509,33 @@ magnetospheres -- have similar circumstellar environments to the CPVs.
   \label{fig:fulllc}
 \end{figure}
 
-{\it TESS:} TESS observed TIC~141146667 ($T$=13.3) in Sectors 14, 15,
-21, 41, 48, and 75.  Two-minute data were acquired during Sectors
-41, 48 (TESS DDT039, PI: Kunimoto), and 75 (TESS Program G06030, PI:
-Bouma).  The data from Sectors 14, 15, and 21 had a 30-minute
-cadence, which significantly phase-smears sharp features over the
-$<$4\,hour period (see \cite{Gunther2022}).  The nearest known star,
-TIC~141146666 ($T$=14.5), is 25$''$ from TIC~141146667 and based on
-the pixel-level TESS data is photometrically stable.
+{\it Photometry:} TESS observed
+TIC~141146667 ($T$=13.3) in Sectors 14, 15, 21, 41, 48, and 75.
+Two-minute data were acquired during Sectors 41, 48 (TESS DDT039,
+PI: Kunimoto), and 75 (TESS Program G06030, PI: Bouma).  The data
+from Sectors 14, 15, and 21 had a 30-minute cadence, which
+smears sharp features over the $<$4\,hour period
+(see \cite{Gunther2022}).  The nearest known star, TIC~141146666
+($T$=14.5), is 25$''$ from TIC~141146667 and is photometrically stable
+in the pixel-level TESS data.
 
-Figure~\ref{fig:fulllc} shows the simple aperture photometry from
-Sector~75, which were acquired using the camera that points closest
-to the ecliptic.  The largest gap in coverage is from BTJD
-3356.0~-~3358.5, and includes the Keck/HIRES observation epoch
-(green bar).   There are no flux measurements reported during this
-interval because the Earth was within 25$\^circ$ the camera's
-boresight, yielding high levels of scattered light.  From BTJD
-3359.4~-~3362.0, the Moon also passed within 25$^\circ$ of the
-camera's boresight.  Based on the observed level of scattered light
-in the local aperture of TIC~141146667, we therefore manually masked
-out times from 3359.4~-~3360.13, and judged the remainder of the
-data to be usable.  The small data gaps from BTJD 3353.55~-3353.77
-and from BTJD 3360.12~-~3360.33 were caused by data downlinks at the
-spacecraft's perigee and apogee, respectively.
+Figure~\ref{fig:fulllc} shows the data from Sector~75, which were
+acquired using the camera that points closest to the ecliptic.  The
+largest gap in coverage is from BTJD 3356.0~-~3358.5, and includes
+the Keck/HIRES observation epoch (green bar).   There are no flux
+measurements reported during this interval because the Earth was
+within 25$^\circ$ the camera's boresight, yielding high levels of
+scattered light.  From BTJD 3359.4~-~3362.0, the Moon then passed
+within 25$^\circ$ of the camera's boresight.  Based on the observed
+level of scattered light in the optimal TIC~141146667 aperture, we
+manually masked out times from 3359.4~-~3360.13, and judged the
+remainder of the data during the lunar approach to be usable.  The
+small data gaps from BTJD 3353.55~-~3353.77 and from BTJD
+3360.12~-~3360.33 were caused by data downlinks at the spacecraft's
+perigee and apogee, respectively.
 
-{\it Keck/HIRES:}
-We observed TIC~141146667 ($V$=16.2) with HIRES for five hours over a
+{\it Spectroscopy:}
+We observed TIC~141146667 ($V$=16.2) with Keck/HIRES for five hours over a
 second-half night spanning UT 2024-02-17 10:47 to UT 2024-02-17
 16:13.  The star's airmass over this window spanned $z$=1.2-2.2, and
 we opted for a fixed 15 minute cadence over the entire sequence,
@@ -544,19 +545,19 @@ the C2 decker (0$\farcs$86$\times$14$\farcs$0) in the red instrument
 configuration, yielding a spectral resolution $R$$\approx$45{,}0000
 ($\delta v$$\approx$6.7\,\kms; $\delta v / v_{\rm
 eq}$$\approx$0.05).  We binned the CCD readout by a factor of three
-in the spatial dimension, yielding $\approx$1,000 counts (S/N=33)
+in the spatial dimension, yielding $\approx$1,000 photons (S/N=33)
 per pixel in the continuum at 6500\,\AA, at minimum airmass.  Strong
 winds contributed to 1\farcs2$\pm$0\farcs2 seeing over the night,
 but conditions were otherwise favorable.  We reduced the
 echelleogram to a one-dimensional spectrum using the standard
 techniques of the California Planet Survey \cite{Howard2010}.
-Figure~\ref{fig:spec} shows a small segment of the result without
-any additional processing.
+Figure~\ref{fig:spec} shows the result in the vicinity of H$\alpha$
+without any additional processing.
 
 
 \subsection{Spectroscopic Variability}
 
-The full wavelength coverage spans 3650-7960\,\AA, and variable
+The full HIRES coverage spans 3650-7960\,\AA, and variable
   emission is visible in Balmer lines from $n$=10$\rightarrow$2, Ca[H]
   and Ca[K], the Mg[I] b triplet, and the 5875 He[I] emission line.
 
@@ -564,6 +565,18 @@ The full wavelength coverage spans 3650-7960\,\AA, and variable
 
 
 \subsection{Stellar Parameters}
+
+{\it Radial Velocity}---We measured the radial velocities of
+TIC~141146667 using a pipeline that we for rapidly rotating
+stars, including M dwarfs.
+%TODO: describe
+
+
+Standard precision radial velocity pipelines
+fail on stars like  due to their extreme line broadening.
+
+
+
 {\it Age: No Obvious Association Membership}---Previous work
 \cite{Bouma2024} has shown that over 90\% of CPVs are associated with
 known young moving groups based on their positions and kinematics.
@@ -573,7 +586,7 @@ BANYAN\,$\Sigma$ \cite[v1.2;][]{Gagne2018}, and based on that model,
 it appears to be a field star at $>$99.9\% confidence.  Searching the
 local vicinity of the star for neighbors with similar projected on-sky
 velocity \cite{Tofflemire2021} similarly yields no strong candidates
-for co-moving ($\Delta v__{\rm T}$$<$5\,\kms) stars that share its
+for co-moving ($\Delta v_{\rm T}$$<$5\,\kms) stars that share its
 isochronal youth.
 
 {\it Age: Isochrones}--- $\sim$TucHor or younger.  Maybe 30-35myr?  NB
