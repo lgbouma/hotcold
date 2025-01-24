@@ -696,7 +696,7 @@ The density and mass of the material...
     \multicolumn{3}{c}{Identifiers} \\
     \hline
     TIC & 141146667 & TESS \\
-    Gaia & todo & Gaia\ DR3 \\
+    Gaia & 860453786736413568 & Gaia\ DR3 \\
     %2MASS & J04154278+2909597 & J04154269+2909558 & 2MASS \\
     %ALLWISE & J041542.77+290959.5 & ... & ALLWISE\\
     \hline
@@ -704,53 +704,58 @@ The density and mass of the material...
     \hline
     $\alpha$ & todo & Gaia\ DR3 \\
     $\delta$ & todo & Gaia\ DR3 \\
-    $\mu_{\alpha}$ (mas yr$^{-1}$ ) & todo & Gaia\ DR3 \\
-    $\mu_{\delta}$ (mas yr$^{-1}$ ) & todo & Gaia\ DR3 \\
-    $\pi$ (mas) & todo & Gaia\ DR3 \\
+    $\mu_{\alpha}$ (mas yr$^{-1}$ ) & -73.933 $\pm$ 0.022 & Gaia\ DR3 \\
+    $\mu_{\delta}$ (mas yr$^{-1}$ ) &  32.262 $\pm$ 0.024 & Gaia\ DR3 \\
+    $\pi$ (mas)                     &  17.324 $\pm$ 0.025 & Gaia\ DR3 \\
+    RUWE                            &  1.23               & Gaia\ DR3 \\
     \hline
     \multicolumn{3}{c}{Photometry} \\
     \hline
     $TESS$ (mag) & todo & TESS\ \\
-    $G$ (mag) & todo & Gaia\ DR3 \\
-    $G_{\rm BP}$ (mag) & todo & Gaia\ DR3\\
-    $G_{\rm RP}$ (mag) & todo & Gaia\ DR3\\
-    $J$ (mag) & todo & 2MASS\\
-    $H$ (mag) & todo & 2MASS\\
-    $K_s$ (mag) & todo & 2MASS\\
-    $W1$ (mag) & todo & ALLWISE \\
-    $W2$ (mag) & todo & ALLWISE \\
-    $W3$ (mag) & todo & ALLWISE \\
-    $W4$ (mag) & todo & ALLWISE \\
+    $G$ (mag)                       & 14.701 $\pm$ 0.002 & Gaia\ DR3 \\
+    $G_{\rm BP}$ (mag)              & 16.664 $\pm$ 0.008 & Gaia\ DR3 \\
+    $G_{\rm RP}$ (mag)              & 13.398 $\pm$ 0.006 & Gaia\ DR3 \\
+    $G_{\rm BP}$-$G_{\rm RP}$ (mag) &  3.276 $\pm$ 0.010 & Gaia\ DR3 \\
+    $J$ (mag)                       & 11.401 $\pm$ 0.022 & 2MASS     \\
+    $H$ (mag)                       & 10.793 $\pm$ 0.021 & 2MASS     \\
+    $K_s$ (mag)                     & 10.473 $\pm$ 0.016 & 2MASS     \\
+    $W1$ (mag)                      & 10.276 $\pm$ 0.023 & ALLWISE   \\ % Cutri+2013 II/328/allwise
+    $W2$ (mag)                      & 10.070 $\pm$ 0.020 & ALLWISE   \\
+    $W3$ (mag)                      &  9.838 $\pm$ 0.045 & ALLWISE   \\
+    %$W4$ (mag)                      &  8.392 $\pm$ NOUNC & ALLWISE \\
+	  %
+    %TODO: eROSITA?  ROSAT is an emitter.  GALEX detection.
+    % Ofek+2011 1.4Ghz emitter.  Helfand+2015 ditto.  Bruzewski+2021.
     \hline
     \multicolumn{3}{c}{Kinematics and Position} \\
     \hline
-    $RV_{Bary}$ (km s$^{-1}$ ) & $13.35 \pm 3.39$ & Gaia\ DR3 \\
+    $RV_{Bary}$ (km s$^{-1}$ ) & $13.35 \pm 3.39$ & HIRES \\
     $U$ (km s$^{-1}$ ) & & \\
     $V$ (km s$^{-1}$ ) & & \\
     $W$ (km s$^{-1}$ ) & & \\
-    $X$ (pc)  & & \\
-    $Y$ (pc)  & & \\
-    $Z$ (pc) & & \\
+    $X$ (pc) & -28.4 & \\
+    $Y$ (pc) &  19.8 & \\
+    $Z$ (pc) &  67.0 & \\
     \hline
     \multicolumn{3}{c}{Physical Properties} \\
     \hline
     $P_{rot}$ (hours) & $3.930 \pm 0.XXX$ & This work \\ 
     $v \sin i_\star$(km s$^{-1}$) & todo & This work\\
     $i_\star$($^\circ$) & todo & This work \\
+    $T_{eff}$ (K) & 2972 $\pm$ 40 & \cite{Bouma2024}\\
+%$\log{g_{\star}}$\dotfill              & Surface Gravity (cgs)\hspace{9pt}\dotfill                      & YYY              & X \\
+%
+    $R_\star$ ($R_{\odot}$) & 0.42 $\pm$ 0.02 & \cite{Bouma2024} \\
+    $A_V$ (mag) & 0 & \cite{Green2019} \\
     $F_{bol}$ (erg cm$^{-2}$ s$^{-1}$ ) & todo & This work\\
-    $T_{eff}$ (K) & todo & This work\\
-    $A_V$ (mag) & todo & This work \\
-    $R_\star$ ($R_{\odot}$) & todo & This work\\
     $L_\star$ ($L_{\odot}$)  & todo & This work\\
     $M_\star$ ($M_{\odot}$)  & todo & This work\\
-    Age (Myr) & todo &  This work \\
+    $t_{\rm iso}$ (Myr) & $16^{+19}_{-6}$ &  This work \\
     \hline
     \end{tabular}
     \caption{Properties of \starname.}
     \label{tab:stellarParameters}
 \end{table}
-
-
 \end{methods}
 
 \bibliography{cpvbib.bib} % common bib file
