@@ -495,15 +495,14 @@ magnetospheres -- have similar circumstellar environments to the CPVs.
 \begin{figure}[!b]
   \centering
   \includegraphics[width=0.99\textwidth]{figures/sf1.pdf}
-  \caption{Detailed photometric evolution of TIC 141146667 near the
-  epoch of spectroscopic observation (green bar). 
-  {\bf Panel a}: TESS simple aperture photometry acquired
-  near time of Keck/HIRES observation.  The main data gaps were caused
-  by scattered light from the Earth and Moon, respectively.
+  \caption{Photometric evolution of TIC 141146667 near the epoch of
+  spectroscopic observation (green bar). 
+  {\bf Panel a}: TESS simple aperture photometry. 
+  The main data gaps were caused by scattered light from the Earth
+  (BTJD 3356-3358.5) and Moon (BTJD 3359.5-3360.5).
   {\bf Panels b,c}: Folded light curve before and after spectroscopy.
-  While some evolution in the detailed light curve morphology occurred
-  between the two epochs, the large, complex eclipse feature remained
-  present.
+  While some evolution in the light curve morphology occurred between
+  the two epochs, the large, complex eclipse feature remained present.
   }
   \label{fig:fulllc}
 \end{figure}
@@ -586,20 +585,16 @@ Our analysis pipeline reproduces the systemic velocities reported by
 For TIC~141146667, we measured the velocities from each of our HIRES
 spectra using regions near the K~I (7700\,\AA) resonance line and
 three TiO bandheads (5160\,\AA, 5450\,\AA, and 5600\,\AA).  These
-regions were selected because they provided
-the best matches between the synthetic and observed spectra.  The
-resulting
-redshift measurements were averaged together.
-The star's 130$\pm$4\,\kms\ equatorial velocity and near-edge on
-viewing orientation yielded a line broadening $\Delta
-\lambda$$\approx$3\,\AA.
-We used the scatter of resulting velocity measurements between 
-orders to assign the RV uncertainty at each epoch.
-The uncertainty-weighted mean systemic velocity over all epochs on UT
-2024-02-17 was
-$\gamma$=0.6$\pm$1.5\,\kms.
-The relative radial velocities about this mean are given in
-Table~\ref{tab:rv}.
+regions were selected because they provided the best matches between
+the synthetic and observed spectra.  The resulting redshift
+measurements were averaged together.  The star's 130$\pm$4\,\kms\
+equatorial velocity and near-edge on viewing orientation yielded a
+line broadening $\Delta \lambda$$\approx$3\,\AA.  We used the scatter
+of resulting velocity measurements between orders to assign the RV
+uncertainty at each epoch.  The uncertainty-weighted mean systemic
+velocity over all epochs on UT 2024-02-17 was
+$\gamma$=0.6$\pm$1.5\,\kms.  The relative radial velocities about this
+mean are given in Table~\ref{tab:rv}.
 % from calc_max_amplitude_sinusoid_rv_timeseries.py
 This radial velocity time-series rules out any significant periodicity
 in the radial velocities at the rotation period exceeding
@@ -610,16 +605,17 @@ companions at this period of $m \sin i $$<$2.4\,$M_{\rm Jup}$.
 
 
 {\it Age: No Obvious Association Membership}---Previous work
-\cite{Bouma2024} has shown that over 90\% of CPVs are associated with
+\cite{Bouma2024} has found over 90\% of CPVs to be associated with
 known young moving groups based on their positions and kinematics.
 TIC~141146667 is one of the exceptions.  We calculated the probability
 of TIC~141146667 being part of any of the nearby known groups using
-BANYAN\,$\Sigma$ \cite[v1.2;][]{Gagne2018}, and based on that model,
+BANYAN\,$\Sigma$ v1.2 \cite{Gagne2018}.  Based on that model,
 it appears to be a field star at $>$99.9\% confidence.  Searching the
 local vicinity of the star for neighbors with similar projected on-sky
 velocity \cite{Tofflemire2021} similarly yields no strong candidates
-for co-moving ($\Delta v_{\rm T}$$<$5\,\kms) stars that share its
-isochronal youth.
+for co-moving stars --- defined as those with projected tangential
+velocities $\Delta v_{\rm T}$$<$5\,\kms --- that share its isochronal
+youth.
 
 {\it Age: Isochrones}--- $\sim$TucHor or younger.  Maybe 30-35myr?  NB
   color puts it at ~M4.5 (main seq).  BP-RP=3.3..
