@@ -490,7 +490,7 @@ magnetospheres -- have similar circumstellar environments to the CPVs.
 \setcounter{table}{0}  
 \setcounter{figure}{0}  
 
-\subsection{Observations \& Data Reduction}
+\subsection{Observations \& Data Reduction}\phantom{+}
 
 \begin{figure}[!b]
   \centering
@@ -553,16 +553,7 @@ Figure~\ref{fig:spec} shows the result in the vicinity of H$\alpha$
 without any additional processing.
 
 
-\subsection{Spectroscopic Variability}
-
-The full HIRES coverage spans 3650-7960\,\AA, and variable
-  emission is visible in Balmer lines from $n$=10$\rightarrow$2, Ca[H]
-  and Ca[K], the Mg[I] b triplet, and the 5875 He[I] emission line.
-
-%TODO: add figure showing spectral variability!
-
-
-\subsection{Stellar Parameters}
+\subsection{Stellar Parameters}\phantom{+}
 
 {\it Radial Velocity}---We measured radial velocities of
 TIC~141146667 from each of our spectra using a pipeline that we
@@ -596,33 +587,86 @@ velocity over all epochs on UT 2024-02-17 was
 $\gamma$=0.6$\pm$1.5\,\kms.  The relative radial velocities about this
 mean are given in Table~\ref{tab:rv}.
 % from calc_max_amplitude_sinusoid_rv_timeseries.py
-This radial velocity time-series rules out any significant periodicity
-in the radial velocities at the rotation period exceeding
-semi-amplitudes of 2.85\,\kms\ (at 3$\sigma$ confidence).
 % from K_to_msini.py, assuming Mstar = 0.18
-This in turn sets an upper limit on the mass of any putative
-companions at this period of $m \sin i $$<$2.4\,$M_{\rm Jup}$.
+
+{\it No Evidence For Binarity}---Any significant periodicity in the
+radial velocity time-series is ruled out at the rotation period for
+semi-amplitudes above 2.85\,\kms\ (at 3$\sigma$ confidence).  This
+sets an upper limit on the mass of any putative companions at the four
+hour period of $m \sin i $$<$2.4\,$M_{\rm Jup}$.  Regarding possible
+companions at wider separations, the Gaia DR3 renormalized unit weight
+error (RUWE), a proxy for the goodness of fit for a single-source
+astrometric model to the Gaia astrometry, is 1.23, which is within the
+usual range for apparently single sources.  There are no resolved
+sources in the Gaia DR3 point source catalog.  Finally, we checked the
+TESS light curve for evidence of secondary photometric periods by
+subtracting the mean CPV signal over each sector and performing a
+phase-dispersion minimization analysis
+\cite{Stellingwerf1978,2021zndo...1011188B}.  There were no secondary
+periods in the TESS data.  Previous work \cite{Bouma2024} has shown
+that about 30\% of CPVs show evidence for excess noise above the Gaia
+single-source astrometric model, and about 40\% of CPVs show evidence
+for unresolved binary companions based on the presence of secondary
+photometric periods.  This agrees with analyses showing that
+multi-periodic low-mass stars are generally unresolved binaries
+\cite{Tokovinin2018}.  Overall, the CPV binary fraction seems
+consistent with that for field M dwarfs \cite{Winters2019},
+pointing to a weak or non-existent connection between the CPV
+phenomenon and binarity.  For TIC~141146667 specifically, we find 
+no evidence for stellar multiplicity.
 
 
 {\it Age: No Obvious Association Membership}---Previous work
-\cite{Bouma2024} has found over 90\% of CPVs to be associated with
+\cite{Bouma2024} has found that over 90\% of CPVs are associated with
 known young moving groups based on their positions and kinematics.
 TIC~141146667 is one of the exceptions.  We calculated the probability
 of TIC~141146667 being part of any of the nearby known groups using
 BANYAN\,$\Sigma$ v1.2 \cite{Gagne2018}.  Based on that model,
-it appears to be a field star at $>$99.9\% confidence.  Searching the
-local vicinity of the star for neighbors with similar projected on-sky
-velocity \cite{Tofflemire2021} similarly yields no strong candidates
-for co-moving stars --- defined as those with projected tangential
-velocities $\Delta v_{\rm T}$$<$5\,\kms --- that share its isochronal
-youth.
+it appears to be a field star at $>$99.9\% confidence.  We also searched the
+local vicinity of TIC~141146667 for neighbors with similar projected on-sky
+velocities using \texttt{comove} \cite{Tofflemire2021}.  This yielded
+no strong candidates for co-moving stars --- defined as those with
+projected tangential velocities $\Delta v_{\rm T}$$<$5\,\kms ---
+that share its isochronal youth.
 
-{\it Age: Isochrones}--- $\sim$TucHor or younger.  Maybe 30-35myr?  NB
-  color puts it at ~M4.5 (main seq).  BP-RP=3.3..
-    % uhhh careful w what you mean by "isochrone"
+{\it Age: Isochrones}---The color and absolute magnitude of
+TIC~141146667 suggest that it is a pre-main-sequence M dwarf, similar
+to all other known CPVs \cite{Stauffer2017,Stauffer2021,Bouma2024}.
+The star's proximity ($d$=58\,pc) and its high galactic latitude
+($b$=$+$53$^\circ$) yield negligible interstellar reddening along the
+line of sight \cite{Green2019}.
+{\bf Figure~X} shows the location of the star in the color--absolute
+magnitude diagram (CAMD)
+relative to young stellar populations including Upper Scorpius (USco),
+Upper-Centaurus-Lupus (UCL), IC~2602, and the Pleiades.
+To make this diagram, {\bf TODO}we adopted the USco and UCL members
+from X, the IC~2602 members from Y, and the Pleiades members from Z,
+and applied the same reddening corrections as in \cite{Bouma2022}.
+To measure the isochrone age of TIC~141146667, we then followed the 
+empirical approach proposed by \cite{Gagne2020} and
+implemented in \cite{Bouma2022}.
+The idea is to estimate the star (or star cluster's) age by
+interpolating between the observed isochrones of star clusters with
+ages that have been otherwise calibrated, for instance using
+the lithium depletion-boundary method.
+While this circumvents known modelling issues in molecular opacities
+and starspot coverage for young M dwarfs,
+the ages returned by this procedure depend on the ages
+assumed for each reference cluster.
+In this case, the most important reference is UCL, since TIC~141146667
+overlaps directly on its isochrone on the CAMD.
+We adopted the 16~Myr age for UCL from \cite{PecautMamajek2016}, which
+is consistent with ages determined by more recent sub-clustering
+analyses \cite{Ratzenbock2023} for the largest sub-populations.
+This in turns yields an isochronal age for TIC~141146667 of
+$t_{\rm iso}$=$16^{+19}_{-6}$\,Myr.
+Qualitatively, this range of uncertainty is consistent with no stars
+in the $\approx$40\,Myr IC~2602 cluster with similar redness as
+TIC~141146667 being equally bright.
 
 {\it Age: Lithium}--- Frankly, it's not obviously there!  (but maybe
 this is bc of the blending, and a pEW would show smth small)
+%TODO TODO TODO
 
 % We have K=10.47, d=57pc - > DM ~= 3.78 -> M_K ~= 6.67
 Figure7 of Wood23 suggests from the Feiden Li depletion curves that no lithium would imply $t$>37Myr.
@@ -630,8 +674,13 @@ However Figure5 frmo the same work suggests maybe try binning up the spectrum, a
 
 Try differential comparison against Barnard's star...
 
-This is weird.  Are you 100\% sure it's not a binary?  Ups the need for
-the RV analysis.
+{\it Age: Summary}---The main indicators for the youth of
+TIC~141146667 are {\it i)} that it is a complex periodic variable;
+{\it ii)} that it is 1.5 magnitudes brighter than main sequence stars
+of the same color, while showing no indicators for binarity; {\it
+iii)} weak lithium absorption.
+
+
 
 
 
@@ -672,8 +721,15 @@ We used broadband magnitudes from Gaia DR2, APASS, 2MASS, SDSS, and WISE
 
 
 
+\subsection{Spectroscopic Variability}\phantom{+}
 
-{\it Binarity}
+The full HIRES coverage spans 3650-7960\,\AA, and variable
+  emission is visible in Balmer lines from $n$=10$\rightarrow$2, Ca[H]
+  and Ca[K], the Mg[I] b triplet, and the 5875 He[I] emission line.
+
+%TODO: add figure showing spectral variability!
+
+
 
 \subsection{Spectral Behavior of Other Lines}
 
