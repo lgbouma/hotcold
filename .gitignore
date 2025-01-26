@@ -12,3 +12,4 @@ paper/*synctex.gz
 *secret*
 *png
 drivers/*pdf
+drivers/results
