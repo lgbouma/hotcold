@@ -310,23 +310,24 @@ $T_{\rm eff}$\dotfill                   & Effective Temperature (K) \hspace{9pt}
 %
 $R_\star$\dotfill                       & Stellar radius ($R_\odot$)\dotfill                             & 0.42$\pm$0.02    & 1 \\
 %
-$M_\star$\dotfill                       & Stellar mass ($M_\odot$)\dotfill                               & XXX  & 6 \\
+Age                                     & Adopted stellar age (Myr)\dotfill                              & $16^{+19}_{-6}$  & 2 \\
 %
-$\gamma$\dotfill                        & Systemic radial velocity (\kms)\dotfill                        & 0.61 $\pm$ 1.47  & 1  \\
+$M_\star$\dotfill                       & Stellar mass ($M_\odot$)\dotfill                               & XXX  &           & 3 \\
 %
-Age                                     & Adopted stellar age (Myr)\dotfill                              & YYY  & 8 \\
+$\gamma$\dotfill                        & Systemic radial velocity (\kms)\dotfill                        & 0.61 $\pm$ 1.47  & 4 \\
 %
-Spec. Type\dotfill                      & Spectral Type\dotfill                                          & MXV              & X \\
+Spec. Type\dotfill                      & Spectral Type\dotfill                                          & MXV              & 4 \\ % TODO TODO
 %
-$P_{\rm rot}$\dotfill                   & Rotation period (hr)\dotfill                                   & $3.930\pm 0.001$ & X \\
+$P_{\rm rot}$\dotfill                   & Rotation period (hr)\dotfill                                   & $3.930\pm 0.001$ & 5 \\
 %
-$v_{\rm eq}$\dotfill		                & Equatorial velocity \dotfill                                   &  130$\pm$4       & - \\
+$v_{\rm eq}$\dotfill		                & Equatorial velocity \dotfill                                   &  130$\pm$4       & 6 \\
                                         & \hspace{3pt} ($2\pi R_\star/P_{\rm rot}$) (\kms)	             &                      \\
 %
-$v_{\rm eq}\sin{i_\star}$\dotfill		    & Projected rotational\dotfill                                   &  128$\pm$3       & X \\
+$v_{\rm eq}\sin{i_\star}$\dotfill		    & Projected rotational\dotfill                                   &  138$\pm$8       & 4 \\
                                         & \hspace{3pt} velocity (\kms)	                                 &                      \\
 %
-$i_\star$\dotfill                       & Stellar inclination (deg)\dotfill                              & 	XXX             & X \\
+$i_\star$\dotfill                       & Stellar inclination\dotfill                                    & 	$>$63           & 4 \\
+                                        & \hspace{3pt}  2$\sigma$ lower limit (deg)	                     &                      \\
 %
 $d$\dotfill                             & Distance (pc)\dotfill                                          & $57.6 \pm X.X$   & X \\
 %
@@ -346,14 +347,16 @@ Range(EW$_{\rm H\alpha}$)$_2$           & H$\alpha$ equiv. width range          
 \end{tabular}
 \begin{flushleft}
 \footnotesize{ \textsc{NOTE}---
-%$^\dagger$ The GAIADR2 and GAIAEDR3 identifiers for Kepler 1627A are identical.  The secondary
-is not resolved in the Gaia point source catalog.
 $^*$ Given only $v\sin i$ and $2\pi R_\star/P_{\rm rot}$, $\cos i=0.11^{+0.11}_{-0.08}$.
 Provenances are:
 1: SED fit\cite{Bouma2024},
+2: Gaia DR3 empirical isochrone fit (see~\ref{subsec:stparams}),
+3: PARSEC %(TODO)
 %$^6$Cluster isochrone (MIST adopted; PARSEC compared for quoted
 %  uncertainty),
-2: TESS light curve,
+4: Keck/HIRES.
+5: TESS light curve,
+6: Derived quantity.
 %  3: HIRES spectra and specmatch(?),
 %$^8$Pre-main-sequence CAMD interpolation (Section~\ref{sec:camd}),
 }
@@ -367,24 +370,22 @@ Provenances are:
 % argue: how does this clarify wider phenomenology?  what general
 % conclusions can be drawn?
 
-Spectra of magetically-active, rapidly rotating stars with a wide range of masses
-have been known to exhibit both sinusoidal emission features
+Spectra of magetically-active, rapidly rotating stars with a wide range
+of masses have been known to exhibit both sinusoidal emission features
 \cite{Donati2000,Townsend2005,Dunstone2006,Skelly2008} as well as
 transient absorption features in their line cores
-\cite{CollierCameron1989,CollierCameron1992,Cang2020} similar to 
+\cite{CollierCameron1989,CollierCameron1992,Cang2020} similar to
 Figure~\ref{fig:spec}.  No such stars were previously known to show
 complex light curves \cite{Bouma2024}.  The usual interpretation for
-such spectroscopic variability comes from an analogy to
-quiescent solar prominences, which are cool
-condensations of plasma in the solar corona that can last days to
-weeks \cite{VialEngvold2015}.
-In our Sun's
+such spectroscopic variability comes from an analogy to quiescent solar
+prominences, which are cool condensations of plasma in the solar corona
+that can last days to weeks \cite{VialEngvold2015}.  In our Sun's
 magnetosphere, these condensations fall back to the solar surface
 because gravity is stronger than any magnetic or centrifugal force
-capable of sustaining them.  However for stars with magnetospheric
-radii $R_{\rm m}$ that exceed their corotation radii $R_{\rm c}$, the
-effective potential experienced by a charged particle can have a local minimum
-outside $R_{\rm c}$, enabling the material to be sustained for
+capable of sustaining them.  However for stars with magnetospheric radii
+$R_{\rm m}$ that exceed their corotation radii $R_{\rm c}$, the
+effective potential experienced by a charged particle can have a local
+minimum outside $R_{\rm c}$, enabling the material to be sustained for
 much longer timescales \cite{Petit2013,Daley-Yates2024}.  Generally
 speaking, such material need neither transit, nor be optically thick.
 
@@ -560,37 +561,46 @@ without any additional processing.
 
 
 \subsection{Stellar Parameters}\phantom{+}
+\label{subsec:stparams}
 
-{\it Radial Velocity}---We measured radial velocities of
-TIC~141146667 from each of our spectra using a pipeline that we
-developed specifically for rapidly rotating stars.
-Our method is based on template-matching against synthetic spectra
-produced by the PHOENIX stellar atmosphere code \cite{Husser2013}.
-We used the PHOENIX models with solar metallicity and alpha element
-abundances, and calibrated our absolute velocity zero-points as well
-as viable orders for velocity measurement using the
-standard stars described by \cite{Chubak2012}.
-We used velocity standards spanning spectral types from G2 to M4 (Barnard's
-Star), irrespective of rotation rate.
-We used \texttt{barycorrpy} \cite{Kanodia2018} to calculate the
-velocity corrections due to Earth's motion around the solar system
-barycenter and due to Earth's daily rotation about its axis.
-Our analysis pipeline reproduces the systemic velocities of known
-velocity standards \cite{Chubak2012} with an RMS of 0.66\,\kms.
+{\it Radial Velocity}---We measured radial velocities of TIC~141146667
+from each of our spectra using a pipeline that we developed specifically
+for rapidly rotating stars.  Our method is based on template-matching
+against synthetic spectra produced by the PHOENIX stellar atmosphere
+code \cite{Husser2013}.  We used the PHOENIX models with solar
+metallicity and alpha element abundances, and calibrated our absolute
+velocity zero-points as well as viable orders for velocity measurement
+using the standard stars described by \cite{Chubak2012}.  We used
+velocity standards spanning spectral types from G2 to M4 (Barnard's
+Star), irrespective of rotation rate.  We used \texttt{barycorrpy}
+\cite{Kanodia2018} to calculate the velocity corrections due to Earth's
+motion around the solar system barycenter and due to Earth's daily
+rotation about its axis.  Our analysis pipeline reproduces the systemic
+velocities of known velocity standards \cite{Chubak2012} with an RMS of
+0.66\,\kms.
 
-For TIC~141146667, we measured the velocities from each of our HIRES
-spectra using regions near the K~I (7700\,\AA) resonance line and
+For TIC~141146667, we measured the radial velocities from each of our
+HIRES spectra using regions near the K~I (7700\,\AA) resonance line and
 three TiO bandheads (5160\,\AA, 5450\,\AA, and 5600\,\AA).  These
-regions were selected because they provided the best matches between
-the synthetic and observed spectra.  The resulting redshift
-measurements over each order were averaged to produce the final
-measurement.  The star's 130$\pm$4\,\kms\ equatorial velocity and
-near-edge on viewing orientation yielded a line broadening $\Delta
-\lambda$$\approx$3\,\AA.  We used the scatter of resulting velocity
-measurements between orders to assign the RV uncertainty at each
-epoch.  The uncertainty-weighted mean systemic velocity over all
-epochs on UT 2024-02-17 was $\gamma$=0.6$\pm$1.5\,\kms.  The relative
-radial velocities about this mean are given in Table~\ref{tab:rv}.
+regions were selected because they provided the best matches between the
+synthetic and observed spectra.  The resulting redshift measurements
+over each order were averaged to produce the final measurement.  We used
+the scatter of resulting velocity measurements between orders to assign
+the RV uncertainty at each epoch.  The uncertainty-weighted mean
+systemic velocity over all epochs on UT 2024-02-17 was
+$\gamma$=0.6$\pm$1.5\,\kms.  The relative radial velocities about this
+mean are given in Table~\ref{tab:rv}.
+
+{\it Viewing Orientation}---We fitted the rotational broadening of the
+K~I (7700\,\AA) resonance line using the broadening kernel suggested by
+Ref.~\cite{Gray2008}; taking the mean and standard deviation of the
+result value over all epochs yielded $v_{\rm eq} \sin
+i$=138$\pm$8\,\kms, consistent with the visual line broadening $\Delta
+\lambda$$\approx$3\,\AA.  The star's equatorial velocity $v_{\rm eq}$
+based on its apparent size and rotation period is 130$\pm$4\,\kms.
+While this suggests that the viewing orientation could be nearly
+edge-on, the formal constraint is rather weak, with $i$$>$63$^\circ$ at
+2$\sigma$.
 % from calc_max_amplitude_sinusoid_rv_timeseries.py
 % from K_to_msini.py, assuming Mstar = 0.18
 
@@ -836,8 +846,8 @@ The density and mass of the material...
     \multicolumn{3}{c}{Physical Properties} \\
     \hline
     $P_{rot}$ (hours) & $3.930 \pm 0.XXX$ & This work \\ 
-    $v \sin i_\star$(km s$^{-1}$) & todo & This work\\
-    $i_\star$($^\circ$) & todo & This work \\
+    $v \sin i_\star$(km s$^{-1}$) & $138 \pm 8$ & This work\\
+    $i_\star$($^\circ$) & $>$63 & This work \\
     $T_{eff}$ (K) & 2972 $\pm$ 40 & \cite{Bouma2024}\\
     %$\log{g_{\star}}$\dotfill              & Surface Gravity (cgs)\hspace{9pt}\dotfill                      & YYY              & X \\
     $R_\star$ ($R_{\odot}$) & 0.42 $\pm$ 0.02 & \cite{Bouma2024} \\
