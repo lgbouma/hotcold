@@ -1,0 +1,5 @@
+
+
+cpv/drivers/oneoffs:
+
+* calc_vequatorial.py: get v_eq for table
