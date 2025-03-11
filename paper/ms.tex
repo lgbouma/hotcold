@@ -312,7 +312,7 @@ $R_\star$\dotfill                       & Stellar radius ($R_\odot$)\dotfill    
 %
 Age                                     & Adopted stellar age (Myr)\dotfill                              & $16^{+19}_{-6}$  & 2 \\
 %
-$M_\star$\dotfill                       & Stellar mass ($M_\odot$)\dotfill                               & XXX  &           & 3 \\
+$M_\star$\dotfill                       & Stellar mass ($M_\odot$)\dotfill                               & 0.19$\pm$0.01  & 3 \\
 %
 $\gamma$\dotfill                        & Systemic radial velocity (\kms)\dotfill                        & 0.61 $\pm$ 1.47  & 4 \\
 %
@@ -329,9 +329,9 @@ $v_{\rm eq}\sin{i_\star}$\dotfill		    & Projected rotational\dotfill           
 $i_\star$\dotfill                       & Stellar inclination\dotfill                                    & 	$>$63           & 4 \\
                                         & \hspace{3pt}  2$\sigma$ lower limit (deg)	                     &                      \\
 %
-$d$\dotfill                             & Distance (pc)\dotfill                                          & $57.6 \pm X.X$   & X \\
+$d$\dotfill                             & Distance (pc)\dotfill                                          & $57.54 \pm 0.09$   & 7 \\
 %
-$R_{\rm c}$\dotfill		                  & Keplerian corotation\dotfill                                   &  XXX             & X \\
+$R_{\rm c}$\dotfill		                  & Keplerian corotation\dotfill                                   & $1.72 \pm 0.06$  & 6 \\
                                         & \hspace{3pt} radius ($R_\star$)	                               &                      \\
 %
 $a_1$\dotfill                           & Clump 1 orbital radius ($R_\star$)\hspace{9pt}\dotfill         &  2.1-2.7         & X \\
@@ -356,7 +356,8 @@ Provenances are:
 %  uncertainty),
 4: Keck/HIRES.
 5: TESS light curve,
-6: Derived quantity.
+6: Derived quantity,
+7: Gaia DR3 geometric \cite{GaiaDR3}.
 %  3: HIRES spectra and specmatch(?),
 %$^8$Pre-main-sequence CAMD interpolation (Section~\ref{sec:camd}),
 }
@@ -593,14 +594,14 @@ mean are given in Table~\ref{tab:rv}.
 
 {\it Viewing Orientation}---We fitted the rotational broadening of the
 K~I (7700\,\AA) resonance line using the broadening kernel suggested by
-Ref.~\cite{Gray2008}; taking the mean and standard deviation of the
-result value over all epochs yielded $v_{\rm eq} \sin
+\cite{Gray2008}; taking the mean and standard deviation of the
+resulting value over all epochs yielded $v_{\rm eq} \sin
 i$=138$\pm$8\,\kms, consistent with the visual line broadening $\Delta
 \lambda$$\approx$3\,\AA.  The star's equatorial velocity $v_{\rm eq}$
 based on its apparent size and rotation period is 130$\pm$4\,\kms.
 While this suggests that the viewing orientation could be nearly
 edge-on, the formal constraint is rather weak, with $i$$>$63$^\circ$ at
-2$\sigma$.
+2$\sigma$ (2.5$^{\rm th}$ percentile of the inclination posterior).
 % from calc_max_amplitude_sinusoid_rv_timeseries.py
 % from K_to_msini.py, assuming Mstar = 0.18
 
@@ -638,8 +639,8 @@ constraining for the scenario of a low-luminosity companion
 known young moving groups based on their positions and kinematics.
 TIC~141146667 is one of the exceptions.  We calculated the probability
 of TIC~141146667 being part of any of the nearby known groups using
-BANYAN\,$\Sigma$ v1.2 \cite{Gagne2018}.  Based on that model,
-it appears to be a field star at $>$99.9\% confidence.  We also searched the
+BANYAN\,$\Sigma$ v1.2 \cite{Gagne2018}.  That particular model
+classifies it as a field star at $>$99.9\% confidence.  We also searched the
 local vicinity of TIC~141146667 for neighbors with similar projected on-sky
 velocities using \texttt{comove} \cite{Tofflemire2021}.  This yielded
 no strong candidates for co-moving stars --- defined as those with
@@ -702,16 +703,30 @@ iii)} weak lithium absorption.
 
 
 {\it Effective temperature, radius, and mass}
-We adopt the results from the spectral energy distribution fitting
-exercise described by \cite{Bouma2024}.
-In brief, this approach used
-\texttt{astroARIADNE}...
-\cite{Vines2022} with the BT-Settl stellar
-atmosphere models \cite{Allard2012} assuming the
-\cite{Asplund2009} solar abundances, and the
-\cite{Barber2006} water line lists.  
-We used broadband magnitudes from Gaia DR2, APASS, 2MASS, SDSS, and WISE
-  $W1$ and $W2$.  (explain)...
+For the stellar effective temperature and radius, we adopted the results
+from the spectral energy distribution fitting methods described by
+\cite{Bouma2024}.
+In brief, this approach used \texttt{astroARIADNE} \cite{Vines2022} with
+the BT-Settl stellar atmosphere models \cite{Allard2012}, assuming the
+\cite{Asplund2009} solar abundances, and the \cite{Barber2006} water
+line lists.  
+This routine fitted for the stellar effective temperature, radius,
+reddening, surface gravity, metallicity, and distance by comparing the
+measured broadband magnitudes against pre-computed model grids.
+Specifically, we used the broadband magnitudes from Gaia DR2, APASS,
+2MASS, SDSS, and WISE $W1$ and $W2$.
+This method has the best constraining power for the star's effective
+temperature and radius; the surface gravity, metallicity, and reddening
+are typically only weakly constrained.
+Given the effective temperature, stellar radius, and previously
+determined age, we then estimated the stellar mass by interpolating
+against the PARSEC v1.2S isochrones \cite{Chen2014}. 
+Specifically, we used the distance metric defined in Equation~8 of
+\cite{Bouma2024}, in order to select the model mass closest to the
+observed temperature, radius, and age.  We derived the uncertainty in
+the mass based by propagating the statistical uncertainties in each of
+these parameters.
+
 
 %%%%%%%%
 %\texttt{astroARIADNE} compares the measured broadband flux
@@ -854,7 +869,7 @@ The density and mass of the material...
     $A_V$ (mag) & 0 & \cite{Green2019} \\
     $F_{bol}$ (erg cm$^{-2}$ s$^{-1}$ ) & todo & This work\\
     $L_\star$ ($L_{\odot}$)  & todo & This work\\
-    $M_\star$ ($M_{\odot}$)  & todo & This work\\
+    $M_\star$ ($M_{\odot}$)  & 0.188 $\pm$ 0.012  & This work\\
     $t_{\rm iso}$ (Myr) & $16^{+19}_{-6}$ &  This work \\
     \hline
     \end{tabular}
