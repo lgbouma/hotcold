@@ -316,7 +316,7 @@ $M_\star$\dotfill                       & Stellar mass ($M_\odot$)\dotfill      
 %
 $\gamma$\dotfill                        & Systemic radial velocity (\kms)\dotfill                        & 0.61 $\pm$ 1.47  & 4 \\
 %
-Spec. Type\dotfill                      & Spectral Type\dotfill                                          & MXV              & 4 \\ % TODO TODO
+Spec. Type\dotfill                      & Spectral Type\dotfill                                          & M5.5Ve           & 4 \\
 %
 $P_{\rm rot}$\dotfill                   & Rotation period (hr)\dotfill                                   & $3.930\pm 0.001$ & 5 \\
 %
@@ -334,8 +334,8 @@ $d$\dotfill                             & Distance (pc)\dotfill                 
 $R_{\rm c}$\dotfill		                  & Keplerian corotation\dotfill                                   & $1.72 \pm 0.06$  & 6 \\
                                         & \hspace{3pt} radius ($R_\star$)	                               &                      \\
 %
-$a_1$\dotfill                           & Clump 1 orbital radius ($R_\star$)\hspace{9pt}\dotfill         &  2.1-2.7         & X \\
-$a_2$\dotfill                           & Clump 2 orbital radius ($R_\star$)\hspace{9pt}\dotfill         &  3.9             & X \\
+$a_1$\dotfill                           & Clump 1 orbital radius ($R_\star$)\hspace{9pt}\dotfill         &  2.1-2.7         & 4 \\
+$a_2$\dotfill                           & Clump 2 orbital radius ($R_\star$)\hspace{9pt}\dotfill         &  3.9             & 4 \\
 %
 $\langle$EW$_{\rm H\alpha}$$\rangle$    & Time-averaged H$\alpha$ line core                              &  X.X             & Y \\ 
                                         & \hspace{3pt} equivalent width (\AA)	                           &                      \\
@@ -702,27 +702,29 @@ iii)} weak lithium absorption.
 
 
 
-{\it Effective temperature, radius, and mass}
+{\it Effective temperature, radius, mass, and spectral type}
 For the stellar effective temperature and radius, we adopted the results
-from the spectral energy distribution fitting methods described by
-\cite{Bouma2024}.
-In brief, this approach used \texttt{astroARIADNE} \cite{Vines2022} with
-the BT-Settl stellar atmosphere models \cite{Allard2012}, assuming the
-\cite{Asplund2009} solar abundances, and the \cite{Barber2006} water
-line lists.  
-This routine fitted for the stellar effective temperature, radius,
+from the spectral energy distribution fits described by
+\cite{Bouma2024}.  To summarize, this approach used
+\texttt{astroARIADNE} \cite{Vines2022} with the BT-Settl stellar
+atmosphere models \cite{Allard2012}, assuming the \cite{Asplund2009}
+solar abundances and the \cite{Barber2006} water line lists.  This
+approach fitted for the stellar effective temperature, radius,
 reddening, surface gravity, metallicity, and distance by comparing the
 measured broadband magnitudes against pre-computed model grids.
 Specifically, we used the broadband magnitudes from Gaia DR2, APASS,
-2MASS, SDSS, and WISE $W1$ and $W2$.
-This method has the best constraining power for the star's effective
-temperature and radius; the surface gravity, metallicity, and reddening
-are typically only weakly constrained.
-Given the effective temperature, stellar radius, and previously
-determined age, we then estimated the stellar mass by interpolating
-against the PARSEC v1.2S isochrones \cite{Chen2014}. 
-Specifically, we used the distance metric defined in Equation~8 of
-\cite{Bouma2024}, in order to select the model mass closest to the
+2MASS, SDSS, and WISE $W1$ and $W2$.  This method has the most
+constraining power for the star's effective temperature (2972 $\pm$
+40\,K) and radius (0.42 $\pm$ 0.02\,$R_\odot$); the surface gravity,
+metallicity, and reddening are typically only weakly constrained.  We
+determined the star's spectral type to be M5.5Ve by visually comparing
+against the photometric standards presented by \cite{Bochanski2007};
+this qualitatively agrees with the effective temperature from the SED
+fitting \cite{Pecaut2013}.  With the effective temperature, stellar
+radius, and previously determined age, we then estimated the stellar
+mass by interpolating against the PARSEC v1.2S isochrones
+\cite{Chen2014}.  Specifically, we used the distance metric defined in
+Equation~8 of \cite{Bouma2024} to select the model mass closest to the
 observed temperature, radius, and age.  We derived the uncertainty in
 the mass based by propagating the statistical uncertainties in each of
 these parameters.
