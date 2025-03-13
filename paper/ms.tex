@@ -564,27 +564,26 @@ without any additional processing.
 \label{subsec:stparams}
 
 {\it Radial Velocity}---We measured radial velocities of TIC~141146667
-from each of our spectra using a pipeline that we developed specifically
+our HIRES spectra using a pipeline that we developed specifically
 for rapidly rotating stars.  Our method is based on template-matching
 against synthetic spectra produced by the PHOENIX stellar atmosphere
 code \cite{Husser2013}.  We used the PHOENIX models with solar
-metallicity and alpha element abundances, and calibrated our absolute
-velocity zero-points as well as viable orders for velocity measurement
+metallicity and alpha element abundances, and calibrated our pipeline
 using the standard stars described by \cite{Chubak2012}.  We used
 velocity standards spanning spectral types from G2 to M4 (Barnard's
 Star), irrespective of rotation rate.  We used \texttt{barycorrpy}
 \cite{Kanodia2018} to calculate the velocity corrections due to Earth's
 motion around the solar system barycenter and due to Earth's daily
-rotation about its axis.  Our analysis pipeline reproduces the systemic
+rotation about its axis.  Our analysis code reproduces the systemic
 velocities of known velocity standards \cite{Chubak2012} with an RMS of
 0.66\,\kms.
 
-For TIC~141146667, we measured the radial velocities from each of our
-HIRES spectra using regions near the K~I (7700\,\AA) resonance line and
-three TiO bandheads (5160\,\AA, 5450\,\AA, and 5600\,\AA).  These
-regions were selected because they provided the best matches between the
-synthetic and observed spectra.  The resulting redshift measurements
-over each order were averaged to produce the final measurement.  We used
+For TIC~141146667, we measured the radial velocities using regions
+near the K~I (7700\,\AA) resonance line and three TiO bandheads
+(5160\,\AA, 5450\,\AA, and 5600\,\AA).  We
+selected these regions because they provided the best matches between the
+synthetic and observed spectra.  We then averaged the resulting redshift measurements
+over each order to produce the final measurement.  We used
 the scatter of resulting velocity measurements between orders to assign
 the RV uncertainty at each epoch.  The uncertainty-weighted mean
 systemic velocity over all epochs on UT 2024-02-17 was
@@ -633,17 +632,47 @@ constraining for the scenario of a low-luminosity companion
 ($F_1$/$F_2$$\lesssim$0.1) at large orbital separations.
 
 
+{\it Effective temperature, radius, mass, and spectral type}
+We determined the stellar effective temperature and radius by adopting
+the results from the spectral energy distribution fitting procedure
+described by \cite{Bouma2024}.  To summarize, this approach used
+\texttt{astroARIADNE} \cite{Vines2022} with the BT-Settl stellar
+atmosphere models \cite{Allard2012}, assuming the \cite{Asplund2009}
+solar abundances and the \cite{Barber2006} water line lists.  This
+approach fitted for the stellar effective temperature, radius,
+reddening, surface gravity, metallicity, and distance by comparing the
+measured broadband magnitudes against pre-computed model grids.
+Specifically, we used the broadband magnitudes from Gaia DR2, APASS,
+2MASS, SDSS, and WISE $W1$ and $W2$.  This method has the most
+constraining power for the star's effective temperature (2972 $\pm$
+40\,K) and radius (0.42 $\pm$ 0.02\,$R_\odot$); the surface gravity,
+metallicity, and reddening are typically only weakly constrained.  We
+determined the star's spectral type to be M5.5Ve by visually comparing
+against the photometric standards presented by \cite{Bochanski2007};
+this qualitatively agrees with the effective temperature from the SED
+fitting \cite{Pecaut2013}.  With the effective temperature, stellar
+radius, and previously determined age, we then estimated the stellar
+mass by interpolating against the PARSEC v1.2S isochrones
+\cite{Chen2014}.  Specifically, we used the distance metric defined in
+Equation~8 of \cite{Bouma2024} to select the model mass closest to the
+observed temperature, radius, and age.  We derived the uncertainty in
+the mass based by propagating the statistical uncertainties in each of
+these parameters.
+
+
+
+
 {\it Age: No Obvious Association Membership}---Previous work
 \cite{Bouma2024} has found that over 90\% of CPVs are associated with
 known young moving groups based on their positions and kinematics.
-TIC~141146667 is one of the exceptions.  We calculated the probability
+TIC~141146667 is in the minority.  We calculated the probability
 of TIC~141146667 being part of any of the nearby known groups using
 BANYAN\,$\Sigma$ v1.2 \cite{Gagne2018}.  That particular model
 classifies it as a field star at $>$99.9\% confidence.  We also searched the
 local vicinity of TIC~141146667 for neighbors with similar projected on-sky
 velocities using \texttt{comove} \cite{Tofflemire2021}.  This yielded
-no strong candidates for co-moving stars --- defined as those with
-projected tangential velocities $\Delta v_{\rm T}$$<$5\,\kms ---
+no strong candidates for co-moving stars with
+projected tangential velocities $\Delta v_{\rm T}$$<$5\,\kms
 that share its isochronal youth.
 
 {\it Age: Isochrones}---The color and absolute magnitude of
@@ -687,87 +716,67 @@ TIC~141146667 being equally bright.
 $\alpha$)$^4$He burning in the cores of low-mass stars has been
 studied for over sixty years
 \cite{Hayashi1963,Bildsten1997,Burke2004}.  \cite{Wood2023} provided
-an instructive recent overview: an abbreviated summary is that the M
-dwarfs that have not yet had time to burn their photospheric lithium
-show the lithium 6707.8\,\AA doublet in absorption, $\gtrsim$10\%
-below their ``continua''.  Relative to Sun-like stars, defining the
-continuum for cool M dwarfs requires care due to their complex
-spectra.  To attempt a lithium measurement, we constructed a
+an instructive recent overview: an abbreviated summary is that cooler
+and younger M dwarfs can show the 6707.8\,\AA\ doublet in absorption,
+$\gtrsim$10\%
+below their ``continua''.  Unlike Sun-like stars, the continuum for M
+dwarfs is poorly defined due to their molecular absorption.  We
+attempted a lithium measurement by constructing a
 wavelength-binned and Doppler-corrected TIC~141146667 spectrum,
-assigned its uncertainties based on the measured scatter across the
-five hour dataset, and compared against the nearest matching template
-from \cite{Bochanski2007}.  The data show a slight depression near the
+assigning its uncertainties based on the measured scatter across the
+five hour dataset.  We then compared this average spectrum against the
+nearest matching template from \cite{Bochanski2007}.  The data show a
+slight depression near the
 expected lithium wavelength, potentially consistent with a $\Delta
-\lambda$$\approx$3\,\AA line broadening.  This feature nominally
-yields ${\rm EW}_{Li}$=71$^{+18}_{13}$\,m\AA, where the statistical
+\lambda$$\approx$3\,\AA\ line broadening.  This feature nominally
+yields ${\rm EW}_{\rm Li}$=71$^{+18}_{13}$\,m\AA, where the statistical
 uncertainties are evaluated using a bootstrap resampling technique
 from the statistical uncertainties in the spectrum.  Unfortunately,
 the systematic uncertainties associated with the continuum
 normalization are large, comparable to the amplitude of the feature;
-we therefore prefer to quote the results of this measurement as a
-$2\sigma$ upper limit: ${\rm EW}_{Li}$$<$107\,m\AA.
+we therefore prefer to quote the result of this measurement as a
+$2\sigma$ upper limit: ${\rm EW}_{\rm Li}$$<$107\,m\AA.
+% FIXME: this is perhaps a hokey way to do it.  Better to quantify the
+% systematic uncertainty, and incorporate that into your quoted
+% value...
+
+Desite uncertainties in the details, what can be stated with
+confidence is that lithium is not abundant in the spectrum of
+TIC~141146667.  Figure~\ref{fig:liew_population} compares our upper
+limit against the lithium equivalent width measurements and
+temperatures reported by \cite{Jeffries2023} based on the Gaia-ESO
+spectroscopic survey.  If the star were $\lesssim$20\,Myr old, given
+its temperature we would expect to see lithium in abundance
+($\gtrsim$400\,m\AA).  Since we do not, we conclude that $t_{\rm
+Li,emp}$$\gtrsim$20\,Myr.  The \cite{Feiden2016} isochrones provide a
+point for theoretical comparison, suggesting that since $M_{\rm
+K}$$=$6.67\,mag, $t_{\rm Li,th}$$\gtrsim$35\,Myr for complete
+depletion.
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/sf2.pdf}
+  \caption[]{todo... }
+  \label{fig:liew_population}
+\end{figure}
 
 
-
-
-
-
-
-While 
-
-W
-
-
-
-
-
-
-Frankly, it's not obviously there!  (but maybe
-this is bc of the blending, and a pEW would show smth small)
-%TODO TODO TODO
-
-% We have K=10.47, d=57pc - > DM ~= 3.78 -> M_K ~= 6.67
-Figure7 of Wood23 suggests from the Feiden Li depletion curves that no lithium would imply $t$>37Myr.
-However Figure5 frmo the same work suggests maybe try binning up the spectrum, and then comparing against Bochanski+2007 for a lithium-free template.
-
-Try differential comparison against Barnard's star...
 
 {\it Age: Summary}---The main indicators for the youth of
-TIC~141146667 are {\it i)} that it is a complex periodic variable;
+TIC~141146667 are {\it i)} that it is a complex periodic variable, and
 {\it ii)} that it is 1.5 magnitudes brighter than main sequence stars
-of the same color, while showing no indicators for binarity; {\it
-iii)} weak lithium absorption.
+of the same color, while showing no indicators for binarity.  The
+first item constitutes evidence for youth since all known CPVs are
+$\lesssim$200\,Myr \cite{Bouma2024}.  Reference sequences for
+$\approx$40-50\,Myr clusters show no stars of equal luminosity and the
+same temperature, suggesting a photometric isochronal age upper limit
+of 50\,Myr.  The weak lithium absorption suggests an age of at least
+20\,Myr based on an empirical comparison using Gaia-ESO spectra, or at
+least 35\,Myr based on the \cite{Feiden2016} isochrones.  These
+considerations yield our adopted age range of 20-50\,Myr.
 
 
 
-
-
-{\it Effective temperature, radius, mass, and spectral type}
-For the stellar effective temperature and radius, we adopted the results
-from the spectral energy distribution fits described by
-\cite{Bouma2024}.  To summarize, this approach used
-\texttt{astroARIADNE} \cite{Vines2022} with the BT-Settl stellar
-atmosphere models \cite{Allard2012}, assuming the \cite{Asplund2009}
-solar abundances and the \cite{Barber2006} water line lists.  This
-approach fitted for the stellar effective temperature, radius,
-reddening, surface gravity, metallicity, and distance by comparing the
-measured broadband magnitudes against pre-computed model grids.
-Specifically, we used the broadband magnitudes from Gaia DR2, APASS,
-2MASS, SDSS, and WISE $W1$ and $W2$.  This method has the most
-constraining power for the star's effective temperature (2972 $\pm$
-40\,K) and radius (0.42 $\pm$ 0.02\,$R_\odot$); the surface gravity,
-metallicity, and reddening are typically only weakly constrained.  We
-determined the star's spectral type to be M5.5Ve by visually comparing
-against the photometric standards presented by \cite{Bochanski2007};
-this qualitatively agrees with the effective temperature from the SED
-fitting \cite{Pecaut2013}.  With the effective temperature, stellar
-radius, and previously determined age, we then estimated the stellar
-mass by interpolating against the PARSEC v1.2S isochrones
-\cite{Chen2014}.  Specifically, we used the distance metric defined in
-Equation~8 of \cite{Bouma2024} to select the model mass closest to the
-observed temperature, radius, and age.  We derived the uncertainty in
-the mass based by propagating the statistical uncertainties in each of
-these parameters.
 
 
 %%%%%%%%

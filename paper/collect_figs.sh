@@ -21,3 +21,6 @@ cp $r/movie_sixpanel_specriver/TIC_141146667_science/TIC141146667_sixpanel.mov m
 
 # sf1: The data are nearly but not exactly simultaneous
 cp $r/tic1411_obsepoch/tic1411_obsepoch.pdf figures/sf1.pdf
+
+r="/Users/luke/Dropbox/proj/hotcold/drivers/results"
+cp $r/li_ew/li_vs_population.pdf figures/sf2.pdf
