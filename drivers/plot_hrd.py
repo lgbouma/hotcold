@@ -22,6 +22,12 @@ from cdips.utils.gaiaqueries import given_source_ids_get_gaia_data
 from rudolf.helpers import get_gaia_catalog_of_nearby_stars
 from rudolf.extinction import append_corrected_gaia_phot_Gaia2018
 
+EXTINCTIONDICT = {
+    'Pleiades': 0.10209450, # from Hunt+24, table1, A_V
+    'IC_2602': 0.11434174, # from Hunt+24, table1, A_V
+    'UCL/LCC': 0.12 # Pecaut&Mamajek 2016 table7 median
+}
+
 def get_kerr21_usco():
 
     fitspath = '../data/literature/Kerr_2021_table1.fits'
@@ -70,6 +76,34 @@ def get_ratzenbock23_lcc_ucl():
                                          gaia_datarelease='gaiadr3')
 
     return gdf
+
+
+def get_ratzenbock23_usco():
+
+    fitspath = '../data/literature/Ratzenboeck_2023_table1.fits'
+    hl = fits.open(fitspath)
+    df = Table(hl[1].data).to_pandas()
+
+    # select delta sco and sigma sco
+    sel = (
+        ( (df['SigMA'] == 3) | (df['SigMA'] == 5) )
+        &
+        (df['stability'] > 95)
+    )
+    df = df[sel]
+
+    dr3_source_ids = np.array(df['GaiaDR3'])
+    groupname = 'Ratzenboeck_2023_table1_usco'
+    gdf = given_source_ids_get_gaia_data(dr3_source_ids, groupname,
+                                         n_max=20000, overwrite=False,
+                                         enforce_all_sourceids_viable=True,
+                                         which_columns='*',
+                                         table_name='gaia_source_lite',
+                                         gaia_datarelease='gaiadr3')
+
+    return gdf
+
+
 
 def get_tic1411():
 
@@ -132,17 +166,84 @@ def get_ic2602():
     return gdf
 
 
-def plot_hrd(deredden=0, smalllims=0):
+def get_cpv_hrd_data():
 
-    EXTINCTIONDICT = {
-        'Pleiades': 0.10209450, # from Hunt+24, table1, A_V
-        'IC_2602': 0.11434174, # from Hunt+24, table1, A_V
-        'UCL/LCC': 0.12 # Pecaut&Mamajek 2016 table7 median
-    }
+    csvpath = ('../data/literature/20240304_CPV_lit_compilation_'
+               'R16_S17_S18_B20_S21_Z19_G22_P23_B24_TIC8_obs_truncated.csv')
+    df = pd.read_csv(csvpath, dtype={'tic8_GAIA':str})
+
+    sel = (
+        (
+        (df.cluster == 'USco')
+        #|
+        #(df.cluster == 'USco/rhoOph')
+        |
+        (df.cluster == 'TucHor')
+        |
+        (df.cluster == 'IC2602')
+        |
+        (df.cluster == 'PLE')
+        |
+        (df.cluster == 'ABDMG')
+        |
+        (df.cluster == 'ABDoradus')
+        )
+        &
+        (~pd.isnull(df['tic8_GAIA']))
+    )
+    df = df[sel]
+    df = df.reset_index(drop=True)
+
+    dr2_source_ids = np.array(df['tic8_GAIA']).astype(np.int64)
+    groupname = '20250313_cpv_compilation'
+    gdf = given_source_ids_get_gaia_data(dr2_source_ids, groupname,
+                                         n_max=100, overwrite=0,
+                                         enforce_all_sourceids_viable=True,
+                                         which_columns='*',
+                                         table_name='gaia_source',
+                                         gaia_datarelease='gaiadr2')
+
+
+    sel = df.cluster.str.contains("USco")
+    gdf['E(B-V)'] = np.zeros(len(gdf))
+    gdf['Cluster'] = ''
+    gdf.loc[sel, 'E(B-V)'] = AV_to_EBmV(EXTINCTIONDICT['UCL/LCC'])
+    gdf.loc[sel, 'Cluster'] = 'USco'
+
+    sel = df.cluster.str.contains("IC2602")
+    gdf.loc[sel, 'E(B-V)'] = AV_to_EBmV(EXTINCTIONDICT['IC_2602'])
+    sel = (
+        df.cluster.str.contains("IC2602")
+        |
+        df.cluster.str.contains("TucHor")
+    )
+    gdf.loc[sel, 'Cluster'] = 'IC2602'
+
+    sel = (
+        df.cluster.str.contains("PLE")
+        |
+        df.cluster.str.contains("ABD")
+    )
+    gdf.loc[sel, 'E(B-V)'] = AV_to_EBmV(EXTINCTIONDICT['Pleiades'])
+    gdf.loc[sel, 'Cluster'] = 'Pleiades'
+
+    gdf = append_corrected_gaia_phot_Gaia2018(gdf)
+
+    return gdf
+
+
+
+def plot_hrd(deredden=0, smalllims=0, cpvcomparison=0):
 
     ##############################
-    # collect cluster data
+    # collect data for clusters and CPVs
 
+    df_cpv = get_cpv_hrd_data()
+    df_cpv_usco = df_cpv[df_cpv['Cluster'] == 'USco']
+    df_cpv_ple = df_cpv[df_cpv['Cluster'] == 'Pleiades']
+    df_cpv_ic2602 = df_cpv[df_cpv['Cluster'] == 'IC2602']
+
+    # Pleiades
     df_ple = get_pleiades()
     df_ple['E(B-V)'] = AV_to_EBmV(EXTINCTIONDICT['Pleiades'])
     df_ple = append_corrected_gaia_phot_Gaia2018(df_ple)
@@ -152,8 +253,10 @@ def plot_hrd(deredden=0, smalllims=0):
     df_ic2602['E(B-V)'] = AV_to_EBmV(EXTINCTIONDICT['IC_2602'])
     df_ic2602 = append_corrected_gaia_phot_Gaia2018(df_ic2602)
 
-    # Sco-Cen / USco (deprecated)
-    df_usco = get_kerr21_usco()
+    # Sco-Cen / USco
+    df_usco = get_ratzenbock23_usco()
+    df_usco['E(B-V)'] = AV_to_EBmV(EXTINCTIONDICT['UCL/LCC'])
+    df_usco = append_corrected_gaia_phot_Gaia2018(df_usco)
 
     # UCL/LCC
     df_ucllcc = get_ratzenbock23_lcc_ucl()
@@ -172,18 +275,26 @@ def plot_hrd(deredden=0, smalllims=0):
 
     ##############################
     # plot
-    dfs = [df_ucllcc, df_ic2602, df_ple, df_bkgd, df_1411]
+    dfs = [df_usco, df_ic2602, df_ple, df_bkgd, df_1411]
     colors = ['limegreen', 'C1', 'cyan', 'gray', 'yellow']
-    names = ['UCL/LCC (15 Myr)', 'IC2602 (40 Myr)', 'Pleiades (112 Myr)',
+    names = ['USco (8 Myr)', 'IC2602 (40 Myr)', 'Pleiades (112 Myr)',
              'Nearby Stars', 'TIC 141146667']
-    zorders = [1,2,3,-1,5]
+    zorders = [1,2,3,-1,99]
+    if cpvcomparison:
+        dfs = [df_usco, df_ic2602, df_ple, df_bkgd, df_1411,
+               df_cpv_usco, df_cpv_ic2602, df_cpv_ple]
+        colors = ['limegreen', 'C1', 'cyan', 'gray', 'yellow', 'limegreen', 'C1', 'cyan']
+        names = ['USco (8 Myr)', 'IC2602 (40 Myr)', 'Pleiades (112 Myr)',
+                 'Nearby Stars', 'TIC 141146667', '', '', '']
+        zorders = [1,2,3,-1,99,6,7,8]
+
+    #'UCL/LCC (15 Myr)',
 
     set_style("clean")
     rcParams['font.family'] = 'Arial'
     fig, ax = plt.subplots(figsize=(2.5,2.5))
 
     for df, c, l, i in zip(dfs, colors, names, zorders):
-
 
         if not deredden:
             bprp = df['phot_bp_mean_mag'] - df['phot_rp_mean_mag']
@@ -194,9 +305,9 @@ def plot_hrd(deredden=0, smalllims=0):
 
         print(len(abs_g), len(bprp))
 
-        s = 3
+        s = 2.5
         m = 'o'
-        lw = 0.2
+        lw = 0.15
         r = 0
         _l = l
         if '1411' in l:
@@ -207,6 +318,10 @@ def plot_hrd(deredden=0, smalllims=0):
             m = '.'
             lw = 0.03
             r = 1
+            _l = None
+        if l == '':
+            s = 50
+            m = '*'
             _l = None
 
         ax.scatter(
@@ -219,7 +334,7 @@ def plot_hrd(deredden=0, smalllims=0):
             # trick to get legend to work
             ax.scatter(
                 -99, 10, color=c, edgecolor="k", zorder=i,
-                label='Nearby Stars', linewidth=0.05, s=2, marker=m,
+                label='Stars near Sun', linewidth=0.05, s=2, marker=m,
                 rasterized=r
             )
 
@@ -239,6 +354,7 @@ def plot_hrd(deredden=0, smalllims=0):
         })
 
     ax.set_xlim([-2,6])
+    ax.set_ylim([18,-3])
     if smalllims:
         ax.set_xlim([0.85,4.15])
         ax.set_ylim([12.5,4.7])
@@ -248,13 +364,18 @@ def plot_hrd(deredden=0, smalllims=0):
 
     lims = 'fulllim' if not smalllims else 'smalllim'
     drs = 'rawphot' if not deredden else 'dereddened'
+    cpvc = '' if not cpvcomparison else '_cpvcomp'
 
-    s = f'_{lims}_{drs}'
+    s = f'_{lims}_{drs}{cpvc}'
 
     savefig(fig, os.path.join(plot_dir, f"hrd{s}.png"), writepdf=1)
 
 
 if __name__ == "__main__":
+
+    plot_hrd(cpvcomparison=1, smalllims=1, deredden=1)
+
+    # cluster comparison
     for smalllim in [1,0]:
         for dr in [1,0]:
             plot_hrd(smalllims=smalllim, deredden=dr)
