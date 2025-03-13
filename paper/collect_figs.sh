@@ -24,3 +24,5 @@ cp $r/tic1411_obsepoch/tic1411_obsepoch.pdf figures/sf1.pdf
 
 r="/Users/luke/Dropbox/proj/hotcold/drivers/results"
 cp $r/li_ew/li_vs_population.pdf figures/sf2.pdf
+
+cp $r/hrd/hrd_smalllim_dereddened.pdf figures/sf3.pdf

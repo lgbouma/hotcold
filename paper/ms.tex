@@ -309,7 +309,7 @@ $T_{\rm eff}$\dotfill                   & Effective Temperature (K) \hspace{9pt}
 %
 $R_\star$\dotfill                       & Stellar radius ($R_\odot$)\dotfill                             & 0.42$\pm$0.02    & 1 \\
 %
-Age                                     & Adopted stellar age (Myr)\dotfill                              & $16^{+19}_{-6}$  & 2 \\
+Age                                     & Stellar age range (Myr)\dotfill                                & 35-150  & 2 \\
 %
 $M_\star$\dotfill                       & Stellar mass ($M_\odot$)\dotfill                               & 0.19$\pm$0.01  & 3 \\
 %
@@ -349,7 +349,7 @@ Range(EW$_{\rm H\alpha}$)$_2$           & H$\alpha$ equiv. width range          
 $^*$ Given only $v\sin i$ and $2\pi R_\star/P_{\rm rot}$, $\cos i=0.11^{+0.11}_{-0.08}$.
 Provenances are:
 1: SED fit \cite{Bouma2024}.
-2: Gaia DR3 empirical isochrone fit (see~\ref{subsec:stparams}).
+2: Gaia DR3 photometry and lack of lithium (see~\ref{subsec:stparams}).
 3: PARSEC v1.2S \cite{Chen2014}.
 %$^6$Cluster isochrone (MIST adopted; PARSEC compared for quoted
 %  uncertainty),
@@ -430,7 +430,7 @@ the complexity of CPVs may be a direct consequence of magnetic fields
 with highly multipolar contributions.  Second, CPVs could be a
 source of astrophysical false positives in photometric searches for
 eclipsing binaries and transiting exoplanets around young
-pre-main-sequence M dwarfs \cite{Johns-Krull2016,Bouma2020}.
+pre-main sequence M dwarfs \cite{Johns-Krull2016,Bouma2020}.
 
 Pressing issues for future work include determining the composition
 and origin of the circumstellar material, understanding the exact role
@@ -676,39 +676,59 @@ projected tangential velocities $\Delta v_{\rm T}$$<$5\,\kms
 that share its isochronal youth.
 
 {\it Age: Isochrones}---The color and absolute magnitude of
-TIC~141146667 suggest that it is a pre-main-sequence M dwarf, similar
+TIC~141146667 suggest that it is a pre-main sequence M dwarf, similar
 to all other known CPVs \cite{Stauffer2017,Stauffer2021,Bouma2024}.
 The star's proximity ($d$=58\,pc) and its high galactic latitude
 ($b$=$+$53$^\circ$) yield negligible interstellar reddening along the
-line of sight \cite{Green2019}.
-{\bf Figure~X} shows the location of the star in the color--absolute
-magnitude diagram (CAMD)
+line of sight \cite{Green2019}.  Figure~\ref{fig:camd} shows the
+location of the star in the color--absolute magnitude diagram (CAMD)
 relative to young stellar populations including Upper Scorpius (USco),
-Upper-Centaurus-Lupus (UCL), IC~2602, and the Pleiades.
-To make this diagram, {\bf TODO}we adopted the USco and UCL members
-from X, the IC~2602 members from Y, and the Pleiades members from Z,
-and applied the same reddening corrections as in \cite{Bouma2022}.
-To measure the isochrone age of TIC~141146667, we then followed the 
-empirical approach proposed by \cite{Gagne2020} and
-implemented in \cite{Bouma2022}.
-The idea is to estimate the star (or star cluster's) age by
-interpolating between the observed isochrones of star clusters with
-ages that have been otherwise calibrated, for instance using
-the lithium depletion-boundary method.
-While this circumvents known modelling issues in molecular opacities
-and starspot coverage for young M dwarfs,
-the ages returned by this procedure depend on the ages
-assumed for each reference cluster.
-In this case, the most important reference is UCL, since TIC~141146667
-overlaps directly on its isochrone on the CAMD.
-We adopted the 16~Myr age for UCL from \cite{PecautMamajek2016}, which
-is consistent with ages determined by more recent sub-clustering
-analyses \cite{Ratzenbock2023} for the largest sub-populations.
-This in turns yields an isochronal age for TIC~141146667 of
-$t_{\rm iso}$=$16^{+19}_{-6}$\,Myr.
-Qualitatively, this range of uncertainty is consistent with no stars
-in the $\approx$40\,Myr IC~2602 cluster with similar redness as
-TIC~141146667 being equally bright.
+IC~2602, and the Pleiades.  To make this diagram, we adopted the USco
+members in the $\delta$~Sco and $\sigma$~Sco sub-associations from
+\cite{Ratzenbock2023}, and the IC~2602 and Pleiades members from
+\cite{Hunt2024}.  We assumed an average $V$-band extinction $A_{\rm
+V}$=${0.12, 0.11, 0.10}\,{\rm mag}$ for USco \cite{Pecaut2016},
+IC~2602 \cite{Hunt2024}, and the Pleiades \cite{Hunt2024}
+respectively.  We dereddened the photometry using the extinction
+coefficients $k_X\equiv A_X/A_0$ tabulated in
+\citet{GaiaCollaboration2018}, assuming that $A_0 = 3.1 E(B-V)$.
+
+Figure~\ref{fig:camd} suggests that TIC~141146667 is
+older than USco, and potentially younger than the Pleiades.  The precision of this
+statement is set by the intrinsic scatter of the calibration
+sequences; the most luminous stars in the Pleiades of the same color
+have a similar absolute magnitude as TIC~141146667.
+Previous work \cite{Stauffer2021} has noted that in the Gaia
+passbands, CPVs tend to be photometrically redder and more luminous
+than single stars in any given cluster.
+While this effect complicates any attempt at age inference based on this
+photometry, it suggests that the Pleiades may be a better comparison
+population than IC~2602.
+Broadly, we take the star's isochrone location to suggest age bounds
+$t_{\rm CAMD}$$\sim$40-150\,Myr.
+
+%  and applied the same reddening corrections as in \cite{Bouma2022}.
+%  To measure the isochrone age of TIC~141146667, we then followed the 
+%  empirical approach proposed by \cite{Gagne2020} and
+%  implemented in \cite{Bouma2022}.
+%  The idea is to estimate the star (or star cluster's) age by
+%  interpolating between the observed isochrones of star clusters with
+%  ages that have been otherwise calibrated, for instance using
+%  the lithium depletion-boundary method.
+%  While this circumvents known modelling issues in molecular opacities
+%  and starspot coverage for young M dwarfs,
+%  the ages returned by this procedure depend on the ages
+%  assumed for each reference cluster.
+%  In this case, the most important reference is UCL, since TIC~141146667
+%  overlaps directly on its isochrone on the CAMD.
+%  We adopted the 16~Myr age for UCL from \cite{PecautMamajek2016}, which
+%  is consistent with ages determined by more recent sub-clustering
+%  analyses \cite{Ratzenbock2023} for the largest sub-populations.
+%  This in turns yields an isochronal age for TIC~141146667 of
+%  $t_{\rm iso}$=$16^{+19}_{-6}$\,Myr.
+%  Qualitatively, this range of uncertainty is consistent with no stars
+%  in the $\approx$40\,Myr IC~2602 cluster with similar redness as
+%  TIC~141146667 being equally bright.
 %FIXME: update discussion following consideration of anomalous CPV
 % brightnesses and colors...
 
@@ -753,6 +773,19 @@ e.g.~Figure 7 from \cite{Wood2023}).
 
 \begin{figure}[!t]
   \centering
+  \includegraphics[width=0.7\textwidth]{figures/sf3.pdf}
+  \caption{Dereddened Gaia DR3 color vs.~absolute magnitude diagram of
+  TIC~141146667 and comparison samples. 
+  TIC~141146667 is on the pre-main sequence; stars with the same color
+  that have arrived at the main sequence are typically 1.5\,magnitudes
+  fainter.  The star's location in this diagram broadly suggests an
+  age of 40-110\,Myr.  }
+  \label{fig:camd}
+\end{figure}
+
+
+\begin{figure}[!t]
+  \centering
   \includegraphics[width=0.7\textwidth]{figures/sf2.pdf}
   \caption{An upper limit on photospheric lithium for TIC~141146667
   (green triangle) yields a lower limit on the star's age of $\gtrsim$20\,Myr.
@@ -766,18 +799,20 @@ e.g.~Figure 7 from \cite{Wood2023}).
 
 
 
+
 {\it Age: Summary}---The main indicators for the youth of
 TIC~141146667 are {\it i)} that it is a complex periodic variable, and
 {\it ii)} that it is 1.5 magnitudes brighter than main sequence stars
 of the same color, while showing no indicators for binarity.  The
 first item constitutes evidence for youth since all known CPVs are
-$\lesssim$200\,Myr \cite{Bouma2024}.  Reference sequences for
-$\approx$40-50\,Myr clusters show no stars of equal luminosity and the
-same temperature, suggesting a photometric isochronal age upper limit
-of 50\,Myr.  The weak lithium absorption suggests an age of at least
-20\,Myr based on an empirical comparison using Gaia-ESO spectra, or at
-least 35\,Myr based on the \cite{Feiden2016} isochrones.  These
-considerations yield our adopted age range of 20-50\,Myr.
+$\lesssim$200\,Myr \cite{Bouma2024}.  The reference sequences for the
+Pleiades (112\,Myr, \cite{Dahm2015}) show a few stars of equal
+luminosity and the same temperature, suggesting a photometric
+isochronal age upper limit $\lesssim$150\,Myr.  The weak lithium
+absorption suggests an age of at least 20\,Myr based on an empirical
+comparison using Gaia-ESO spectra, or at least 35\,Myr based on the
+\cite{Feiden2016} isochrones.  These considerations yield our adopted
+age range of 35-150\,Myr.
 
 
 
