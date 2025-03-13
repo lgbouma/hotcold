@@ -20,21 +20,10 @@ from matplotlib import rcParams
 from cdips.utils.gaiaqueries import given_source_ids_get_gaia_data
 
 from rudolf.helpers import get_gaia_catalog_of_nearby_stars
+from rudolf.extinction import append_corrected_gaia_phot_Gaia2018
 
-def plot_hrd(smalllims=0):
+def get_kerr21_usco():
 
-    ##############################
-    # collect cluster data
-    fitspath = '../data/literature/Hunt_2024_table2.fits'
-    hl = fits.open(fitspath)
-    df_h24 = Table(hl[1].data).to_pandas()
-
-    # Pleiades
-    df_ple = df_h24[df_h24['Name'] == 'Melotte_22']
-    # IC2602
-    df_ic2602 = df_h24[df_h24['Name'] == 'IC_2602']
-
-    # Sco-Cen / USco
     fitspath = '../data/literature/Kerr_2021_table1.fits'
     hl = fits.open(fitspath)
     df_k21t1 = Table(hl[1].data).to_pandas()
@@ -55,31 +44,137 @@ def plot_hrd(smalllims=0):
         {'bp_rp': 'BP-RP', 'parallax': 'Plx', 'phot_g_mean_mag': 'Gmag'},
         axis='columns'
     )
+    return gdf_usco
 
-    df_bkgd = get_gaia_catalog_of_nearby_stars()
-    df_bkgd = df_bkgd.rename(
-        {'phot_g_mean_mag': 'Gmag', 'parallax':'Plx'}, axis='columns'
+def get_ratzenbock23_lcc_ucl():
+
+    fitspath = '../data/literature/Ratzenboeck_2023_table1.fits'
+    hl = fits.open(fitspath)
+    df = Table(hl[1].data).to_pandas()
+
+    # select nu Cen (UCL greatest density  and sigma Cen (LCC greatest density)
+    sel = (
+        ( (df['SigMA'] == 20) | (df['SigMA'] == 22) )
+        &
+        (df['stability'] > 95)
     )
-    #df_bkgd = df_bkgd[df.Plx > 0] # < 50pc
-    df_bkgd['BP-RP'] = df_bkgd['phot_bp_mean_mag'] - df_bkgd['phot_rp_mean_mag']
+    df = df[sel]
 
-    # TIC 1411
-    df_1411 = pd.DataFrame({
-        'BP-RP': 3.276,
-        'Gmag': 14.701,
-        'Plx': 17.324
-    }, index=[0])
+    dr3_source_ids = np.array(df['GaiaDR3'])
+    groupname = 'Ratzenboeck_2023_table1_lcc_ucl'
+    gdf = given_source_ids_get_gaia_data(dr3_source_ids, groupname,
+                                         n_max=20000, overwrite=False,
+                                         enforce_all_sourceids_viable=True,
+                                         which_columns='*',
+                                         table_name='gaia_source_lite',
+                                         gaia_datarelease='gaiadr3')
 
-    #TODO FIXME REDDENING CORRECTION
-    #TODO FIXME REDDENING CORRECTION
-    #TODO FIXME REDDENING CORRECTION
+    return gdf
 
+def get_tic1411():
+
+    dr3_source_ids = np.array([np.int64(860453786736413568)])
+    groupname = 'tic1411'
+    gdf = given_source_ids_get_gaia_data(dr3_source_ids, groupname,
+                                         n_max=2, overwrite=False,
+                                         enforce_all_sourceids_viable=True,
+                                         which_columns='*',
+                                         table_name='gaia_source_lite',
+                                         gaia_datarelease='gaiadr3')
+
+    return gdf
+
+def AV_to_EBmV(A_V):
+    R_V = 3.1
+    EBmV = A_V / R_V
+    return EBmV
+
+
+def get_pleiades():
+
+    fitspath = '../data/literature/Hunt_2024_table2.fits'
+    hl = fits.open(fitspath)
+    df_h24 = Table(hl[1].data).to_pandas()
+
+    # Pleiades
+    df_ple = df_h24[(df_h24['Name'] == 'Melotte_22') & (df_h24.Prob > 0.5)]
+
+    dr3_source_ids = np.array(df_ple['GaiaDR3'])
+    groupname = 'Hunt2024_t2_pleiades'
+    gdf = given_source_ids_get_gaia_data(dr3_source_ids, groupname,
+                                         n_max=20000, overwrite=False,
+                                         enforce_all_sourceids_viable=True,
+                                         which_columns='*',
+                                         table_name='gaia_source_lite',
+                                         gaia_datarelease='gaiadr3')
+
+    return gdf
+
+
+def get_ic2602():
+
+    fitspath = '../data/literature/Hunt_2024_table2.fits'
+    hl = fits.open(fitspath)
+    df_h24 = Table(hl[1].data).to_pandas()
+
+    # Pleiades
+    df_ple = df_h24[(df_h24['Name'] == 'IC_2602') & (df_h24.Prob > 0.5)]
+
+    dr3_source_ids = np.array(df_ple['GaiaDR3'])
+    groupname = 'Hunt2024_t2_ic2602'
+    gdf = given_source_ids_get_gaia_data(dr3_source_ids, groupname,
+                                         n_max=20000, overwrite=False,
+                                         enforce_all_sourceids_viable=True,
+                                         which_columns='*',
+                                         table_name='gaia_source_lite',
+                                         gaia_datarelease='gaiadr3')
+
+    return gdf
+
+
+def plot_hrd(deredden=0, smalllims=0):
+
+    EXTINCTIONDICT = {
+        'Pleiades': 0.10209450, # from Hunt+24, table1, A_V
+        'IC_2602': 0.11434174, # from Hunt+24, table1, A_V
+        'UCL/LCC': 0.12 # Pecaut&Mamajek 2016 table7 median
+    }
+
+    ##############################
+    # collect cluster data
+
+    df_ple = get_pleiades()
+    df_ple['E(B-V)'] = AV_to_EBmV(EXTINCTIONDICT['Pleiades'])
+    df_ple = append_corrected_gaia_phot_Gaia2018(df_ple)
+
+    # IC2602
+    df_ic2602 = get_ic2602()
+    df_ic2602['E(B-V)'] = AV_to_EBmV(EXTINCTIONDICT['IC_2602'])
+    df_ic2602 = append_corrected_gaia_phot_Gaia2018(df_ic2602)
+
+    # Sco-Cen / USco (deprecated)
+    df_usco = get_kerr21_usco()
+
+    # UCL/LCC
+    df_ucllcc = get_ratzenbock23_lcc_ucl()
+    df_ucllcc['E(B-V)'] = AV_to_EBmV(EXTINCTIONDICT['UCL/LCC'])
+    df_ucllcc = append_corrected_gaia_phot_Gaia2018(df_ucllcc)
+
+    # GCNS
+    df_bkgd = get_gaia_catalog_of_nearby_stars()
+    df_bkgd['E(B-V)'] = 0
+    df_bkgd = append_corrected_gaia_phot_Gaia2018(df_bkgd)
+
+    # TIC1411
+    df_1411 = get_tic1411()
+    df_1411['E(B-V)'] = 0
+    df_1411 = append_corrected_gaia_phot_Gaia2018(df_1411)
 
     ##############################
     # plot
-    dfs = [gdf_usco, df_ic2602, df_ple, df_bkgd, df_1411]
+    dfs = [df_ucllcc, df_ic2602, df_ple, df_bkgd, df_1411]
     colors = ['limegreen', 'C1', 'cyan', 'gray', 'yellow']
-    names = ['USco (11 Myr)', 'IC2602 (40 Myr)', 'Pleiades (112 Myr)',
+    names = ['UCL/LCC (15 Myr)', 'IC2602 (40 Myr)', 'Pleiades (112 Myr)',
              'Nearby Stars', 'TIC 141146667']
     zorders = [1,2,3,-1,5]
 
@@ -89,8 +184,13 @@ def plot_hrd(smalllims=0):
 
     for df, c, l, i in zip(dfs, colors, names, zorders):
 
-        abs_g = df["Gmag"] - 5 * np.log10(1000 / df["Plx"]) + 5
-        bprp = df["BP-RP"]
+
+        if not deredden:
+            bprp = df['phot_bp_mean_mag'] - df['phot_rp_mean_mag']
+            abs_g = df["phot_g_mean_mag"] - 5 * np.log10(1000 / df["parallax"]) + 5
+        else:
+            bprp = df['phot_bp_mean_mag_corr'] - df['phot_rp_mean_mag_corr']
+            abs_g = df["phot_g_mean_mag_corr"] - 5 * np.log10(1000 / df["parallax"]) + 5
 
         print(len(abs_g), len(bprp))
 
@@ -127,10 +227,16 @@ def plot_hrd(smalllims=0):
               borderpad=0.1, borderaxespad=0., edgecolor='white')
 
     ax.set_ylim(ax.get_ylim()[::-1])
-    ax.update({
-        'xlabel': '$G_{\mathrm{BP}}-G_{\mathrm{RP}}$ [mag]',
-        'ylabel': 'Absolute $\mathrm{M}_{G}$ [mag]'
-    })
+    if not deredden:
+        ax.update({
+            'xlabel': '$G_{\mathrm{BP}}-G_{\mathrm{RP}}$ [mag]',
+            'ylabel': 'Absolute $\mathrm{M}_{G}$ [mag]'
+        })
+    else:
+        ax.update({
+            'xlabel': '$(G_{\mathrm{BP}}-G_{\mathrm{RP}})_0$ [mag]',
+            'ylabel': 'Absolute $\mathrm{M}_{G,0}$ [mag]'
+        })
 
     ax.set_xlim([-2,6])
     if smalllims:
@@ -141,12 +247,14 @@ def plot_hrd(smalllims=0):
     os.makedirs(plot_dir, exist_ok=True)
 
     lims = 'fulllim' if not smalllims else 'smalllim'
+    drs = 'rawphot' if not deredden else 'dereddened'
 
-    s = f'_{lims}'
+    s = f'_{lims}_{drs}'
 
     savefig(fig, os.path.join(plot_dir, f"hrd{s}.png"), writepdf=1)
 
 
 if __name__ == "__main__":
-    plot_hrd(smalllims=1)
-    plot_hrd(smalllims=0)
+    for smalllim in [1,0]:
+        for dr in [1,0]:
+            plot_hrd(smalllims=smalllim, deredden=dr)
