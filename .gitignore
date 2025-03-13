@@ -13,3 +13,5 @@ paper/*synctex.gz
 *png
 drivers/*pdf
 drivers/results
+data/
+literature_review/
