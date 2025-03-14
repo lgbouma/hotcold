@@ -26,3 +26,5 @@ r="/Users/luke/Dropbox/proj/hotcold/drivers/results"
 cp $r/li_ew/li_vs_population.pdf figures/sf2.pdf
 
 cp $r/hrd/hrd_smalllim_dereddened.pdf figures/sf3.pdf
+
+cp $r/sed_fit/TIC_141146667/plots_irexcess/SED.pdf figures/sf4.pdf
