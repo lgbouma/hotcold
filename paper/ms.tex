@@ -653,15 +653,16 @@ solar abundances and the \cite{Barber2006} water line lists.  This
 approach fitted for the stellar effective temperature, radius,
 reddening, surface gravity, metallicity, and distance by comparing the
 measured broadband magnitudes against pre-computed model grids.
-Specifically, we used the broadband magnitudes from Gaia DR2, APASS,
-2MASS, SDSS, and WISE $W1$ and $W2$.  The resulting best-fit SED is
-shown in Figure~\ref{fig:sed}.  This method has the most constraining
-power for the star's effective temperature (2972 $\pm$ 40\,K) and radius
-(0.42 $\pm$ 0.02\,$R_\odot$); the surface gravity, metallicity, and
-reddening are typically only weakly constrained.  We determined the
-star's spectral type to be M5.5Ve by visually comparing against the
-photometric standards tabulated by \cite{Bochanski2007}, which agrees
-with the effective temperature from the SED fitting \cite{Pecaut2013}.
+Specifically, we performed the fit using the broadband magnitudes from
+Gaia DR2, APASS, 2MASS, SDSS, and WISE $W1$ and $W2$.  The resulting
+best-fit SED is shown in Figure~\ref{fig:sed}.  This method has the most
+constraining power for the star's effective temperature (2972 $\pm$
+40\,K) and radius (0.42 $\pm$ 0.02\,$R_\odot$); the surface gravity,
+metallicity, and reddening are typically only weakly constrained.  We
+determined the star's spectral type to be M5.5Ve by visually comparing
+the HIRES spectra against the photometric standards tabulated by
+\cite{Bochanski2007}, which agrees with the effective temperature from
+the SED fitting \cite{Pecaut2013}.
 
 Given the effective temperature, stellar radius, and age range
 (35-150\,Myr) derived below, we then estimated the stellar mass by
@@ -811,9 +812,54 @@ age range of 150\,Myr.
 
 {\it Upper and Low Bounds on Dust}---An upper limit on the amount of hot
 dust follows from the lack of an infrared excess.  A lower limit follows
-from the assumption that most of the broadband optical depth comes from 
-dust, rather than some other source.
-Figure~\ref{fig:sed} shows the SED; ...
+if one assumes that most of the broadband optical depth comes from
+absorption and scattering by dust, rather than any radiative processes
+associated with the plasma.
+
+How much dust is allowed, given the lack of an infrared excess?
+Figure~\ref{fig:sed} shows the SED.  While AllWISE \cite{Cutri2014}
+yielded a confident W3 detection (9.8$\sigma$), the W4 extraction
+yielded only a marginal (1.7$\sigma$) indication of detectable flux.
+Similar to other CPVs \cite{Stauffer2017,Bouma2024}, the photometric
+uncertainties from WISE W1 and W2 allow at most a $\lesssim$2\% excess
+at 3-5\,$\mu$m relative to the stellar photosphere, and a $\lesssim$5\%
+excess at 10\,$\mu$m (W3).  A simple approximation is to assume $T_{\rm
+dust}$=1500\,K, typical for dust near the star (see \cite{Zhan2019} for
+discussion regarding dust sublimation).  We then treat emission from the
+dust and the star as Planck functions, requiring $F_{\lambda,\star} > f
+\cdot F_{\lambda,\mathrm{dust}}$, for $f$ the scaling factor set by the
+WISE photometric uncertainty.  For this condition to hold, we find that
+the bolometric flux ratio $F_{\rm dust}/F_{\star}$$<$6$\cdot$10$^{-3}$.
+Scaling the associated luminosities ($L = \sigma_{\rm SB} T_{\rm eff}^4
+/ (4\pi R^2)$) implies an emitting area for the dust $<$10\% of the
+star's surface area.  Converting this constraint to a dust mass requires
+an assumption regarding the grain properties; taking a grain density
+$\rho$=3\,g\,cm$^{-3}$ typical for silicate grains, and a fixed size
+$a$=1\,$\mu$m \cite{Tanimoto2020,Gunther2022,Koen2023} yields an upper
+limit of $M_{\rm dust}\lesssim$10$^{17}$\,g.
+
+By way of comparison, the lower limit follows 
+%FIXME TODO finish!!
+
+The associated 
+
+
+which implies a 
+Since the effective temperatures 
+
+luminosity
+
+Under this approximation, 
+
+
+
+, reporting $W4$=8.4 with no uncertainty.  
+The WISE images, available through the IRSA archive, concur.
+
+
+
+%WISE_RSR_W3 9.8380 0.0450
+%W4 = 8.392 +/- nan
 %TODO TODO LEFT OFF HERE
 ...
 
@@ -1003,6 +1049,7 @@ The density and mass of the material...
   The author thanks X, Y, Z.
   L.G.B. was suported by...
 	Acknowledge TESS...
+  Acknowledge use of IRSA.
 
 
 %TC:ignore
