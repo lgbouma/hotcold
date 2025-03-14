@@ -330,7 +330,8 @@ $i_\star$\dotfill                       & Stellar inclination\dotfill           
 %
 $d$\dotfill                             & Distance (pc)\dotfill                                          & $57.54 \pm 0.09$   & 7 \\
 %
-$R_{\rm c}$\dotfill		                  & Keplerian corotation\dotfill                                   & $1.72 \pm 0.06$  & 6 \\
+$R_{\rm c}$\dotfill		                  & Keplerian corotation\dotfill
+  & $1.82 \pm 0.10$  & 6 \\
                                         & \hspace{3pt} radius ($R_\star$)	                               &                      \\
 %
 $a_1$\dotfill                           & Clump 1 orbital radius ($R_\star$)\hspace{9pt}\dotfill         &  2.1-2.7         & 4 \\
@@ -633,9 +634,9 @@ constraining for the scenario of a low-luminosity companion
 
 
 {\it Effective temperature, radius, mass, and spectral type}
-We determined the stellar effective temperature and radius by adopting
-the results from the spectral energy distribution fitting procedure
-described by \cite{Bouma2024}.  To summarize, this approach used
+We adopted the star's effective temperature and radius measured using
+the spectral energy distribution fitting procedure described by
+\cite{Bouma2024}.  To summarize, this approach used
 \texttt{astroARIADNE} \cite{Vines2022} with the BT-Settl stellar
 atmosphere models \cite{Allard2012}, assuming the \cite{Asplund2009}
 solar abundances and the \cite{Barber2006} water line lists.  This
@@ -650,23 +651,25 @@ metallicity, and reddening are typically only weakly constrained.  We
 determined the star's spectral type to be M5.5Ve by visually comparing
 against the photometric standards tabulated by \cite{Bochanski2007},
 which agrees with the effective temperature from the SED fitting
-\cite{Pecaut2013}.  Given the effective temperature, stellar radius, and
-age range (35-150\,Myr) derived below, we then estimated the stellar
-mass by interpolating against the PARSEC v1.2S isochrones
-\cite{Chen2014}.  Specifically, we used the distance metric defined in
-Equation~8 of \cite{Bouma2024} to select the model mass closest to a
-given observed temperature, radius, and age.  This exercise yielded a
-mass of $M_\star$=$0.20^{+0.02}_{-0.01}$ assuming an age of 35\,Myr, or
-a mass of $0.25^{+0.02}_{-0.01}$ assuming an age of 150\,Myr.  
-These in turn imply Keplerian corotation radii $R_{\rm
-cr}/R_\star$=1.75$\pm$0.07 and $R_{\rm cr}/R_\star$=1.89$\pm$0.07,
-respectively; this particular scale is relevant as it is theoretically
-expected to set the inner boundary at which corotating material can
-accumulate (e.g.~\cite{Townsend2005,Daley-Yates2024}).
-For our final quoted $M_\star$ and $R_{\rm cr}$ values we take a
-geometric mean of the extremes; we caution however that this choice is
-arbitrary, and that a more precise age would be needed to circumvent
-the systematic uncertainties in these parameters.
+\cite{Pecaut2013}.
+
+Given the effective temperature, stellar radius, and age range
+(35-150\,Myr) derived below, we then estimated the stellar mass by
+interpolating against the PARSEC v1.2S isochrones \cite{Chen2014}.
+Specifically, we used the distance metric defined in Equation~8 of
+\cite{Bouma2024} to select the model mass closest to a given observed
+temperature, radius, and age.  This exercise yielded a mass of
+$M_\star$=$0.20\pm0.01$\,$M_\odot$ assuming an age of 35\,Myr, or a mass
+of $0.25\pm0.01$\,$M_\odot$ assuming an age of 150\,Myr.  These masses
+imply Keplerian corotation radii $R_{\rm cr}/R_\star$=1.75$\pm$0.07 and
+$R_{\rm cr}/R_\star$=1.89$\pm$0.07, respectively; this size scale is
+relevant because it is theoretically expected to set the inner boundary
+at which corotating material might accumulate
+(e.g.~\cite{Townsend2005,Daley-Yates2024}).  Our final quoted $M_\star$
+and $R_{\rm cr}$ values adopt the average of these extremes and a
+quadrature sum of their statistical uncertainties; we caution however
+that a more precise age would be needed to resolve the systematic
+uncertainties in these parameters.
 
 
 {\it Age: No Obvious Association Membership}---Previous work
