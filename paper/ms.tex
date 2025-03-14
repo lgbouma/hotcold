@@ -65,7 +65,7 @@ uncertain. The main alternative hypothesis is that these complex
 periodic variables (CPVs) are explained by complex distributions of
 starspots or faculae distributed across the stellar surfaces
 \cite{Koen2021}.  Here, we present time-series spectroscopy and
-photometry of a young ($t$=16\,Myr), rapidly-rotating ($P$=3.9\,hr)
+photometry of a rapidly-rotating ($P$=3.9\,hr)
 CPV, TIC~141146667. The spectra show coherent sinusoidal Balmer
 emission at twice to four times the star's equatorial velocity,
 demonstrating the presence of extended clumps of circumstellar
@@ -311,7 +311,7 @@ $R_\star$\dotfill                       & Stellar radius ($R_\odot$)\dotfill    
 %
 Age                                     & Stellar age range (Myr)\dotfill                                & 35-150  & 2 \\
 %
-$M_\star$\dotfill                       & Stellar mass ($M_\odot$)\dotfill                               & 0.19$\pm$0.01  & 3 \\
+$M_\star$\dotfill                       & Stellar mass ($M_\odot$)\dotfill                               & 0.22$\pm$0.02  & 3 \\
 %
 $\gamma$\dotfill                        & Systemic radial velocity (\kms)\dotfill                        & 0.61 $\pm$ 1.47  & 4 \\
 %
@@ -648,18 +648,25 @@ constraining power for the star's effective temperature (2972 $\pm$
 40\,K) and radius (0.42 $\pm$ 0.02\,$R_\odot$); the surface gravity,
 metallicity, and reddening are typically only weakly constrained.  We
 determined the star's spectral type to be M5.5Ve by visually comparing
-against the photometric standards presented by \cite{Bochanski2007};
-this qualitatively agrees with the effective temperature from the SED
-fitting \cite{Pecaut2013}.  With the effective temperature, stellar
-radius, and previously determined age, we then estimated the stellar
+against the photometric standards tabulated by \cite{Bochanski2007},
+which agrees with the effective temperature from the SED fitting
+\cite{Pecaut2013}.  Given the effective temperature, stellar radius, and
+age range (35-150\,Myr) derived below, we then estimated the stellar
 mass by interpolating against the PARSEC v1.2S isochrones
 \cite{Chen2014}.  Specifically, we used the distance metric defined in
-Equation~8 of \cite{Bouma2024} to select the model mass closest to the
-observed temperature, radius, and age.  We derived the uncertainty in
-the mass based by propagating the statistical uncertainties in each of
-these parameters.
-
-
+Equation~8 of \cite{Bouma2024} to select the model mass closest to a
+given observed temperature, radius, and age.  This exercise yielded a
+mass of $M_\star$=$0.20^{+0.02}_{-0.01}$ assuming an age of 35\,Myr, or
+a mass of $0.25^{+0.02}_{-0.01}$ assuming an age of 150\,Myr.  
+These in turn imply Keplerian corotation radii $R_{\rm
+cr}/R_\star$=1.75$\pm$0.07 and $R_{\rm cr}/R_\star$=1.89$\pm$0.07,
+respectively; this particular scale is relevant as it is theoretically
+expected to set the inner boundary at which corotating material can
+accumulate (e.g.~\cite{Townsend2005,Daley-Yates2024}).
+For our final quoted $M_\star$ and $R_{\rm cr}$ values we take a
+geometric mean of the extremes; we caution however that this choice is
+arbitrary, and that a more precise age would be needed to circumvent
+the systematic uncertainties in these parameters.
 
 
 {\it Age: No Obvious Association Membership}---Previous work
@@ -687,25 +694,27 @@ IC~2602, and the Pleiades.  To make this diagram, we adopted the USco
 members in the $\delta$~Sco and $\sigma$~Sco sub-associations from
 \cite{Ratzenbock2023}, and the IC~2602 and Pleiades members from
 \cite{Hunt2024}.  We assumed an average $V$-band extinction $A_{\rm
-V}$=${0.12, 0.11, 0.10}\,{\rm mag}$ for USco \cite{Pecaut2016},
+V}$=$\{0.12, 0.11, 0.10\}\,{\rm mag}$ for USco \cite{Pecaut2016},
 IC~2602 \cite{Hunt2024}, and the Pleiades \cite{Hunt2024}
 respectively.  We dereddened the photometry using the extinction
 coefficients $k_X\equiv A_X/A_0$ tabulated in
-\citet{GaiaCollaboration2018}, assuming that $A_0 = 3.1 E(B-V)$.
+\cite{GaiaCollaboration2018}, assuming that $A_0 = 3.1 E(B-V)$.
 
-Figure~\ref{fig:camd} suggests that TIC~141146667 is
-older than USco, and potentially younger than the Pleiades.  The precision of this
-statement is set by the intrinsic scatter of the calibration
+Figure~\ref{fig:camd} shows that TIC~141146667 falls between
+the USco and Pleiades sequences, while nearly overlapping with
+IC~2602.  However, the precision of the implied age
+is set by the intrinsic scatter of these calibration
 sequences; the most luminous stars in the Pleiades of the same color
 have a similar absolute magnitude as TIC~141146667.
-Previous work \cite{Stauffer2021} has noted that in the Gaia
+Previous work \cite{Stauffer2021} has also noted that in the Gaia
 passbands, CPVs tend to be photometrically redder and more luminous
-than single stars in any given cluster.
-While this effect complicates any attempt at age inference based on this
-photometry, it suggests that the Pleiades may be a better comparison
-population than IC~2602.
-Broadly, we take the star's isochrone location to suggest age bounds
-$t_{\rm CAMD}$$\sim$40-150\,Myr.
+than single stars in any given cluster, similar to other rapid
+rotators.
+While this effect complicates any attempt at age inference based on
+the Gaia photometry, it suggests that the Pleiades may be a better
+comparison population than IC~2602.  Broadly, we take the star's
+isochrone location to suggest age bounds $t_{\rm
+CAMD}$$\sim$40-150\,Myr.
 
 %  and applied the same reddening corrections as in \cite{Bouma2022}.
 %  To measure the isochrone age of TIC~141146667, we then followed the 
@@ -766,8 +775,9 @@ expect to see lithium in abundance ($>$400\,m\AA).  Since we do not,
 we conclude that $t_{\rm Li,emp}$$\gtrsim$20\,Myr.  The
 \cite{Feiden2016} isochrones provide a point for theoretical
 comparison, suggesting that since $M_{\rm K}$$=$6.67\,mag, $t_{\rm
-Li,th}$$\gtrsim$35\,Myr would be expected for complete depletion (see
-e.g.~Figure 7 from \cite{Wood2023}).
+Li,th}$$\gtrsim$35\,Myr is the theoretical age at which complete
+depletion occurs in a star with this luminosity (see e.g.~Figure 7
+from \cite{Wood2023}).
 
 
 
@@ -777,9 +787,9 @@ e.g.~Figure 7 from \cite{Wood2023}).
   \caption{Dereddened Gaia DR3 color vs.~absolute magnitude diagram of
   TIC~141146667 and comparison samples. 
   TIC~141146667 is on the pre-main sequence; stars with the same color
-  that have arrived at the main sequence are typically 1.5\,magnitudes
+  on the main sequence are $\approx$1.5\,magnitudes
   fainter.  The star's location in this diagram broadly suggests an
-  age of 40-110\,Myr.  }
+  age of 40-150\,Myr.  }
   \label{fig:camd}
 \end{figure}
 
@@ -812,7 +822,7 @@ isochronal age upper limit $\lesssim$150\,Myr.  The weak lithium
 absorption suggests an age of at least 20\,Myr based on an empirical
 comparison using Gaia-ESO spectra, or at least 35\,Myr based on the
 \cite{Feiden2016} isochrones.  These considerations yield our adopted
-age range of 35-150\,Myr.
+age range of 40-150\,Myr.
 
 
 
