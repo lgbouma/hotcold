@@ -1,0 +1,271 @@
+#############
+## IMPORTS ##
+#############
+import os, pickle
+from os.path import join
+from glob import glob
+from datetime import datetime
+from copy import deepcopy
+import numpy as np, matplotlib.pyplot as plt, pandas as pd
+from numpy import array as nparr
+
+import matplotlib as mpl
+import matplotlib.colors as colors
+from matplotlib import rcParams
+
+from astropy import units as u, constants as const
+from astropy.coordinates import SkyCoord
+from astropy.io import fits
+from astropy.time import Time
+from astropy.table import Table
+
+import matplotlib.patheffects as pe
+from matplotlib.ticker import MaxNLocator, FixedLocator, FuncFormatter
+from matplotlib.transforms import blended_transform_factory
+from mpl_toolkits.axes_grid1.inset_locator import inset_axes
+
+from scipy.ndimage import gaussian_filter1d
+
+from aesthetic.plot import savefig, format_ax, set_style
+
+
+from scipy.ndimage import gaussian_filter1d
+from specutils.spectra import Spectrum1D, SpectralRegion
+from specutils.fitting import fit_generic_continuum
+import warnings
+from rudolf.plotting import multiline
+
+from complexrotators.getters import get_specriver_data
+from cdips_followup.spectools import remove_cosmic_rays
+
+def plot_lineevolnpanel(outdir, starid=None, jstr=None, remove_cosmics=0):
+    """
+    starid: e.g. 'TIC402980664'
+    jstr: e.g. 'j531',
+    """
+
+    ticid = starid.lstrip("TIC")
+    deltawav = 15
+    dlambda = deltawav*1.
+    # get data
+    lines = [
+        'Hα',
+        'Hγ',
+        'Hδ',
+        'He',
+        #'Ca[K]',
+        'Li',
+        'K',
+        #'Ca[H] + Hε',
+        #'CaI',
+        #'Na D1',
+    ]
+
+    gaussian_filter_sigmas = [
+        4,
+        6,
+        8,
+        6,
+        #40,
+        6,
+        4,
+    ]
+
+    λ0s = [
+        6562.8,
+        4340.0,
+        4101.75,
+        5875.62,
+        #3933.66,
+        6708.,
+        7699.,
+    ]
+
+    ylims = [
+        [0.5, 3.5], # ha
+        [0.3, 8.5], # hgamma
+        [-0.1, 10.5], # hd
+        [0.5, 1.6], # he
+        #[-0.1, 10.5], # CaK
+        [0.76, 1.24], # Li
+        [0.56, 1.24], # K
+    ]
+
+    #
+    # get all wavelengths & fluxes over all chips...
+    #
+
+
+    # make plot
+    plt.close('all')
+    set_style('clean')
+    rcParams['font.family'] = 'Arial'
+
+    rowkeys = [x for x in 'abcdef']
+
+    f = 0.7
+    fig = plt.figure(figsize=(f*6,f*3.2))
+    axd = fig.subplot_mosaic(
+        """
+        abc
+        def
+        """
+    )
+
+    # iterate over each line / spectral window
+    for ix, (l,λ0,ylim,_g) in enumerate(
+        zip(lines, λ0s, ylims, gaussian_filter_sigmas)
+    ):
+
+        if l == 'Hα':
+            usespectype = 'reduced'
+        else:
+            usespectype = 'deblazed'
+
+        specpaths, spectimes, xvals, yvals, yvalsnonorm, norm_flxs = get_specriver_data(
+            ticid, l, dlambda=dlambda, usespectype=usespectype,
+            gaussian_filter_sigma=None
+        )
+        # drop low s/n
+        if l == 'Hα':
+            _slice = slice(None, -1, None)
+        else:
+            _slice = slice(None, -2, None)
+        specpaths = specpaths[_slice]
+        spectimes = spectimes[_slice]
+        _xvals = deepcopy(xvals[_slice])
+        _yvals = deepcopy(yvals[_slice])
+
+        if remove_cosmics:
+            xvals, yvals = [], []
+            for xv, yv in zip(_xvals, _yvals):
+                _yv = remove_cosmic_rays(xv, yv, sigma_threshold=3,
+                                         window_size=30)
+                xvals.append(xv)
+                yvals.append(_yv)
+        else:
+            xvals, yvals = deepcopy(_xvals), deepcopy(_yvals)
+
+        # normalize by the equatorial velocity
+        ADOPTED_VEQ = 130 # km/s
+        xvals = np.array(xvals) / ADOPTED_VEQ
+
+        rowkey = rowkeys[ix]
+
+        btjds = np.array(spectimes)*1.
+        t0 = 3339.95716431995 # from plot_movie_sixpanel_specriver
+        period = 0.163762133 # ditto
+        t_phases = (btjds-t0)/period - np.min(np.ceil((btjds-t0)/period))
+
+        flxs = np.array(yvals)
+        wavs = np.array(xvals)
+
+        # does the wavelength solution vary over time?  it should not.  this
+        # assertion statement verifies that.
+        assert np.diff(wavs, axis=0).sum() == 0
+
+        # average over time to get the median line profile
+        # compute direct subtraction residual
+        fn = lambda x: gaussian_filter1d(x, sigma=_g)
+
+        flx_median = np.nanmedian(flxs, axis=0)
+        smooth_flx_median = fn(flx_median)
+
+        smooth_flxs = np.array([
+            fn(flxs[ix, :]) for ix in range(len(flxs))
+        ])
+
+        smooth_diff_flxs = smooth_flxs - smooth_flx_median[None, :]
+
+        # plot average line profile over all spectra
+        swav = wavs * 1.
+        sflx = smooth_flx_median * 1.
+
+        # plot individual line profiles at each time (minus the average line
+        # profile)
+        lc = multiline(
+            wavs, smooth_flxs,
+            t_phases,
+            #cmap='twilight',
+            #24*(nparr(btjds)-np.min(btjds)),
+            #cmap='Spectral',
+            cmap='cividis',
+            ax=axd[rowkey], lw=0.5
+        )
+        if l == 'Hα':
+            _lc = deepcopy(lc)
+
+        axd[rowkey].set_title(
+            l+f" ({int(np.round(λ0)):d}"+r"$\mathrm{\AA}$"+")",
+            fontsize='small', pad=0.3
+        )
+
+        axd[rowkey].set_xlim([-5.5, 5.5])
+        axd[rowkey].set_xticks([-5, 0, 5])
+
+        if starid == 'TIC141146667':
+            axd[rowkey].set_ylim(ylim)
+
+        if l == 'K':
+            axd[rowkey].set_yticks([0.7,0.9,1.1])
+
+        expids = [os.path.basename(s).rstrip('.fits').lstrip('b')
+                  for s in specpaths]
+        outdict = {
+            'wav': wavs,
+            'flxs': flxs,
+            'flx_median': flx_median,
+            'smooth_flx_median': smooth_flx_median,
+            'smooth_diff_flxs': smooth_diff_flxs,
+            'btjds': btjds,
+            'specpaths': specpaths,
+            'expids': expids
+        }
+        cachepath = join(
+            outdir, f'spec_cache_{starid}_{ix}_{l}.pkl'
+        )
+        with open(cachepath, "wb") as f:
+            pickle.dump(outdict, f)
+        print(f'Wrote {cachepath}')
+
+    # NOTE: inset_axes approach causes pdf rendering error. avoid by
+    # directly instantiating a new axis set.
+    cax = fig.add_axes([0.92, 0.2, 0.05, 0.02])  # [left, bottom, width, height]
+    cb = fig.colorbar(_lc, cax=cax, orientation="horizontal")
+
+    cb.ax.tick_params(labelsize='x-small', pad=0.7)
+    #cb.ax.set_title('$t$ [hours]', fontsize='x-small', pad=0.3)
+    cb.ax.set_title('Phase $\phi$', fontsize='x-small', pad=0.4)
+
+    #cb.ax.set_xticks([0,2,4])
+    cb.ax.tick_params(size=0, which='both') # remove the ticks
+
+    fig.text(0.5,-0.01, r'$\Delta v/v_{\mathrm{eq}}$', va='center', ha='center',
+             rotation=0, fontsize='large')
+    fig.text(0.,0.5, r'Relative flux', va='center', ha='center',
+             rotation=90, fontsize='large')
+
+    fig.tight_layout(h_pad=0.1)
+
+    # set naming options
+    s = ''
+    if remove_cosmics:
+        s += '_removecosmic'
+
+    # force layout to update
+    fig.canvas.draw()
+
+    outpath = os.path.join(outdir, f'{starid}_{jstr}_lineevolnpanel{s}.png')
+    savefig(fig, outpath, dpi=400)
+
+
+if __name__ == "__main__":
+    starid = 'TIC141146667'
+    jstr = 'j537'
+
+    outdir = 'results/lineevolnpanel'
+    if not os.path.exists(outdir): os.mkdir(outdir)
+
+    for remove_cosmics in [0,1]:
+        plot_lineevolnpanel(outdir, starid=starid, jstr=jstr,
+                            remove_cosmics=remove_cosmics)
