@@ -1,3 +1,10 @@
+RV measurement:
+
+* Get the zero-point :
+  cdips_followup/tests/test_naive_rv_zeropoint.py
+
+* Measure the RVs :
+  cpv/drivers/calc_HIRS_systemic_velocities.py
 
 
 cpv/drivers/oneoffs:
