@@ -3,7 +3,7 @@ r="/Users/luke/Dropbox/proj/cpv/results"
 ##########################################
 # figure1: TIC 141146667 is a complex periodic variable.
 # still: c1265-1268, s48, 2022-02-16 to 2022-02-17
-cp $r/movie_phase_timegroups/TIC_141146667/TIC_141146667_0081_2min_phase_timegroups.png figures/f1.png
+cp $r/movie_phase_timegroups/TIC_141146667/TIC_141146667_0081_2min_phase_timegroups.pdf figures/f1.pdf
 
 # Animated supporting: Movie of S41, S48, S75 TESS photometry, cycle-grouped
 cp $r/movie_phase_timegroups/TIC_141146667/movie_TIC1411_flux_phase_bow.mov movies/m1.mov
