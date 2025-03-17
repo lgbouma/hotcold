@@ -232,10 +232,10 @@ after the data gap.
 
 % photometry
 Figure~\ref{fig:spec} shows the data from February 2024.  Over
-timescales of years, CPVs maintain the same period, while their
+timescales of years, CPVs maintain a fixed period while their
 photometric morphology evolves.  TIC~141146667 indeed evolved relative
 to the February 2022 discovery data \cite{Bouma2024}.  In the February
-2024 data, the average photometric signal showed a small brightening
+2024 TESS data, the average photometric signal showed a small brightening
 over 45\% of the period, followed by a complex flux dip spanning 55\%
 of the period.  This eclipse feature shows two to three local
 photometric minima, and one to two local maxima.  Its W-shape is
@@ -498,60 +498,75 @@ magnetospheres -- host similar circumstellar environments to the CPVs.
 \begin{figure}[!b]
   \centering
   \includegraphics[width=0.99\textwidth]{figures/sf1.pdf}
-  \caption{Photometric evolution of TIC 141146667 near the epoch of
-  spectroscopic observation (green bar). 
+  \caption{Photometric evolution of TIC 141146667 near the Keck/HIRES observation (green bar). 
   {\bf Panel a}: TESS simple aperture photometry. 
   The main data gaps were caused by scattered light from the Earth
   (BTJD 3356-3358.5) and Moon (BTJD 3359.5-3360.5).
+  Raw two minute data are in gray; black time-averages ten minute
+  sampling.
   {\bf Panels b,c}: Folded light curve before and after spectroscopy.
-  Although some evolution in the light curve morphology occurred between
-  the two epochs, the large, complex eclipse feature remained present.
+  Raw two minute data are in gray; black phase-averages to 100 points
+  per cycle.
+  In the BTJD 3352-3356 window, a state switch occurred near BTJD 3353,
+  in which the dip at $\phi$$\approx$0.8 disappeared.
+  While the large, complex eclipse feature remained present before and
+  after the HIRES sequence, its photometric shape evolved during the
+  data gap.
   }
   \label{fig:fulllc}
 \end{figure}
 
-{\it Photometry:} TESS observed
-TIC~141146667 ($T$=13.3) in Sectors 14, 15, 21, 41, 48, and 75.
-Two-minute data were acquired during Sectors 41, 48 (TESS DDT039,
-PI: Kunimoto), and 75 (TESS Program G06030, PI: Bouma).  The data
-from Sectors 14, 15, and 21 had a 30-minute cadence, which
-smears sharp features over the $<$4\,hour period
-(see \cite{Gunther2022}).  The nearest known star, TIC~141146666
-($T$=14.5), is 25$''$ from TIC~141146667 and is photometrically stable
-in the pixel-level TESS data.
+{\it Photometry:} TESS observed TIC~141146667 ($T$=13.3) in Sectors 14,
+15, 21, 41, 48, and 75.  Two-minute data were acquired during Sectors
+41, 48 (TESS DDT039, PI: Kunimoto), and 75 (TESS Program G06030, PI:
+Bouma).  The data from Sectors 14, 15, and 21 had a 30-minute cadence,
+which smears sharp features over the $<$4\,hour period (see
+\cite{Gunther2022}).  The field is not crowded:  the nearest known
+star, TIC~141146666 ($T$=14.5), is 25$''$ from TIC~141146667 and is
+photometrically stable in the pixel-level TESS data.
 
-Figure~\ref{fig:fulllc} shows the data from Sector~75, which were
-acquired using the camera that pointed closest to the ecliptic.  The
-largest gap in coverage is from BTJD 3356.0~-~3358.5, and includes
-the Keck/HIRES observation epoch (green bar).   There are no flux
-measurements reported during this interval because the Earth was
-within 25$^\circ$ the camera's boresight, yielding high levels of
-scattered light.  From BTJD 3359.4~-~3362.0, the Moon then passed
-within 25$^\circ$ of the camera's boresight.  Based on the observed
-level of scattered light in the optimal TIC~141146667 aperture, we
-manually masked out times from 3359.40~-~3360.13, and judged the
-remainder of the data during the lunar approach to be usable.  The
-small data gaps from BTJD 3353.55~-~3353.77 and from BTJD
-3360.12~-~3360.33 were caused by data downlinks at the spacecraft's
-perigee and apogee, respectively.
+Figure~\ref{fig:fulllc} shows the TESS Sector~75 data acquired near
+the epoch of spectroscopy.  The gap in coverage from BTJD
+3356.0~-~3358.5 occurred because the Earth was within 25$^\circ$ of
+the TESS camera's boresight, yielding high levels of scattered light;
+this gap included the Keck/HIRES observation epoch (green bar).  From
+BTJD 3359.4~-~3362.0, the Moon then passed within 25$^\circ$ of the
+camera's boresight.  Based on the observed level of scattered light in
+the optimal TIC~141146667 aperture, we manually masked out times from
+3359.40~-~3360.13, and judged the remainder of the data during the
+lunar approach to be usable.  Small data gaps from BTJD
+3353.55~-~3353.77 and from BTJD 3360.12~-~3360.33 were caused by data
+downlinks at the spacecraft's perigee and apogee, respectively.
+
+Broadly, Figure~\ref{fig:fulllc} shows that a large, complex eclipse
+feature was present before and after the HIRES data were
+acquired.  From BTJD 3352~-~3356, this eclipse had two sharp local
+minima;  the local minimum at $\phi$$\approx$0.8 disappeared following
+the flare at BTJD 3353, yielding an eclipse more closely resembling a
+long ``V'' than a ``W''.  Similar state changes have previously been
+noted and discussed \cite{Stauffer2017,Bouma2024}.  The photometric
+shape therefore evolved during the twelve cycles spanning the
+3356~-~3358 gap, since the average shape from 3358-3363 more
+closely resembles the initial ``W''.
+
+
 
 {\it Spectroscopy:}
-We observed TIC~141146667 ($V$=16.2) with Keck/HIRES for five hours over a
-second-half night spanning UT 2024-02-17 10:47 to UT 2024-02-17
-16:13.  The star's airmass over this window spanned $z$=1.2-2.2, and
-we opted for a fixed 15 minute cadence over the entire sequence,
-except for a final 10 minute exposure due to increasing sky
-brightness at sunrise.  We observed without the iodine cell and used
-the C2 decker (0$\farcs$86$\times$14$\farcs$0) in the red instrument
-configuration, yielding a spectral resolution $R$$\approx$45{,}0000
-($\delta v$$\approx$6.7\,\kms; $\delta v / v_{\rm
-eq}$$\approx$0.05).  We binned the CCD readout by a factor of three
-in the spatial dimension, yielding $\approx$1,000 photons (S/N=33)
-per pixel in the continuum at 6500\,\AA, at minimum airmass.  Strong
-winds contributed to 1\farcs2$\pm$0\farcs2 seeing over the night,
-but conditions were otherwise favorable.  We reduced the
-echelleogram to a one-dimensional spectrum using the standard
-techniques of the California Planet Survey \cite{Howard2010}.
+We observed TIC~141146667 ($V$=16.2) with Keck/HIRES for five hours over
+a second-half night spanning 17 February 2024 10:47 to 16:13 (UT).
+The star's airmass over this window spanned $z$=1.2-2.2, and we opted
+for a fixed 15 minute cadence over the entire sequence, except for a
+final 10 minute exposure due to increasing sky brightness at sunrise.
+We observed without the iodine cell and used the C2 decker
+(0$\farcs$86$\times$14$\farcs$0) in the red instrument configuration,
+yielding a spectral resolution $R$$\approx$45{,}0000 ($\delta
+v$$\approx$6.7\,\kms; $\delta v / v_{\rm eq}$$\approx$0.05).  We binned
+the CCD readout by a factor of three in the spatial dimension, yielding
+$\approx$1,000 photons (S/N=33) per pixel in the continuum at 6500\,\AA,
+at minimum airmass.  Strong winds contributed to 1\farcs2$\pm$0\farcs2
+seeing over the night, but conditions were otherwise favorable.  We
+reduced the echelleogram to a one-dimensional spectrum using the
+standard techniques of the California Planet Survey \cite{Howard2010}.
 Figure~\ref{fig:spec}b shows the result in the vicinity of H$\alpha$
 without any additional processing.
 
@@ -734,20 +749,20 @@ $t_{\rm CAMD}$$\sim$30-150\,Myr.
 $\alpha$)$^4$He burning in the cores of low-mass stars has been studied
 for over sixty years \cite{Hayashi1963,Bildsten1997,Burke2004}.
 \cite{Wood2023} provided an instructive recent overview: an abbreviated
-summary is that cooler and younger M dwarfs can show the 6707.8\,\AA\
+summary is that sufficiently cool and young M dwarfs show the 6707.8\,\AA\
 doublet in absorption, $\gtrsim$10\% below their ``continua''.  Unlike
-Sun-like stars, the continuum for M dwarfs is poorly defined due to
+for Sun-like stars, the continuum for M dwarfs is poorly defined due to
 their molecular absorption.  We attempted a lithium measurement by
 constructing a wavelength-binned and Doppler-corrected TIC~141146667
 spectrum, assigning its uncertainties based on the measured scatter
 across the five hour dataset.  We then compared this average spectrum
 against the nearest matching template from \cite{Bochanski2007}.  The
 data show a small depression near the expected lithium wavelength,
-potentially consistent with a $\Delta \lambda$$\approx$3\,\AA\ line
+potentially consistent with the $\Delta \lambda$$\approx$3\,\AA\ line
 broadening.  This feature nominally yields ${\rm EW}_{\rm
-Li}$=71$^{+18}_{13}$\,m\AA, where the statistical uncertainties are
+Li}$=71$^{+18}_{-13}$\,m\AA, where the statistical uncertainties are
 evaluated using a bootstrap resampling technique from the statistical
-uncertainties in the spectrum.  The systematic uncertainties associated
+uncertainties in the spectrum.  However the systematic uncertainties associated
 with the continuum normalization are larger, and likely comparable to
 the amplitude of the feature; we therefore treat the result of this
 measurement as a $2\sigma$ upper limit: ${\rm EW}_{\rm Li}$$<$107\,m\AA.
@@ -762,7 +777,7 @@ lithium in abundance ($>$400\,m\AA).  Since we do not, we can set an
 empirical bound on the lithium-derived age of $t_{\rm
 Li,emp}$$\gtrsim$20\,Myr.  The \cite{Feiden2016} lithium isochrones
 provide a point for theoretical comparison, and suggest that since
-$M_{\rm K}$$=$6.67\,mag, $t_{\rm Li,th}$$\gtrsim$35\,Myr is the
+$M_{\rm K}$$\approx$6.67\,mag, $t_{\rm Li,th}$$\gtrsim$35\,Myr is the
 theoretical age at which complete depletion occurs in a star with this
 luminosity (see e.g.~Figure 7 from \cite{Wood2023}).
 
@@ -820,7 +835,7 @@ associated with the plasma.
 How much dust is allowed, given the lack of an infrared excess?
 Figure~\ref{fig:sed} shows the SED.  While AllWISE \cite{Cutri2014}
 yielded a confident W3 detection (9.8$\sigma$), the W4 extraction
-yielded only a marginal (1.7$\sigma$) indication of detectable flux.
+yielded only a marginal indication (1.7$\sigma$) of detectable flux.
 Similar to other CPVs \cite{Stauffer2017,Bouma2024}, the photometric
 uncertainties from WISE W1 and W2 allow at most a $\lesssim$2\% excess
 at 3-5\,$\mu$m relative to the stellar photosphere, and a $\lesssim$5\%
@@ -878,6 +893,14 @@ clumps with masses in the range of $10^{15}$-$10^{17}$\,g.
 The full HIRES coverage spans 3650-7960\,\AA, and variable
   emission is visible in Balmer lines from $n$=10$\rightarrow$2, Ca[H]
   and Ca[K], the Mg[I] b triplet, and the 5875 He[I] emission line.
+
+Ha
+Hgamma
+Hdelta?
+He5875
+CaK
+K7700
+Li6708
 
 %TODO: add figure showing spectral variability!
 
