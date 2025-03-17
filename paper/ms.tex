@@ -56,7 +56,7 @@
 
 \begin{abstract}
 \normalfont
-Approximately one percent of red dwarfs younger than 100 million years
+Roughly one percent of red dwarfs younger than 100 million years
 show structured, periodic optical light curves suggestive of
 transiting opaque material that corotates with the star
 \cite{Rebull2016,Stauffer2017,Rebull2018,Bouma2024}.  The
@@ -68,7 +68,7 @@ bright or dark regions on the stellar surfaces
 photometry of a rapidly-rotating ($P$=3.9\,hr)
 CPV, TIC~141146667. The spectra show coherent sinusoidal Balmer
 emission at twice to four times the star's equatorial velocity,
-demonstrating the presence of extended clumps of circumstellar
+demonstrating the existence of extended clumps of circumstellar
 plasma --- a plasma torus.  Given that long-lived condensations of
 cool ($10^4$ K) plasma can persist in the hot ($10^6$ K) coronae of
 stars with a wide range of masses
@@ -559,7 +559,7 @@ without any additional processing.
 \label{subsec:stparams}
 
 {\it Radial Velocity}---We measured radial velocities of TIC~141146667
-our HIRES spectra using a pipeline that we developed specifically for
+from our HIRES spectra using a pipeline that we developed for
 rapidly rotating stars.  Our method is based on template-matching
 against synthetic spectra produced by the PHOENIX stellar atmosphere
 code \cite{Husser2013}.  We used the PHOENIX models with solar
@@ -581,7 +581,7 @@ We then averaged the resulting redshift measurements over each order to
 produce the final measurement.  We used the scatter of resulting
 velocity measurements between orders to assign the RV uncertainty at
 each epoch.  The uncertainty-weighted mean systemic velocity over all
-epochs on 17~February~2024 (UT) was $\gamma$=0.6$\pm$1.5\,\kms.  The
+epochs on 17~February~2024 was $\gamma$=0.6$\pm$1.5\,\kms.  The
 relative radial velocities about this mean are given in
 Table~\ref{tab:rv}.
 
@@ -633,12 +633,12 @@ large orbital separations.
   \caption{
     Spectral energy distribution of broadband photometric magnitudes
     plotted over the best-fit BT-Settl stellar atmosphere model
-    \cite{Allard2012}.  This plot was made using \texttt{astroARIADNE}
+    \cite{Allard2012}.  This plot was made from an adaptation of \texttt{astroARIADNE}
     \cite{Vines2022}.  The photometry extends from the Gaia DR3 blue
-    passband to WISE W3;  the redder (22 $\mu$m) W4 passband did not yield
+    passband to WISE W3;  the W4 passband (22 $\mu$m) did not yield
     a confident detection.  This fit yields the star's temperature and
     size.  The lack of excess infrared flux relative to the photospheric
-    model sets an upper limit on emission from any circumstellar dust.
+    model sets an upper limit on emission from circumstellar dust.
     }
   \label{fig:sed}
 \end{figure}
@@ -813,7 +813,7 @@ age range of 150\,Myr.
 {\it Upper and Low Bounds on Dust}---An upper limit on the amount of hot
 dust follows from the lack of an infrared excess.  A lower limit follows
 if one assumes that most of the broadband optical depth comes from
-absorption and scattering by dust, rather than any radiative processes
+dust absorption and scattering, rather than any radiative processes
 associated with the plasma.
 
 How much dust is allowed, given the lack of an infrared excess?
@@ -823,45 +823,52 @@ yielded only a marginal (1.7$\sigma$) indication of detectable flux.
 Similar to other CPVs \cite{Stauffer2017,Bouma2024}, the photometric
 uncertainties from WISE W1 and W2 allow at most a $\lesssim$2\% excess
 at 3-5\,$\mu$m relative to the stellar photosphere, and a $\lesssim$5\%
-excess at 10\,$\mu$m (W3).  A simple approximation is to assume $T_{\rm
-dust}$=1500\,K, typical for dust near the star (see \cite{Zhan2019} for
-discussion regarding dust sublimation).  We then treat emission from the
-dust and the star as Planck functions, requiring $F_{\lambda,\star} > f
-\cdot F_{\lambda,\mathrm{dust}}$, for $f$ the scaling factor set by the
-WISE photometric uncertainty.  For this condition to hold, we find that
-the bolometric flux ratio $F_{\rm dust}/F_{\star}$$<$6$\cdot$10$^{-3}$.
-Scaling the associated luminosities ($L = \sigma_{\rm SB} T_{\rm eff}^4
-/ (4\pi R^2)$) implies an emitting area for the dust $<$10\% of the
-star's surface area.  Converting this constraint to a dust mass requires
-an assumption regarding the grain properties; taking a grain density
-$\rho$=3\,g\,cm$^{-3}$ typical for silicate grains, and a fixed size
-$a$=1\,$\mu$m \cite{Tanimoto2020,Gunther2022,Koen2023} yields an upper
-limit of $M_{\rm dust}\lesssim$10$^{17}$\,g.
+excess at 10\,$\mu$m (W3).  To estimate the implied mass bound, we
+assume $T_{\rm dust}$=1500\,K, typical for dust near the star (see
+\cite{Zhan2019} for discussion regarding dust sublimation).  We then
+treat emission from the dust and the star as Planck functions,
+requiring $F_{\lambda,\star} > f \cdot F_{\lambda,\mathrm{dust}}$, for
+$f$ the scaling factor set by the WISE photometric uncertainty.  For
+this condition to hold, we find that the bolometric flux ratio $F_{\rm
+dust}/F_{\star}$$<$6$\cdot$10$^{-3}$.  Scaling the associated
+luminosities ($L = \sigma_{\rm SB} T_{\rm eff}^4 / (4\pi R^2)$)
+implies an emitting area for the dust $<$10\% of the star's surface
+area.  Converting this constraint to a dust mass requires an
+assumption regarding the grain properties; assuming a grain density
+$\rho_{\rm d}$=3\,g\,cm$^{-3}$ typical for silicate grains, and a fixed grain
+size $a$=1\,$\mu$m \cite{Tanimoto2020,Gunther2022,Koen2023} yields an
+upper limit of $M_{\rm dust}\lesssim$10$^{17}$\,g.
 
-By way of comparison, the lower limit follows 
-%FIXME TODO finish!!
+By way of comparison, the lower limit follows from requiring the
+optical depth $\tau$ to be at least unity.
+The optical depth can be written $\tau = n \sigma \ell = N \sigma$,
+where $\sigma$ is the cross-section, $n$ is the number density, $\ell$
+is the path length, and $N$ is the column density.
+For spherical dust grains in the optical, $\sigma = Q_{\rm ext} \pi
+a^2$, where $Q_{\rm ext}$ is the extinction efficiency parameter,
+tabulated e.g.~by \cite{Croll2014} in their Figure 13.
+\cite{Sanderson2023} calculated the relevant cloud mass scaling
+assuming a spherical dust clump of size $r$,
+and they found
+\begin{equation}
+  M_{\rm dust} \gtrsim 1.6 \cdot 10^{15}\, {\rm g}\ 
+  \left( \frac{\tau}{1} \right)
+  \left( \frac{Q_{\rm ext}}{3} \right)^{-1}
+  \left( \frac{r}{0.1\,R_\star} \frac{R_\star}{0.34\,R_\odot} \right)^2
+  \left( \frac{a}{1\,\mathrm{\mu m}} \right)
+  \left( \frac{\rho_{\rm d}}{3\,\mathrm{g\,cm^{-3}}} \right).
+\end{equation}
+By way of comparison, prominences of the Sun typically have gas masses
+of order $10^{14}\,g$-$10^{16}$\,g \cite{VialEngvold2015}, whereas a
+planetesimal of this mass with a bulk density of 1\,g\,cm$^{-3}$ would
+have a diameter of order one kilometer.  Halley's comet has a mass of
+order $10^{17}$\,g \cite{Rickman1989}, of which of order one part in a
+thousand is shed per orbit, most of which inspirals toward the Sun due
+to Poynting-Robertson drag.
 
-The associated 
-
-
-which implies a 
-Since the effective temperatures 
-
-luminosity
-
-Under this approximation, 
-
-
-
-, reporting $W4$=8.4 with no uncertainty.  
-The WISE images, available through the IRSA archive, concur.
-
-
-
-%WISE_RSR_W3 9.8380 0.0450
-%W4 = 8.392 +/- nan
-%TODO TODO LEFT OFF HERE
-...
+Broadly, these calculations suggest that if dust is responsible for
+the broadband variability of CPVs, it would need to be concentrated in
+clumps with masses in the range of $10^{15}$-$10^{17}$\,g.
 
 
 
@@ -1002,30 +1009,30 @@ The density and mass of the material...
   Time [JD$_{\rm UTC}$] & RV (\kms) & $\sigma_{\rm RV}$ (\kms) \\
   % from tables/tab_TIC141146667_rel_rv.tex
   \hline 
-  60357.450329 & 1.72 & 5.86 \\
-  60357.461255 & -5.41 & 2.37 \\
-  60357.472181 & -1.21 & 2.64 \\
-  60357.483109 & 2.83 & 2.87 \\
-  60357.494030 & 6.52 & 7.53 \\
-  60357.504949 & -3.0 & 1.44 \\
-  60357.515873 & 0.01 & 1.21 \\
-  60357.526794 & -0.38 & 7.03 \\
-  60357.537717 & -3.92 & 2.71 \\
-  60357.548639 & 7.92 & 6.75 \\
-  60357.559566 & 4.94 & 8.84 \\
-  60357.570487 & -3.26 & 3.06 \\
-  60357.581408 & 0.83 & 1.34 \\
-  60357.592330 & 1.4 & 8.24 \\
-  60357.603251 & -8.05 & 3.94 \\
-  60357.614172 & -3.26 & 3.07 \\
-  60357.625095 & -3.84 & 7.55 \\
-  60357.636019 & -1.6 & 2.26 \\
-  60357.646940 & 0.82 & 2.91 \\
-  60357.657861 & 3.53 & 3.95 \\
-  60357.668781 & 5.2 & 12.14 \\
+  60357.450329 & 2.73 & 5.86 \\
+  60357.461255 & -4.40 & 2.37 \\
+  60357.472181 & -0.19 & 2.64 \\
+  60357.483109 & 3.84 & 2.87 \\
+  60357.494030 & 7.53 & 7.53 \\
+  60357.504949 & -1.98 & 1.44 \\
+  60357.515873 & 1.02 & 1.21 \\
+  60357.526794 & 0.64 & 7.03 \\
+  60357.537717 & -2.91 & 2.71 \\
+  60357.548639 & 8.93 & 6.75 \\
+  60357.559566 & 5.95 & 8.84 \\
+  60357.570487 & -2.25 & 3.06 \\
+  60357.581408 & 1.84 & 1.34 \\
+  60357.592330 & 2.41 & 8.24 \\
+  60357.603251 & -7.04 & 3.94 \\
+  60357.614172 & -2.24 & 3.07 \\
+  60357.625095 & -2.83 & 7.55 \\
+  60357.636019 & -0.59 & 2.26 \\
+  60357.646940 & 1.84 & 2.91 \\
+  60357.657861 & 4.54 & 3.95 \\
+  60357.668781 & 6.21 & 12.14 \\
   \hline
   \end{tabular}
-  \caption{TIC~141146667 radial velocities.}
+  \caption{TIC~141146667 radial velocities relative to the systemic velocity.}
   \label{tab:rv}
 \end{table}
 
