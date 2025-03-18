@@ -661,7 +661,7 @@ with apparent separations below 0$\farcs$1.
   \label{fig:sed}
 \end{figure}
 
-{\it Effective temperature, radius, mass, and spectral type} We adopted
+{\it Effective temperature, radius, mass, and spectral type}---We adopted
 the star's effective temperature and radius measured using the spectral
 energy distribution (SED) fitting procedure described by
 \cite{Bouma2024}.  To summarize, this approach used
@@ -829,62 +829,75 @@ age range of 150\,Myr.
 
 
 
-{\it Upper and Low Bounds on Dust}---An upper limit on the amount of hot
-dust follows from the lack of an infrared excess.  A lower limit follows
-if one assumes that most of the broadband optical depth comes from
-dust absorption and scattering, rather than any radiative processes
-associated with the plasma.
+{\it Upper and Low Bounds on Dust}---An upper limit on the amount of
+hot dust follows from the lack of an infrared excess.  A lower limit
+follows if one assumes that most of the broadband optical depth comes
+from dust absorption and scattering, rather than any radiative
+processes associated with the plasma.
 
-How much dust is allowed, given the lack of an infrared excess?
-Figure~\ref{fig:sed} shows the SED.  While AllWISE \cite{Cutri2014}
-yielded a confident W3 detection (9.8$\sigma$), the W4 extraction
-yielded only a marginal indication (1.7$\sigma$) of detectable flux.
-Similar to other CPVs \cite{Stauffer2017,Bouma2024}, the photometric
-uncertainties from WISE W1 and W2 allow at most a $\lesssim$2\% excess
-at 3-5\,$\mu$m relative to the stellar photosphere, and a $\lesssim$5\%
-excess at 10\,$\mu$m (W3).  To estimate the implied mass bound, we
-assume $T_{\rm dust}$=1500\,K, typical for dust near the star (see
+Regarding the upper limit, Figure~\ref{fig:sed} shows the SED.  While
+AllWISE \cite{Cutri2014} yielded a confident W3 detection
+(9.8$\sigma$), the W4 extraction yielded only a marginal indication
+(1.7$\sigma$) of detectable flux.  Similar to other CPVs
+\cite{Stauffer2017,Bouma2024}, the photometric uncertainties from WISE
+W1 and W2 allow at most a $\lesssim$2\% excess at 3-5\,$\mu$m relative
+to the stellar photosphere, and a $\lesssim$5\% excess at 10\,$\mu$m
+(W3).  To estimate the implied mass bound, we assume a dust
+temperature $T_{\rm d}$=1500\,K, typical for dust near the star (see
 \cite{Zhan2019} for discussion regarding dust sublimation).  We then
-treat emission from the dust and the star as Planck functions,
-requiring $F_{\lambda,\star} > f \cdot F_{\lambda,\mathrm{dust}}$, for
-$f$ the scaling factor set by the WISE photometric uncertainty.  For
-this condition to hold, we find that the bolometric flux ratio $F_{\rm
-dust}/F_{\star}$$<$6$\cdot$10$^{-3}$.  Scaling the associated
-luminosities ($L = \sigma_{\rm SB} T_{\rm eff}^4 / (4\pi R^2)$)
-implies an emitting area for the dust $<$10\% of the star's surface
-area.  Converting this constraint to a dust mass requires an
-assumption regarding the grain properties; assuming a grain density
-$\rho_{\rm d}$=3\,g\,cm$^{-3}$ typical for silicate grains, and a fixed grain
-size $a$=1\,$\mu$m \cite{Tanimoto2020,Gunther2022,Koen2023} yields an
-upper limit of $M_{\rm dust}\lesssim$10$^{17}$\,g.
-
-By way of comparison, the lower limit follows from requiring the
-optical depth $\tau$ to be at least unity.
-The optical depth can be written $\tau = n \sigma \ell = N \sigma$,
-where $\sigma$ is the cross-section, $n$ is the number density, $\ell$
-is the path length, and $N$ is the column density.
-For spherical dust grains in the optical, $\sigma = Q_{\rm ext} \pi
-a^2$, where $Q_{\rm ext}$ is the extinction efficiency parameter,
-tabulated e.g.~by \cite{Croll2014} in their Figure 13.
-\cite{Sanderson2023} calculated the relevant cloud mass scaling
-assuming a spherical dust clump of size $r$,
-and they found
+treat emission from the dust and the star as Planck functions, and
+require $L_{\rm d} < f L_\star$, where the factor $f$ is set by
+photometric precision of WISE and $L_{\rm d}$ is the bolometric dust
+luminosity.  Given the reported uncertainties, we numerically find
+$f<6\cdot$10$^{-3}$.  From the Stefan-Boltzmann law we can then write
+$A_{\rm d} < f (T_\star / T_{\rm d})^4 Q_{\rm em}^{-1} (4\pi
+R_\star)^2$, for $A_{\rm d}$ the total emitting surface area of the
+dust, and $Q_{\rm em}$ is an emission efficiency parameter.
+Converting this constraint to a dust mass requires an assumption
+regarding the grain properties.  We assume a grain density $\rho_{\rm
+d}$=3\,g\,cm$^{-3}$ typical for silicate grains, a fixed grain size
+$a$=1\,$\mu$m \cite{Tanimoto2020,Gunther2022,Koen2023}, and no
+self-absorption.  This enables the assumption that $A_{\rm d} = N \pi
+a^2$, for $N$ the total number of dust grains.  This in turn yields an
+upper limit on the dust mass of
 \begin{equation}
-  M_{\rm dust} \gtrsim 1.6 \cdot 10^{15}\, {\rm g}\ 
-  \left( \frac{\tau}{1} \right)
-  \left( \frac{Q_{\rm ext}}{3} \right)^{-1}
-  \left( \frac{r}{0.1\,R_\star} \frac{R_\star}{0.34\,R_\odot} \right)^2
+  M_{\rm dust} \lesssim 4 \cdot 10^{17}\, {\rm g}\ 
+  \left( \frac{f}{6\cdot10^{-3}} \right)
+  \left( \frac{T_\star}{3000\,{\rm K}} \frac{1500\,{\rm K}}{T_{\rm d}} \right)^4
+  \left( \frac{Q_{\rm em}}{1} \right)^{-1}
+  \left( \frac{R_\star}{0.4\,R_\odot} \right)^2
   \left( \frac{a}{1\,\mathrm{\mu m}} \right)
   \left( \frac{\rho_{\rm d}}{3\,\mathrm{g\,cm^{-3}}} \right).
 \end{equation}
-By way of comparison, prominences of the Sun typically have gas masses
-of order $10^{14}\,g$-$10^{16}$\,g \cite{VialEngvold2015}, whereas a
-planetesimal of this mass with a bulk density of 1\,g\,cm$^{-3}$ would
-have a diameter of order one kilometer.  Halley's comet has a mass of
-order $10^{17}$\,g \cite{Rickman1989}, of which of order one part in a
-thousand is shed per orbit, most of which inspirals toward the Sun due
-to Poynting-Robertson drag.
 
+The analogous lower limit follows from requiring the optical depth
+from absorption and scattering $\tau$ to be at least unity.  The
+optical depth can be written $\tau = n \sigma \ell = N \sigma$, where
+$\sigma$ is the cross-section, $n$ is the number density, $\ell$ is
+the path length, and $N$ is the column density.  For spherical dust
+grains in the optical, $\sigma = Q_{\rm ext} \pi a^2$, where $Q_{\rm
+ext}$ is the extinction efficiency parameter, tabulated e.g.~by
+\cite{Croll2014} in their Figure 13.  \cite{Sanderson2023} calculated
+the relevant cloud mass scaling assuming a spherical dust clump of
+size $r$, and they estimated
+\begin{equation}
+  M_{\rm dust} \gtrsim 2 \cdot 10^{15}\, {\rm g}\ 
+  \left( \frac{\tau}{1} \right)
+  \left( \frac{Q_{\rm ext}}{3} \right)^{-1}
+  \left( \frac{r}{0.1\,R_\star} \frac{R_\star}{0.4\,R_\odot} \right)^2
+  \left( \frac{a}{1\,\mathrm{\mu m}} \right)
+  \left( \frac{\rho_{\rm d}}{3\,\mathrm{g\,cm^{-3}}} \right).
+\end{equation}
+
+Three relevant objects for comparison to these limits include solar
+prominences, planetesimals, and comets.
+Prominences of the Sun typically have gas masses
+of order $10^{14}$\,g-$10^{16}$\,g \cite{VialEngvold2015}.
+A planetesimal of mass $\approx$10$^{15}$\,g with a bulk density of
+1\,g\,cm$^{-3}$ would have a diameter of order one kilometer.
+Halley's comet has a mass of order $10^{17}$\,g \cite{Rickman1989}, of
+which $\sim$$10^{14}$\,g is shed per orbit, most of which inspirals
+toward the Sun due to Poynting-Robertson drag.
 Broadly, these calculations suggest that if dust is responsible for
 the broadband variability of CPVs, it would need to be concentrated in
 clumps with masses in the range of $10^{15}$-$10^{17}$\,g.
