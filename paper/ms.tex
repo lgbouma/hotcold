@@ -246,30 +246,30 @@ suggestive of eclipse geometries seen in some forward models of warped
 plasma tori \cite{Townsend2008}.
 
 % ** keck/hires: emission beyond v/veq>1
-The spectroscopy shows emission well beyond the star's equatorial
-velocity ($v_{\rm eq}$=130\,\kms).  There are at least two distinct
-emission components, separated by half a cycle in phase.  The first
-component has clearer sinusoidal behaviour and is double-peaked, with
-peak semi-amplitudes of $K_1$=2.1\,$v_{\rm eq}$ and 2.7\,$v_{\rm eq}$.
-There is significant non-periodic variability in this double-peaked
-component: the flux excess from both peaks begins with an amplitude
-equal to 100\% of the continuum flux early in the observation
-sequence, and falls to 30\% by its end.  The component 180$^\circ$
-opposite in phase is similarly only detected from $\phi$=0.2-1.0.
-From $\phi$=0.2-0.5, this latter component appears connected to the
-star in velocity space.  While its peak semi-amplitude of
-$K_1$=3.9\,$v_{\rm eq}$ is achieved at both $\phi$=0.25 and 0.75, its
-amplitude decreases from a 60\% excess over the continuum at the
-beginning of the observation sequence to a 10\% excess by its end.
-The sinusoidal period for all of these emission components is
-consistent with the photometric \periodhr\ hour period.  
+The spectroscopy shows emission beyond the star's equatorial velocity
+($v_{\rm eq}$=130\,\kms).  There are at least two distinct emission
+components, separated by half a cycle in phase.  The first component
+has clearer sinusoidal behaviour and is double-peaked, with peak
+semi-amplitudes of $K_1$=2.1\,$v_{\rm eq}$ and 2.7\,$v_{\rm eq}$.
+There is significant non-periodic variability in the emissivity of
+this double-peaked component: the flux excess begins with an amplitude
+of 70\% of the continuum flux early in the observation sequence, and
+diminishes to 10\% by its end.  The component 180$^\circ$ opposite in
+phase is detected only from $\phi$=0.2-1.0.  From $\phi$=0.2-0.5, this
+latter component appears connected to the star in velocity space.
+While its peak semi-amplitude of $K_1$=3.9\,$v_{\rm eq}$ is achieved
+at both $\phi$=0.25 and 0.75, its amplitude similarly decreases from a
+60\% excess over the continuum at the beginning of the observation
+sequence to a 10\% excess by its end.  The sinusoidal period for all
+of these emission components is consistent with the photometric
+\periodhr\ hour period.  
 
 These sinusoidal emission features require circumstellar clumps of
 partially-ionized hydrogen to corotate with the star.  
 Based on the period, this material's motion is not Keplerian; it can
 only be explained by plasma being dragged along with the rotating
 stellar magnetic field. 
-The velocity semi-amplitude of the sinusoids then gives the distance
+The velocity semi-amplitude of the sinusoids gives the distance
 of the clumps from the stellar surface: 2.1-2.7\,$R_\star$ for the
 closer clump, and 3.9\,$R_\star$ for the other.   These clumps transit
 in front of the star when passing from negative to positive velocity.
@@ -951,33 +951,78 @@ both shown in Figure~\ref{fig:hirescuts}.  In the latter, narrow
 telluric absorption features overlap the blue wing of the line.
 Neither of these regions shows any notable variability.
 
-%\subsection{Spectral Behavior of Other Lines}
-%
-%First, chromospheric:
-%
-%{\it H$\gamma$, H$\delta$}
-%Line ratios.
-%
-%{\it Ca [K]}
-%{\it Also} shows some high-velocity emission.  So, the emitting material has
-%calcium ions.
-%
-%{\it He 5880}
-%Also variable...
-%
-%{\it Magnesium b orders}
-%Shows some variability that is horrendously blended.
-%
-%{\it K[I] 7700}
-%Literally the only obvious photospheric line.
-
-
 
 \subsection{Modeling the Emitting Clump}
 \label{subsec:model}
 
-% * mass estimate
-The density and mass of the material...
+The physical conditions inside the circumstellar plasma clumps, in
+particular the hydrogen number density, plasma temperature, ionization
+fraction, and magnetic field strength can all be estimated using the
+available data.
+We caution that the following estimates are coarse: detailed
+considerations of radiative transfer and detailed balance are a
+worthwhile topic for future work, but are beyond our immediate scope.
+
+Circumstellar H$\alpha$ emission might be sourced either from
+scattering of stellar H$\alpha$ photons, or from recombination.  We
+neglect scattering because we see the amplitude of the circumstellar
+emission to vary by a factor of $\approx$5, which is not mirrored in
+the chromospheric line core.  The volume emissivity under case B
+recombination (in which Lyman-series photons are trapped by high
+optical depth, so that recombinations cascade through H$\alpha$ and
+other Balmer lines) can be written as
+\begin{equation}
+  j_{\rm H\alpha} = n_{\rm e} n_{\rm p} \alpha^{\rm eff}_{\rm H\alpha}(T) h \nu_{\rm H\alpha},
+\end{equation}
+where $n_{\rm e}$ and $n_{\rm p}$ are the electron and proton densities,
+and $\alpha^{\rm eff}_{\rm H\alpha}(T)$ is the effective recombination
+coefficient, i.e.\ the number of recombinations per unit volume, per
+unit time.
+For hydrogen with temperatures between 1,000 and 10,000\,K with
+densities $n_{\rm H}$$\sim$10$^{10}$\,cm$^{-3}$,
+$\alpha^{\rm eff}_{\rm H\alpha}$ is typically on the order of $10^{-12}$ to
+$10^{-13}$\,cm$^3$\,s$^{-1}$ \cite{Hummer1987}.
+Neglecting the effects of atoms other than hydrogen, we can assume
+an ionization fraction $x$, such that $n_{\rm e} = n_{\rm p} = x
+n_{\rm H}$, for $n_{\rm H}$ the hydrogen number density.  Let $L_{\rm
+H\alpha} = j_{\rm H\alpha} V$, for $V$ the volume of the emitting
+hydrogen.
+The luminosity of circumstellar hydrogen emission, $L_{\rm H\alpha}$,
+is an observable: our SED fitting routine yields
+$L_\star$$\approx$0.012\,$L_\odot$, which gives
+$L_{\rm H\alpha},\star$$\approx$1.0$\times$$10^{28}$erg\,s$^{-1}$, and
+the luminosity of the clump $L_{\rm H\alpha}$ is of order one tenth
+that of the star.
+Assuming an emitting sphere of radius $r$, we can write
+\begin{equation}
+  n_H = \frac{1}{x}
+  \left( 
+    \frac{L_{\rm H\alpha}}{ \alpha^{\rm eff}_{\rm H\alpha}(T) h \nu_{\rm H\alpha} V }
+  \right)^{1/2}.
+\end{equation}
+Taking nominal parameters of $r = 0.1 R_\star$, $x=1/2$, and
+$\alpha^{\rm eff}_{\rm H\alpha}$=$10^{-13}$\,cm$^3$\,s$^{-1}$,
+we find $n_{\rm H}\approx 5\times10^{11}$\,cm$^{-3}$.
+Assuming a uniform density clump, this yields $M_{\rm H}\approx
+8\times10^{16}$\,g.
+A constraint on the magnetic field strength at the site of the clump
+follows from the requirement that the magnetic pressure exceed the
+thermal pressure, $B^2 / 8\pi > n_{\rm H} k T$.
+Although we do not know the plasma temperature,
+if it were significantly outside the range of
+1,000 and 10,000\,K,
+we would either full ionize the hydrogen, or not ionized enough of it.
+We can therefore estimate
+\begin{equation}
+  B \gtrsim 3\,{\rm G}
+  \left(
+  \frac{n_{\rm H}}{5\times10^{11}\,{\rm cm}^{-3}}
+  \frac{T}{5000\,{\rm K}}
+  \right).
+\end{equation}
+Given typical  magnetic field strengths of low-mass stars, this bound
+is easily met.
+%TODO FIXME CITE KOCHUKHOV HERE
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
