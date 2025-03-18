@@ -7,6 +7,7 @@
 \usepackage{amssymb}
 \usepackage{aas_macros_nature}
 \usepackage{lineno}
+\usepackage{caption}
 
 \linespread{1.0}
 \linenumbers % turn line numbering on or off
@@ -139,7 +140,8 @@ lives.
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.7\textwidth]{figures/f1.pdf}
-  \caption[]{{\bf Figure 1 (Movie):  TIC~141146667 is a complex periodic
+  \captionsetup{labelformat=empty}
+  \caption{{\bf Figure 1 (Movie):  TIC~141146667 is a complex periodic
   variable (CPV).}  The online movie,
   available
   \href{https://lgbouma.com/movies/TIC141146667_20250116.mp4}{here},
@@ -201,23 +203,24 @@ after the data gap.
 \begin{figure}[!tp]
   \centering
   \includegraphics[width=0.99\textwidth]{figures/f2.png}
-  \caption[]{{\bf Figure 2 (Movie):}  
+  \captionsetup{labelformat=empty}
+  \caption{{\bf Figure 2 (Movie):}  
   Hydrogen emission from circumstellar plasma orbiting TIC 141146667.
   {(\bf TODO)}For the best experience, please view the online movie
   available
   \href{https://lgbouma.com/movies/TIC141146667_sixpanel.mp4}{here}.
-  {\bf Panel a:} TESS light curve from UT 2024-02-05 to UT
-  2024-02-26 folded on the \periodhr\ hour period.  Black points are
-  averaged; gray are the raw data.
+  {\bf Panel a:} TESS light curve from 5 February 2024 to 26 February
+  2024 (UT) folded on the \periodhr\ hour period.  Black points are
+  phase-averaged; gray are the raw data.
   {\bf Panel b:} Keck/HIRES H$\alpha$ spectra
-  acquired on UT 2024-02-17.  The continuum is set to unity, and the
-  darkest color is set at twice the continuum to accentuate emission
+  acquired on UT 17 February 2024.  The continuum is set to unity, and the
+  darkest color is at twice the continuum to accentuate emission
   outside the line core ($|v/v_{\rm eq}|>1$, for $v_{\rm eq}$=130\,\kms).
   While emission in the line core originates in the stellar
   chromosphere, the sinusoidal emission features are most readily
   described by a warped plasma torus.
   {\bf Panel c:} Individual epochs of Panel b, visible in the
-  online movie.  The dotted line shows a time-averaged spectrum,
+  online movie.  The dotted line shows the time-averaged spectrum,
   $f_{\langle t \rangle}$.
   {\bf Panel d:} As in Panel a, but overplotting the
   median-normalized H$\alpha$ light curve at $|v/v_{\rm eq}|<1$.
@@ -378,16 +381,16 @@ of masses have been known to exhibit both sinusoidal emission features
 transient absorption features in their line cores
 \cite{CollierCameron1989,CollierCameron1992,Cang2020} similar to
 Figure~\ref{fig:spec}.  No such stars were previously known to show
-complex light curves \cite{Bouma2024}.  The usual interpretation for
+complex light curves \cite{Bouma2024}.   One interpretation for
 such spectroscopic variability comes from an analogy to quiescent solar
 prominences, which are cool condensations of plasma in the solar corona
 that can last days to weeks \cite{VialEngvold2015}.  In our Sun's
 magnetosphere, these condensations fall back to the solar surface
-because gravity is stronger than any magnetic or centrifugal force
+because gravity is stronger than any magnetic tension or centrifugal force
 capable of sustaining them.  However for stars with magnetospheric radii
 $R_{\rm m}$ that exceed their corotation radii $R_{\rm c}$, the
 effective potential experienced by a charged particle can have a local
-minimum outside $R_{\rm c}$, enabling the material to be sustained for
+minimum outside $R_{\rm c}$, enabling the material to accumulate over
 much longer timescales \cite{Petit2013,Daley-Yates2024}.  Generally
 speaking, such material need neither transit, nor be optically thick.
 
@@ -426,7 +429,7 @@ HD~37776 and HD~64740, show complex light curves resembling CPVs
 field maps indicating strong contributions from higher-order magnetic
 moments \cite{Kochukhov2011,Shultz2018}.  There are two implications:
 first, the complexity of CPVs may be a direct consequence of magnetic
-fields with highly multipolar contributions.  Second, CPVs could be a
+fields with highly multipolar contributions.  Second, CPVs can be a
 source of astrophysical false positives in photometric searches for
 eclipsing binaries and transiting exoplanets around young pre-main
 sequence M dwarfs \cite{Johns-Krull2016,Bouma2020}.
@@ -509,11 +512,11 @@ magnetospheres -- host similar circumstellar environments to the CPVs.
   {\bf Panels b,c}: Folded light curve before and after spectroscopy.
   Raw two minute data are in gray; black phase-averages to 100 points
   per cycle.
-  In the BTJD 3352-3356 window, a state switch occurred near BTJD 3353,
+  During BTJD 3352-3356, a state switch occurred near BTJD 3353,
   in which the dip at $\phi$$\approx$0.8 disappeared.
-  While the large, complex eclipse feature remained present before and
-  after the HIRES sequence, its photometric shape evolved during the
-  data gap.
+  While the large eclipse feature remained present before and after
+  the HIRES sequence, its photometric shape evolved during the data
+  gap.
   }
   \label{fig:fulllc}
 \end{figure}
