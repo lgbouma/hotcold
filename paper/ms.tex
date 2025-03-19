@@ -69,14 +69,14 @@ bright or dark regions on the stellar surfaces
 photometry of a rapidly-rotating ($P$=3.9\,hr)
 CPV, TIC~141146667. The spectra show coherent sinusoidal Balmer
 emission at twice to four times the star's equatorial velocity,
-demonstrating the existence of extended clumps of circumstellar
+demonstrating the existence of extended clumps of corotating circumstellar
 plasma --- a plasma torus.  Given that long-lived condensations of
 cool ($10^4$ K) plasma can persist in the hot ($10^6$ K) coronae of
 stars with a wide range of masses
 \cite{CollierCameron1989,Townsend2005,Dunstone2006,Petit2013,Waugh2022,Daley-Yates2024},
 these data support the idea that around the lowest-mass stars, such
 condensations can be optically thick; the exact origin of the
-material and its microphysical opacity remain unclear.
+optically thick material and its microphysical opacity remain unclear.
 \end{abstract}
 
 \maketitle
@@ -451,7 +451,8 @@ distribution of any dust that is present could be determined
 by measuring the extinction curve for one or more CPVs from
 1-10\,$\mu$m.  Composition and size distributions similar to debris from
 rocky bodies seen around white dwarfs \cite{Reach2009} would indicate a
-rocky-body origin.  Compositions and sizes similar to the ISM would be
+rocky-body origin.  Compositions and sizes similar to the interstellar
+medium would be
 indicative of condensed dust in an M dwarf wind, similar to that formed
 in the environments of more evolved stars \cite{Marigo2008}.
 
@@ -476,13 +477,14 @@ strength at the site of the emitting region.
 
 
 It is currently unclear what, if any, relationship CPVs have to the
-close-in rocky exoplanets that exist around most M dwarfs \cite{Dressing2015}.
-However, 0.3-3\% of young M dwarfs show the CPV phenomenon
-\cite{Rebull2020}, and our data show that the phenomenon occurs when
-clumps of circumstellar material transit the star.  The implied
-geometric correction suggests that an appreciable minority (10-30\%) of
-young M dwarfs -- the rapidly rotating ones with centrifugal
-magnetospheres -- host similar circumstellar environments to the CPVs.
+close-in rocky exoplanets that exist around most M dwarfs
+\cite{Dressing2015}.  However, 0.3-3\% of young M dwarfs show the CPV
+phenomenon \cite{Rebull2020}, and our data show that the complex
+photometric features occur when clumps of circumstellar material is
+transiting the star.  The implied geometric correction suggests that
+an appreciable minority (10-30\%) of young M dwarfs -- the rapidly
+rotating ones with centrifugal magnetospheres -- host similar
+circumstellar environments to the CPVs.
 
 
 
@@ -832,7 +834,140 @@ age range of 150\,Myr.
 
 
 
-{\it Upper and Low Bounds on Dust}---An upper limit on the amount of
+
+\subsection{Spectroscopic Variability}\phantom{+}
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/sf5.pdf}
+  \caption{Time evolution of select regions in the Keck/HIRES
+  spectra from 17 February 2025.
+  The spectra have been smoothed with a Gaussian filter, and cosmic
+  rays have been removed.
+  The horizontal axis shows the relative velocity centered on each
+  line's rest wavelength, normalized by the stellar equatorial
+  velocity.  
+  H$\alpha$ is the only Balmer line to show periodic variability of
+  the form seen in Figure~\ref{fig:spec}.
+  The He 5876\,\AA\ line shows a time-dynamic blueshift that 
+  differs from the Balmer lines.
+  Li 6708\,\AA\ shows no obvious absorption.
+  }
+  \label{fig:hirescuts}
+\end{figure}
+
+Figure~\ref{fig:hirescuts} shows a few regions of interest in the HIRES
+spectra, which cover 3650-7960\,\AA.
+Higher order Balmer lines including H$\gamma$ and H$\delta$ (the
+$n=5\rightarrow2$ and $n=6\rightarrow2$ transitions respectively) do
+show some variability outside the line core.
+However, this variability is not clearly periodic in the
+same manner as the emission seen in H$\alpha$.
+This could be because there are insufficient hydrogen ions in the
+relevant excited states, or due to the lower precision of the spectra
+in these bluer regions.
+The Ca HK doublet for instance is also detectable in emission, however
+the continuum near it is not.
+Chromospheric emission lines in the magnesium triplet order are
+also detectable, but sufficiently blended to be rendered unusable.
+
+One notable feature is that H$\alpha$, H$\gamma$, H$\delta$, and He
+5876\,\AA\ all show a blue excess at $\phi$$\approx$0.2.  At the same
+epoch, only H$\alpha$ clearly shows a resolved red excess as well,
+although $H\gamma$ and H$\delta$ are broader at this time.  Given the
+sudden rise of this emission in $<$15\,minutes, and the association
+between He 5876\,\AA\ and stellar outflows at high excitation energy,
+this component of the spectra might be more easily associated with a
+flare than with a stable, periodic component.
+
+Finally, the Li\,\textsc{I} 6708\,\AA\ doublet, which shows no obvious
+absorption, as well as the broad K\,\textsc{I} 7699\,\AA\ resonance
+line are both shown in Figure~\ref{fig:hirescuts}.  In the latter,
+narrow telluric absorption features overlap the blue wing of the line.
+Neither of these regions shows any notable variability.
+
+
+\subsection{Properties of the Plasma and Magnetospheric Environment}\phantom{+}
+\label{subsec:gas}
+
+The physical conditions inside the circumstellar plasma clumps, in
+particular the hydrogen number density, plasma temperature, ionization
+fraction, and magnetic field strength can all be estimated using the
+available data.  We caution that the following estimates are coarse:
+detailed considerations of radiative transfer and detailed balance are
+a worthwhile topic for future work, but are beyond the scope of this
+article.
+
+Circumstellar H$\alpha$ emission might be sourced either from
+scattering of stellar H$\alpha$ photons, or from recombination.  We
+neglect scattering because we see the amplitude of the circumstellar
+emission to vary by a factor of $\approx$5, which is not mirrored in
+the chromospheric line core.  The volume emissivity under case B
+recombination (in which Lyman-series photons are trapped by high
+optical depth, so that recombinations cascade through H$\alpha$ and
+other Balmer lines) can be written as
+\begin{equation}
+  j_{\rm H\alpha} = n_{\rm e} n_{\rm p} \alpha^{\rm eff}_{\rm H\alpha}(T) h \nu_{\rm H\alpha},
+\end{equation}
+where $n_{\rm e}$ and $n_{\rm p}$ are the electron and proton densities,
+and $\alpha^{\rm eff}_{\rm H\alpha}(T)$ is the effective recombination
+coefficient, i.e.\ the number of recombinations per unit volume, per
+unit time.
+For hydrogen with temperatures between 1,000 and 10,000\,K with
+densities $n_{\rm H}$$\sim$10$^{10}$\,cm$^{-3}$,
+$\alpha^{\rm eff}_{\rm H\alpha}$ is typically on the order of $10^{-12}$ to
+$10^{-13}$\,cm$^3$\,s$^{-1}$ \cite{Hummer1987}.
+Neglecting the effects of atoms other than hydrogen, we can assume
+an ionization fraction $x$, such that $n_{\rm e} = n_{\rm p} = x
+n_{\rm H}$, for $n_{\rm H}$ the hydrogen number density.  Let $L_{\rm
+H\alpha} = j_{\rm H\alpha} V$, for $V$ the volume of the emitting
+hydrogen.
+The luminosity of circumstellar hydrogen emission, $L_{\rm H\alpha}$,
+is an observable: our SED fitting routine yields
+$L_\star$$\approx$0.012\,$L_\odot$, which gives
+$L_{\rm H\alpha},\star$$\approx$1.0$\times$$10^{28}$erg\,s$^{-1}$, and
+the luminosity of the clump $L_{\rm H\alpha}$ is of order one tenth
+that of the star.
+Assuming an emitting sphere of radius $r$, we can write
+\begin{equation}
+  n_H = \frac{1}{x}
+  \left( 
+    \frac{L_{\rm H\alpha}}{ \alpha^{\rm eff}_{\rm H\alpha}(T) h \nu_{\rm H\alpha} V }
+  \right)^{1/2}.
+\end{equation}
+Taking nominal parameters of $r = 0.1 R_\star$, $x=1/2$, and
+$\alpha^{\rm eff}_{\rm H\alpha}$=$10^{-13}$\,cm$^3$\,s$^{-1}$,
+we find $n_{\rm H}\approx 5\times10^{11}$\,cm$^{-3}$.
+Assuming a uniform density clump, this yields $M_{\rm gas}\approx
+8\times10^{16}$\,g.
+
+Finally, a constraint on the magnetic field strength at the site of the clump
+follows from the requirement that the magnetic pressure exceed the
+thermal pressure, $B^2 / 8\pi > n_{\rm H} k T$.
+Although we do not know the plasma temperature,
+if it were significantly outside the range of
+1,000 and 10,000\,K,
+we would either full ionize the hydrogen, or not ionized enough of it.
+We can therefore estimate
+\begin{equation}
+  B \gtrsim 3\,{\rm G}
+  \left(
+  \frac{n_{\rm H}}{5\times10^{11}\,{\rm cm}^{-3}}
+  \frac{T}{5000\,{\rm K}}
+  \right).
+\end{equation}
+Given that the average surface magnetic field strengths of low-mass
+stars have been measured to span hundreds to thousands of Gauss
+\cite{Kochukhov2021}, this bound is easily met.
+
+\subsection{Upper and Low Bounds on Dust}\phantom{+}
+\label{subsec:dust}
+
+The material's exact composition -- either pure plasma, or else a
+dusty plasma -- is not known.  In particular, the idea of dust being
+present seems plausible given observations of chromatic transits in
+analogous objects \cite{Tanimoto2020,Gunther2022,Koen2023}.
+This scenario is highly constrained.  An upper limit on the amount of
 hot dust follows from the lack of an infrared excess.  A lower limit
 follows if one assumes that most of the broadband optical depth comes
 from dust absorption and scattering, rather than any radiative
@@ -893,142 +1028,27 @@ size $r$, and they estimated
 \end{equation}
 
 Three relevant objects for comparison to these limits include solar
-prominences, planetesimals, and comets.
-Prominences of the Sun typically have gas masses
-of order $10^{14}$\,g-$10^{16}$\,g \cite{VialEngvold2015}.
-A planetesimal of mass $\approx$10$^{15}$\,g with a bulk density of
-1\,g\,cm$^{-3}$ would have a diameter of order one kilometer.
-Halley's comet has a mass of order $10^{17}$\,g \cite{Rickman1989}, of
-which $\sim$$10^{14}$\,g is shed per orbit, most of which inspirals
-toward the Sun due to Poynting-Robertson drag.
-Broadly, these calculations suggest that if dust is responsible for
-the broadband variability of CPVs, it would need to be concentrated in
-clumps with masses in the range of $10^{15}$-$10^{17}$\,g.
+prominences, planetesimals, and comets.  Prominences of the Sun
+typically have gas masses of order $10^{14}$\,g-$10^{16}$\,g
+\cite{VialEngvold2015}.  A planetesimal of mass $\approx$10$^{15}$\,g
+with a bulk density of 1\,g\,cm$^{-3}$ would have a diameter of order
+one kilometer.  Halley's comet has a mass of order $10^{17}$\,g
+\cite{Rickman1989}, of which $\sim$$10^{14}$\,g is shed per orbit,
+most of which inspirals toward the Sun due to Poynting-Robertson drag.
+
+Broadly, our calculations suggest that if dust is responsible for the
+broadband variability of CPVs, it would need to be concentrated in
+clumps with masses in the range of $10^{15}$-$10^{17}$\,g.  Given
+$M_{\rm gas}$$\approx$8$\times$10$^{16}$\,g from
+Section~\ref{subsec:gas}, this range spans mass ratio ranges $M_{\rm
+gas}/M_{\rm dust}$ of 100 to 1.  More careful measurements of this
+ratio---in particular enabled by inferring the dust mass through high
+precision infrared spectrophotometry---would provide a pathway for
+distinguishing between environments that more closely resemble the
+interstellar medium versus protoplanetary disks.
 
 
 
-\subsection{Spectroscopic Variability}\phantom{+}
-
-\begin{figure}[!t]
-  \centering
-  \includegraphics[width=\textwidth]{figures/sf5.pdf}
-  \caption{Time evolution of select regions in the Keck/HIRES
-  spectra from 17 February 2025.
-  The spectra have been smoothed with a Gaussian filter.
-  The horizontal axis shows the relative velocity centered on each
-  line's rest wavelength, normalized by the stellar equatorial
-  velocity.  
-  H$\alpha$ is the only Balmer line to show periodic variability of
-  the form seen in Figure~\ref{fig:spec}.
-  The He 5876\,\AA\ line shows a time-dynamic blueshift that 
-  differs from the Balmer lines.
-  Li 6708\,\AA\ shows no obvious absorption.
-  }
-  \label{fig:hirescuts}
-\end{figure}
-
-Figure~\ref{fig:hirescuts} shows a few regions of interest in the HIRES
-spectra, which cover 3650-7960\,\AA.
-Higher order Balmer lines including H$\gamma$ and H$\delta$ (the
-$n=5\rightarrow2$ and $n=6\rightarrow2$ transitions respectively) do
-show some variability outside the line core.
-However, this variability is not clearly periodic in the
-same manner as the emission seen in H$\alpha$.
-This could be because there are insufficient hydrogen ions in the
-relevant excited states, or due to the lower precision of the spectra
-in these bluer regions.
-The Ca HK doublet for instance is also detectable in emission, however
-the continuum near it is not.
-Chromospheric emission lines in the magnesium triplet order are
-also detectable, but sufficiently blended to be rendered unusable.
-
-One notable feature is that H$\alpha$, H$\gamma$, H$\delta$, and He
-5876\,\AA\ all show a blue excess at $\phi$$\approx$0.2.  At the same
-epoch, only H$\alpha$ clearly shows a resolved red excess as well,
-although $H\gamma$ and H$\delta$ are broader at this time.  Given the
-sudden rise of this emission in $<$15\,minutes, and the association
-between He 5876\,\AA\ and stellar outflows at high excitation energy,
-this component of the spectra might be more easily associated with a
-flare than with a stable, periodic component.
-
-Finally, the Li\,\textsc{I} 6708\,\AA\ doublet, which shows no obvious
-absorption, as well as the broad K\,\textsc{I} 7699\,\AA\ resonance
-line are both shown in Figure~\ref{fig:hirescuts}.  In the latter,
-narrow telluric absorption features overlap the blue wing of the line.
-Neither of these regions shows any notable variability.
-
-
-\subsection{Modeling the Emitting Clump}
-\label{subsec:model}
-
-The physical conditions inside the circumstellar plasma clumps, in
-particular the hydrogen number density, plasma temperature, ionization
-fraction, and magnetic field strength can all be estimated using the
-available data.
-We caution that the following estimates are coarse: detailed
-considerations of radiative transfer and detailed balance are a
-worthwhile topic for future work, but are beyond our immediate scope.
-
-Circumstellar H$\alpha$ emission might be sourced either from
-scattering of stellar H$\alpha$ photons, or from recombination.  We
-neglect scattering because we see the amplitude of the circumstellar
-emission to vary by a factor of $\approx$5, which is not mirrored in
-the chromospheric line core.  The volume emissivity under case B
-recombination (in which Lyman-series photons are trapped by high
-optical depth, so that recombinations cascade through H$\alpha$ and
-other Balmer lines) can be written as
-\begin{equation}
-  j_{\rm H\alpha} = n_{\rm e} n_{\rm p} \alpha^{\rm eff}_{\rm H\alpha}(T) h \nu_{\rm H\alpha},
-\end{equation}
-where $n_{\rm e}$ and $n_{\rm p}$ are the electron and proton densities,
-and $\alpha^{\rm eff}_{\rm H\alpha}(T)$ is the effective recombination
-coefficient, i.e.\ the number of recombinations per unit volume, per
-unit time.
-For hydrogen with temperatures between 1,000 and 10,000\,K with
-densities $n_{\rm H}$$\sim$10$^{10}$\,cm$^{-3}$,
-$\alpha^{\rm eff}_{\rm H\alpha}$ is typically on the order of $10^{-12}$ to
-$10^{-13}$\,cm$^3$\,s$^{-1}$ \cite{Hummer1987}.
-Neglecting the effects of atoms other than hydrogen, we can assume
-an ionization fraction $x$, such that $n_{\rm e} = n_{\rm p} = x
-n_{\rm H}$, for $n_{\rm H}$ the hydrogen number density.  Let $L_{\rm
-H\alpha} = j_{\rm H\alpha} V$, for $V$ the volume of the emitting
-hydrogen.
-The luminosity of circumstellar hydrogen emission, $L_{\rm H\alpha}$,
-is an observable: our SED fitting routine yields
-$L_\star$$\approx$0.012\,$L_\odot$, which gives
-$L_{\rm H\alpha},\star$$\approx$1.0$\times$$10^{28}$erg\,s$^{-1}$, and
-the luminosity of the clump $L_{\rm H\alpha}$ is of order one tenth
-that of the star.
-Assuming an emitting sphere of radius $r$, we can write
-\begin{equation}
-  n_H = \frac{1}{x}
-  \left( 
-    \frac{L_{\rm H\alpha}}{ \alpha^{\rm eff}_{\rm H\alpha}(T) h \nu_{\rm H\alpha} V }
-  \right)^{1/2}.
-\end{equation}
-Taking nominal parameters of $r = 0.1 R_\star$, $x=1/2$, and
-$\alpha^{\rm eff}_{\rm H\alpha}$=$10^{-13}$\,cm$^3$\,s$^{-1}$,
-we find $n_{\rm H}\approx 5\times10^{11}$\,cm$^{-3}$.
-Assuming a uniform density clump, this yields $M_{\rm H}\approx
-8\times10^{16}$\,g.
-A constraint on the magnetic field strength at the site of the clump
-follows from the requirement that the magnetic pressure exceed the
-thermal pressure, $B^2 / 8\pi > n_{\rm H} k T$.
-Although we do not know the plasma temperature,
-if it were significantly outside the range of
-1,000 and 10,000\,K,
-we would either full ionize the hydrogen, or not ionized enough of it.
-We can therefore estimate
-\begin{equation}
-  B \gtrsim 3\,{\rm G}
-  \left(
-  \frac{n_{\rm H}}{5\times10^{11}\,{\rm cm}^{-3}}
-  \frac{T}{5000\,{\rm K}}
-  \right).
-\end{equation}
-Given that the average surface magnetic field strengths of low-mass
-stars have been measured to span hundreds to thousands of Gauss
-\cite{Kochukhov2021}, this bound is easily met.
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % Supplementary Tables %
