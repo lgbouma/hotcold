@@ -264,7 +264,6 @@ def plot_lineevolnpanel(outdir, starid=None, jstr=None, remove_cosmics=0):
     cb = fig.colorbar(_lc, cax=cax, orientation="horizontal")
 
     cb.ax.tick_params(labelsize='x-small', pad=0.7)
-    #cb.ax.set_title('$t$ [hours]', fontsize='x-small', pad=0.3)
     cb.ax.set_title('Phase $\phi$', fontsize='x-small', pad=0.4)
 
     #cb.ax.set_xticks([0,2,4])
