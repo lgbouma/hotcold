@@ -914,9 +914,15 @@ clumps with masses in the range of $10^{15}$-$10^{17}$\,g.
   \includegraphics[width=\textwidth]{figures/sf5.pdf}
   \caption{Time evolution of select regions in the Keck/HIRES
   spectra from 17 February 2025.
-  The horizontal axis shows $\Delta v \equiv c (\lambda -
-  \lambda_0)/\lambda_0$, the relative velocity centered on each line's
-  rest wavelength, normalized by the stellar equatorial velocity.
+  The spectra have been smoothed with a Gaussian filter.
+  The horizontal axis shows the relative velocity centered on each
+  line's rest wavelength, normalized by the stellar equatorial
+  velocity.  
+  H$\alpha$ is the only Balmer line to show periodic variability of
+  the form seen in Figure~\ref{fig:spec}.
+  The He 5876\,\AA\ line shows a time-dynamic blueshift that 
+  differs from the Balmer lines.
+  Li 6708\,\AA\ shows no obvious absorption.
   }
   \label{fig:hirescuts}
 \end{figure}
@@ -946,9 +952,9 @@ this component of the spectra might be more easily associated with a
 flare than with a stable, periodic component.
 
 Finally, the Li\,\textsc{I} 6708\,\AA\ doublet, which shows no obvious
-absorption, as well as the broad K\,\textsc{I} 7699\,\AA\ feature are
-both shown in Figure~\ref{fig:hirescuts}.  In the latter, narrow
-telluric absorption features overlap the blue wing of the line.
+absorption, as well as the broad K\,\textsc{I} 7699\,\AA\ resonance
+line are both shown in Figure~\ref{fig:hirescuts}.  In the latter,
+narrow telluric absorption features overlap the blue wing of the line.
 Neither of these regions shows any notable variability.
 
 
@@ -1020,14 +1026,9 @@ We can therefore estimate
   \frac{T}{5000\,{\rm K}}
   \right).
 \end{equation}
-Given typical  magnetic field strengths of low-mass stars, this bound
-is easily met.
-%TODO FIXME CITE KOCHUKHOV HERE
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%
-% Supplementary Figures %
-%%%%%%%%%%%%%%%%%%%%%%%%%
+Given that the average surface magnetic field strengths of low-mass
+stars have been measured to span hundreds to thousands of Gauss
+\cite{Kochukhov2021}, this bound is easily met.
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % Supplementary Tables %
@@ -1057,7 +1058,7 @@ is easily met.
     $\mu_{\delta}$ (mas yr$^{-1}$ ) &  32.262 $\pm$ 0.024 & Gaia\ DR3 \\
     $\pi$ (mas)                     &  17.324 $\pm$ 0.025 & Gaia\ DR3 \\
     RUWE                            &  1.23               & Gaia\ DR3 \\
-    RV (\kms)                     & 0.61 $\pm$ 1.47     & HIRES \\
+    RV (\kms)                       & 0.61 $\pm$ 1.47     & HIRES \\
     \hline
     \multicolumn{3}{c}{Photometry} \\
     \hline
