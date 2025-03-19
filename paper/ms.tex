@@ -863,20 +863,18 @@ age range of 150\,Myr.
   \label{fig:hirescuts}
 \end{figure}
 
-Figure~\ref{fig:hirescuts} shows a few regions of interest in the HIRES
-spectra, which cover 3650-7960\,\AA.
-Higher order Balmer lines including H$\gamma$ and H$\delta$ (the
-$n=5\rightarrow2$ and $n=6\rightarrow2$ transitions respectively) do
-show some variability outside the line core.
-However, this variability is not clearly periodic in the
-same manner as the emission seen in H$\alpha$.
-This could be because there are insufficient hydrogen ions in the
-relevant excited states, or due to the lower precision of the spectra
-in these bluer regions.
-The Ca HK doublet for instance is also detectable in emission, however
-the continuum near it is not.
-Chromospheric emission lines in the magnesium triplet order are
-also detectable, but sufficiently blended to be rendered unusable.
+Figure~\ref{fig:hirescuts} shows a few regions of interest in the
+HIRES spectra, which cover 3650-7960\,\AA.  Higher order Balmer lines
+including H$\gamma$ and H$\delta$ (the $n=5\rightarrow2$ and
+$n=6\rightarrow2$ transitions respectively) do show some variability
+outside the line core.  However, this variability is not clearly
+periodic in the same manner as the emission seen in H$\alpha$.  This
+could be because there are insufficient hydrogen ions recombining from
+the relevant excited states, or due to the lower precision of the
+spectra in these bluer regions.  The Ca HK doublet for instance is
+also detectable in emission, however the continuum near it is not.
+Chromospheric emission lines in the magnesium triplet order are also
+detectable, but sufficiently blended to be rendered unusable.
 
 One notable feature is that H$\alpha$, H$\gamma$, H$\delta$, and He
 5876\,\AA\ all show a blue excess at $\phi$$\approx$0.2.  At the same
@@ -1101,30 +1099,19 @@ accumulation of extrinsically-sourced material.
     $W3$ (mag)                      &  9.838 $\pm$ 0.045 & ALLWISE   \\
     %$W4$ (mag)                      &  8.392 $\pm$ NOUNC & ALLWISE \\
 	  %
-    %TODO: eROSITA?  ROSAT is an emitter.  GALEX detection.
+    % NOTE: ROSAT is an emitter.  GALEX detection.
     % Ofek+2011 1.4Ghz emitter.  Helfand+2015 ditto.  Bruzewski+2021.
-    %\hline
-    %\multicolumn{3}{c}{Kinematics and Position} \\
-    %\hline
-    %$RV$ (\kms) & 0.61 $\pm$ 1.47 & HIRES \\
-    %$U$ (\kms)  & & \\
-    %$V$ (\kms)  & & \\
-    %$W$ (\kms)  & & \\
-    %$X$ (pc)    & -28.4 & \\
-    %$Y$ (pc)    &  19.8 & \\
-    %$Z$ (pc)    &  67.0 & \\
     \hline
     \multicolumn{3}{c}{Physical Properties} \\
     \hline
     $T_{eff}$ (K) & 2972 $\pm$ 40 & \cite{Bouma2024} SED fit\\
     $R_\star$ ($R_{\odot}$) & 0.42 $\pm$ 0.02 & \cite{Bouma2024} SED fit \\
+    $L_\star$ ($L_\odot$) & 0.0126 $\pm$ 0.0012 & \cite{Bouma2024} SED fit \\
     $P_{\rm rot}$ (hours) & $3.930\pm 0.001$ & TESS \\ 
     $v_{\rm eq}$ (\kms)  &  130$\pm$4  & Derived \\
     $v_{\rm eq} \sin i_\star$(km s$^{-1}$) & $138 \pm 8$ & HIRES \\
     $i_\star$($^\circ$) & $>$63 & Derived \\
     $A_V$ (mag) & 0 & \cite{Green2019} \\
-    %$F_{bol}$ (erg cm$^{-2}$ s$^{-1}$ ) & todo & This work\\
-    %$L_\star$ ($L_{\odot}$)  & todo & This work\\
     $M_\star$ ($M_{\odot}$)  & 0.22 $\pm$ 0.02  & PARSEC \cite{Chen2014}\\
     ${\rm EW}_{\rm Li}$ (m\AA) & $<$107 & HIRES (2$\sigma$)\\
     $t_{\rm CAMD}$ (Myr) & 30-150 &  Gaia DR3 \\
@@ -1144,33 +1131,33 @@ accumulation of extrinsically-sourced material.
 \begin{table}
   \centering
   \begin{tabular}{lcr}
-  %\setlength{\tabcolsep}{2pt}
   \hline 
   \hline 
-  Time [JD$_{\rm UTC}$] & RV (\kms) & $\sigma_{\rm RV}$ (\kms) \\
-  % from tables/tab_TIC141146667_rel_rv.tex
+  Time [BJD$_{\rm TDB}$] & RV (\kms) & $\sigma_{\rm RV}$ (\kms) \\
+  % from tables/tab_TIC141146667_rel_rv.tex and
+  % tables/tab_TIC141146667_times_rounded.csv
   \hline 
-  60357.450329 & 2.73 & 5.86 \\
-  60357.461255 & -4.40 & 2.37 \\
-  60357.472181 & -0.19 & 2.64 \\
-  60357.483109 & 3.84 & 2.87 \\
-  60357.494030 & 7.53 & 7.53 \\
-  60357.504949 & -1.98 & 1.44 \\
-  60357.515873 & 1.02 & 1.21 \\
-  60357.526794 & 0.64 & 7.03 \\
-  60357.537717 & -2.91 & 2.71 \\
-  60357.548639 & 8.93 & 6.75 \\
-  60357.559566 & 5.95 & 8.84 \\
-  60357.570487 & -2.25 & 3.06 \\
-  60357.581408 & 1.84 & 1.34 \\
-  60357.592330 & 2.41 & 8.24 \\
-  60357.603251 & -7.04 & 3.94 \\
-  60357.614172 & -2.24 & 3.07 \\
-  60357.625095 & -2.83 & 7.55 \\
-  60357.636019 & -0.59 & 2.26 \\
-  60357.646940 & 1.84 & 2.91 \\
-  60357.657861 & 4.54 & 3.95 \\
-  60357.668781 & 6.21 & 12.14 \\
+  2460357.954919 & 2.73 & 5.86 \\
+  2460357.965845 & -4.40 & 2.37 \\
+  2460357.976770 & -0.19 & 2.64 \\
+  2460357.987698 & 3.84 & 2.87 \\
+  2460357.998619 & 7.53 & 7.53 \\
+  2460358.009538 & -1.98 & 1.44 \\
+  2460358.020462 & 1.02 & 1.21 \\
+  2460358.031383 & 0.64 & 7.03 \\
+  2460358.042306 & -2.91 & 2.71 \\
+  2460358.053228 & 8.93 & 6.75 \\
+  2460358.064154 & 5.95 & 8.84 \\
+  2460358.075075 & -2.25 & 3.06 \\
+  2460358.085996 & 1.84 & 1.34 \\
+  2460358.096918 & 2.41 & 8.24 \\
+  2460358.107839 & -7.04 & 3.94 \\
+  2460358.118760 & -2.24 & 3.07 \\
+  2460358.129683 & -2.83 & 7.55 \\
+  2460358.140606 & -0.59 & 2.26 \\
+  2460358.151527 & 1.84 & 2.91 \\
+  2460358.162448 & 4.54 & 3.95 \\
+  2460358.173368 & 6.21 & 12.14 \\
   \hline
   \end{tabular}
   \caption{TIC~141146667 radial velocities relative to the systemic velocity.}
