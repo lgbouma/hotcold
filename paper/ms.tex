@@ -890,22 +890,23 @@ Neither of these regions shows any notable variability.
 \subsection{Properties of the Plasma and Magnetospheric Environment}\phantom{+}
 \label{subsec:gas}
 
-The physical conditions inside the circumstellar plasma clumps, in
-particular the hydrogen number density, plasma temperature, ionization
-fraction, and magnetic field strength can all be estimated using the
-available data.  We caution that the following estimates are coarse:
-detailed considerations of radiative transfer and detailed balance are
-a worthwhile topic for future work, but are beyond the scope of this
+The physical conditions inside the plasma clumps, in particular the
+hydrogen number density, plasma temperature, ionization fraction, and
+magnetic field strength can all be estimated using the available data.
+We caution however that the following estimates are coarse: detailed
+considerations of radiative transfer and detailed balance are a
+worthwhile topic for future work, but are beyond the scope of this
 article.
 
 Circumstellar H$\alpha$ emission might be sourced either from
-scattering of stellar H$\alpha$ photons, or from recombination.  We
-neglect scattering because we see the amplitude of the circumstellar
-emission to vary by a factor of $\approx$5, which is not mirrored in
-the chromospheric line core.  The volume emissivity under case B
-recombination (in which Lyman-series photons are trapped by high
-optical depth, so that recombinations cascade through H$\alpha$ and
-other Balmer lines) can be written as
+scattering of stellar H$\alpha$ photons, or from radiative
+recombination.  We neglect scattering because Figures~\ref{fig:spec}
+and~\ref{fig:hirescuts} show the amplitude of the circumstellar
+H$\alpha$ emission varying by a factor of $\approx$5, in a manner
+uncorrelated with any variability in the chromospheric line core.  The
+volume emissivity under case B recombination (in which Lyman-series
+photons are trapped by high optical depth, so that recombinations
+cascade through H$\alpha$ and other Balmer lines) can be written as
 \begin{equation}
   j_{\rm H\alpha} = n_{\rm e} n_{\rm p} \alpha^{\rm eff}_{\rm H\alpha}(T) h \nu_{\rm H\alpha},
 \end{equation}
@@ -938,15 +939,14 @@ Assuming an emitting sphere of radius $r$, we can write
 Taking nominal parameters of $r = 0.1 R_\star$, $x=1/2$, and
 $\alpha^{\rm eff}_{\rm H\alpha}$=$10^{-13}$\,cm$^3$\,s$^{-1}$,
 we find $n_{\rm H}\approx 5\times10^{11}$\,cm$^{-3}$.
-Assuming a uniform density clump, this yields $M_{\rm gas}\approx
+Assuming a uniform density clump, this yields a total gas mass $M_{\rm gas}\approx
 8\times10^{16}$\,g.
 
 Finally, a constraint on the magnetic field strength at the site of the clump
 follows from the requirement that the magnetic pressure exceed the
 thermal pressure, $B^2 / 8\pi > n_{\rm H} k T$.
 Although we do not know the plasma temperature,
-if it were significantly outside the range of
-1,000 and 10,000\,K,
+if it were significantly beyond 1,000-10,000\,K,
 we would either full ionize the hydrogen, or not ionized enough of it.
 We can therefore estimate
 \begin{equation}
@@ -1043,10 +1043,9 @@ $M_{\rm gas}$$\approx$8$\times$10$^{16}$\,g from
 Section~\ref{subsec:gas}, this range spans mass ratio ranges $M_{\rm
 gas}/M_{\rm dust}$ of 100 to 1.  More careful measurements of this
 ratio---in particular enabled by inferring the dust mass through high
-precision infrared spectrophotometry---would provide a pathway for
-distinguishing between environments that more closely resemble the
-interstellar medium versus protoplanetary disks.
-
+precision infrared spectrophotometry---could provide a pathway for
+distinguishing the scenario of a stellar outflow from an 
+accumulation of extrinsically-sourced material.
 
 
 
@@ -1182,34 +1181,44 @@ interstellar medium versus protoplanetary disks.
 \begin{addendum}
 
 \item[Acknowledgments]
-  % convos w/
-  % M.~Jardine. (line core sum, explaining flux tubes)
-  % A Weinberger (dissolving rocks)
-  % L Hillenbrand (general?)
-  % line profile analysis by B.~Tofflemire.
-  % CPS group for reduction support.
-  The author thanks X, Y, Z.
-  L.G.B. was suported by...
-	Acknowledge TESS...
-  Acknowledge use of IRSA.
+  LGB is grateful to M.~Jardine for insightful conversations,
+  A.~Weinberger for clarification of infrared dust spectroscopy,
+  B.~Tofflemire for a clarifying line profile analysis, and to both
+  A.~Howard and H.~Isaacson for their assistance reducing the HIRES
+  spectra.
+  LGB was supported by the Carnegie Institution for Science's Carnegie
+  Fellowship and the Heising-Simons 51~Pegasi~b Fellowship.
+  Funding for the TESS mission is provided by NASA’s
+  Science Mission directorate.
+  The TESS mission is a product of millions of hours of work by
+  thousands of people, and we thank the many TESS team members for
+  their efforts to make the mission a continued success.
+  The HIRES data were obtained at the Keck Observatory, which exists
+  through a similar scale of community effort.
+  We recognize the importance that the summit of Maunakea has always had
+  within the indigenous Hawaiian community, and we are deeply grateful 
+  for the opportunity to conduct observations from this mountain.
 
+\item[Author Contributions] LGB is responsible for all aspects of this
+  work, including conceptualization, data analysis, interpretation,
+  manuscript preparation, and revision.
 
-%TC:ignore
-%% Author Contribution
-\item[Author Contributions] ...
-%TC:endignore
+\item[Data Availability] The TESS two-minute cadence data used in this
+  work are publicly available from the Mikulski Archive for Space
+  Telescopes (MAST; \url{https://mast.stsci.edu}). The Keck/HIRES
+  spectra analyzed here are accessible via the Keck Observatory
+  Archive (KOA; \url{https://koa.ipac.caltech.edu}).
 
-\item[Data Availability] ...
-
-\item[Competing Interests] The authors declare that they have no competing
-financial interests.
+\item[Competing Interests] The author declares no competing financial
+  interests.
  
-\item[Correspondence] Correspondence and requests for materials should be
-addressed to ...
+\item[Correspondence] Correspondence and requests for materials should
+  be addressed to Luke Bouma, at either lbouma@carnegiescience.edu or
+  bouma.luke@gmail.com.
  
-\item[Code availability] We provide access to a GitHub repository including all
-code created for the analysis of this project that is not already publicly
-available.
+\item[Code availability] We provide access to a GitHub repository
+  including all code created for the analysis of this project that is
+  not already publicly available.
 
 \end{addendum}
 
