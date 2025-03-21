@@ -263,8 +263,11 @@ def plot_lineevolnpanel(outdir, starid=None, jstr=None, remove_cosmics=0):
     cax = fig.add_axes([0.92, 0.2, 0.05, 0.02])  # [left, bottom, width, height]
     cb = fig.colorbar(_lc, cax=cax, orientation="horizontal")
 
-    cb.ax.tick_params(labelsize='x-small', pad=0.7)
-    cb.ax.set_title('Phase $\phi$', fontsize='x-small', pad=0.4)
+    #cb.ax.tick_params(labelsize='x-small', pad=1.2)
+    #cb.ax.set_title('Phase $\phi$', fontsize='x-small', pad=0.6)
+
+    cb.ax.tick_params(labelsize='x-small', pad=1.5)
+    cb.ax.set_title('Phase $\phi$', fontsize='x-small', pad=2)
 
     #cb.ax.set_xticks([0,2,4])
     cb.ax.tick_params(size=0, which='both') # remove the ticks
