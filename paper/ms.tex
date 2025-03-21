@@ -931,18 +931,29 @@ $L_\star$$\approx$0.012\,$L_\odot$, which gives
 $L_{\rm H\alpha},\star$$\approx$1.0$\times$$10^{28}$erg\,s$^{-1}$, and
 the luminosity of the clump $L_{\rm H\alpha}$ is of order one tenth
 that of the star.
-Assuming an emitting sphere of radius $r$, we can write
-\begin{equation}
-  n_H = \frac{1}{x}
+Assuming the emitting volume is a homogeneous sphere of radius $r$, we can write
+\begin{align}
+  n_{\rm H} &= 
+  %\frac{1}{x}
+  %\left(
+  %  \frac{L_{\rm H\alpha}}{ \alpha^{\rm eff}_{\rm H\alpha} h \nu_{\rm H\alpha} V }
+  %\right)^{1/2},
+  %\\
+  %n_{\rm H} &=
+  5 \cdot 10^{11}\,{\rm cm}^{-3}
+  \left(
+    \frac{0.5}{x}
+  \right)
   \left( 
-    \frac{L_{\rm H\alpha}}{ \alpha^{\rm eff}_{\rm H\alpha}(T) h \nu_{\rm H\alpha} V }
-  \right)^{1/2}.
-\end{equation}
-Nominal parameters of $r = 0.1 R_\star$, $x=1/2$, and
-$\alpha^{\rm eff}_{\rm H\alpha}$=$10^{-13}$\,cm$^3$\,s$^{-1}$ suggest
-$n_{\rm H}\approx 5\times10^{11}$\,cm$^{-3}$.
-We have assumed a uniform density clump, and so this yields a total
-gas mass $M_{\rm gas}\approx 8\times10^{16}$\,g.
+    \frac{ L_{\rm H\alpha} }{ 10^{27}\,{\rm erg\,s^{-1}} }
+    \frac{ 10^{-13}\,{\rm cm^{3}\,s^{-1}} }{ \alpha^{\rm eff}_{\rm H\alpha} }
+  \right)^{1/2}
+  \left(
+    \frac{ 0.04\,R_\odot }{ r }
+  \right)^{3/2}.
+\end{align}
+Given that we have assumed a uniform density clump, this suggests a total
+gas mass at the stated nominal parameters of $M_{\rm gas}\approx 8\times10^{16}$\,g.
 
 Finally, a constraint on the magnetic field strength at the site of
 the clump follows from the requirement that the magnetic pressure
