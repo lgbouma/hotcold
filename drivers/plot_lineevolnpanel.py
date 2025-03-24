@@ -130,7 +130,7 @@ def plot_lineevolnpanel(outdir, starid=None, jstr=None, remove_cosmics=0):
     rowkeys = [x for x in 'abcdef']
 
     f = 0.7
-    fig = plt.figure(figsize=(f*6,f*3.2))
+    fig = plt.figure(figsize=(f*6,f*4))
     axd = fig.subplot_mosaic(
         """
         abc
