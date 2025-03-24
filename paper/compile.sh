@@ -6,3 +6,5 @@ pdflatex ms.tex
 pdflatex ms.tex
 
 rm *.out *.aux *.blg *.log
+
+cp ms.pdf ../STATIC/.

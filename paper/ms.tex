@@ -12,8 +12,6 @@
 \linespread{1.0}
 \linenumbers % turn line numbering on or off
 
-\newcommand{\starname}{TIC 141146667}
-
 \newcommand{\farcm}{\mbox{\ensuremath{.\mkern-4mu^\prime}}}%    % fractional arcminute symbol: 0.'0
 \newcommand{\farcs}{\mbox{\ensuremath{.\!\!^{\prime\prime}}}}%  % fractional arcsecond symbol: 0.''0
 
@@ -26,6 +24,7 @@
 % INSTITUTIONS %
 %%%%%%%%%%%%%%%%
 \newcommand{\carnegie}{Observatories of the Carnegie Institution for Science, Pasadena, CA 91101, USA}
+\newcommand{\caltech}{Department of Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
 %%%%%%%%%%%%%%%%
 
 %%%%%%%%%%
@@ -48,7 +47,8 @@
 \scriptsize
 \begin{affiliations}
 \item \carnegie
-\item Carnegie Fellow
+\item \caltech
+\item Carnegie Fellow; 51 Pegasi b Fellow
 \end{affiliations}
 \normalsize
 
@@ -170,23 +170,23 @@ shown any photometric anomalies \cite{Bouma2024}, leaving open the
 issue of whether they are related to CPVs.
 
 
-In this study, we present the first spectroscopic detection of corotating clumps of
-cool plasma around a CPV.  We identified TIC~141146667 in previous
-work \cite{Bouma2024} by searching the TESS two-minute data
-\cite{Ricker2015} for stars showing highly structured, periodic light
-curves.  We selected the star for spectroscopy because its
-brightness and rotation rate enable efficiently mapping out line
-profile variability.  We observed it for five hours on 17~February~2024
-(UT) using the High Resolution Echelle Spectrometer (HIRES
-\cite{vogt_hires_1994}) on the Keck I 10m telescope.  TESS observed
-the star over a four week interval from 30~January~2024 to
+In this study, we present the first spectroscopic detection of
+corotating clumps of cool plasma around a CPV.  We identified
+TIC~141146667 in previous work \cite{Bouma2024} by searching the TESS
+two-minute data \cite{Ricker2015} for stars showing highly structured,
+periodic light curves.  We selected the star for spectroscopy because
+its brightness and rotation rate enable efficiently mapping out line
+profile variability.  We observed it for five hours on
+17~February~2024 (UT) using the High Resolution Echelle Spectrometer
+(HIRES \cite{vogt_hires_1994}) on the Keck I 10m telescope.  TESS
+observed the star over a four week interval from 30~January~2024 to
 26~February~2024 with a duty cycle of 77\%.  During the HIRES
 observations, TESS was performing a data downlink; TESS data
 collection resumed 12 hours (three rotation cycles) after the spectra
 were acquired.  Extended Data Figure~\ref{fig:fulllc} shows the
-detailed photometric behavior of the star near the
-epoch of observation; the general photometric morphology is similar
-before and after the data gap.
+detailed photometric behavior of the star near the epoch of
+observation; the general photometric morphology is similar before and
+after the data gap.
 
 
 \section{Results}
@@ -201,7 +201,7 @@ before and after the data gap.
   \href{https://lgbouma.com/movies/TIC141146667_sixpanel.mp4}{available here},
   shows the spectral evolution over five hours.
   {\bf a,} Average TESS light curve from 5 February 2024 to 26
-  February 2024 (UT) folded on the \periodhr\ hour period.  Black
+  February 2024 folded on the \periodhr\ hour period.  Black
   points are phase-averaged; gray are the raw data.
   {\bf b,} Keck/HIRES H$\alpha$ spectra acquired on 17
   February 2024.  The continuum is set to unity, and the darkest color
@@ -219,7 +219,7 @@ before and after the data gap.
   spectrum.  The line core shows H$\alpha$ excesses and decrements
   advancing from the blue to red wings.
   The asymmetric color stretch
-  is set to match the dynamic range of the data.
+  is set to mirror the dynamic range of the data.
   {\bf f,} Individual epochs of Panel e, visible in the online
   movie.}
   \label{fig:spec}
@@ -252,41 +252,39 @@ latter component appears connected to the star in velocity space.
 While its peak semi-amplitude of $K_1$=3.9\,$v_{\rm eq}$ is achieved
 at both $\phi$=0.25 and 0.75, its amplitude similarly decreases from a
 60\% excess over the continuum at the beginning of the observation
-sequence to a 10\% excess by its end.  The sinusoidal period for all
+sequence to a 10\% excess by its end.  The apparent period for all
 of these emission components is consistent with the photometric
 \periodhr\ hour period.  
 
 These sinusoidal emission features require circumstellar clumps of
-partially-ionized hydrogen to corotate with the star.  
-Based on the period, this material's motion is not Keplerian; it can
-only be explained by plasma being dragged along with the rotating
-stellar magnetic field. 
-The velocity semi-amplitude of the sinusoids gives the distance
-of the clumps from the stellar surface: 2.1-2.7\,$R_\star$ for the
-closer clump, and 3.9\,$R_\star$ for the other.   These clumps transit
-in front of the star when passing from negative to positive velocity.
-This implies that the spectroscopic transit of the 2.1-2.7\,$R_\star$
-clump occurs simultaneously with the sharp photometric spike visible
-in the TESS data.
+partially-ionized hydrogen to corotate with the star.  Based on the
+period, this material's motion is not Keplerian; it can only be
+explained by plasma being dragged along with the rotating stellar
+magnetic field.  The velocity semi-amplitude of the sinusoids gives
+the distance of the clumps from the stellar surface:
+2.1-2.7\,$R_\star$ for the closer clump, and 3.9\,$R_\star$ for the
+other.   These clumps transit in front of the star when passing from
+negative to positive velocity.  This implies that the spectroscopic
+transit of the 2.1-2.7\,$R_\star$ clump occurs simultaneously with the
+sharp photometric spike visible in the TESS data.
 
 % * keck/hires: behavior at v/veq<1
-Within the stellar H$\alpha$ line core, at $|\Delta v /
-v_{\rm eq}|<1$, we observe a superposition of emission from the star's
-chromosphere,
-modulated by any occulting material capable of absorbing or
-emitting H$\alpha$ photons.  In Figure~\ref{fig:spec}e, the data from
-$\phi$=0.4-1.2 have a simple interpretation: from $\phi$=0.4-0.9, a hot
-(emitting) region first gradually crosses the stellar line profile, followed from
-$\phi$=0.7-1.2 by the transit of a cool (absorbing) region. Phases $\phi$$<$0.4
-show a mix of similar events, though the time sampling is
-sufficiently coarse that the interpretation is less clear.  A final
-exercise to quantify the behavior in the line core is shown in
-Figure~\ref{fig:spec}d, where $f_{\rm H\alpha\ core}$ denotes the
-summed flux at $|\Delta v / v_{\rm eq}|<1$.  This panel shows that
-changes in the line core flux are correlated with the
-broadband variability over most of the light curve, except at
-$\phi$$\approx$0.5, during the transit of the 3.9\,$R_\star$ clump and
-the occultation of the lower-velocity clump.
+The stellar H$\alpha$ line core, at $|\Delta v / v_{\rm
+eq}|<1$, captures a superposition of emission from the star's
+chromosphere, modulated by any occulting material capable of absorbing
+or emitting H$\alpha$ photons.  In Figure~\ref{fig:spec}e, the data
+from $\phi$=0.4-1.2 have a simple interpretation: from $\phi$=0.4-0.9,
+a hot (emitting) region first gradually crosses the stellar line
+profile, followed from $\phi$=0.7-1.2 by the transit of a cool
+(absorbing) region. Phases $\phi$$<$0.4 show a mix of similar events,
+though the time sampling is sufficiently coarse that the
+interpretation is less clear.  A final exercise to quantify the
+behavior in the line core is shown in Figure~\ref{fig:spec}d, where
+$f_{\rm H\alpha\ core}$ denotes the summed flux at $|\Delta v / v_{\rm
+eq}|<1$.  This panel shows that changes in the line core flux are
+correlated with the broadband variability over most of the light
+curve, except at $\phi$$\approx$0.5, during the transit of the
+3.9\,$R_\star$ clump and the occultation of the lower-velocity clump.
 
 \begin{table*}
 \small
@@ -358,7 +356,7 @@ Provenances are:
 
 Spectra of magetically-active, rapidly rotating stars with a wide range
 of masses have been known to exhibit both sinusoidal emission features
-\cite{Donati2000,Townsend2005,Dunstone2006,Skelly2008} as well as
+\cite{Donati2000,Townsend2005,Dunstone2006,Skelly2008} and
 transient absorption features
 \cite{CollierCameron1989,CollierCameron1992,Cang2020} similar to
 Figure~\ref{fig:spec}.  No such stars were previously known to show
@@ -366,7 +364,7 @@ complex light curves \cite{Bouma2024}.   One interpretation for
 such spectroscopic variability comes from an analogy to quiescent solar
 prominences, which are cool condensations of plasma in the solar corona
 that can last days to weeks \cite{VialEngvold2015}.  These
-condensations fall back to the solar surface because gravity is
+condensations fall back to the Sun's surface because gravity is
 stronger than any magnetic tension or centrifugal force capable of
 sustaining them.  However for stars with magnetospheric radii $R_{\rm
 m}$ that exceed their corotation radii $R_{\rm c}$, the effective
@@ -377,41 +375,41 @@ speaking, such material need neither transit, nor be optically thick.
 For instance, the H$\alpha$ emission clump at 3.9\,$R_\star$ shows no 
 photometric signal in the February 2024 photometry.
 
-Our Keck/HIRES observations are the first reported time-series
-spectra of a CPV, and they show that corotating circumstellar plasma clumps 
-are present around at least one such star.
-This
-observation rules out a ``starspot-only'' origin scenario for CPVs,
-\cite{Koen2021} because such scenarios have no means of explaining
-spectroscopic emission beyond the stellar disk.  Similarly, scenarios in
-which the circumstellar material is made only of dust are also ruled
-out.  While dust may be present, to explain the H$\alpha$ emission the
-clumps must include plasma with a significant population of hydrogen
-atoms in the $n$=3 excited state.  
-More quantitatively, the observed H$\alpha$ luminosity suggests
-characteristic densities and masses for the gaseous component of these
-clumps of $n_{\rm H} \sim 10^{11}$-$10^{12}$\,cm$^{-3}$ and $M_{\rm
-gas} \sim 10^{17}$\,g (see Section~\ref{subsec:gas}).
-Dust, if present, is independently constrained to have a total
-mass $10^{15}\,{\rm g} < M_{\rm dust} < 10^{17}\,{\rm g}$ (see
-Section~\ref{subsec:dust}).
-This circumstellar material could plausibly originate from
-three sites: the star, an old and undetected disk, or outgassing rocky
-bodies.  This latter possibility would render CPVs as extrasolar analogs
-of the Jupiter-Io plasma torus (e.g.~Ref.~\cite{Bagenal1981}).
+Our Keck/HIRES observations are the first reported time-series spectra
+of a CPV, and they show that corotating circumstellar plasma clumps
+are present around at least one such star.  This observation rules out
+a ``starspot-only'' origin scenario for CPVs, \cite{Koen2021} because
+such scenarios have no means of explaining spectroscopic emission
+beyond the stellar disk.  Similarly, scenarios in which the
+circumstellar material is made only of dust are also ruled out.  While
+dust may be present, to explain the H$\alpha$ emission the clumps must
+include plasma with a significant population of hydrogen atoms in the
+$n$=3 excited state, for $n$ the principal quantum number.  More quantitatively, the observed H$\alpha$
+luminosity suggests characteristic densities and masses for the
+gaseous component of these clumps of $n_{\rm H} \sim
+10^{11}$-$10^{12}$\,cm$^{-3}$ and $M_{\rm gas} \sim 10^{17}$\,g (see
+Section~\ref{subsec:gas}).  Dust, if present, is independently
+constrained to have a total mass $10^{15}\,{\rm g} < M_{\rm dust} <
+10^{17}\,{\rm g}$ (see Section~\ref{subsec:dust}).  This circumstellar
+material could originate either from the star or from an external
+source.  Plausible external sources include an old and undetected
+disk, comets, or a close-in exoplanet.
+This latter possibility would render CPVs as extrasolar analogs of the
+Jupiter-Io plasma torus (e.g.~Ref.~\cite{Bagenal1981}).
 
 The other potential analog for the CPVs are the $\sigma$~Ori~E
 variables, a rare subset of B stars with radiatively-driven winds that
 accumulate into warped plasma tori \cite{Townsend2005,Townsend2008}.
-These tori tend to have dense antipodal accumulations of plasma sculpted
-by tilted-dipole magnetic fields, and the transits of these clumps are
-thought to produce the observed broadband photometric variability
-through bound-free scattering \cite{Townsend2005} and Thomson scattering
-\cite{Berry2022}.  For $\sigma$~Ori~E and almost all of its analogs, the
-result is light curves that appear ``simple'', resembling those of
-eclipsing binaries, and time-dynamic H$\alpha$ spectra similar to those
-in Figure~\ref{fig:spec} \cite{Townsend2005,Townsend2008}.  The two known exceptions,
-HD~37776 and HD~64740, show complex light curves resembling CPVs
+These tori tend to have dense antipodal accumulations of plasma
+sculpted by tilted-dipole magnetic fields, and the transits of these
+clumps produce the observed broadband photometric
+variability through bound-free scattering \cite{Townsend2005} and
+Thomson scattering \cite{Berry2022}.  For $\sigma$~Ori~E and almost
+all of its analogs, the result is light curves that appear ``simple'',
+resembling those of eclipsing binaries, and time-dynamic H$\alpha$
+spectra similar to those in Figure~\ref{fig:spec}
+\cite{Townsend2005,Townsend2008}.  The two known exceptions, HD~37776
+and HD~64740, show complex light curves resembling CPVs
 \cite{Mikulasek2020,Bouma2024} and have spectropolarimetric magnetic
 field maps indicating strong contributions from higher-order magnetic
 moments \cite{Kochukhov2011,Shultz2018}.  There are two implications:
@@ -421,37 +419,38 @@ source of astrophysical false positives in photometric classification
 of eclipsing binaries and transiting exoplanets around young pre-main
 sequence M dwarfs \cite{Johns-Krull2016,Bouma2020}.
 
-Pressing issues for future work include determining the composition and
-origin of the circumstellar material, understanding the exact role of
-the stellar magnetic field, and exploring the implied space weather
+Pressing issues for future work include determining the composition
+and origin of the circumstellar material, understanding the exact role
+of the stellar magnetic field, and exploring the implied space weather
 experienced by the close-in rocky exoplanets that, statistically
 \cite{Dressing2015}, are likely to be present in most CPV systems.
 
-The material's composition -- either pure plasma, or else a dusty plasma
--- can be clarified by time-series optical and infrared
-spectrophotometry.  While observations of CPVs in the optical have
-previously suggested chromaticity consistent with dust
-\cite{Tanimoto2020,Gunther2022,Koen2023}, a gray opacity source such as
-electron scattering in a plasma transiting over starspots might also
-produce chromatic features \cite{Rackham2018}.  The composition and size
-distribution of any dust that is present could be determined
+The material's composition -- either pure plasma, or else a dusty
+plasma -- can be clarified by time-series optical and infrared
+spectrophotometry.  While observations of CPVs in the optical may
+suggest chromaticity consistent with dust
+\cite{Tanimoto2020,Gunther2022,Koen2023}, a gray opacity source such
+as electron scattering in a plasma transiting over starspots might
+also produce chromatic features \cite{Rackham2018}.  The composition
+and size distribution of any dust that is present could be determined
 by measuring the extinction curve for one or more CPVs from
-1-10\,$\mu$m.  Composition and size distributions similar to debris from
-rocky bodies seen around white dwarfs \cite{Reach2009} would indicate a
-rocky-body origin.  Compositions and sizes similar to the interstellar
-medium could be indicative of condensed dust in an M dwarf wind,
-similar to that formed in the environments of more evolved stars
-\cite{Marigo2008}.
+1-10\,$\mu$m.  Composition and size distributions similar to debris
+from rocky bodies seen around white dwarfs \cite{Reach2009} would
+indicate a rocky-body origin.  Compositions and sizes similar to the
+interstellar medium could be indicative of condensed dust in an M
+dwarf wind, similar to that formed in the environments of more evolved
+stars \cite{Marigo2008}.
 
-The role of the star's magnetic field could be better understood through
-new observations, and new theory.  From the theoretical perspective,
-there is an urgent need for rigid-field magneto-hydrodynamic modeling to
-go beyond previous work \cite{Townsend2005,Townsend2008,Krticka2022} and
-to explore what field topologies might explain the observed light curve
-morphologies \cite{Bouma2024}.  In particular, dynamo simulations of
+The role of the star's magnetic field could be better understood
+through new observations, and new theory.  From the theoretical
+perspective, there is an urgent need for rigid-field
+magneto-hydrodynamic modeling to go beyond previous work
+\cite{Townsend2005,Townsend2008,Krticka2022} and to explore what field
+topologies might explain the observed light curve morphologies
+\cite{Bouma2024}.  In particular, dynamo simulations of
 fully-convective M dwarfs have suggested that global-scale mean fields
 might be confined to a single hemisphere \cite{Brown2020}; such fields
-could yield accumulation surfaces quite different from those that have
+would yield accumulation surfaces quite different from those that have
 previously been explored.  Observationally, spectropolarimetry has the
 potential to assess both the field strength and topology.  An
 independent probe could also be connected the recent work
@@ -459,18 +458,18 @@ independent probe could also be connected the recent work
 emission components that can be not only persistent, but also
 short-lived and highly polarized.  In particular, detecting radio
 emission produced by an electron cyclotron maser instability (e.g.
-\cite{Callingham2021}) would provide a measurement of the field strength
-at the site of the emitting region, further clarifying the magnetic
-field's structure.
+\cite{Callingham2021}) would provide a measurement of the field
+strength at the site of the emitting region, further clarifying the
+magnetic field's structure.
 
 
 It is currently unclear what, if any, relationship CPVs have to the
 close-in rocky exoplanets that exist around most M dwarfs
 \cite{Dressing2015}.  However, 0.3-3\% of young M dwarfs show the CPV
 phenomenon \cite{Rebull2020}, and our data show that the complex
-photometric features occur when clumps of circumstellar material 
-transit the star.  The implied geometric correction suggests that
-an appreciable minority (10-30\%) of young M dwarfs -- the rapidly
+photometric features occur when clumps of circumstellar material
+transit the star.  The implied geometric correction suggests that an
+appreciable minority (10-30\%) of young M dwarfs -- the rapidly
 rotating ones with centrifugal magnetospheres -- host similar
 circumstellar environments to the CPVs.
 
@@ -493,20 +492,18 @@ circumstellar environments to the CPVs.
 \begin{figure}[!b]
   \centering
   \includegraphics[width=0.99\textwidth]{figures/sf1.pdf}
-  \caption{Photometric evolution of TIC 141146667 near the Keck/HIRES observation (green bar). 
-  {\bf a,} TESS simple aperture photometry. 
-  The main data gaps were caused by scattered light from the Earth
-  (BTJD 3356-3358.5) and Moon (BTJD 3359.5-3360.5).
-  Raw two minute data are in gray; black time-averages to ten minute
-  sampling.
-  {\bf b-c,} Folded light curve before and after spectroscopy.
-  Raw two minute data are in gray; black phase-averages to 100 points
-  per cycle.
-  During BTJD 3352-3356, a state switch occurred near BTJD 3353,
-  in which the dip at $\phi$$\approx$0.8 disappeared.
-  While the large eclipse feature was present both before and after
-  the HIRES sequence, its photometric shape evolved during the data
-  gap.
+  \caption{Photometric evolution of TIC 141146667 near the Keck/HIRES
+  observation (green bar). 
+  {\bf a,} TESS simple aperture photometry.  The main data gaps were
+  caused by scattered light from the Earth (BTJD 3356-3358.5) and Moon
+  (BTJD 3359.5-3360.5).  Raw two minute data are in gray; black
+  time-averages to ten minute sampling.
+  {\bf b-c,} Folded light curve before and after spectroscopy.  Raw
+  two minute data are in gray; black phase-averages to 100 points per
+  cycle.  During BTJD 3352-3356, a state switch occurred near BTJD
+  3353, in which the dip at $\phi$$\approx$0.8 disappeared.  While the
+  large eclipse feature was present both before and after the HIRES
+  sequence, its photometric shape evolved during the data gap.
   }
   \label{fig:fulllc}
 \end{figure}
@@ -610,15 +607,15 @@ edge-on, the formal constraint is rather weak, with $i$$>$63$^\circ$ at
 % from calc_max_amplitude_sinusoid_rv_timeseries.py
 % from K_to_msini.py, assuming Mstar = 0.18
 
-{\it No Evidence For Binarity}---Any significant periodicity in the
+{\it No Evidence For Binarity}---Any periodicity in the
 radial velocity time-series is ruled out at the rotation period for
-semi-amplitudes above 2.85\,\kms\ (at 3$\sigma$ confidence).  This sets
-an upper limit on the mass of any putative companion at the four hour
-period of $m \sin i $$<$2.4\,$M_{\rm Jup}$.  Regarding possible
+semi-amplitudes above 2.85\,\kms\ (at 3$\sigma$ confidence).  This
+sets an upper limit on the mass of any putative companion at the four
+hour period of $m \sin i $$<$2.4\,$M_{\rm Jup}$.  Regarding possible
 companions at wider separations, the Gaia DR3 renormalized unit weight
 error (RUWE), a proxy for the goodness of fit for a single-source
 astrometric model to the Gaia astrometry, is 1.23, within the usual
-range for apparently single sources.  There are no resolved sources in
+range for apparently single sources.  There are no resolved companions in
 the Gaia DR3 point source catalog.  Finally, we checked the TESS light
 curve for evidence of secondary photometric periods by subtracting the
 mean CPV signal over each sector and performing a phase-dispersion
@@ -626,16 +623,17 @@ minimization analysis \cite{Stellingwerf1978,2021zndo...1011188B}.
 There were no secondary periods in the TESS data.  Previous work
 \cite{Bouma2024} has shown that about 30\% of CPVs show evidence for
 excess noise above the Gaia single-source astrometric model, and about
-40\% of CPVs show evidence for unresolved binary companions based on the
-presence of secondary photometric periods.  This agrees with analyses
-showing that multi-periodic low-mass stars are generally unresolved
-binaries \cite{Tokovinin2018}.  Overall, the CPV binary fraction seems
-consistent with that for field M dwarfs \cite{Winters2019}, pointing to
-a weak or non-existent connection between the CPV phenomenon and
-(wide) binarity.  For TIC~141146667 specifically, while we find no evidence for
-stellar multiplicity, our data are minimally constraining for the
-scenario of a low-luminosity companion ($F_1$/$F_2$$\lesssim$0.1) at
-with apparent separations below 0$\farcs$1.
+40\% of CPVs show evidence for unresolved binary companions based on
+the presence of secondary photometric periods.  This agrees with
+analyses showing that multi-periodic low-mass stars are generally
+unresolved binaries \cite{Tokovinin2018}.  Overall, the CPV binary
+fraction seems consistent with that for field M dwarfs
+\cite{Winters2019}, pointing to a weak or non-existent connection
+between the CPV phenomenon and (wide) binarity.  For TIC~141146667
+specifically, although we find no evidence for stellar multiplicity, our
+data are minimally constraining for the scenario of a low-luminosity
+companion ($F_1$/$F_2$$\lesssim$0.1) with apparent separation
+below 0$\farcs$1.
 
 
 \begin{figure}[!t]
@@ -643,25 +641,24 @@ with apparent separations below 0$\farcs$1.
   \includegraphics[width=0.7\textwidth]{figures/sf4.pdf}
   \caption{
     Spectral energy distribution of broadband photometric magnitudes
-    (filled markers)
-    plotted over the best-fit BT-Settl stellar atmosphere model
-    \cite{Allard2012} and the associated photometric predictions
-    (empty markers).  This plot was made from an adaptation of
-    \texttt{astroARIADNE} \cite{Vines2022}.  The photometry extends
-    from the Gaia DR3 blue passband to WISE W3;  the W4 passband (22
-    $\mu$m) did not yield a confident detection.  This fit yields the
-    star's temperature and size.  The lack of excess infrared flux
-    relative to the photospheric model sets an upper limit on emission
-    from circumstellar dust.
+    (filled markers) plotted over the best-fit BT-Settl stellar
+    atmosphere model \cite{Allard2012} and the associated photometric
+    predictions (empty markers).  This plot was made from an
+    adaptation of \texttt{astroARIADNE} \cite{Vines2022}.  The
+    photometry extends from the Gaia DR3 blue passband to WISE W3;
+    the W4 passband (22 $\mu$m) did not yield a confident detection.
+    This fit yields the star's temperature and size.  The lack of
+    excess infrared flux relative to the photospheric model sets an
+    upper limit on emission from circumstellar dust.
     }
   \label{fig:sed}
 \end{figure}
 
-{\it Effective temperature, radius, mass, and spectral classification}---We adopted
-the star's effective temperature and radius measured using the spectral
-energy distribution (SED) fitting procedure described by
-\cite{Bouma2024}.  To summarize, this approach used
-\texttt{astroARIADNE} \cite{Vines2022} with the BT-Settl stellar
+{\it Effective temperature, radius, mass, and spectral
+classification}---We adopted the star's effective temperature and
+radius measured using the spectral energy distribution (SED) fitting
+procedure described by \cite{Bouma2024}.  To summarize, this approach
+used \texttt{astroARIADNE} \cite{Vines2022} with the BT-Settl stellar
 atmosphere models \cite{Allard2012}, assuming the \cite{Asplund2009}
 solar abundances and the \cite{Barber2006} water line lists.  This
 approach fitted for the stellar effective temperature, radius,
@@ -669,24 +666,24 @@ reddening, surface gravity, metallicity, and distance by comparing the
 measured broadband magnitudes against pre-computed model grids.
 Specifically, we performed the fit using the broadband magnitudes from
 Gaia DR2, APASS, 2MASS, SDSS, and WISE $W1$ and $W2$.  The resulting
-best-fit SED is shown in Figure~\ref{fig:sed}.  This method has the most
-constraining power for the star's effective temperature (2972 $\pm$
-40\,K) and radius (0.42 $\pm$ 0.02\,$R_\odot$); the surface gravity,
-metallicity, and reddening are only weakly constrained.  We
+best-fit SED is shown in Figure~\ref{fig:sed}.  This method has the
+most constraining power for the star's effective temperature (2972
+$\pm$ 40\,K) and radius (0.42 $\pm$ 0.02\,$R_\odot$); the surface
+gravity, metallicity, and reddening are only weakly constrained.  We
 determined the star's spectral type to be M5.5Ve by visually comparing
 the HIRES spectra against the photometric standards tabulated by
 \cite{Bochanski2007}.   This result agrees with the effective
-temperature found from the SED fitting \cite{Pecaut2013}.
-We measured the equivalent width of the H$\alpha$ line by fitting a
-range of models to the time-averaged line profile shown in
+temperature found from the SED fitting \cite{Pecaut2013}.  We measured
+the equivalent width of the H$\alpha$ line by fitting a range of
+models to the time-averaged line profile shown in
 Figure~\ref{fig:spec}, selecting the model that minimized the Bayesian
-information criterion (we found a sum of two Gaussians to be preferred), and numerically
-integrating this best fit model.
-Our quoted result, EW$_{{\rm H}\alpha}$=7.2$\pm$0.2\,\AA, comes from
-numerically integrating within $|\Delta v/v_{\rm eq}|<1$; 
-integrating over the entire line profile (including the broad wings) would yield
-EW$_{{\rm H}\alpha}$=10.2$\pm$0.3\,\AA
-Either value would classify the star as a weak-lined T Tauri \cite{Briceno2019}.
+information criterion, and numerically integrating this best fit model.  
+We found a sum of two Gaussians to be the preferred model; our quoted
+result, EW$_{{\rm H}\alpha}$=7.2$\pm$0.2\,\AA, comes from numerically
+integrating within $|\Delta v/v_{\rm eq}|<1$.  Integrating over the
+entire line profile, including the broad wings, would yield EW$_{{\rm
+H}\alpha}$=10.2$\pm$0.3\,\AA. Either value would classify the star as
+a weak-lined T Tauri \cite{Briceno2019}.
 
 Given the effective temperature, stellar radius, and age range
 (35-150\,Myr) derived below, we then estimated the stellar mass by
@@ -694,36 +691,36 @@ interpolating against the PARSEC v1.2S isochrones \cite{Chen2014}.
 Specifically, we used the distance metric defined in Equation~8 of
 \cite{Bouma2024} to select the model mass closest to a given observed
 temperature, radius, and age.  This exercise yielded a mass of
-$M_\star$=$0.20\pm0.01$\,$M_\odot$ assuming an age of 35\,Myr, or a mass
-of $0.25\pm0.01$\,$M_\odot$ assuming an age of 150\,Myr.  These masses
-imply Keplerian corotation radii $R_{\rm cr}/R_\star$=1.75$\pm$0.07 and
-$R_{\rm cr}/R_\star$=1.89$\pm$0.07, respectively; this size scale is
-relevant because it is theoretically expected to set the inner boundary
-at which corotating material might accumulate
-(e.g.~\cite{Townsend2005,Daley-Yates2024}).  Our final quoted $M_\star$
-and $R_{\rm cr}$ values adopt the average of these extremes and a
-quadrature sum of their statistical uncertainties; we caution however
-that a more precise age would be needed to resolve the systematic
-uncertainties in these parameters.
+$M_\star$=$0.20\pm0.01$\,$M_\odot$ assuming an age of 35\,Myr, or a
+mass of $0.25\pm0.01$\,$M_\odot$ assuming an age of 150\,Myr.  These
+masses imply Keplerian corotation radii $R_{\rm
+cr}/R_\star$=1.75$\pm$0.07 and $R_{\rm cr}/R_\star$=1.89$\pm$0.07,
+respectively; this size scale is relevant because it is theoretically
+expected to set the inner boundary at which corotating material might
+accumulate (e.g.~\cite{Townsend2005,Daley-Yates2024}).  Our final
+quoted $M_\star$ and $R_{\rm cr}$ values adopt the average of these
+extremes and a quadrature sum of their statistical uncertainties; we
+caution however that a more precise age would be needed to resolve the
+systematic uncertainties in these parameters.
 
 
 {\it Age: No Obvious Association Membership}---Previous work
 \cite{Bouma2024} has found that over 90\% of CPVs are associated with
 known young moving groups based on their positions and kinematics.
 TIC~141146667 is in the minority.  We calculated the probability of
-TIC~141146667 being part of any of the nearby known groups using
+TIC~141146667 being part of any nearby known group using
 BANYAN\,$\Sigma$ v1.2 \cite{Gagne2018}.  That particular model
-classifies it as a field star at $>$99.9\% confidence.  We also searched
-the local vicinity of TIC~141146667 for neighbors with similar projected
-on-sky velocities using \texttt{comove} \cite{Tofflemire2021}.  This
-yielded no strong candidates for co-moving stars with projected
-tangential velocities $\Delta v_{\rm T}$$<$5\,\kms\ that share its
-isochronal youth.
+classifies it as a field star at $>$99.9\% confidence.  We also
+searched the local vicinity of TIC~141146667 for neighbors with
+similar projected on-sky velocities using \texttt{comove}
+\cite{Tofflemire2021}.  This yielded no strong candidates for
+co-moving stars with projected tangential velocities $\Delta v_{\rm
+T}$$<$5\,\kms\ that share its isochronal youth.
 
 {\it Age: Isochrones}---The color and absolute magnitude of
 TIC~141146667 suggest that it is a pre-main sequence M dwarf, similar to
 all other known CPVs \cite{Stauffer2017,Stauffer2021,Bouma2024}.  The
-star's proximity ($d$=58\,pc) and its high galactic latitude
+star's proximity ($d$=58\,pc) and high galactic latitude
 ($b$=$+$53$^\circ$) yield negligible interstellar reddening along the
 line of sight \cite{Green2019}.  Figure~\ref{fig:camd} shows the
 location of the star in the color--absolute magnitude diagram (CAMD)
@@ -756,23 +753,23 @@ $t_{\rm CAMD}$$\sim$30-150\,Myr.
 {\it Age: Lithium}---The depletion of lithium due to $^7$Li(p,
 $\alpha$)$^4$He burning in the cores of low-mass stars has been studied
 for over sixty years \cite{Hayashi1963,Bildsten1997,Burke2004}.
-\cite{Wood2023} provided an instructive recent overview: an abbreviated
+\cite{Wood2023} provided a recent overview: an abbreviated
 summary is that sufficiently cool and young M dwarfs show the 6707.8\,\AA\
 doublet in absorption, $\gtrsim$10\% below their ``continua''.  Unlike
 for Sun-like stars, the continuum for M dwarfs is poorly defined due to
-their molecular absorption.  We attempted a lithium measurement by
+their molecular absorption.  We therefore attempted a lithium measurement by
 constructing a wavelength-binned and Doppler-corrected TIC~141146667
 spectrum, assigning its uncertainties based on the measured scatter
 across the five hour dataset.  We then compared this average spectrum
-against the nearest matching template from \cite{Bochanski2007}.  The
+against the nearest matching M6 template from \cite{Bochanski2007}.  The
 data show a small depression near the expected lithium wavelength,
 potentially consistent with the $\Delta \lambda$$\approx$3\,\AA\ line
 broadening.  This feature nominally yields ${\rm EW}_{\rm
 Li}$=71$^{+18}_{-13}$\,m\AA, where the statistical uncertainties are
 evaluated using a bootstrap resampling technique from the statistical
-uncertainties in the spectrum.  However the systematic uncertainties associated
-with the continuum normalization are larger, and likely comparable to
-the amplitude of the feature; we therefore treat the result of this
+uncertainties in the HIRES spectrum.  However, the systematic uncertainties associated
+with the continuum normalization are likely comparable to
+the amplitude of this feature; we therefore treat the result of this
 measurement as a $2\sigma$ upper limit: ${\rm EW}_{\rm Li}$$<$107\,m\AA.
 
 Despite uncertainties in the details, what can be stated with confidence
@@ -821,17 +818,17 @@ e.g.~Figure 7 from \cite{Wood2023}).
 
 {\it Age: Summary}---The main indicators for the youth of
 TIC~141146667 are {\it i)} that it is a complex periodic variable, and
-{\it ii)} that it is 1.5 magnitudes brighter than main sequence stars
-of the same color, while showing no indicators for binarity.  The
-first item constitutes evidence for youth since all known CPVs are
-$\lesssim$200\,Myr \cite{Bouma2024}.  The reference sequences for the
-Pleiades (112\,Myr, \cite{Dahm2015}) show a few stars of equal
-luminosity and the same temperature, suggesting a photometric
-isochronal age upper limit $\lesssim$150\,Myr.  The weak lithium
-absorption suggests an age of at least 20\,Myr based on an empirical
-comparison using Gaia-ESO spectra, or at least 35\,Myr based on the
-\cite{Feiden2016} isochrones.  These considerations yield our adopted
-age range of 150\,Myr.
+{\it ii)} that it is 1.5 magnitudes brighter (four times more
+luminous) than main sequence stars of the same color, while showing no
+indicators for binarity.  The first item constitutes evidence for
+youth since all known CPVs are $\lesssim$200\,Myr \cite{Bouma2024}.
+The reference sequences for the Pleiades (112\,Myr, \cite{Dahm2015})
+show a few stars of equal luminosity and the same temperature,
+suggesting a photometric isochronal age upper limit
+$\lesssim$150\,Myr.  The weak lithium absorption suggests an age of at
+least 20\,Myr based on an empirical comparison using Gaia-ESO spectra,
+or at least 35\,Myr based on the \cite{Feiden2016} isochrones.  These
+considerations yield our adopted age range of 150\,Myr.
 
 
 
@@ -844,8 +841,8 @@ age range of 150\,Myr.
   \includegraphics[width=\textwidth]{figures/sf5.pdf}
   \caption{Time evolution of select regions in the Keck/HIRES
   spectra from 17 February 2025.
-  The spectra have been smoothed with a Gaussian filter, and cosmic
-  rays have been removed.
+  We made this plot by applying a windowed outlier rejection to remove
+  cosmic rays and then smoothing each spectrum with a Gaussian filter.
   The horizontal axis shows the velocity relative to each
   line's rest wavelength, normalized by the stellar equatorial
   velocity.  
@@ -860,25 +857,25 @@ age range of 150\,Myr.
 
 Figure~\ref{fig:hirescuts} shows a few regions of interest in the
 HIRES spectra, which cover 3650-7960\,\AA.  Higher order Balmer lines
-including H$\gamma$ and H$\delta$ (the $n=5\rightarrow2$ and
-$n=6\rightarrow2$ transitions respectively) do show some variability
+including H$\gamma$ and H$\delta$ ($n=5\rightarrow2$ and
+$n=6\rightarrow2$) do show some variability
 outside the line core.  However, this variability is not clearly
 periodic in the same manner as the emission seen in H$\alpha$.  This
 could be because there are insufficient hydrogen ions recombining from
 the relevant excited states, or due to the lower precision of the
-spectra in these bluer regions.  The Ca HK doublet for instance is
-also detectable in emission, however the continuum near it is not.
-Chromospheric emission lines in the magnesium triplet order are also
-detectable, but sufficiently blended to be rendered unusable.
+spectra in these bluer regions.  The Ca HK doublet is
+also detected in emission, however the continuum near it is not.
+Chromospheric emission from the magnesium triplet are also
+detected, but are sufficiently blended to be rendered unusable.
 
-One notable feature is that H$\alpha$, H$\gamma$, H$\delta$, and He
-5876\,\AA\ all show a blue excess at $\phi$$\approx$0.2.  At the same
-epoch, only H$\alpha$ clearly shows a resolved red excess as well,
-although $H\gamma$ and H$\delta$ are broader at this time.  Given the
-sudden rise of this emission in $<$15\,minutes, and the association
-between He 5876\,\AA\ and stellar outflows at high excitation energy,
-this component of the spectra might be more easily associated with a
-flare than with a stable, periodic component.
+A sudden blue excess appeared at $\phi$$\approx$0.2 in H$\alpha$,
+H$\gamma$, H$\delta$, and He 5876\,\AA.  At the same epoch, only
+H$\alpha$ clearly shows a resolved red excess as well, although
+H$\gamma$ and H$\delta$ do broaden at this time.  Given the sudden
+rise of this emission in $<$15\,minutes, and the association between
+He 5876\,\AA\ and stellar outflows at high excitation energy, this
+component of the spectra might be associated with a flare, rather
+than with a stable, periodic component.
 
 Finally, the Li\,\textsc{I} 6708\,\AA\ doublet, which shows no obvious
 absorption, as well as the broad K\,\textsc{I} 7699\,\AA\ resonance
@@ -892,46 +889,39 @@ Neither of these regions shows any notable variability.
 
 The physical conditions inside the plasma clumps, in particular the
 hydrogen number density, plasma temperature, ionization fraction, and
-magnetic field strength can all be estimated using the available data.
+magnetic field strength can be estimated from the available data.
 We caution that the following estimates are simple order of magnitude
-calculations: detailed
-considerations of radiative transfer and detailed balance are a
-worthwhile topic for future work, but are beyond the scope of this
+calculations: detailed considerations of radiative transfer are a
+worthy topic for future work, but are beyond the scope of this
 article.
 
-Circumstellar H$\alpha$ emission might be sourced either from
+Circumstellar H$\alpha$ emission might be sourced either from resonant
 scattering of stellar H$\alpha$ photons, or from radiative
 recombination.  We neglect scattering because Figures~\ref{fig:spec}
 and~\ref{fig:hirescuts} show the amplitude of the circumstellar
 H$\alpha$ emission varying by a factor of $\approx$5, in a manner
 uncorrelated with any variability in the chromospheric line core.  The
-volume emissivity under case B recombination (in which Lyman-series
-photons are trapped by high optical depth, so that recombinations
-cascade through H$\alpha$ and other Balmer lines) can be written as
-\begin{equation}
-  j_{\rm H\alpha} = n_{\rm e} n_{\rm p} \alpha^{\rm eff}_{\rm H\alpha}(T) h \nu_{\rm H\alpha},
-\end{equation}
-where $n_{\rm e}$ and $n_{\rm p}$ are the electron and proton densities,
-and $\alpha^{\rm eff}_{\rm H\alpha}(T)$ is the effective recombination
-coefficient, i.e.\ the number of recombinations per unit volume, per
-unit time.
-For hydrogen with 
-%densities $n_{\rm H}$$\sim$10$^{10}$\,cm$^{-3}$ and 
-temperatures between 1,000-10,000\,K,
-$\alpha^{\rm eff}_{\rm H\alpha}$ is typically on the order of $10^{-12}$ to
-$10^{-13}$\,cm$^3$\,s$^{-1}$ \cite{Hummer1987,Draine2011}.
-Neglecting the effects of atoms other than hydrogen, we can assume
-an ionization fraction $x$, such that $n_{\rm e} = n_{\rm p} = x
-n_{\rm H}$, for $n_{\rm H}$ the hydrogen number density.  Let $L_{\rm
-H\alpha} = j_{\rm H\alpha} V$, for $V$ the volume of the emitting
-hydrogen.
-The luminosity of circumstellar hydrogen emission, $L_{\rm H\alpha}$,
-is an observable: our SED fitting routine yields
-$L_\star$$\approx$0.012\,$L_\odot$, which gives
-$L_{\rm H\alpha},\star$$\approx$1.0$\times$$10^{28}$erg\,s$^{-1}$, and
-the luminosity of the clump $L_{\rm H\alpha}$ is of order one tenth
-that of the star.
-Assuming the emitting volume is a homogeneous sphere of radius $r$, we can write
+volume emissivity under case B recombination can be written
+\begin{equation} j_{\rm H\alpha} = n_{\rm e} n_{\rm p} \alpha^{\rm
+eff}_{\rm H\alpha} h \nu_{\rm H\alpha}, \end{equation} where $n_{\rm
+e}$ and $n_{\rm p}$ are the electron and proton densities, and
+$\alpha^{\rm eff}_{\rm H\alpha}$ is the effective recombination
+coefficient, defined to include all recombination routes that produce
+an H$\alpha$ photon.  For hydrogen with temperatures between
+1,000-10,000\,K, $\alpha^{\rm eff}_{\rm H\alpha}$ is typically on the
+order of $10^{-12}$ to $10^{-13}$\,cm$^3$\,s$^{-1}$
+\cite{Hummer1987,Draine2011}.  Neglecting the effects of atoms other
+than hydrogen, we can assume an ionization fraction $x$, such that
+$n_{\rm e} = n_{\rm p} = x n_{\rm H}$, for $n_{\rm H}$ the hydrogen
+number density.  Let $L_{\rm H\alpha} = j_{\rm H\alpha} V$, for $V$
+the volume of the emitting hydrogen.  The luminosity of circumstellar
+hydrogen emission, $L_{\rm H\alpha}$, is an observable: our SED
+fitting routine yields $L_\star$$\approx$0.012\,$L_\odot$, which
+implies that the stellar H$\alpha$ line radiates at
+$\approx$1.0$\times$$10^{28}$erg\,s$^{-1}$.  The luminosity of the
+clumps $L_{\rm H\alpha}$ are of order one tenth that of the star.  If
+we approximate the emitting volume as a homogeneous sphere of radius
+$r$, we can write
 \begin{align}
   n_{\rm H} &= 
   %\frac{1}{x}
@@ -951,22 +941,31 @@ Assuming the emitting volume is a homogeneous sphere of radius $r$, we can write
   \left(
     \frac{ 0.04\,R_\odot }{ r }
   \right)^{3/2}.
+  \label{eq:numdensity}
 \end{align}
-Given that we have assumed a uniform density clump, this suggests a total
-gas mass at the stated nominal parameters of $M_{\rm gas}\approx 8\times10^{16}$\,g.
+For a uniform density clump, this suggests a total gas mass of $M_{\rm
+gas}\approx 8\times10^{16}$\,g.
+We emphasize that Equation~\ref{eq:numdensity} in intended to provide
+only an order of magnitude estimate for the number density implied by
+the observed H$\alpha$ emission.  In detail, the effective
+recombination rate and the ionization fraction each vary with density
+and temperature; a more thorough estimate would iteratively solve the
+equations of detailed balance and radiative transfer
+(e.g.~\cite{CollierCameron1989} Figure~8), and potentially also
+consider departures from local thermodynamic equilibrium.
 
 Finally, a constraint on the magnetic field strength at the site of
 the clump follows from the requirement that the magnetic pressure
 exceed the thermal pressure, $B^2 / 8\pi > n_{\rm H} k T$.  Although
 we do not know the plasma temperature, if it were significantly beyond
-1,000-10,000\,K, we would either full ionize the hydrogen, or not
-ionized enough of it.  We can therefore estimate
+1,000-10,000\,K, we would either fully ionize the hydrogen, or not
+ionize enough of it.  We can therefore estimate
 \begin{equation}
   B \gtrsim 3\,{\rm G}
   \left(
   \frac{n_{\rm H}}{5\times10^{11}\,{\rm cm}^{-3}}
   \frac{T}{5000\,{\rm K}}
-  \right).
+  \right)^{1/2}.
 \end{equation}
 Given that the average surface magnetic field strengths of low-mass
 stars have been measured to span hundreds to thousands of Gauss
@@ -975,15 +974,15 @@ stars have been measured to span hundreds to thousands of Gauss
 \subsection{Upper and Lower Bounds on Dust}\phantom{+}
 \label{subsec:dust}
 
-The material's composition -- either pure plasma, or a
-dusty plasma -- is not known.  The idea of dust being
-present seems plausible given observations of chromatic transits in
-analogous objects \cite{Tanimoto2020,Gunther2022,Koen2023}.  However, this
-scenario is highly constrained.  An upper limit on the amount of hot
-dust follows from the lack of an infrared excess.  A lower limit
-follows if one assumes that most of the broadband optical depth comes
-from dust absorption and scattering, rather than any radiative
-processes associated with the plasma.
+The material's composition -- either pure plasma, or a dusty plasma --
+is not known.  The idea of dust being present seems plausible given
+observations of chromatic transits in analogous objects
+\cite{Tanimoto2020,Gunther2022,Koen2023}.  However, this scenario is
+highly constrained.  An upper limit on the amount of hot dust follows
+from the lack of an infrared excess.  A lower limit follows if one
+assumes that most of the broadband optical depth comes from dust
+absorption and scattering, rather than any radiative processes
+associated with the plasma.
 
 Regarding the upper limit, Figure~\ref{fig:sed} shows the SED.  While
 AllWISE \cite{Cutri2014} yielded a confident W3 detection
@@ -995,21 +994,20 @@ to the stellar photosphere, and a $\lesssim$5\% excess at 10\,$\mu$m
 (W3).  To estimate the implied mass bound, we assume a dust
 temperature $T_{\rm d}$=1500\,K, typical for dust near the star (see
 \cite{Zhan2019} for discussion regarding dust sublimation).  We then
-treat emission from the dust and star as Planck functions, and
-require $L_{\rm d} < f L_\star$, where the factor $f$ is set by
-the photometric precision of WISE and $L_{\rm d}$ is the bolometric dust
+treat emission from the dust and star as Planck functions, and require
+$L_{\rm d} < f L_\star$, where the factor $f$ is set by the
+photometric precision of WISE and $L_{\rm d}$ is the bolometric dust
 luminosity.  Given the reported uncertainties, we numerically find
 $f<6\cdot$10$^{-3}$.  From the Stefan-Boltzmann law we can then write
 $A_{\rm d} < f (T_\star / T_{\rm d})^4 Q_{\rm em}^{-1} (4\pi
 R_\star)^2$, for $A_{\rm d}$ the total emitting surface area of the
-dust, and $Q_{\rm em}$ an emission efficiency parameter.
-Converting this constraint to a dust mass requires an assumption
-regarding the grain properties.  We assume a grain density $\rho_{\rm
+dust, and $Q_{\rm em}$ an emission efficiency parameter.  Converting
+this constraint to a dust mass requires an assumption regarding the
+grain properties.  We assume a grain density $\rho_{\rm
 d}$=3\,g\,cm$^{-3}$ typical for silicate grains, a fixed grain size
-$a$=1\,$\mu$m, and no
-self-absorption.  This enables the assumption that $A_{\rm d} = N \pi
-a^2$, for $N$ the total number of dust grains.  This in turn yields an
-upper limit on the dust mass of
+$a$=1\,$\mu$m, and no self-absorption.  This enables the assumption
+that $A_{\rm d} = N \pi a^2$, for $N$ the total number of dust grains.
+This in turn yields an upper limit on the dust mass of
 \begin{equation}
   M_{\rm dust} \lesssim 4 \cdot 10^{17}\, {\rm g}\ 
   \left( \frac{f}{6\cdot10^{-3}} \right)
@@ -1022,14 +1020,14 @@ upper limit on the dust mass of
 
 The analogous lower limit follows from requiring the optical depth
 from absorption and scattering $\tau$ to be at least unity.  The
-optical depth can be written $\tau = n \sigma \ell = N \sigma$, where
+optical depth can be written $\tau = n \sigma \ell$, where
 $\sigma$ is the cross-section, $n$ is the number density, $\ell$ is
-the path length, and $N$ is the column density.  For spherical dust
+the path length.  For spherical dust
 grains in the optical, $\sigma = Q_{\rm ext} \pi a^2$, where $Q_{\rm
 ext}$ is the extinction efficiency parameter, tabulated e.g.~by
 \cite{Croll2014} in their Figure 13.  \cite{Sanderson2023} calculated
-the relevant cloud mass for this problem assuming a spherical dust clump of
-size $r$, and they found
+the relevant cloud mass for this problem assuming a spherical dust
+clump of size $r$, and they found
 \begin{equation}
   M_{\rm dust} \gtrsim 2 \cdot 10^{15}\, {\rm g}\ 
   \left( \frac{\tau}{1} \right)
@@ -1040,13 +1038,13 @@ size $r$, and they found
 \end{equation}
 
 Three relevant objects for comparison to these limits are solar
-prominences, planetesimals, and comets.  Prominences of the Sun
-have gas masses of order $10^{14}$\,g-$10^{16}$\,g
-\cite{VialEngvold2015}.  A planetesimal of mass $\approx$10$^{15}$\,g
-with a bulk density of 1\,g\,cm$^{-3}$ would have a diameter of order
-one kilometer.  Halley's comet has a mass of order $10^{17}$\,g
-\cite{Rickman1989}, of which $\sim$$10^{14}$\,g is shed per orbit,
-most of which inspirals toward the Sun due to Poynting-Robertson drag.
+prominences, planetesimals, and comets.  Prominences of the Sun have
+gas masses of order $10^{14}$\,g-$10^{16}$\,g \cite{VialEngvold2015}.
+A planetesimal of mass $\approx$10$^{15}$\,g with a bulk density of
+1\,g\,cm$^{-3}$ would have a diameter of order one kilometer.
+Halley's comet has a mass of order $10^{17}$\,g \cite{Rickman1989}, of
+which $\sim$$10^{14}$\,g is shed per orbit, most of which inspirals
+toward the Sun due to Poynting-Robertson drag.
 
 These calculations suggest that if dust is responsible for the
 broadband variability of CPVs, it would need to be concentrated in
@@ -1056,8 +1054,8 @@ Section~\ref{subsec:gas}, the allowed dust masses imply $M_{\rm
 gas}/M_{\rm dust}$ ranges of 1-100.  More careful measurements of this
 ratio---in particular enabled by inferring the dust mass through high
 precision infrared spectrophotometry---could provide a path for
-distinguishing the scenario of a stellar outflow from an 
-accumulation of externally-sourced material.
+distinguishing the scenario of a trapped stellar outflow from an accumulation
+of externally-sourced material.
 
 
 
@@ -1123,7 +1121,7 @@ accumulation of externally-sourced material.
     $t_{\rm adopted}$ (Myr) & 35-150 &  -- \\
     \hline
     \end{tabular}
-		\caption{Properties of \starname.  References:
+		\caption{Properties of TIC~141146667.  References:
     Gaia DR3 \cite{GaiaDR3}, TESS \cite{Ricker2015},
     TIC8 \cite{Stassun2019}, 2MASS \cite{Skrutskie2006}, ALLWISE
     \cite{Cutri2014}.}
@@ -1184,8 +1182,8 @@ accumulation of externally-sourced material.
   LGB is grateful to M.~Jardine, A.~Weinberger, and B.~Tofflemire for
   insightful conversations, and to A.~Howard and H.~Isaacson for their
   assistance reducing the HIRES spectra.
-  LGB was supported by the Carnegie Institution for Science's Carnegie
-  Fellowship and the Heising-Simons 51~Pegasi~b Fellowship.
+  This work was supported by the Carnegie Fellowship and by the
+  Heising-Simons 51~Pegasi~b Fellowship.
   %
   Funding for the TESS mission is provided by NASA’s Science Mission
   directorate.
