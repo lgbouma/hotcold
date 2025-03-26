@@ -235,8 +235,10 @@ In February 2024, the average photometric signal showed a small
 brightening over 45\% of the period, followed by a complex flux dip
 spanning 55\% of the period.  This eclipse feature shows two to three
 local photometric minima, and one to two local maxima.  Its W-shape is
-suggestive of eclipse geometries seen in certain forward models of warped
-plasma tori \cite{Townsend2008}.
+suggestive of eclipse geometries seen in forward models of warped
+plasma tori (see \cite{Townsend2008} and the associated
+\href{http://user.astro.wisc.edu/~townsend/static.php?ref=rrm-movies#Download_Bundles}{movies}).
+% particularly ω/ωc = 0.5, beta = 30, i = 90.
 
 % ** keck/hires: emission beyond v/veq>1
 The spectroscopy shows emission beyond the star's equatorial velocity
@@ -270,22 +272,31 @@ transit of the 2.1-2.7\,$R_\star$ clump occurs simultaneously with the
 sharp photometric spike visible in the TESS data.
 
 % * keck/hires: behavior at v/veq<1
-The H$\alpha$ line core at $|\Delta v / v_{\rm
-eq}|<1$ originates from a superposition of emission from the star's
-chromosphere, modulated by occulting material capable of absorbing
-or emitting H$\alpha$ photons.  In Figure~\ref{fig:spec}e, the data
-from $\phi$=0.4-1.2 have a simple interpretation: from $\phi$=0.4-0.9,
-a hot (emitting) region first gradually crosses the stellar line
-profile, followed from $\phi$=0.7-1.2 by the transit of a cool
-(absorbing) region. Phases $\phi$$<$0.4 show a mix of similar events,
-though the time sampling is sufficiently coarse that the
-interpretation is less clear.  A final exercise to quantify the
-behavior in the line core is shown in Figure~\ref{fig:spec}d, where
-$f_{\rm H\alpha\ core}$ denotes the summed flux at $|\Delta v / v_{\rm
-eq}|<1$.  This panel shows that changes in the line core flux 
-correlate with the broadband variability throughout most of the light
-curve, except near $\phi$$\approx$0.5, corresponding to the transit of the
-3.9\,$R_\star$ clump and the occultation of the lower-velocity clump.
+The data in the H$\alpha$ line core are more complex.  At $|\Delta v /
+v_{\rm eq}|<1$, most observed H$\alpha$ photons come from the star's
+chromosphere; circumstellar material may additionally modulate the
+line profile.
+Figure~\ref{fig:spec}e suggests line core variability caused by both
+bright and dark regions on the star's surface, superposed
+with smaller-amplitude variability from the transiting circumstellar
+material.
+For instance, from $\phi$=0-0.3, the double-peaked emission feature
+is visible when it is being viewed both on and off-limb.
+However, the large emission feature that crosses the star from
+$\phi$=0.4-0.9 cannot be circumstellar in origin; it emits at an
+amplitude greater than that observed from the circumstellar
+components, and it crosses the stellar velocity surface too slowly.
+It must therefore originate from a chromospherically bright region
+near the stellar surface.
+While the origin of the other bright and dark streaks passing across the
+line core are more ambiguous,
+a final exercise to quantify the behavior of this region is shown in
+Figure~\ref{fig:spec}d, where $f_{\rm H\alpha\ core}$ denotes the
+summed flux at $|\Delta v / v_{\rm eq}|<1$.  This panel shows that
+changes in the line core flux correlate with the broadband variability
+throughout most of the light curve, except near $\phi$$\approx$0.5,
+corresponding to the transit of the 3.9\,$R_\star$ clump and the
+occultation of the lower-velocity clump.
 
 \begin{table*}
 \small
@@ -317,6 +328,9 @@ $v_{\rm eq}$\dotfill		                & Equatorial velocity \dotfill            
 %
 $v_{\rm eq}\sin{i_\star}$\dotfill		    & Projected rotational\dotfill                                   &  138$\pm$8       & 4 \\
                                         & \hspace{3pt} velocity (\kms)	                                 &                      \\
+%
+$v_{\rm break}$\dotfill		              & Breakup velocity \dotfill                                      &  316$\pm$16      & 6 \\
+                                        & \hspace{3pt} ($G M_\star / R_\star$)$^{1/2}$ (\kms)	           &                      \\
 %
 $i_\star$\dotfill                       & Stellar inclination\dotfill                                    & 	$>$63           & 4 \\
                                         & \hspace{3pt}  2$\sigma$ lower limit (deg)	                     &                      \\
@@ -403,9 +417,14 @@ variables, a rare subset of B stars with radiatively-driven winds that
 accumulate into warped plasma tori \cite{Townsend2005,Townsend2008}.
 These tori tend to have dense antipodal accumulations of plasma
 sculpted by tilted-dipole magnetic fields, and the transits of these
-clumps produce broadband photometric
-variability through bound-free scattering \cite{Townsend2005} and
-Thomson scattering \cite{Berry2022}.  For $\sigma$~Ori~E and almost
+clumps produce broadband photometric variability through bound-free
+scattering \cite{Townsend2005} and Thomson scattering
+\cite{Berry2022}.  
+The plasma accumulates at antipodes 180$^\circ$ apart because the
+deepest local minima in the effective potential exist along the line
+of intersection between the rotational and magnetic equators (see
+Equation~22 of \cite{Townsend2005}).
+For $\sigma$~Ori~E and almost
 all of its analogs, the result is light curves that appear ``simple'',
 resembling those of eclipsing binaries, and time-dynamic H$\alpha$
 spectra similar to those in Figure~\ref{fig:spec}
@@ -1111,6 +1130,7 @@ of externally-sourced material.
     %$W4$ (mag)                      &  8.392 $\pm$ NOUNC & ALLWISE \\
 	  %
     % NOTE: ROSAT is an emitter.  GALEX detection.
+    % ROSAT: 3.25e-13 mW/m^2 = erg/cm^2/s
     % Ofek+2011 1.4Ghz emitter.  Helfand+2015 ditto.  Bruzewski+2021.
     \hline
     \multicolumn{3}{c}{Physical Properties} \\
@@ -1189,7 +1209,8 @@ of externally-sourced material.
 \begin{addendum}
 
 \item[Acknowledgments]
-  LGB is grateful to M.~Jardine, A.~Weinberger, and B.~Tofflemire for
+  LGB is grateful to M.~Jardine, A.~Weinberger, B.~Tofflemire, and
+  J.~Spake for
   insightful conversations, and to A.~Howard and H.~Isaacson for their
   assistance reducing the HIRES spectra.
   This work was supported by the Carnegie Fellowship and by the
