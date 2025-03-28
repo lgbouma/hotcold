@@ -60,7 +60,7 @@
 Roughly one percent of red dwarfs younger than 100 million years show
 structured, periodic optical light curves suggestive of transiting
 opaque material that corotates with the star
-\cite{Rebull2016,Stauffer2017,Rebull2018,Bouma2024}.  The
+\cite{Rebull2016,Stauffer2017,Rebull2018,Bouma2024}.  However, the
 composition, origin, and even the existence of this material are
 uncertain. The main alternative hypothesis is that these complex
 periodic variables (CPVs) are explained by complex distributions of
@@ -143,7 +143,7 @@ around 10-30\% of M dwarfs during their early lives.
   \href{https://lgbouma.com/movies/TIC141146667_20250116.mp4}{available here},
   covers a baseline of 5{,}784 cycles irregularly sampled over three
   years.  The TESS light curve is phased to the \periodhr\ hour period
-  in groups of a few cycles per frame.  This is the period both of
+  in groups of three cycles per frame.  This is the period both of
   stellar rotation, and (we hypothesize) of corotating clumps of
   circumstellar material.  Raw data acquired with two minute sampling
   are in gray; black averages to 100 points per cycle.  Similar to
@@ -176,8 +176,8 @@ corotating clumps of cool plasma around a CPV.  We identified
 TIC~141146667 in previous work \cite{Bouma2024} by searching the TESS
 two-minute data \cite{Ricker2015} for stars showing highly structured,
 periodic light curves.  We selected the star for spectroscopy because
-its brightness and rotation rate enable measuring variability in its line
-profile.  We observed it for five hours on
+its brightness and rotation rate enable efficiently measuring
+variability in its line profile.  We observed it for five hours on
 17~February~2024 (UT) using the High Resolution Echelle Spectrometer
 (HIRES \cite{vogt_hires_1994}) on the 10\,m Keck I telescope.  TESS
 observed the star over a four week interval from 30~January~2024 to
@@ -386,7 +386,8 @@ m}$ that exceed their corotation radii $R_{\rm c}$, the effective
 potential experienced by a charged particle can have a local minimum
 outside $R_{\rm c}$, enabling the material to accumulate over much
 longer timescales \cite{Petit2013,Daley-Yates2024}.  Generally
-speaking, such material need neither transit, nor be optically thick.
+speaking, such material need neither transit nor be opaque in
+broadband optical light.
 For instance, the H$\alpha$ emission clump at 3.9\,$R_\star$ shows no 
 photometric signal in the February 2024 photometry.
 
@@ -425,8 +426,8 @@ deepest local minima in the effective potential exist along the line
 of intersection between the rotational and magnetic equators (see
 Equation~22 of \cite{Townsend2005}).
 For $\sigma$~Ori~E and almost
-all of its analogs, the result is light curves that appear ``simple'',
-resembling those of eclipsing binaries, and time-dynamic H$\alpha$
+all of its analogs, the result is ``simple'' light curves that 
+resemble those of eclipsing binaries, and time-dynamic H$\alpha$
 spectra similar to those in Figure~\ref{fig:spec}
 \cite{Townsend2005,Townsend2008}.  The two known exceptions, HD~37776
 and HD~64740, show complex light curves resembling CPVs
@@ -538,7 +539,7 @@ which smears sharp features over the $<$4\,hour period (see
 star, TIC~141146666 ($T$=14.5), is 25$''$ from TIC~141146667 and is
 photometrically stable in the pixel-level TESS data.
 
-Figure~\ref{fig:fulllc} shows the TESS Sector~75 data acquired near
+Extended Data Figure~\ref{fig:fulllc} shows the TESS Sector~75 data acquired near
 the epoch of spectroscopy.  The gap in coverage from BTJD
 3356.0~-~3358.5 occurred because the Earth was within 25$^\circ$ of
 the TESS camera's boresight, yielding high levels of scattered light;
@@ -551,7 +552,7 @@ lunar approach to be usable.  Small data gaps from BTJD
 3353.55~-~3353.77 and from BTJD 3360.12~-~3360.33 were caused by data
 downlinks at the spacecraft's perigee and apogee, respectively.
 
-Figure~\ref{fig:fulllc} shows that a large, complex eclipse
+Extended Data Figure~\ref{fig:fulllc} shows that a large, complex eclipse
 feature was present before and after the HIRES data were
 acquired.  From BTJD 3352~-~3356, this eclipse had two sharp local
 minima;  the local minimum at $\phi$$\approx$0.8 disappeared following
@@ -688,7 +689,7 @@ reddening, surface gravity, metallicity, and distance by comparing the
 measured broadband magnitudes against pre-computed model grids.
 Specifically, we performed the fit using the broadband magnitudes from
 Gaia DR2, APASS, 2MASS, SDSS, and WISE $W1$ and $W2$.  The resulting
-best-fit SED is shown in Figure~\ref{fig:sed}.  This method has the
+best-fit SED is shown in Extended Data Figure Figure~\ref{fig:sed}.  This method has the
 most constraining power for the star's effective temperature (2972
 $\pm$ 40\,K) and radius (0.42 $\pm$ 0.02\,$R_\odot$); the surface
 gravity, metallicity, and reddening are only weakly constrained.  We
@@ -744,7 +745,7 @@ TIC~141146667 suggest that it is a pre-main sequence M dwarf, similar to
 all other known CPVs \cite{Stauffer2017,Stauffer2021,Bouma2024}.  The
 star's proximity ($d$=58\,pc) and high galactic latitude
 ($b$=$+$53$^\circ$) yield negligible interstellar reddening along the
-line of sight \cite{Green2019}.  Figure~\ref{fig:camd} shows the
+line of sight \cite{Green2019}.  Extended Data Figure~\ref{fig:camd} shows the
 location of TIC~141146667 in the color--absolute magnitude diagram
 (CAMD) relative to young stellar populations including Upper Scorpius
 (USco), IC~2602, and the Pleiades.  To make this diagram, we adopted
@@ -759,7 +760,7 @@ cluster.  We dereddened the photometry using the extinction
 coefficients $k_X\equiv A_X/A_0$ tabulated in
 \cite{GaiaCollaboration2018}, assuming that $A_0 = 3.1 E(B-V)$.
 
-Figure~\ref{fig:camd} shows that TIC~141146667 falls between the USco
+Extended Data Figure~\ref{fig:camd} shows that TIC~141146667 falls between the USco
 and Pleiades sequences, and approximately overlaps IC~2602.  However,
 the precision of the implied age is set by the intrinsic scatter of
 these calibration sequences; the most luminous stars in the Pleiades of
@@ -798,9 +799,9 @@ measurement as a $2\sigma$ upper limit: ${\rm EW}_{\rm Li}$$<$107\,m\AA.
 
 Despite uncertainties in the details, what can be stated with confidence
 is that lithium is not abundant in the spectrum of TIC~141146667.
-Figure~\ref{fig:liew_population} compares our upper limit against the
+Extended Data Figure~\ref{fig:liew_population} compares our upper limit against the
 equivalent width measurements reported by \cite{Jeffries2023}
-based on the Gaia-ESO spectroscopic survey; Figure~\ref{fig:hirescuts}
+based on the Gaia-ESO spectroscopic survey; Extended Data Figure~\ref{fig:hirescuts}
 shows the associated raw spectra.  If the star were $\lesssim$20\,Myr
 old, at its temperature we would expect to see lithium in abundance
 ($>$400\,m\AA).  Since we do not, we can set an empirical bound on the
@@ -844,15 +845,24 @@ e.g.~Figure 7 from \cite{Wood2023}).
 TIC~141146667 are {\it i)} that it is a complex periodic variable, and
 {\it ii)} that it is 1.5 magnitudes brighter (four times more
 luminous) than main sequence stars of the same color, while showing no
-indicators for binarity.  The first item constitutes evidence for
-youth since all known CPVs are $\lesssim$200\,Myr \cite{Bouma2024}.
-The reference sequences for the Pleiades (112\,Myr, \cite{Dahm2015})
-show a few stars of equal luminosity and the same temperature,
-suggesting a photometric isochronal age upper limit
+indicators for binarity.  Being a CPV suggests that the star is young
+because a previous CPV search unbiased in age found 90\% of its
+detections to be in $\lesssim$200\,Myr old clusters \cite{Bouma2024};
+the remaining 10\% could not be associated with any coeval
+population.
+Similarly, studies of rotation in $\lesssim$100\,Myr clusters serendipitously found
+$\approx$50-100 examples of the class
+\cite{Rebull2016,Stauffer2017,Stauffer2018,Rebull2018,Zhan2019,Rebull2020,Stauffer2021,Rebull2022,Popinchalk2023},
+whereas analogous studies of Praesepe and the Hyades did not report
+any evidence for CPVs in a set of approximately one thousand
+$\approx$700\,Myr stars \cite{Rebull2017,Douglas2019,Rampalli2021}.
+Regarding the isochronal age constraint, the Pleiades (112\,Myr,
+\cite{Dahm2015}) shows a few stars of equal luminosity and the same
+temperature, suggesting a photometric isochronal age upper limit
 $\lesssim$150\,Myr.  The weak lithium absorption suggests an age of at
 least 20\,Myr based on an empirical comparison using Gaia-ESO spectra,
 or at least 35\,Myr based on the \cite{Feiden2016} isochrones.  These
-considerations yield our adopted age range of 150\,Myr.
+considerations yield our adopted age range of 35-150\,Myr.
 
 
 
@@ -879,7 +889,7 @@ considerations yield our adopted age range of 150\,Myr.
   \label{fig:hirescuts}
 \end{figure}
 
-Figure~\ref{fig:hirescuts} shows a few regions of interest in the
+Extended Data Figure~\ref{fig:hirescuts} shows a few regions of interest in the
 HIRES spectra, which cover 3650-7960\,\AA.  Higher order Balmer lines
 including H$\gamma$ and H$\delta$ ($n=5\rightarrow2$ and
 $n=6\rightarrow2$) do show variability outside the line core.
@@ -892,7 +902,7 @@ not.  Chromospheric emission from the magnesium triplet is also
 detected, but these lines are sufficiently blended to be rendered
 unusable.
 
-Figure~\ref{fig:hirescuts} provides a novel view on the sudden blue
+Extended Data Figure~\ref{fig:hirescuts} provides a novel view on the sudden blue
 excess that appeared at $\phi$$\approx$0.2 in H$\alpha$, H$\gamma$,
 H$\delta$, and He 5876\,\AA.  At the same epoch, only H$\alpha$
 clearly shows a resolved red excess as well, although H$\gamma$ and
@@ -908,7 +918,7 @@ clarification for this type of non-periodic variability.
 
 Finally, the Li\,\textsc{I} 6708\,\AA\ doublet, which shows no obvious
 absorption, as well as the broad K\,\textsc{I} 7699\,\AA\ resonance
-line are both shown in Figure~\ref{fig:hirescuts}.  In the latter,
+line are both shown in Extended Data Figure~\ref{fig:hirescuts}.  In the latter,
 narrow telluric absorption features overlap the blue wing of the line.
 Neither of these regions shows any notable variability.
 
@@ -926,8 +936,8 @@ work, but are beyond the scope of this article.
 
 Circumstellar H$\alpha$ emission might be sourced either from resonant
 scattering of stellar H$\alpha$ photons, or from radiative
-recombination.  We neglect scattering because Figures~\ref{fig:spec}
-and~\ref{fig:hirescuts} show the amplitude of the circumstellar
+recombination.  We neglect scattering because Figure~\ref{fig:spec}
+and Extended Data Figure~\ref{fig:hirescuts} show the amplitude of the circumstellar
 H$\alpha$ emission varying by a factor of $\approx$5, in a manner
 uncorrelated with any variability in the chromospheric line core.  The
 volume emissivity under case B recombination can be written
@@ -1014,7 +1024,7 @@ assumes that most of the broadband optical depth comes from dust
 absorption and scattering, rather than any radiative processes
 associated with the plasma.
 
-Regarding the upper limit, Figure~\ref{fig:sed} shows the SED.  While
+Regarding the upper limit, Extended Data Figure~\ref{fig:sed} shows the SED.  While
 AllWISE \cite{Cutri2014} yielded a confident W3 detection
 (9.8$\sigma$), the W4 extraction yielded only a marginal indication
 (1.7$\sigma$) of detectable flux.  Similar to other CPVs
@@ -1135,9 +1145,9 @@ of externally-sourced material.
     \hline
     \multicolumn{3}{c}{Physical Properties} \\
     \hline
-    $T_{eff}$ (K) & 2972 $\pm$ 40 & \cite{Bouma2024} SED fit\\
-    $R_\star$ ($R_{\odot}$) & 0.42 $\pm$ 0.02 & \cite{Bouma2024} SED fit \\
-    $L_\star$ ($L_\odot$) & 0.0126 $\pm$ 0.0012 & \cite{Bouma2024} SED fit \\
+    $T_{\rm eff}$ (K) & 2972 $\pm$ 40 & SED fit \cite{Bouma2024} \\
+    $R_\star$ ($R_{\odot}$) & 0.42 $\pm$ 0.02 & SED fit \cite{Bouma2024} \\
+    $L_\star$ ($L_\odot$) & 0.0126 $\pm$ 0.0012 & SED fit \cite{Bouma2024} \\
     $P_{\rm rot}$ (hours) & 3.930 $\pm$ 0.001 & TESS \\ 
     $v_{\rm eq}$ (\kms)  &  130$\pm$4  & Derived \\
     $v_{\rm eq} \sin i_\star$ (\kms) & 138 $\pm$ 8 & HIRES \\
