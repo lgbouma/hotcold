@@ -67,7 +67,7 @@ periodic variables (CPVs) are explained by complex distributions of
 bright or dark regions on the stellar surfaces \cite{Koen2021}.
 Here, we present time-series spectroscopy and photometry of a
 rapidly-rotating ($P$=3.9\,hr) CPV, TIC~141146667. The spectra show
-coherent sinusoidal Balmer emission at twice to four times the
+sinusoidal time-varying Balmer emission at twice to four times the
 star's equatorial velocity, directly demonstrating for the first
 time the existence of corotating circumstellar plasma around a CPV.
 Given that long-lived condensations of cool ($10^4$ K) plasma can
@@ -116,9 +116,9 @@ have now been found by K2 and TESS
 These CPVs are phenomenologically identified based on their
 structured, periodic optical light curves; most are M dwarfs with
 rotation periods shorter than two days.  Within current sensitivity
-limits, none have primordial disks \cite{Stauffer2017,Bouma2024}.
-However, $\approx$3\% of stars a few million years old show this
-behavior, an  observed fraction which decreases to $\approx$0.3\% by
+limits, none host disks \cite{Stauffer2017,Bouma2024}.
+However, $\approx$3\% of stars a few million years old show complex
+photometric behavior, an observed fraction which decreases to $\approx$0.3\% by
 $\approx$150\,Myr \cite{Rebull2020}.
 
 The two leading hypotheses to explain the CPVs are either that
@@ -162,8 +162,9 @@ as long-lived, corotating clumps of cool plasma
 \cite{CollierCameron1989,CollierCameron1992,Barnes2000,Donati2000,Dunstone2006,Skelly2008,Leitzinger2016,Cang2021}.
 Such clumps are thought to be forced into corotation by the magnetic
 field, and the exact geometry of where the plasma can accumulate is
-dictated by the field's topology.  For instance, a tilted dipole field
-tends to yield an accumulation surface of a warped torus
+dictated by the field's topology.  For instance, a magnetic dipole field
+tilted with respect to the stellar spin axis
+yields accumulations in a warped torus geometry
 \cite{Townsend2005}, whereas in the limit of a single strong field
 line, accumulation occurs at the line's apex, furthest from the star
 \cite{Waugh2022}.  To date, none of these spectroscopic variables have
@@ -244,7 +245,7 @@ plasma tori (see \cite{Townsend2008} and the associated
 The spectroscopy shows emission beyond the star's equatorial velocity
 ($v_{\rm eq}$=130\,\kms).  There are at least two distinct emission
 components, separated by half a cycle in phase.  The first component
-has clearer sinusoidal behaviour and is double-peaked, with peak
+has clearer sinusoidal behaviour in time and is double-peaked, with peak
 semi-amplitudes of $K_1$=2.1\,$v_{\rm eq}$ and 2.7\,$v_{\rm eq}$.
 There is significant non-periodic variability in the emissivity of
 this double-peaked component: the flux excess begins with an amplitude
@@ -261,7 +262,8 @@ of these emission components is consistent with the photometric
 
 These sinusoidal emission features require circumstellar clumps of
 partially-ionized hydrogen to corotate with the star.  Based on the
-period, this material's motion is not Keplerian; it can only be
+observed sinusoidal period and peak velocity, this material's motion
+is not controlled by gravitational attraction to the star; it can only be
 explained by plasma being dragged along with the rotating stellar
 magnetic field.  The velocity semi-amplitude of the sinusoids gives
 the distance of the clumps from the stellar surface:
@@ -371,6 +373,7 @@ Provenances are:
 
 Spectra of magnetically-active, rapidly rotating stars with a wide range
 of masses have been known to exhibit both sinusoidal emission features
+in time
 \cite{Donati2000,Townsend2005,Dunstone2006,Skelly2008} and
 transient absorption features
 \cite{CollierCameron1989,CollierCameron1992,Cang2020} similar to
@@ -1026,7 +1029,8 @@ associated with the plasma.
 
 Regarding the upper limit, Extended Data Figure~\ref{fig:sed} shows the SED.  While
 AllWISE \cite{Cutri2014} yielded a confident W3 detection
-(9.8$\sigma$), the W4 extraction yielded only a marginal indication
+(9.8$\sigma$) consistent with the photometric extrapolation from bluer
+bandpasses, the W4 extraction yielded only a marginal indication
 (1.7$\sigma$) of detectable flux.  Similar to other CPVs
 \cite{Stauffer2017,Bouma2024}, the photometric uncertainties from WISE
 W1 and W2 allow at most a $\lesssim$2\% excess at 3-5\,$\mu$m relative
@@ -1077,25 +1081,31 @@ clump of size $r$, and they found
   \left( \frac{\rho_{\rm d}}{3\,\mathrm{g\,cm^{-3}}} \right).
 \end{equation}
 
-Three relevant objects for comparison to these limits are solar
+Three relevant objects for comparison include solar
 prominences, planetesimals, and comets.  Prominences of the Sun have
-gas masses of order $10^{14}$\,g-$10^{16}$\,g \cite{VialEngvold2015}.
+gas masses of $10^{14}$\,g-$10^{16}$\,g \cite{VialEngvold2015}.
 A planetesimal of mass $\approx$10$^{15}$\,g with a bulk density of
 1\,g\,cm$^{-3}$ would have a diameter of order one kilometer.
 Halley's comet has a mass of order $10^{17}$\,g \cite{Rickman1989}, of
 which $\sim$$10^{14}$\,g is shed per orbit, most of which inspirals
 toward the Sun due to Poynting-Robertson drag.
 
-These calculations suggest that if dust is responsible for the
-broadband variability of CPVs, it would need to be concentrated in
+Broadly, these considerations suggest that if dust is responsible for
+the broadband variability of CPVs, it would need to be concentrated in
 clumps with masses in the range of $10^{15}$-$10^{17}$\,g.  Given
 $M_{\rm gas}$$\approx$8$\times$10$^{16}$\,g from
 Section~\ref{subsec:gas}, the allowed dust masses imply $M_{\rm
 gas}/M_{\rm dust}$ ranges of 1-100.  More careful measurements of this
-ratio---in particular enabled by inferring the dust mass through high
+ratio---in particular by inferring the dust mass through high
 precision infrared spectrophotometry---could provide a path for
-distinguishing the scenario of a trapped stellar outflow from an accumulation
-of externally-sourced material.
+distinguishing the scenario of a trapped stellar outflow from an
+accumulation of externally-sourced material.  While there are several
+plausible external sources, feeding through a low-mass disk in
+particular cannot be ruled out based on typical disk depletion times
+\cite{Haisch2001}.  Observations of infrared excesses and accretion
+signatures in low-mass stars tens of millions of years old suggest a
+broad lifetime distribution for such disks
+\cite{Silverberg2020,Lee2020,Gaidos2022,Pfalzner2024}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
