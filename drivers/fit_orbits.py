@@ -4,27 +4,36 @@ import os
 from os.path import join
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
+from aesthetic.plot import set_style, savefig
 
-def load_rvs(component_ix=None):
+def load_rvs(component_ix=None, applymask=True):
 
     # innermost (~2veq) clump 
     mask0 = [1,1,1,1,1,
-             1,1,1,0,0, #9 = phi 0.54
+             1,1,0,0,0, #9 = phi 0.54
              0,1,1,1,1,
-             0,0,1,1,1,   #16(start) = phi 0.93       
+             0,0,1,1,0,   #16(start) = phi 0.93       
              0]
     # middle (~2.8veq) clump 
     mask1 = [1,1,1,1,1,
              1,1,1,1,0,
              1,1,1,1,1,
-             0,0,1,1,1,
+             0,0,1,1,0,
              0]
     # outer clump
     # 8&9 : absorption cancelled out the emission??
+    
+    # based on "is there a good signal"?
     mask2 = [0,0,0,0,1,
-             1,1,1,0,0, #10 = phi 0.54.  
+             1,1,1,0,1, #9 = phi 0.54.  
              1,1,1,1,1,
              0,0,0,0,0, #16(start) = phi 0.93
+             0]
+    # based on sinusoid
+    mask2 = [0,0,0,0,0,
+             0,0,0,0,1, #9 = phi 0.54.  
+             1,1,1,1,1,
+             1,0,0,0,0, #16(start) = phi 0.93
              0]
 
     assert component_ix in [1,2,3]
@@ -45,9 +54,10 @@ def load_rvs(component_ix=None):
     rv = np.array(tdf[f'Mean{component_ix}'])
     rv_err = np.array(tdf[f'Sigma{component_ix}'])
 
-    time = time[mask]
-    rv = rv[mask]
-    rv_err = rv_err[mask]
+    if applymask:
+        time = time[mask]
+        rv = rv[mask]
+        rv_err = rv_err[mask]
 
     return time, rv, rv_err
 
@@ -93,8 +103,10 @@ def save_fit_table(filename, params, perr, red_chi2, bic, param_names):
 def main():
     circ_summary = []
     ecc_summary = []
+    all_fits = []  # new: store data for combined plot
     for ix in [1, 2, 3]:
         time, rv, rv_err = load_rvs(component_ix=ix)
+        _time, _rv, _rv_err = load_rvs(component_ix=ix, applymask=False)
         
         # Estimate initial parameters
         K0 = (np.max(rv) - np.min(rv)) / 2
@@ -114,6 +126,18 @@ def main():
         param_names_circ = ['K', 'P', 't0']
         save_fit_table(circ_csv, popt_circ, perr_circ, red_chi2_circ, bic_circ, param_names_circ)
         
+        # new: store fit data for combined plot
+        all_fits.append({
+            'ix': ix,
+            'time': time,
+            'rv': rv,
+            'rv_err': rv_err,
+            '_time': _time,
+            '_rv': _rv,
+            '_rv_err': _rv_err,
+            'popt_circ': popt_circ
+        })
+        
         # Plot circular fit
         t_fit = np.linspace(time.min(), time.max(), 1000)
         plt.errorbar(time, rv, yerr=rv_err, fmt='o', label='Data')
@@ -126,10 +150,13 @@ def main():
         plt.savefig(plot_path)
         plt.clf()
         
+        # Circular orbit fit summary update: convert period from days to hours
         circ_summary.append({
             'component_ix': ix,
             'K': popt_circ[0],
-            'P': popt_circ[1],
+            'K_err': perr_circ[0],  # added uncertainty on semi-amplitude K
+            'P': popt_circ[1]*24,  # period converted to hours
+            'P_err': perr_circ[1]*24,  # added uncertainty on period
             't0': popt_circ[2],
             'Reduced_Chi2': red_chi2_circ,
             'BIC': bic_circ
@@ -161,10 +188,13 @@ def main():
         plt.savefig(plot_path)
         plt.clf()
         
+        # Eccentric orbit fit summary update: convert period from days to hours
         ecc_summary.append({
             'component_ix': ix,
             'K': popt_ecc[0],
-            'P': popt_ecc[1],
+            'K_err': perr_ecc[0],  # added uncertainty on semi-amplitude K
+            'P': popt_ecc[1]*24,  # period converted to hours
+            'P_err': perr_ecc[1]*24,  # added uncertainty on period
             't_peri': popt_ecc[2],
             'e': popt_ecc[3],
             'Reduced_Chi2': red_chi2_ecc,
@@ -176,6 +206,39 @@ def main():
     df_circ.to_csv(join('results/halpha_to_rv_timerseries', 'circular_summary.csv'), index=False)
     df_ecc = pd.DataFrame(ecc_summary)
     df_ecc.to_csv(join('results/halpha_to_rv_timerseries', 'eccentric_summary.csv'), index=False)
+    
+    # new: combined plot for all circular fits
+    set_style('science')
+    f = 0.9
+    fig, ax = plt.subplots(figsize=(f*3.7,f*3))
+    for ix, fit in enumerate(all_fits):
+        t = fit['time']
+        rv = fit['rv']
+        rv_err = fit['rv_err']
+
+        mask = ~np.in1d(fit['_time'], t)
+        _t = fit['_time'][mask]
+        _rv = fit['_rv'][mask]
+        _rv_err = fit['_rv_err'][mask]
+
+        popt = fit['popt_circ']
+        c = f"C{ix}"
+        t_fit = np.linspace(fit['_time'].min(), fit['_time'].max(), 500)
+        fn = lambda x: 24 * (x - fit['_time'].min())
+        ax.errorbar(fn(t), rv, yerr=rv_err, fmt='o', c=c, ms=2)
+        ax.errorbar(fn(_t), _rv, yerr=_rv_err, fmt='x', alpha=0.3, zorder=-1, c=c, ms=4)
+        ax.plot(fn(t_fit), rv_circular(t_fit, *popt), '-', c=c, zorder=-2, alpha=0.7)
+
+    ax.set_ylim([-4.9, 4.9])
+
+    plt.xlabel('Time [hours]')
+    plt.ylabel('RV [v$_{\mathrm{eq}}$]')
+    #plt.legend()
+    combined_plot_path = join('results/halpha_to_rv_timerseries', 'combined_circular_fit.png')
+    savefig(fig, combined_plot_path)
+    plt.clf()
+    
+    import IPython; IPython.embed()  # for debugging purposes, remove in production
 
 
 if __name__ == '__main__':
