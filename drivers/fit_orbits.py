@@ -182,6 +182,9 @@ def main(fittingstyle='leastsquares'):
     for ix in [1, 2, 3]:
         time, rv, rv_err = load_rvs(component_ix=ix)
         _time, _rv, _rv_err = load_rvs(component_ix=ix, applymask=False)
+        # NEW: store original error arrays for scaling separately in each fit
+        original_rv_err = rv_err.copy()
+        original__rv_err = _rv_err.copy()
         
         # Estimate initial parameters
         K0 = (np.max(rv) - np.min(rv)) / 2
@@ -205,14 +208,20 @@ def main(fittingstyle='leastsquares'):
         else:
             raise ValueError("Invalid fittingstyle. Choose 'leastsquares' or 'mcmc'.")
         
+        # Compute stats and scale errors for circular fit (leastsquares only)
         perr_circ = np.sqrt(np.diag(pcov_circ))
-        red_chi2_circ, bic_circ = compute_stats(rv_circular, time, rv, rv_err, popt_circ)
-        
+        red_chi2_circ, bic_circ = compute_stats(rv_circular, time, rv, original_rv_err, popt_circ)
+        if fittingstyle == 'leastsquares':
+            scale_circ = np.sqrt(red_chi2_circ) if red_chi2_circ > 0 else 1.0
+            rv_err = original_rv_err * scale_circ
+            perr_circ = perr_circ * scale_circ
+            red_chi2_circ = 1.0
         # Save circular fit table
         circ_csv = join('results/halpha_to_rv_timerseries', f'circular_fit_component_{ix}.csv')
         param_names_circ = ['K', 'P', 't0']
         save_fit_table(circ_csv, popt_circ, perr_circ, red_chi2_circ, bic_circ, param_names_circ)
         
+        # Append data for combined plot (use scaled _rv_err for consistency)
         all_fits.append({
             'ix': ix,
             'time': time,
@@ -220,7 +229,7 @@ def main(fittingstyle='leastsquares'):
             'rv_err': rv_err,
             '_time': _time,
             '_rv': _rv,
-            '_rv_err': _rv_err,
+            '_rv_err': original__rv_err * (scale_circ if fittingstyle=='leastsquares' else 1.0),
             'popt_circ': popt_circ
         })
         
@@ -250,7 +259,7 @@ def main(fittingstyle='leastsquares'):
         e0 = 0.1
         if fittingstyle == 'leastsquares':
             try:
-                popt_ecc, pcov_ecc = curve_fit(rv_eccentric, time, rv, sigma=rv_err, p0=[K0, P0, t0_0, e0])
+                popt_ecc, pcov_ecc = curve_fit(rv_eccentric, time, rv, sigma=original_rv_err, p0=[K0, P0, t0_0, e0])
             except Exception as e:
                 print(f"Component {ix} eccentric fit failed: {e}")
                 continue
@@ -261,8 +270,13 @@ def main(fittingstyle='leastsquares'):
                 print(f"Component {ix} MCMC eccentric fit failed: {e}")
                 continue
         perr_ecc = np.sqrt(np.diag(pcov_ecc))
-        red_chi2_ecc, bic_ecc = compute_stats(rv_eccentric, time, rv, rv_err, popt_ecc)
-        
+        red_chi2_ecc, bic_ecc = compute_stats(rv_eccentric, time, rv, original_rv_err, popt_ecc)
+        if fittingstyle == 'leastsquares':
+            scale_ecc = np.sqrt(red_chi2_ecc) if red_chi2_ecc > 0 else 1.0
+            # Use original_rv_err so that both fits use independent scaling factors
+            rv_err = original_rv_err * scale_ecc
+            perr_ecc = perr_ecc * scale_ecc
+            red_chi2_ecc = 1.0
         ecc_csv = join('results/halpha_to_rv_timerseries', f'eccentric_fit_component_{ix}.csv')
         param_names_ecc = ['K', 'P', 't_peri', 'e']
         save_fit_table(ecc_csv, popt_ecc, perr_ecc, red_chi2_ecc, bic_ecc, param_names_ecc)
