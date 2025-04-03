@@ -32,3 +32,5 @@ cp $r/sed_fit/TIC_141146667/plots_irexcess/SED.pdf figures/sf4.pdf
 cp $r/lineevolnpanel/TIC141146667_j537_lineevolnpanel_removecosmic.pdf figures/sf5.pdf
 
 cp $r/halpha_to_rv_timerseries/halpha_stack_3clumps.pdf figures/sf6.pdf
+
+cp $r/halpha_to_rv_timerseries/combined_circular_fit.pdf figures/sf7.pdf

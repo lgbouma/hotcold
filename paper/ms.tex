@@ -938,7 +938,7 @@ Neither of these regions shows any notable variability.
   {\it Left column:} Raw spectrum at each epoch $f_{\lambda}$ minus
   the time-averaged spectrum $f_{\langle t \rangle}$ (as in
   Figure~\ref{fig:spec}e).
-  Underplotted sinusoids are to guide the eye.
+  Underplotted sinusoids are not fits; they are meant to guide the eye.
   {\it Middle columns:} Model of emission from the inner clump (sum of
   two gaussians) and the outer clump (single gaussian), plotted over
   the data.
@@ -1006,32 +1006,48 @@ Extended Data Table~\ref{tab:halphamodelparams}.
 
 Caution is required in the interpretation of this model's results.
 The model at times overfits, because it targets the most significant
-spectral feature around the priors discussed above, and sometimes
-these features are not statistically significant.  During such
-spectral epochs, e.g.~the ``outer'' clump at $\phi$=1.07, the model is
-fitting noise, not signal.  
-At times the model underfits.  For instance, the sudden blue rise near
-$\phi$=0.2 is not well-matched by the functional form of a gaussian;
-the assumed functional form is one of convenience.
-A final point of caution is that the model fits the $i=\{ 0, 1 \}$,
-and $i=2$ components independently.  At $\phi=0.0$ and $1.0$,
-Figure~\ref{fig:halphamodel} suggests that this means the emission might
-hypothetically be from either the inner or outer components.  A
-physical interpretation however is that this is the phase during which
-the inner component is in transit, and the outer is in secondary
-occultation and blocked by the star.  At $\phi=0.0$, the double-peaked
-emission profile also matches that seen shortly afterward when the
-inner clump is viewed off-disk.  A physical interpretation of the
-model should therefore discard the results at this particular epoch
-for the outer clump.
+spectral feature around each component's prior, and sometimes these
+features are not statistically significant.  During such spectral
+epochs, e.g.~the ``outer'' clump at $\phi$=1.07, the model fits noise,
+not signal.  At other times, the model underfits.  For instance, the
+sudden blue rise near $\phi$=0.2 is not well-described by the
+functional form of a gaussian; the assumed functional form is one of
+convenience.  A final point of caution is that the model fits the
+$i=\{ 0, 1 \}$, and $i=2$ components independently.  At $\phi=0.0$ and
+$1.0$, Figure~\ref{fig:halphamodel} suggests that this means the
+emission might hypothetically be from either the inner or outer
+components.  A physical interpretation however is that this is the
+phase during which the inner component is in transit, and the outer is
+in secondary occultation and blocked by the star.  At $\phi=0.0$, the
+double-peaked emission profile also matches that seen shortly
+afterward when the inner clump is viewed off-disk.  A physical
+interpretation of the model should therefore discard the results at
+this particular epoch for the outer clump.
 
-Taking these caveats into account, the results from Extended Data
-Table~\ref{tab:halphamodelparams} can be used to evaluate various
-models for the orbits.
+\begin{figure}[!tp]
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/sf7.pdf}
+  \caption{Example orbits fit to velocities extracted from gaussian
+  profile fits in Figure~\ref{fig:halphamodel}.
+  Each marker represents the measured best-fit mean and its best-fit
+  standard deviation at a given epoch.
+  Solid circles were used in the sinusoidal fits; transparent X markers
+  were excluded due to various concerns about their epoch-by-epoch
+  interpretation (see text).  The main purpose of this exercise was to
+  quantify the orbital periods and semi-amplitudes of the
+  circumstellar clumps.  The inner double-peaked clump is shown in
+  orange blue; the outer clump is shown in green.}
+  \label{fig:orbits}
+\end{figure}
 
-, and in particular to assess their periods and
-semi-amplitudes.
-
+Taking these caveats into account, we used the results from Extended
+Data Table~\ref{tab:halphamodelparams} to evaluate various models for
+the orbits.
+Our main goal in this exercise was to quantify the orbital periods,
+velocities, and velocity dispersions of these clumps.
+Figure~\ref{fig:orbitmodel} shows some representative results for the
+circular orbit case.
+For 
 
 
 
