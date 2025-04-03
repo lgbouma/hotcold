@@ -154,7 +154,7 @@ def mcmc_fit_circular(time, rv, rv_err, rng_key=None, num_warmup=1000, num_sampl
     ], dtype=float)
     params = np.vstack([samples['K'], samples['P'], samples['t0']])
     pcov = np.cov(params)
-    return popt, pcov, jitter_circ
+    return popt, pcov, jitter_circ, samples
 
 def mcmc_fit_eccentric(time, rv, rv_err, rng_key=None, num_warmup=1000, num_samples=2000, num_chains=2):
     if rng_key is None:
@@ -214,7 +214,7 @@ def main(fittingstyle='leastsquares'):
                 continue
         elif fittingstyle == 'mcmc':
             try:
-                popt_circ, pcov_circ, jitter_circ = mcmc_fit_circular(time, rv, rv_err)
+                popt_circ, pcov_circ, jitter_circ, samples = mcmc_fit_circular(time, rv, rv_err)
             except Exception as e:
                 print(f"Component {ix} MCMC circular fit failed: {e}")
                 continue
@@ -253,7 +253,9 @@ def main(fittingstyle='leastsquares'):
             '_time': _time,
             '_rv': _rv,
             '_rv_err': _rv_err,
-            'popt_circ': popt_circ
+            'popt_circ': popt_circ,
+            # For MCMC, store the posterior samples for plotting draws.
+            **({'samples': samples} if fittingstyle=='mcmc' else {})
         })
         
         t_fit = np.linspace(time.min(), time.max(), 1000)
@@ -334,6 +336,7 @@ def main(fittingstyle='leastsquares'):
     df_ecc = pd.DataFrame(ecc_summary)
     df_ecc.to_csv(join('results/halpha_to_rv_timerseries', 'eccentric_summary.csv'), index=False)
     
+    # FINAL VISUALIZATION PLOT
     set_style('science')
     f = 0.85
     fig, ax = plt.subplots(figsize=(f*3.5, f*3))
@@ -345,13 +348,20 @@ def main(fittingstyle='leastsquares'):
         _t = fit['_time'][mask]
         _rv = fit['_rv'][mask]
         _rv_err = fit['_rv_err'][mask]
-        popt = fit['popt_circ']
         c = f"C{ix}"
-        t_fit = np.linspace(fit['_time'].min(), fit['_time'].max(), 500)
+        t_fit = np.linspace(fit['_time'].min(), fit['_time'].max(), 5000)
         fn = lambda x: 24 * (x - fit['_time'].min())
         ax.errorbar(fn(t), rv, yerr=rv_err, fmt='o', c=c, ms=2)
         ax.errorbar(fn(_t), _rv, yerr=_rv_err, fmt='x', alpha=0.3, zorder=-1, c=c, ms=4)
-        ax.plot(fn(t_fit), rv_circular(t_fit, *popt), '-', c=c, zorder=-2, alpha=0.7)
+        if fittingstyle == 'leastsquares':
+            popt = fit['popt_circ']
+            ax.plot(fn(t_fit), rv_circular(t_fit, *popt), '-', c=c, zorder=-2, alpha=0.7)
+        elif fittingstyle == 'mcmc':
+            samp = fit['samples']
+            inds = np.linspace(0, samp['K'].shape[0]-1, 6, dtype=int)[1:]
+            for idx in inds:
+                draw = [samp['K'][idx], samp['P'][idx], samp['t0'][idx]]
+                ax.plot(fn(t_fit), rv_circular(t_fit, *draw), '-', c=c, zorder=-2, alpha=0.3, lw=0.4)
     ax.set_ylim([-4.9, 4.9])
     ax.set_xlim([-0.22, 5.42])
     ax.set_xlabel('Time [hours]')
