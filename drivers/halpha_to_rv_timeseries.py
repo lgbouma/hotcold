@@ -7,8 +7,10 @@ import matplotlib.cm as cm
 import numpy as np
 import pandas as pd
 from aesthetic.plot import savefig, set_style
+from cdips.utils.lcutils import p2p_rms
 from scipy.optimize import curve_fit
 from typing import List, Optional, Tuple
+from matplotlib import rcParams
 
 
 def double_gauss(x: np.ndarray, a1: float, mu1: float, sigma1: float,
@@ -62,7 +64,8 @@ def fit_double_gaussian(
     x_fit: np.ndarray,
     p0: List[float],
     lower_bounds: Optional[List[float]] = None,
-    upper_bounds: Optional[List[float]] = None
+    upper_bounds: Optional[List[float]] = None,
+    y_err: np.ndarray = None
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, pd.DataFrame]:
     """Fit a double Gaussian model to data.
 
@@ -103,7 +106,8 @@ def fit_double_gaussian(
         upper_bounds = [1, 5, 0.4, 1, 5, 0.4]
 
     params, cov = curve_fit(double_gauss, x, y, p0=p0,
-                            bounds=(lower_bounds, upper_bounds))
+                            bounds=(lower_bounds, upper_bounds),
+                            sigma=y_err, absolute_sigma=False)
 
     y_fit = double_gauss(x_fit, *params)
     y_component1 = single_gauss(x_fit, params[0], params[1], params[2])
@@ -125,7 +129,8 @@ def fit_single_gaussian(
     x_fit: np.ndarray,
     p0: List[float],
     lower_bounds: Optional[List[float]] = None,
-    upper_bounds: Optional[List[float]] = None
+    upper_bounds: Optional[List[float]] = None,
+    y_err: np.ndarray = None
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, pd.DataFrame]:
     """Fit a single Gaussian model to data.
 
@@ -163,7 +168,8 @@ def fit_single_gaussian(
 
     params, cov = curve_fit(
         single_gauss, x, y, p0=p0,
-        bounds=(lower_bounds, upper_bounds)
+        bounds=(lower_bounds, upper_bounds),
+        sigma=y_err, absolute_sigma=False
     )
     y_fit = single_gauss(x_fit, *params)
     param_names = ['Amplitude', 'Mean', 'Sigma']
@@ -210,7 +216,7 @@ def halpha_to_rv_timeseries():
     ##########################################
     # Initial stack plot of Halpha data
     ##########################################
-    set_style('science')
+    set_style('clean')
     fig, ax = plt.subplots(figsize=(1.8,15))
 
     # Normalize the spectimes values for colormap
@@ -270,6 +276,8 @@ def halpha_to_rv_timeseries():
     ):
 
         x_fit = x_row * 1. # grid for fitting; let it be same as data.
+        _sel = np.abs(x_row) > 4
+        y_err_val = p2p_rms(y_row[_sel])
 
         #################### 
         # INNER CLUMP FITTING
@@ -286,14 +294,16 @@ def halpha_to_rv_timeseries():
 
         x = x_row[sel]
         y = y_row[sel]
+        y_err = np.ones(len(y)) * y_err_val
 
         # Initial parameter guesses & bounds: A, mu, sigma
         p0 = [0.4, clump0_guess, 0.2, 0.4, clump0_guess, 0.2]
-        lower_bounds = [0, -5, 0.01, 0, -5, 0.01]
+        lower_bounds = [0, -5, 0.01, 0, -5, 0]
         upper_bounds = [1, 5, 0.4, 1, 5, 0.4]
 
         _params, _cov, _y_fit, _y_component1, _y_component2, _df = fit_double_gaussian(
-            x, y, x_fit, p0, lower_bounds=lower_bounds, upper_bounds=upper_bounds
+            x, y, x_fit, p0, lower_bounds=lower_bounds, upper_bounds=upper_bounds,
+            y_err=y_err
         )
         
         cinner_paramslist.append(_params)
@@ -320,6 +330,7 @@ def halpha_to_rv_timeseries():
 
         x = x_row[sel]
         y = y_row[sel]
+        y_err = np.ones(len(y)) * y_err_val
 
         # Initial parameter guesses & bounds: A, mu, sigma
         p0 = [0.4, clump1_guess, 0.2]
@@ -327,7 +338,7 @@ def halpha_to_rv_timeseries():
         upper_bounds = [1, 5, 1]
 
         _params, _cov, _y_fit, _df = fit_single_gaussian(
-            x, y, x_fit, p0, lower_bounds=lower_bounds, upper_bounds=upper_bounds
+            x, y, x_fit, p0, lower_bounds=lower_bounds, upper_bounds=upper_bounds, y_err=y_err
         )
         
         couter_paramslist.append(_params)
@@ -360,22 +371,21 @@ def halpha_to_rv_timeseries():
     ##########################################
     # Multi-Gaussian clump modeling plot of Halpha data
     ##########################################
+
     plt.close("all")
-    set_style('science')
+    #set_style('clean')
+    set_style('clean')
+    rcParams['font.family'] = 'Arial'
     #fig, axs = plt.subplots(ncols=4, figsize=(5.6,15), sharey=True)
-    fig, axs = plt.subplots(ncols=4, figsize=(2.5, 7), sharey=True)
+    fig, axs = plt.subplots(ncols=4, figsize=(2.8, 6.2), sharey=True)
 
     # Normalize the spectimes values for colormap
     norm = plt.Normalize(min(spectimes), max(spectimes))
     cmap = cm.get_cmap('cividis')
 
-    #FIXME FIXME TODO TODO:
-    # FIGURE OUT HOW TO ACTUALLY YLABEL BY PHASE...
-    # TODO: alter colormap, if needed, to match colormap on ext data figure 5
-
     # Iterate over individual spectra
-    for ix, x_row, y_row, spec_time, _y_fit_inner, _y_fit_outer in zip(
-        spec_indices, xval, yval, spectimes, cinner_yfitslist, couter_yfitslist
+    for ix, x_row, y_row, spec_time, specphase, _y_fit_inner, _y_fit_outer in zip(
+        spec_indices, xval, yval, spectimes, specphases, cinner_yfitslist, couter_yfitslist
     ):
 
         # Apply 1D Gaussian smoothing with sigma=4 on y_row
@@ -397,36 +407,52 @@ def halpha_to_rv_timeseries():
         y_fit_sum = _y_fit_inner + _y_fit_outer
         ax.plot(x_row, -ix + y_row_smoothed - y_fit_sum, color=cmap(norm(spec_time)))
 
+        if (ix+1) % 2 == 0:
+            if ix == 1:
+                txt = "$\phi$=0.0"
+            else:
+                txt = "$\phi$=" + f"{specphase:.2f}"
+            ax.text(6.9, -ix+0.3, txt, fontsize='x-small', ha='right', va='center')
+
+
     # clump0 gray line
     for ampl in [2.5]:
         clump0_rv_guesses = ampl * np.sin(specphases * 2 * np.pi)
         clump0_rv_guesses_fine = ampl * np.sin(specphases_fine * 2 * np.pi)
-        ax = axs[0]
-        ax.plot(clump0_rv_guesses_fine, -spec_indices_fine, c='gray', alpha=0.3, ls=':', zorder=-1)
-        ax = axs[3]
-        ax.plot(clump0_rv_guesses_fine, -spec_indices_fine, c='gray', alpha=0.3, ls=':', zorder=-1)
-
+        for ax in [axs[0], axs[1]]:
+            ax.plot(clump0_rv_guesses_fine, -spec_indices_fine, c='gray',
+                    alpha=0.3, ls=':', zorder=-1, lw=0.5)
+            
     # clump1 gray line
     phi1 = np.pi
     for ampl in [3.9]:
         clump1_rv_guesses = ampl * np.sin(specphases * 2 * np.pi + phi1)
         clump1_rv_guesses_fine = ampl * np.sin(specphases_fine * 2 * np.pi  + phi1)
         ax = axs[0]
-        ax.plot(clump1_rv_guesses_fine, -spec_indices_fine, c='gray', alpha=0.3, ls='-.', zorder=-1)
-        ax = axs[3]
-        ax.plot(clump1_rv_guesses_fine, -spec_indices_fine, c='gray', alpha=0.3, ls='-.', zorder=-1)
-        for ax in [axs[3]]:
-            ax.axvline(x=1, color='k', linestyle='--', linewidth=0.5, alpha=0.3, zorder=-1)
-            ax.axvline(x=-1, color='k', linestyle='--', linewidth=0.5, alpha=0.3, zorder=-1)
+        for ax in [axs[0], axs[2]]:
+            ax.plot(clump1_rv_guesses_fine, -spec_indices_fine, c='gray',
+                    alpha=0.3, ls='-.', zorder=-1, lw=0.5)
+            
+        #for ax in [axs[3]]:
+        #    ax.axvline(x=1, color='k', linestyle='--', linewidth=0.3, alpha=0.3, zorder=-1)
+        #    ax.axvline(x=-1, color='k', linestyle='--', linewidth=0.3, alpha=0.3, zorder=-1)
+
+    dvlabel = r"Δ$v$/$v_\mathrm{eq}$"
+    fig.text(0.5, 0.06, dvlabel, va='bottom', ha='center', fontsize='large')
 
     for ax in axs:
-        ax.set_xlabel("xval")
-    axs[0].set_ylabel("yval")
+        ax.set_xlim([-5.9, 5.9])
+
+    axs[0].set_ylabel("← Time", fontsize='large')
+    axs[0].set_yticklabels([])
+    axs[0].set_yticks([])
+    axs[0].set_ylim([-20.5, 0.5])
+
     fluxlabel = r"$f_\lambda$ - $f_{\langle t \rangle}$"
-    axs[0].set_title(fluxlabel, fontsize='small')
-    axs[1].set_title("Inner", fontsize='small')
-    axs[2].set_title("Outer", fontsize='small')
-    axs[3].set_title("Resid", fontsize='small')
+    axs[0].set_title(fluxlabel)
+    axs[1].set_title("Inner")
+    axs[2].set_title("Outer")
+    axs[3].set_title("Resid")
 
     outdir = 'results/halpha_to_rv_timerseries'
     if not os.path.exists(outdir): os.mkdir(outdir)
@@ -527,12 +553,84 @@ def halpha_to_rv_timeseries():
     plt.close("all")
 
     ##########################################
-    # TODOs:
-    # * do the 4*veq component
-    # * mask out abs(v)<1 during sec eclipse at least
+    # Write summary parameter latex table
+    tdf.index = spectimes
+    tdf.index.name = 'BTJD'
+    tdf_unc.index = spectimes
+    tdf_unc.index.name = 'BTJD'
 
+    # Define columns order and formatting specifications.
+    cols_means = ['Mean1', 'Mean2', 'Mean3']
+    cols_sigma = ['Sigma1', 'Sigma2', 'Sigma3']
+    cols_amp = ['Amplitude1', 'Amplitude2', 'Amplitude3']
+
+    # Build a formatted dataframe.
+    formatted_rows = []
+    for idx in tdf.index:
+        row = []
+        for col in cols_means:
+            row.append(f"{tdf.loc[idx, col]:.3f} "
+                    f"$\\pm$ {tdf_unc.loc[idx, col]:.3f}")
+        for col in cols_sigma:
+            row.append(f"{tdf.loc[idx, col]:.2f} "
+                    f"$\\pm$ {tdf_unc.loc[idx, col]:.2f}")
+        for col in cols_amp:
+            row.append(f"{tdf.loc[idx, col]:.2f} "
+                    f"$\\pm$ {tdf_unc.loc[idx, col]:.2f}")
+        formatted_rows.append(row)
+    formatted_df = pd.DataFrame(
+        formatted_rows,
+        index=tdf.index,
+        columns=cols_means + cols_sigma + cols_amp
+    )
+
+    # Convert the dataframe to a LaTeX table.
+    latex_str = formatted_df.to_latex(escape=False)
+
+    # Write the LaTeX table to the specified file.
+    latexpath = os.path.join(outdir, 'multigauss_parametertable.tex')
+    with open(latexpath, 'w') as f:
+        f.write(latex_str)
+    print(f"Wrote LaTeX table to {latexpath}")
+
+    csvpath = os.path.join(outdir, 'multigauss_parametervaltable.csv')
+    tdf.to_csv(csvpath)
+    print(f"Wrote CSV table to {csvpath}")
+    csvpath = os.path.join(outdir, 'multigauss_parameterunctable.csv')
+    tdf_unc.to_csv(csvpath)
+    print(f"Wrote CSV table to {csvpath}")
+
+    ##########################################
+    # Define manual masks.  Zero-based count.
+    # innermost (~2veq) clump 
+    mask0 = [1,1,1,1,1,
+             1,1,1,0,0, #9 = phi 0.54
+             0,1,1,1,1,
+             0,0,1,1,1,   #16(start) = phi 0.93       
+             0]
+    # middle (~2.8veq) clump 
+    mask1 = [1,1,1,1,1,
+             1,1,1,1,0,
+             1,1,1,1,1,
+             0,0,1,1,1,
+             0]
+    # outer clump
+    # 8&9 : absorption cancelled out the emission??
+    mask2 = [0,0,0,0,1,
+             1,1,1,0,0, #10 = phi 0.54.  
+             1,1,1,1,1,
+             0,0,0,0,0, #16(start) = phi 0.93
+             0]
+
+    ##########################################
+    # Fit some sinusoids to RV vs time...
     import IPython; IPython.embed()
-    assert 0
+
+
+
+    #FIXME FIXME FIXME TODO TODO TODO
+    # GOTTA FIGURE OUT HOW TO DEAL WITH THE TRANSIT / SEOCONDAARY ECLIPSE WINDOW MASK.
+    # E.G. AROUND PHI = 0.0, THERE IS SUPPOSED EMISSION FROM TH EOUTER CLUMP WHICH SHOULD BE GONE 
 
 
 
