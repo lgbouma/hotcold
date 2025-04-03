@@ -145,10 +145,36 @@ def mcmc_fit_circular(time, rv, rv_err, rng_key=None, num_warmup=1000, num_sampl
     mcmc.run(rng_key, time=time, rv_err=rv_err, rv_obs=rv)
     mcmc.print_summary()
     samples = mcmc.get_samples()
-    popt = np.asarray([samples['K'].mean(), samples['P'].mean(), samples['t0'].mean()], dtype=float)
+    # compute mean jitter parameter from the samples
+    jitter_circ = np.asarray(samples['jitter']).mean()
+    popt = np.asarray([
+        samples['K'].mean(),
+        samples['P'].mean(),
+        samples['t0'].mean()
+    ], dtype=float)
     params = np.vstack([samples['K'], samples['P'], samples['t0']])
     pcov = np.cov(params)
-    return popt, pcov
+    return popt, pcov, jitter_circ
+
+def mcmc_fit_eccentric(time, rv, rv_err, rng_key=None, num_warmup=1000, num_samples=2000, num_chains=2):
+    if rng_key is None:
+        rng_key = jax.random.PRNGKey(1)
+    kernel = NUTS(model_eccentric)
+    mcmc = MCMC(kernel, num_warmup=num_warmup, num_samples=num_samples, num_chains=num_chains)
+    mcmc.run(rng_key, time=time, rv_err=rv_err, rv_obs=rv)
+    mcmc.print_summary()
+    samples = mcmc.get_samples()
+    # compute mean jitter parameter from the samples
+    jitter_ecc = np.asarray(samples['jitter']).mean()
+    popt = np.asarray([
+        samples['K'].mean(),
+        samples['P'].mean(),
+        samples['t_peri'].mean(),
+        samples['e'].mean()
+    ], dtype=float)
+    params = np.vstack([samples['K'], samples['P'], samples['t_peri'], samples['e']])
+    pcov = np.cov(params)
+    return popt, pcov, jitter_ecc
 
 def model_eccentric(time, rv_err, rv_obs):
     # Priors: K Uniform(0,6), P Uniform(2/24,6/24), t_peri Uniform(min(time),max(time)), e Uniform(0,1)
@@ -161,19 +187,6 @@ def model_eccentric(time, rv_err, rv_obs):
     effective_err = jnp.sqrt(rv_err**2 + jitter**2)  # Add jitter in quadrature
     with numpyro.plate('data', len(time)):
         numpyro.sample('obs', dist.Normal(mu, effective_err), obs=rv_obs)
-
-def mcmc_fit_eccentric(time, rv, rv_err, rng_key=None, num_warmup=1000, num_samples=2000, num_chains=2):
-    if rng_key is None:
-        rng_key = jax.random.PRNGKey(1)
-    kernel = NUTS(model_eccentric)
-    mcmc = MCMC(kernel, num_warmup=num_warmup, num_samples=num_samples, num_chains=num_chains)
-    mcmc.run(rng_key, time=time, rv_err=rv_err, rv_obs=rv)
-    mcmc.print_summary()
-    samples = mcmc.get_samples()
-    popt = np.asarray([samples['K'].mean(), samples['P'].mean(), samples['t_peri'].mean(), samples['e'].mean()], dtype=float)
-    params = np.vstack([samples['K'], samples['P'], samples['t_peri'], samples['e']])
-    pcov = np.cov(params)
-    return popt, pcov
 
 def main(fittingstyle='leastsquares'):
     circ_summary = []
@@ -200,9 +213,8 @@ def main(fittingstyle='leastsquares'):
                 print(f"Component {ix} circular fit failed: {e}")
                 continue
         elif fittingstyle == 'mcmc':
-            popt_circ, pcov_circ = mcmc_fit_circular(time, rv, rv_err)
             try:
-                popt_circ, pcov_circ = mcmc_fit_circular(time, rv, rv_err)
+                popt_circ, pcov_circ, jitter_circ = mcmc_fit_circular(time, rv, rv_err)
             except Exception as e:
                 print(f"Component {ix} MCMC circular fit failed: {e}")
                 continue
@@ -217,12 +229,22 @@ def main(fittingstyle='leastsquares'):
             rv_err = original_rv_err * scale_circ
             perr_circ = perr_circ * scale_circ
             red_chi2_circ = 1.0
+        elif fittingstyle == 'mcmc':
+            scale_circ = jitter_circ if jitter_circ > 0 else 1.0
+            rv_err = original_rv_err * scale_circ
         # Save circular fit table
         circ_csv = join('results/halpha_to_rv_timerseries', f'circular_fit_component_{ix}.csv')
         param_names_circ = ['K', 'P', 't0']
         save_fit_table(circ_csv, popt_circ, perr_circ, red_chi2_circ, bic_circ, param_names_circ)
         
         # Append data for combined plot (use scaled _rv_err for consistency)
+        if fittingstyle == 'leastsquares':
+            rv_err = rv_err * scale_circ
+            _rv_err = original__rv_err * scale_circ
+        elif fittingstyle == 'mcmc':
+            rv_err = np.sqrt(rv_err**2  + jitter_circ**2)
+            _rv_err = np.sqrt(_rv_err**2  + jitter_circ**2)
+
         all_fits.append({
             'ix': ix,
             'time': time,
@@ -230,7 +252,7 @@ def main(fittingstyle='leastsquares'):
             'rv_err': rv_err,
             '_time': _time,
             '_rv': _rv,
-            '_rv_err': original__rv_err * (scale_circ if fittingstyle=='leastsquares' else 1.0),
+            '_rv_err': _rv_err,
             'popt_circ': popt_circ
         })
         
@@ -266,7 +288,7 @@ def main(fittingstyle='leastsquares'):
                 continue
         elif fittingstyle == 'mcmc':
             try:
-                popt_ecc, pcov_ecc = mcmc_fit_eccentric(time, rv, rv_err)
+                popt_ecc, pcov_ecc, jitter_ecc = mcmc_fit_eccentric(time, rv, rv_err)
             except Exception as e:
                 print(f"Component {ix} MCMC eccentric fit failed: {e}")
                 continue
@@ -278,6 +300,9 @@ def main(fittingstyle='leastsquares'):
             rv_err = original_rv_err * scale_ecc
             perr_ecc = perr_ecc * scale_ecc
             red_chi2_ecc = 1.0
+        elif fittingstyle == 'mcmc':
+            scale_ecc = jitter_ecc if jitter_ecc > 0 else 1.0
+            rv_err = original_rv_err * scale_ecc
         ecc_csv = join('results/halpha_to_rv_timerseries', f'eccentric_fit_component_{ix}.csv')
         param_names_ecc = ['K', 'P', 't_peri', 'e']
         save_fit_table(ecc_csv, popt_ecc, perr_ecc, red_chi2_ecc, bic_ecc, param_names_ecc)
