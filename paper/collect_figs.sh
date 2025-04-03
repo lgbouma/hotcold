@@ -30,3 +30,5 @@ cp $r/hrd/hrd_smalllim_dereddened.pdf figures/sf3.pdf
 cp $r/sed_fit/TIC_141146667/plots_irexcess/SED.pdf figures/sf4.pdf
 
 cp $r/lineevolnpanel/TIC141146667_j537_lineevolnpanel_removecosmic.pdf figures/sf5.pdf
+
+cp $r/halpha_to_rv_timerseries/halpha_stack_3clumps.pdf figures/sf6.pdf

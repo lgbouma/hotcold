@@ -8,6 +8,7 @@
 \usepackage{aas_macros_nature}
 \usepackage{lineno}
 \usepackage{caption}
+\usepackage{rotating} % sidewaystable
 
 \linespread{1.0}
 \linenumbers % turn line numbering on or off
@@ -75,7 +76,7 @@ persist in the hot ($10^6$ K) coronae of stars with a wide range of
 masses \cite{CollierCameron1989,Townsend2005,Dunstone2006,Petit2013,Waugh2022,Daley-Yates2024},
 these data support the idea that around the lowest-mass stars, such
 condensations can sustain an optically thick component; the origin
-of the optically thick material and its microphysical opacity remain
+of this optically thick material and its microphysical opacity remain
 unclear.
 \end{abstract}
 
@@ -274,7 +275,7 @@ transit of the 2.1-2.7\,$R_\star$ clump occurs simultaneously with the
 sharp photometric spike visible in the TESS data.
 
 % * keck/hires: behavior at v/veq<1
-The data in the H$\alpha$ line core are more complex.  At $|\Delta v /
+The H$\alpha$ line core is more complex.  At $|\Delta v /
 v_{\rm eq}|<1$, most observed H$\alpha$ photons come from the star's
 chromosphere; circumstellar material may additionally modulate the
 line profile.
@@ -926,6 +927,124 @@ narrow telluric absorption features overlap the blue wing of the line.
 Neither of these regions shows any notable variability.
 
 
+
+\subsection{Detailed Behavior of H$\alpha$: Model and Implications}\phantom{+}
+\label{subsec:halpha}
+
+\begin{figure}[!tp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/sf6.pdf}
+  \caption{Time-variable fit to H$\alpha$ line profiles.
+  {\it Left column:} Raw spectrum at each epoch $f_{\lambda}$ minus
+  the time-averaged spectrum $f_{\langle t \rangle}$ (as in
+  Figure~\ref{fig:spec}e).
+  Underplotted sinusoids are to guide the eye.
+  {\it Middle columns:} Model of emission from the inner clump (sum of
+  two gaussians) and the outer clump (single gaussian), plotted over
+  the data.
+  {\it Right column:} Residual of the left column after subtracting
+  the sum of the two middle columns, leaving variability in the line
+  core.  
+  Section~\ref{subsec:halpha} discusses the use of this model.
+  }
+  \label{fig:halphamodel}
+\end{figure}
+
+{\it A model for the time-dynamic H$\alpha$ spectrum}---While
+Figure~\ref{fig:spec} shows that clumps of circumstellar material
+exist around TIC~141146667, it would be valuable to quantify the exact
+orbital periods, velocities, and velocity dispersions of these clumps.
+These quantities can clarify the precision with which the
+spectroscopic period agrees with the photometric period, and also
+constrain the physical dimensions of the emitting region.
+
+Given that a full radiative transfer simulation was beyond our scope,
+we opted to construct a phenomenological model aimed at capturing 
+the emission from the circumstellar material.  We did this by
+fitting each spectral epoch with a multi-component
+gaussian, after having subtracted the time-average line profile as in
+Figure~\ref{fig:spec}e.  The results of this exercise are shown in
+Figure~\ref{fig:halphamodel}; details in its implementation and
+interpretation follow.
+
+To the implement the model, we assumed that the ``inner'' ($K_{\rm
+inner}$$\approx$2.5\,$v_{\rm eq}$) clump would be well-fit by a sum of
+two gaussians because it visually appears double-peaked in the raw
+data from $\phi$=0.15-0.35 and $\phi$=0.65-0.85
+(Figure~\ref{fig:spec}b).  We assumed the ``outer'' ($K_{\rm
+outer}$$\approx$3.9\,$v_{\rm eq}$) clump would be better fit by a
+single gaussian, based on its behavior from $\phi$=0.6-0.9.  Each
+gaussian component has three free parameters at each spectral epoch:
+the mean $\mu$, standard deviation $\sigma$, and amplitude $A$.
+Denote the two gaussians for the inner component $i=\{ 0, 1 \}$,
+and the single outer component with $i=2$.  Given the complexity of the
+line profile data (Figure~\ref{fig:halphamodel} left column), the
+likelihood function for this model is multimodal.  We therefore
+imposed the prior constraints that $A_i \sim \mathcal{U}[0,1]$,
+$\sigma_i/v_{\rm eq} \sim \mathcal{U}[0,1]$, and further assumed
+$K_i(t) \sim
+\mathcal{U}[
+  K_{\rm inner}\sin(\phi(t)) - v_{\rm eq},
+  K_{\rm inner}\sin(\phi(t)) + v_{\rm eq}
+]$
+for the inner two components, and
+$K_i(t) \sim
+\mathcal{U}[
+  K_{\rm outer}\sin(\phi(t) + \pi) - 2v_{\rm eq},
+  K_{\rm outer}\sin(\phi(t) + \pi) + 2v_{\rm eq}
+]$
+for the outer component.
+This latter assumption constrains the mean velocity of each component
+to be near the value suggested by visual inspection, but provides
+sufficient flexibility for the model to deviate from the assumption of
+a sinusoid if the data dictate such behavior.
+We fitted each component to the data {\it independently} using scipy's
+non-linear least squares \texttt{curve\_fit} method
+\cite{Virtanen2020}, and scaled the resulting parameter covariance
+matrix by a constant factor to match the sample variance of the
+residuals.
+The choice to fit the $i=\{ 0, 1 \}$, and $i=2$ components
+independently generally did not affect the results compared to if we
+have fit all three simultaneously, except for at $\phi=1.00$ (see
+Figure~\ref{fig:halphamodel}).
+
+The resulting mean velocities, widths, and amplitudes are given in
+Table~\ref{tab:halphamodelparams}.
+%FIXME TODO gotta get this table being better... and in particular
+%gotta not quite signal where there is nothing.  (mask out transits +
+%secondary eclipses....)
+
+
+The main benefit of this model is that it is
+sufficiently flexible to capture the observed variability in
+circumstellar emission, and 
+
+quantify the exact
+orbital periods, velocities, and velocity dispersions of these clumps.
+
+
+
+Figure~\ref{fig:halphamodel}
+
+functions 
+
+
+
+{\it Constraints on physical dimensions of emitting region}---
+
+
+
+IMPLICATIONS:
+The secondary eclipse of the `inner clump' at $\phi$$\approx$0.5 is not
+associated with a broadband flux dip.   The clump does not therefore
+contribute significant broadband emissivity across the entire TESS
+band; only in H$\alpha$.
+
+
+
+
+
+
 \subsection{Properties of the Plasma and Magnetospheric Environment}\phantom{+}
 \label{subsec:gas}
 
@@ -1214,6 +1333,51 @@ broad lifetime distribution for such disks
   \caption{TIC~141146667 radial velocities relative to the systemic velocity.}
   \label{tab:rv}
 \end{table}
+
+
+\begin{sidewaystable}
+%\begin{table}
+  %\small
+  \footnotesize
+  \centering
+  \begin{tabular}{lccccccccc}
+  %\hline 
+  %\hline 
+  %Time [BJD$_{\rm TDB}$] & RV (\kms) & $\sigma_{\rm RV}$ (\kms) \\
+  % from
+  % results/halpha_to_rv_timerseries/multigauss_parametertable.tex
+  \hline
+   & Mean1 & Mean2 & Mean3 & Sigma1 & Sigma2 & Sigma3 & Amplitude1 & Amplitude2 & Amplitude3 \\
+  BTJD &  &  &  &  &  &  &  &  &  \\
+  \hline
+  3357.960099 & -0.725 $\pm$ 0.028 & -1.416 $\pm$ 0.026 & 0.177 $\pm$ 0.019 & 0.39 $\pm$ 0.03 & 0.18 $\pm$ 0.03 & 0.59 $\pm$ 0.02 & 0.51 $\pm$ 0.01 & 0.23 $\pm$ 0.04 & 0.29 $\pm$ 0.01 \\
+  3357.970746 & -0.192 $\pm$ 0.007 & 0.498 $\pm$ 0.010 & 0.100 $\pm$ 0.014 & 0.23 $\pm$ 0.01 & 0.24 $\pm$ 0.01 & 0.55 $\pm$ 0.01 & 0.50 $\pm$ 0.01 & 0.37 $\pm$ 0.01 & 0.42 $\pm$ 0.01 \\
+  3357.981672 & 0.895 $\pm$ 0.051 & 1.771 $\pm$ 0.076 & -1.470 $\pm$ 0.113 & 0.40 $\pm$ 0.02 & 0.40 $\pm$ 0.10 & 0.09 $\pm$ 0.11 & 0.67 $\pm$ 0.05 & 0.34 $\pm$ 0.04 & 0.03 $\pm$ 0.03 \\
+  3357.993524 & 1.536 $\pm$ 0.011 & 2.202 $\pm$ 0.015 & -3.787 $\pm$ 0.049 & 0.25 $\pm$ 0.01 & 0.29 $\pm$ 0.01 & 0.72 $\pm$ 0.05 & 0.55 $\pm$ 0.01 & 0.46 $\pm$ 0.01 & 0.05 $\pm$ 0.00 \\
+  3358.003594 & 1.974 $\pm$ 0.007 & 2.588 $\pm$ 0.006 & -2.749 $\pm$ 0.020 & 0.26 $\pm$ 0.01 & 0.22 $\pm$ 0.00 & 1.00 $\pm$ 0.02 & 0.64 $\pm$ 0.01 & 0.67 $\pm$ 0.01 & 0.43 $\pm$ 0.01 \\
+  3358.015249 & 2.027 $\pm$ 0.003 & 2.666 $\pm$ 0.003 & -2.370 $\pm$ 0.015 & 0.24 $\pm$ 0.00 & 0.20 $\pm$ 0.00 & 1.00 $\pm$ 0.01 & 0.62 $\pm$ 0.00 & 0.60 $\pm$ 0.00 & 0.56 $\pm$ 0.00 \\
+  3358.024971 & 1.790 $\pm$ 0.004 & 2.469 $\pm$ 0.006 & -2.138 $\pm$ 0.011 & 0.24 $\pm$ 0.00 & 0.26 $\pm$ 0.00 & 0.77 $\pm$ 0.01 & 0.53 $\pm$ 0.00 & 0.38 $\pm$ 0.00 & 0.31 $\pm$ 0.00 \\
+  3358.036522 & 0.584 $\pm$ 0.008 & 1.399 $\pm$ 0.009 & -1.584 $\pm$ 0.009 & 0.18 $\pm$ 0.01 & 0.40 $\pm$ 0.01 & 0.89 $\pm$ 0.01 & 0.35 $\pm$ 0.01 & 0.39 $\pm$ 0.00 & 0.62 $\pm$ 0.00 \\
+  3358.047668 & 0.328 $\pm$ 0.014 & 0.685 $\pm$ 0.010 & -0.969 $\pm$ 0.017 & 0.07 $\pm$ 0.01 & 0.13 $\pm$ 0.01 & 0.46 $\pm$ 0.02 & 0.14 $\pm$ 0.02 & 0.28 $\pm$ 0.02 & 0.52 $\pm$ 0.02 \\
+  3358.058824 & -0.646 $\pm$ 0.005 & -1.474 $\pm$ 0.066 & 0.891 $\pm$ 0.079 & 0.23 $\pm$ 0.00 & 0.25 $\pm$ 0.07 & 0.14 $\pm$ 0.08 & 0.51 $\pm$ 0.01 & 0.10 $\pm$ 0.01 & 0.09 $\pm$ 0.04 \\
+  3358.069519 & -0.388 $\pm$ 0.104 & -1.669 $\pm$ 0.023 & 2.646 $\pm$ 0.020 & 0.40 $\pm$ 0.07 & 0.40 $\pm$ 0.02 & 0.53 $\pm$ 0.02 & 0.47 $\pm$ 0.04 & 0.33 $\pm$ 0.01 & 0.22 $\pm$ 0.01 \\
+  3358.080468 & -1.748 $\pm$ 0.009 & -2.483 $\pm$ 0.010 & 3.526 $\pm$ 0.009 & 0.25 $\pm$ 0.01 & 0.33 $\pm$ 0.01 & 0.55 $\pm$ 0.01 & 0.28 $\pm$ 0.01 & 0.32 $\pm$ 0.00 & 0.32 $\pm$ 0.00 \\
+  3358.091255 & -2.119 $\pm$ 0.007 & -2.868 $\pm$ 0.007 & 3.960 $\pm$ 0.005 & 0.26 $\pm$ 0.01 & 0.23 $\pm$ 0.01 & 0.40 $\pm$ 0.01 & 0.34 $\pm$ 0.01 & 0.29 $\pm$ 0.01 & 0.39 $\pm$ 0.00 \\
+  3358.101671 & -2.019 $\pm$ 0.006 & -2.731 $\pm$ 0.008 & 3.758 $\pm$ 0.005 & 0.20 $\pm$ 0.01 & 0.24 $\pm$ 0.01 & 0.43 $\pm$ 0.01 & 0.29 $\pm$ 0.01 & 0.25 $\pm$ 0.01 & 0.23 $\pm$ 0.00 \\
+  3358.112713 & -1.581 $\pm$ 0.020 & -2.141 $\pm$ 0.043 & 2.867 $\pm$ 0.019 & 0.19 $\pm$ 0.02 & 0.29 $\pm$ 0.03 & 0.40 $\pm$ 0.02 & 0.18 $\pm$ 0.02 & 0.13 $\pm$ 0.01 & 0.12 $\pm$ 0.00 \\
+  3358.123928 & -0.624 $\pm$ 0.006 & -1.312 $\pm$ 0.076 & 0.824 $\pm$ 0.012 & 0.09 $\pm$ 0.01 & 0.22 $\pm$ 0.08 & 0.44 $\pm$ 0.01 & 0.18 $\pm$ 0.01 & 0.02 $\pm$ 0.01 & 0.32 $\pm$ 0.01 \\
+  3358.135236 & -0.012 $\pm$ 0.011 & -0.208 $\pm$ 0.012 & -0.192 $\pm$ 0.012 & 0.03 $\pm$ 0.01 & 0.11 $\pm$ 0.01 & 0.12 $\pm$ 0.01 & 0.12 $\pm$ 0.04 & 0.25 $\pm$ 0.02 & 0.25 $\pm$ 0.02 \\
+  3358.146555 & 1.007 $\pm$ 0.100 & 1.622 $\pm$ 0.048 & -1.789 $\pm$ 0.045 & 0.06 $\pm$ 0.11 & 0.31 $\pm$ 0.06 & 0.04 $\pm$ 0.05 & 0.02 $\pm$ 0.04 & 0.12 $\pm$ 0.02 & 0.05 $\pm$ 0.05 \\
+  3358.156693 & 1.603 $\pm$ 0.018 & 2.444 $\pm$ 0.024 & -4.408 $\pm$ 0.197 & 0.14 $\pm$ 0.02 & 0.23 $\pm$ 0.03 & 1.00 $\pm$ 0.17 & 0.14 $\pm$ 0.02 & 0.14 $\pm$ 0.01 & 0.05 $\pm$ 0.00 \\
+  3358.169147 & 1.543 $\pm$ 0.007 & 2.152 $\pm$ 0.013 & -3.885 $\pm$ 0.031 & 0.14 $\pm$ 0.01 & 0.39 $\pm$ 0.01 & 1.00 $\pm$ 0.04 & 0.23 $\pm$ 0.01 & 0.27 $\pm$ 0.00 & 0.10 $\pm$ 0.00 \\
+  3358.177978 & 1.588 $\pm$ 0.037 & 2.828 $\pm$ 0.005 & -4.378 $\pm$ 0.053 & 0.40 $\pm$ 0.03 & 0.02 $\pm$ 0.01 & 0.75 $\pm$ 0.06 & 0.33 $\pm$ 0.01 & 0.11 $\pm$ 0.03 & 0.12 $\pm$ 0.01 \\
+  \hline
+  \end{tabular}
+  \caption{Multi-gaussian model fit results to H$\alpha$ line profiles.}
+  \label{tab:halphamodelparams}
+%\end{table}
+\end{sidewaystable}
+
 
 \end{methods}
 
