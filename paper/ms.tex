@@ -958,7 +958,7 @@ These quantities can clarify the precision with which the
 spectroscopic period agrees with the photometric period, and also
 constrain the physical dimensions of the emitting region.
 
-Given that a full radiative transfer simulation was beyond our scope,
+Given that a full radiative transfer simulation was outside our scope,
 we opted to construct a phenomenological model aimed at capturing 
 the emission from the circumstellar material.  We did this by
 fitting each spectral epoch with a multi-component
@@ -993,20 +993,48 @@ $K_i(t) \sim
   K_{\rm outer}\sin(\phi(t) + \pi) - 2v_{\rm eq},
   K_{\rm outer}\sin(\phi(t) + \pi) + 2v_{\rm eq}
 ]$
-for the outer component.
-This latter assumption constrains the mean velocity of each component
-to be near the value suggested by visual inspection, but provides
-sufficient flexibility for the model to deviate from the assumption of
-a sinusoid if the data dictate such behavior.
-We fitted each component to the data {\it independently} using scipy's
-non-linear least squares \texttt{curve\_fit} method
-\cite{Virtanen2020}, and scaled the resulting parameter covariance
-matrix by a constant factor to match the sample variance of the
-residuals.
-The choice to fit the $i=\{ 0, 1 \}$, and $i=2$ components
-independently generally did not affect the results compared to if we
-have fit all three simultaneously, except for at $\phi=1.00$ (see
-Figure~\ref{fig:halphamodel}).
+for the outer component.  This latter assumption mitigates the
+multimodality of the likelihood by requiring the mean velocity of each
+component to be within a one or two $v_{\rm eq}$ of the time-variable
+sinusoid suggested by visual inspection.  We fitted each component to
+the data {\it independently} using scipy's non-linear least squares
+\texttt{curve\_fit} implementation \cite{Virtanen2020}, and scaled the
+resulting parameter covariance matrix by a constant factor to match
+the sample variance of the residuals.  The resulting means,
+amplitudes, and standard devations for each component are given in
+Extended Data Table~\ref{tab:halphamodelparams}.
+
+Caution is required in the interpretation of this model's results.
+The model at times overfits, because it targets the most significant
+spectral feature around the priors discussed above, and sometimes
+these features are not statistically significant.  During such
+spectral epochs, e.g.~the ``outer'' clump at $\phi$=1.07, the model is
+fitting noise, not signal.  
+At times the model underfits.  For instance, the sudden blue rise near
+$\phi$=0.2 is not well-matched by the functional form of a gaussian;
+the assumed functional form is one of convenience.
+A final point of caution is that the model fits the $i=\{ 0, 1 \}$,
+and $i=2$ components independently.  At $\phi=0.0$ and $1.0$,
+Figure~\ref{fig:halphamodel} suggests that this means the emission might
+hypothetically be from either the inner or outer components.  A
+physical interpretation however is that this is the phase during which
+the inner component is in transit, and the outer is in secondary
+occultation and blocked by the star.  At $\phi=0.0$, the double-peaked
+emission profile also matches that seen shortly afterward when the
+inner clump is viewed off-disk.  A physical interpretation of the
+model should therefore discard the results at this particular epoch
+for the outer clump.
+
+Taking these caveats into account, the results from Extended Data
+Table~\ref{tab:halphamodelparams} can be used to evaluate various
+models for the orbits.
+
+, and in particular to assess their periods and
+semi-amplitudes.
+
+
+
+
 
 The resulting mean velocities, widths, and amplitudes are given in
 Table~\ref{tab:halphamodelparams}.
@@ -1347,8 +1375,7 @@ broad lifetime distribution for such disks
   % from
   % results/halpha_to_rv_timerseries/multigauss_parametertable.tex
   \hline
-   & Mean1 & Mean2 & Mean3 & Sigma1 & Sigma2 & Sigma3 & Amplitude1 & Amplitude2 & Amplitude3 \\
-  BTJD &  &  &  &  &  &  &  &  &  \\
+  BTJD & $\mu_0$ & $\mu_1$ & $\mu_2$ & $\sigma_0$ & $\sigma_1$ & $\sigma_2$ & $A_0$ & $A_1$ & $A_2$ \\
   \hline
   3357.960099 & -0.725 $\pm$ 0.028 & -1.416 $\pm$ 0.026 & 0.177 $\pm$ 0.019 & 0.39 $\pm$ 0.03 & 0.18 $\pm$ 0.03 & 0.59 $\pm$ 0.02 & 0.51 $\pm$ 0.01 & 0.23 $\pm$ 0.04 & 0.29 $\pm$ 0.01 \\
   3357.970746 & -0.192 $\pm$ 0.007 & 0.498 $\pm$ 0.010 & 0.100 $\pm$ 0.014 & 0.23 $\pm$ 0.01 & 0.24 $\pm$ 0.01 & 0.55 $\pm$ 0.01 & 0.50 $\pm$ 0.01 & 0.37 $\pm$ 0.01 & 0.42 $\pm$ 0.01 \\
@@ -1373,7 +1400,11 @@ broad lifetime distribution for such disks
   3358.177978 & 1.588 $\pm$ 0.037 & 2.828 $\pm$ 0.005 & -4.378 $\pm$ 0.053 & 0.40 $\pm$ 0.03 & 0.02 $\pm$ 0.01 & 0.75 $\pm$ 0.06 & 0.33 $\pm$ 0.01 & 0.11 $\pm$ 0.03 & 0.12 $\pm$ 0.01 \\
   \hline
   \end{tabular}
-  \caption{Multi-gaussian model fit results to H$\alpha$ line profiles.}
+  \caption{Multi-gaussian model fit results to H$\alpha$ line
+  profiles.  The results should be treated with caution; only a
+  subset of spectral epochs provide statistically significant
+  detections of the circumstellar emission (see Extended Data
+  Figure~\ref{fig:halphamodel}).}
   \label{tab:halphamodelparams}
 %\end{table}
 \end{sidewaystable}
