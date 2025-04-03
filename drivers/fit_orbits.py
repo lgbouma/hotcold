@@ -86,7 +86,7 @@ def rv_eccentric(t, K, P, t_peri, e):
     f = 2 * np.arctan(np.sqrt((1+e)/(1-e)) * np.tan(E/2))
     return K * (np.cos(f) + e)  # assuming ω=0
 
-# NEW: JAX-compatible functions for use in numpyro models
+# JAX-compatible functions for use in numpyro models
 def rv_circular_jax(t, K, P, t0):
     return K * jnp.sin(2 * jnp.pi / P * (t - t0))
 
@@ -131,10 +131,11 @@ def model_circular(time, rv_err, rv_obs):
     K = numpyro.sample('K', dist.Uniform(0.0, 6.0))
     P = numpyro.sample('P', dist.Uniform(2/24, 6/24))
     t0 = numpyro.sample('t0', dist.Uniform(time.min(), time.max()))
-    # CHANGED: use JAX-based function
+    jitter = numpyro.sample('jitter', dist.Exponential(1.0))
     mu = rv_circular_jax(time, K, P, t0)
+    effective_err = jnp.sqrt(rv_err**2 + jitter**2)  # Add jitter in quadrature
     with numpyro.plate('data', len(time)):
-        numpyro.sample('obs', dist.Normal(mu, rv_err), obs=rv_obs)
+        numpyro.sample('obs', dist.Normal(mu, effective_err), obs=rv_obs)
 
 def mcmc_fit_circular(time, rv, rv_err, rng_key=None, num_warmup=1000, num_samples=2000, num_chains=2):
     if rng_key is None:
@@ -144,7 +145,6 @@ def mcmc_fit_circular(time, rv, rv_err, rng_key=None, num_warmup=1000, num_sampl
     mcmc.run(rng_key, time=time, rv_err=rv_err, rv_obs=rv)
     mcmc.print_summary()
     samples = mcmc.get_samples()
-    # changed code: convert traced arrays to float
     popt = np.asarray([samples['K'].mean(), samples['P'].mean(), samples['t0'].mean()], dtype=float)
     params = np.vstack([samples['K'], samples['P'], samples['t0']])
     pcov = np.cov(params)
@@ -156,10 +156,11 @@ def model_eccentric(time, rv_err, rv_obs):
     P = numpyro.sample('P', dist.Uniform(2/24, 6/24))
     t_peri = numpyro.sample('t_peri', dist.Uniform(time.min(), time.max()))
     e = numpyro.sample('e', dist.Uniform(0.0, 1.0))
-    # CHANGED: use JAX-based function
+    jitter = numpyro.sample('jitter', dist.Exponential(1.0))  # New jitter parameter
     mu = rv_eccentric_jax(time, K, P, t_peri, e)
+    effective_err = jnp.sqrt(rv_err**2 + jitter**2)  # Add jitter in quadrature
     with numpyro.plate('data', len(time)):
-        numpyro.sample('obs', dist.Normal(mu, rv_err), obs=rv_obs)
+        numpyro.sample('obs', dist.Normal(mu, effective_err), obs=rv_obs)
 
 def mcmc_fit_eccentric(time, rv, rv_err, rng_key=None, num_warmup=1000, num_samples=2000, num_chains=2):
     if rng_key is None:
@@ -169,7 +170,6 @@ def mcmc_fit_eccentric(time, rv, rv_err, rng_key=None, num_warmup=1000, num_samp
     mcmc.run(rng_key, time=time, rv_err=rv_err, rv_obs=rv)
     mcmc.print_summary()
     samples = mcmc.get_samples()
-    # changed code: convert traced arrays to float
     popt = np.asarray([samples['K'].mean(), samples['P'].mean(), samples['t_peri'].mean(), samples['e'].mean()], dtype=float)
     params = np.vstack([samples['K'], samples['P'], samples['t_peri'], samples['e']])
     pcov = np.cov(params)
@@ -178,11 +178,12 @@ def mcmc_fit_eccentric(time, rv, rv_err, rng_key=None, num_warmup=1000, num_samp
 def main(fittingstyle='leastsquares'):
     circ_summary = []
     ecc_summary = []
-    all_fits = []  # new: store data for combined plot
+    all_fits = []
     for ix in [1, 2, 3]:
         time, rv, rv_err = load_rvs(component_ix=ix)
         _time, _rv, _rv_err = load_rvs(component_ix=ix, applymask=False)
-        # NEW: store original error arrays for scaling separately in each fit
+
+        # store original error arrays for scaling separately in each fit
         original_rv_err = rv_err.copy()
         original__rv_err = _rv_err.copy()
         
@@ -338,6 +339,6 @@ def main(fittingstyle='leastsquares'):
 
 
 if __name__ == '__main__':
-    main(fittingstyle='leastsquares')
+    main(fittingstyle='mcmc')
     assert 0
-    main(fittingstyle='mcmc') # WIP: not working!
+    main(fittingstyle='leastsquares')
