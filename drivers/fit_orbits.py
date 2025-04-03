@@ -5,6 +5,12 @@ from os.path import join
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 from aesthetic.plot import set_style, savefig
+import jax
+import jax.numpy as jnp
+import numpyro
+from numpyro.infer import MCMC, NUTS
+import numpyro.distributions as dist
+numpyro.set_host_device_count(2)
 
 def load_rvs(component_ix=None, applymask=True):
 
@@ -52,7 +58,8 @@ def load_rvs(component_ix=None, applymask=True):
 
     time = np.array(tdf.BTJD)
     rv = np.array(tdf[f'Mean{component_ix}'])
-    rv_err = np.array(tdf[f'Sigma{component_ix}'])
+    #rv_err = np.array(tdf[f'Sigma{component_ix}'])
+    rv_err = np.array(tdf_unc[f'Mean{component_ix}'])
 
     if applymask:
         time = time[mask]
@@ -79,6 +86,25 @@ def rv_eccentric(t, K, P, t_peri, e):
     f = 2 * np.arctan(np.sqrt((1+e)/(1-e)) * np.tan(E/2))
     return K * (np.cos(f) + e)  # assuming ω=0
 
+# NEW: JAX-compatible functions for use in numpyro models
+def rv_circular_jax(t, K, P, t0):
+    return K * jnp.sin(2 * jnp.pi / P * (t - t0))
+
+def solve_kepler_jax(M, e, tol=1e-6, max_iter=100):
+    E = M
+    for _ in range(max_iter):
+        delta = (E - e * jnp.sin(E) - M) / (1 - e * jnp.cos(E))
+        E = E - delta
+        if jnp.all(jnp.abs(delta) < tol):
+            break
+    return E
+
+def rv_eccentric_jax(t, K, P, t_peri, e):
+    M = 2 * jnp.pi / P * (t - t_peri)
+    E = solve_kepler_jax(M, e)
+    f = 2 * jnp.arctan(jnp.sqrt((1+e)/(1-e)) * jnp.tan(E/2))
+    return K * (jnp.cos(f) + e)
+
 def compute_stats(model, t, rv, rv_err, popt):
     fit = model(t, *popt)
     residuals = rv - fit
@@ -100,7 +126,56 @@ def save_fit_table(filename, params, perr, red_chi2, bic, param_names):
     df['BIC'] = bic
     df.to_csv(filename, index=False)
 
-def main():
+def model_circular(time, rv_err, rv_obs):
+    # Priors: K Uniform(0,6), P Uniform(2/24,6/24), t0 Uniform(min(time),max(time))
+    K = numpyro.sample('K', dist.Uniform(0.0, 6.0))
+    P = numpyro.sample('P', dist.Uniform(2/24, 6/24))
+    t0 = numpyro.sample('t0', dist.Uniform(time.min(), time.max()))
+    # CHANGED: use JAX-based function
+    mu = rv_circular_jax(time, K, P, t0)
+    with numpyro.plate('data', len(time)):
+        numpyro.sample('obs', dist.Normal(mu, rv_err), obs=rv_obs)
+
+def mcmc_fit_circular(time, rv, rv_err, rng_key=None, num_warmup=1000, num_samples=2000, num_chains=2):
+    if rng_key is None:
+        rng_key = jax.random.PRNGKey(0)
+    kernel = NUTS(model_circular)
+    mcmc = MCMC(kernel, num_warmup=num_warmup, num_samples=num_samples, num_chains=num_chains)
+    mcmc.run(rng_key, time=time, rv_err=rv_err, rv_obs=rv)
+    mcmc.print_summary()
+    samples = mcmc.get_samples()
+    # changed code: convert traced arrays to float
+    popt = np.asarray([samples['K'].mean(), samples['P'].mean(), samples['t0'].mean()], dtype=float)
+    params = np.vstack([samples['K'], samples['P'], samples['t0']])
+    pcov = np.cov(params)
+    return popt, pcov
+
+def model_eccentric(time, rv_err, rv_obs):
+    # Priors: K Uniform(0,6), P Uniform(2/24,6/24), t_peri Uniform(min(time),max(time)), e Uniform(0,1)
+    K = numpyro.sample('K', dist.Uniform(0.0, 6.0))
+    P = numpyro.sample('P', dist.Uniform(2/24, 6/24))
+    t_peri = numpyro.sample('t_peri', dist.Uniform(time.min(), time.max()))
+    e = numpyro.sample('e', dist.Uniform(0.0, 1.0))
+    # CHANGED: use JAX-based function
+    mu = rv_eccentric_jax(time, K, P, t_peri, e)
+    with numpyro.plate('data', len(time)):
+        numpyro.sample('obs', dist.Normal(mu, rv_err), obs=rv_obs)
+
+def mcmc_fit_eccentric(time, rv, rv_err, rng_key=None, num_warmup=1000, num_samples=2000, num_chains=2):
+    if rng_key is None:
+        rng_key = jax.random.PRNGKey(1)
+    kernel = NUTS(model_eccentric)
+    mcmc = MCMC(kernel, num_warmup=num_warmup, num_samples=num_samples, num_chains=num_chains)
+    mcmc.run(rng_key, time=time, rv_err=rv_err, rv_obs=rv)
+    mcmc.print_summary()
+    samples = mcmc.get_samples()
+    # changed code: convert traced arrays to float
+    popt = np.asarray([samples['K'].mean(), samples['P'].mean(), samples['t_peri'].mean(), samples['e'].mean()], dtype=float)
+    params = np.vstack([samples['K'], samples['P'], samples['t_peri'], samples['e']])
+    pcov = np.cov(params)
+    return popt, pcov
+
+def main(fittingstyle='leastsquares'):
     circ_summary = []
     ecc_summary = []
     all_fits = []  # new: store data for combined plot
@@ -112,12 +187,24 @@ def main():
         K0 = (np.max(rv) - np.min(rv)) / 2
         P0 = 4/24
         t0_0 = time.min()
-        # Circular orbit fit
-        try:
-            popt_circ, pcov_circ = curve_fit(rv_circular, time, rv, sigma=rv_err, p0=[K0, P0, t0_0])
-        except Exception as e:
-            print(f"Component {ix} circular fit failed: {e}")
-            continue
+        
+        if fittingstyle == 'leastsquares':
+            # Circular orbit fit using curve_fit
+            try:
+                popt_circ, pcov_circ = curve_fit(rv_circular, time, rv, sigma=rv_err, p0=[K0, P0, t0_0])
+            except Exception as e:
+                print(f"Component {ix} circular fit failed: {e}")
+                continue
+        elif fittingstyle == 'mcmc':
+            popt_circ, pcov_circ = mcmc_fit_circular(time, rv, rv_err)
+            try:
+                popt_circ, pcov_circ = mcmc_fit_circular(time, rv, rv_err)
+            except Exception as e:
+                print(f"Component {ix} MCMC circular fit failed: {e}")
+                continue
+        else:
+            raise ValueError("Invalid fittingstyle. Choose 'leastsquares' or 'mcmc'.")
+        
         perr_circ = np.sqrt(np.diag(pcov_circ))
         red_chi2_circ, bic_circ = compute_stats(rv_circular, time, rv, rv_err, popt_circ)
         
@@ -126,7 +213,6 @@ def main():
         param_names_circ = ['K', 'P', 't0']
         save_fit_table(circ_csv, popt_circ, perr_circ, red_chi2_circ, bic_circ, param_names_circ)
         
-        # new: store fit data for combined plot
         all_fits.append({
             'ix': ix,
             'time': time,
@@ -138,7 +224,6 @@ def main():
             'popt_circ': popt_circ
         })
         
-        # Plot circular fit
         t_fit = np.linspace(time.min(), time.max(), 1000)
         plt.errorbar(time, rv, yerr=rv_err, fmt='o', label='Data')
         plt.plot(t_fit, rv_circular(t_fit, *popt_circ), 'r-', label='Circular Fit')
@@ -150,13 +235,12 @@ def main():
         plt.savefig(plot_path)
         plt.clf()
         
-        # Circular orbit fit summary update: convert period from days to hours
         circ_summary.append({
             'component_ix': ix,
             'K': popt_circ[0],
-            'K_err': perr_circ[0],  # added uncertainty on semi-amplitude K
-            'P': popt_circ[1]*24,  # period converted to hours
-            'P_err': perr_circ[1]*24,  # added uncertainty on period
+            'K_err': perr_circ[0],
+            'P': popt_circ[1]*24,
+            'P_err': perr_circ[1]*24,
             't0': popt_circ[2],
             'Reduced_Chi2': red_chi2_circ,
             'BIC': bic_circ
@@ -164,20 +248,25 @@ def main():
         
         # Eccentric orbit fit: add initial guess for eccentricity
         e0 = 0.1
-        try:
-            popt_ecc, pcov_ecc = curve_fit(rv_eccentric, time, rv, sigma=rv_err, p0=[K0, P0, t0_0, e0])
-        except Exception as e:
-            print(f"Component {ix} eccentric fit failed: {e}")
-            continue
+        if fittingstyle == 'leastsquares':
+            try:
+                popt_ecc, pcov_ecc = curve_fit(rv_eccentric, time, rv, sigma=rv_err, p0=[K0, P0, t0_0, e0])
+            except Exception as e:
+                print(f"Component {ix} eccentric fit failed: {e}")
+                continue
+        elif fittingstyle == 'mcmc':
+            try:
+                popt_ecc, pcov_ecc = mcmc_fit_eccentric(time, rv, rv_err)
+            except Exception as e:
+                print(f"Component {ix} MCMC eccentric fit failed: {e}")
+                continue
         perr_ecc = np.sqrt(np.diag(pcov_ecc))
         red_chi2_ecc, bic_ecc = compute_stats(rv_eccentric, time, rv, rv_err, popt_ecc)
         
-        # Save eccentric fit table
         ecc_csv = join('results/halpha_to_rv_timerseries', f'eccentric_fit_component_{ix}.csv')
         param_names_ecc = ['K', 'P', 't_peri', 'e']
         save_fit_table(ecc_csv, popt_ecc, perr_ecc, red_chi2_ecc, bic_ecc, param_names_ecc)
         
-        # Plot eccentric fit
         plt.errorbar(time, rv, yerr=rv_err, fmt='o', label='Data')
         plt.plot(t_fit, rv_eccentric(t_fit, *popt_ecc), 'r-', label='Eccentric Fit')
         plt.xlabel('Time')
@@ -188,39 +277,34 @@ def main():
         plt.savefig(plot_path)
         plt.clf()
         
-        # Eccentric orbit fit summary update: convert period from days to hours
         ecc_summary.append({
             'component_ix': ix,
             'K': popt_ecc[0],
-            'K_err': perr_ecc[0],  # added uncertainty on semi-amplitude K
-            'P': popt_ecc[1]*24,  # period converted to hours
-            'P_err': perr_ecc[1]*24,  # added uncertainty on period
+            'K_err': perr_ecc[0],
+            'P': popt_ecc[1]*24,
+            'P_err': perr_ecc[1]*24,
             't_peri': popt_ecc[2],
             'e': popt_ecc[3],
             'Reduced_Chi2': red_chi2_ecc,
             'BIC': bic_ecc
         })
     
-    # Save summary tables
     df_circ = pd.DataFrame(circ_summary)
     df_circ.to_csv(join('results/halpha_to_rv_timerseries', 'circular_summary.csv'), index=False)
     df_ecc = pd.DataFrame(ecc_summary)
     df_ecc.to_csv(join('results/halpha_to_rv_timerseries', 'eccentric_summary.csv'), index=False)
     
-    # new: combined plot for all circular fits
     set_style('science')
-    f = 0.9
-    fig, ax = plt.subplots(figsize=(f*3.7,f*3))
+    f = 0.85
+    fig, ax = plt.subplots(figsize=(f*3.5, f*3))
     for ix, fit in enumerate(all_fits):
         t = fit['time']
         rv = fit['rv']
         rv_err = fit['rv_err']
-
         mask = ~np.in1d(fit['_time'], t)
         _t = fit['_time'][mask]
         _rv = fit['_rv'][mask]
         _rv_err = fit['_rv_err'][mask]
-
         popt = fit['popt_circ']
         c = f"C{ix}"
         t_fit = np.linspace(fit['_time'].min(), fit['_time'].max(), 500)
@@ -228,12 +312,10 @@ def main():
         ax.errorbar(fn(t), rv, yerr=rv_err, fmt='o', c=c, ms=2)
         ax.errorbar(fn(_t), _rv, yerr=_rv_err, fmt='x', alpha=0.3, zorder=-1, c=c, ms=4)
         ax.plot(fn(t_fit), rv_circular(t_fit, *popt), '-', c=c, zorder=-2, alpha=0.7)
-
     ax.set_ylim([-4.9, 4.9])
-
-    plt.xlabel('Time [hours]')
-    plt.ylabel('RV [v$_{\mathrm{eq}}$]')
-    #plt.legend()
+    ax.set_xlim([-0.22, 5.42])
+    ax.set_xlabel('Time [hours]')
+    ax.set_ylabel('RV [v$_{\\mathrm{eq}}$]')
     combined_plot_path = join('results/halpha_to_rv_timerseries', 'combined_circular_fit.png')
     savefig(fig, combined_plot_path)
     plt.clf()
@@ -242,4 +324,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main(fittingstyle='leastsquares')
+    assert 0
+    main(fittingstyle='mcmc') # WIP: not working!
