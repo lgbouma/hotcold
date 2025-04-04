@@ -4,6 +4,7 @@ import os
 from os.path import join
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
 from aesthetic.plot import set_style, savefig
 import jax
 import jax.numpy as jnp
@@ -338,8 +339,10 @@ def main(fittingstyle='leastsquares'):
     
     # FINAL VISUALIZATION PLOT
     set_style('science')
+    rcParams['font.family'] = 'Arial'
     f = 0.85
     fig, ax = plt.subplots(figsize=(f*3.5, f*3))
+    colors = ['#000000', '#E69F00', '#009E73']
     for ix, fit in enumerate(all_fits):
         t = fit['time']
         rv = fit['rv']
@@ -348,8 +351,9 @@ def main(fittingstyle='leastsquares'):
         _t = fit['_time'][mask]
         _rv = fit['_rv'][mask]
         _rv_err = fit['_rv_err'][mask]
-        c = f"C{ix}"
-        t_fit = np.linspace(fit['_time'].min(), fit['_time'].max(), 5000)
+        c = colors[ix]
+        t_fit = np.linspace(fit['_time'].min()-1/24,
+                            fit['_time'].max()+1/24, 5000)
         fn = lambda x: 24 * (x - fit['_time'].min())
         ax.errorbar(fn(t), rv, yerr=rv_err, fmt='o', c=c, ms=2)
         ax.errorbar(fn(_t), _rv, yerr=_rv_err, fmt='x', alpha=0.3, zorder=-1, c=c, ms=4)
