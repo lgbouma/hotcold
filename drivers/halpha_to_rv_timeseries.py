@@ -217,7 +217,7 @@ def halpha_to_rv_timeseries():
     # Initial stack plot of Halpha data
     ##########################################
     set_style('clean')
-    fig, ax = plt.subplots(figsize=(1.8,15))
+    fig, ax = plt.subplots(figsize=(1.8,12))
 
     # Normalize the spectimes values for colormap
     norm = plt.Normalize(min(spectimes), max(spectimes))
@@ -377,7 +377,7 @@ def halpha_to_rv_timeseries():
     set_style('clean')
     rcParams['font.family'] = 'Arial'
     #fig, axs = plt.subplots(ncols=4, figsize=(5.6,15), sharey=True)
-    fig, axs = plt.subplots(ncols=4, figsize=(2.8, 6.2), sharey=True)
+    fig, axs = plt.subplots(ncols=4, figsize=(2.8, 5.5), sharey=True)
 
     # Normalize the spectimes values for colormap
     norm = plt.Normalize(min(spectimes), max(spectimes))

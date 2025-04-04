@@ -370,7 +370,8 @@ def main(fittingstyle='leastsquares'):
     savefig(fig, combined_plot_path)
     plt.clf()
     
-    import IPython; IPython.embed()  # for debugging purposes, remove in production
+    # PRINT FINAL CIRCULAR ORBIT FIT RESULTS
+    print(df_circ)
 
 
 if __name__ == '__main__':
