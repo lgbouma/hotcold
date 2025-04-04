@@ -982,18 +982,18 @@ line profile data (Figure~\ref{fig:halphamodel} left column), the
 likelihood function for this model is multimodal.  We therefore
 imposed the prior constraints that $A_i \sim \mathcal{U}[0,1]$,
 $\sigma_i/v_{\rm eq} \sim \mathcal{U}[0,1]$, and further assumed
-$K_i(t) \sim
+$\mu_i(t) \sim
 \mathcal{U}[
   K_{\rm inner}\sin(\phi(t)) - v_{\rm eq},
   K_{\rm inner}\sin(\phi(t)) + v_{\rm eq}
 ]$
 for the inner two components, and
-$K_i(t) \sim
+$\mu_2(t) \sim
 \mathcal{U}[
   K_{\rm outer}\sin(\phi(t) + \pi) - 2v_{\rm eq},
   K_{\rm outer}\sin(\phi(t) + \pi) + 2v_{\rm eq}
 ]$
-for the outer component.  This latter assumption mitigates the
+for the outer component.  This prior on the means mitigates the
 multimodality of the likelihood by requiring the mean velocity of each
 component to be within a one or two $v_{\rm eq}$ of the time-variable
 sinusoid suggested by visual inspection.  We fitted each component to
@@ -1001,81 +1001,88 @@ the data {\it independently} using scipy's non-linear least squares
 \texttt{curve\_fit} implementation \cite{Virtanen2020}, and scaled the
 resulting parameter covariance matrix by a constant factor to match
 the sample variance of the residuals.  The resulting means,
-amplitudes, and standard devations for each component are given in
+amplitudes, and standard deviations for each component are given in
 Extended Data Table~\ref{tab:halphamodelparams}.
 
-Caution is required in the interpretation of this model's results.
-The model at times overfits, because it targets the most significant
-spectral feature around each component's prior, and sometimes these
-features are not statistically significant.  During such spectral
-epochs, e.g.~the ``outer'' clump at $\phi$=1.07, the model fits noise,
-not signal.  At other times, the model underfits.  For instance, the
-sudden blue rise near $\phi$=0.2 is not well-described by the
-functional form of a gaussian; the assumed functional form is one of
-convenience.  A final point of caution is that the model fits the
-$i=\{ 0, 1 \}$, and $i=2$ components independently.  At $\phi=0.0$ and
-$1.0$, Figure~\ref{fig:halphamodel} suggests that this means the
-emission might hypothetically be from either the inner or outer
-components.  A physical interpretation however is that this is the
-phase during which the inner component is in transit, and the outer is
-in secondary occultation and blocked by the star.  At $\phi=0.0$, the
-double-peaked emission profile also matches that seen shortly
-afterward when the inner clump is viewed off-disk.  A physical
-interpretation of the model should therefore discard the results at
-this particular epoch for the outer clump.
+Caution is required in interpreting this model's results.  At times
+the model overfits, because sometimes the most significant spectral
+feature around any component's prior is not statistically significant.
+During such spectral epochs, e.g.~the ``outer'' clump at $\phi$=1.07,
+the model fits noise, not signal.  At other times, the model
+underfits.  For instance, the sudden blue rise near $\phi$=0.2 is not
+well-described by a gaussian; the assumed functional form is one of
+convenience.  Finally, the model fits the $i=\{ 0, 1 \}$, and $i=2$
+components independently.  At $\phi=0.0$ and $1.0$,
+Figure~\ref{fig:halphamodel} suggests that the emission
+might come from either the inner or outer components.
+Physically however, at this time the inner component
+is in transit, and the outer component is in secondary eclipse and
+would likely be blocked by the star.  At $\phi=0.0$, the double-peaked
+emission profile also matches that seen shortly afterward (at
+$\phi$=0.14) when the
+inner clump is viewed off-disk.  A physical interpretation of the
+model should therefore discard the outer clump results at this
+particular epoch.
 
-\begin{figure}[!tp]
+\begin{figure}[!t]
   \centering
-  \includegraphics[width=0.4\textwidth]{figures/sf7.pdf}
-  \caption{Example orbits fit to velocities extracted from gaussian
-  profile fits in Figure~\ref{fig:halphamodel}.
-  Each marker represents the measured best-fit mean and its best-fit
-  standard deviation at a given epoch.
-  Solid circles were used in the sinusoidal fits; transparent X markers
-  were excluded due to various concerns about their epoch-by-epoch
-  interpretation (see text).  The main purpose of this exercise was to
+  \includegraphics[width=0.7\textwidth]{figures/sf7.pdf}
+  \caption{Orbits fit to mean radial velocities (RVs) extracted from 
+  H$\alpha$ profile fits in Figure~\ref{fig:halphamodel}.
+  Each marker represents the measured best-fit mean at a given epoch.
+  Solid circles were used in the fits; transparent X markers
+  were excluded due to concerns about their epoch-by-epoch
+  interpretation (see text).  The purpose of this exercise was to
   quantify the orbital periods and semi-amplitudes of the
   circumstellar clumps.  The inner double-peaked clump is shown in
-  orange blue; the outer clump is shown in green.}
+  orange and blue; the outer clump is shown in green.  Five draws from
+  each posterior probability distribution are plotted.}
   \label{fig:orbits}
 \end{figure}
 
 Taking these caveats into account, we used the results from Extended
 Data Table~\ref{tab:halphamodelparams} to evaluate various models for
-the orbits.
-Our main goal in this exercise was to quantify the orbital periods,
-velocities, and velocity dispersions of these clumps.
-Figure~\ref{fig:orbitmodel} shows some representative results for the
-circular orbit case.
-For 
-
-
-
-
-The resulting mean velocities, widths, and amplitudes are given in
-Table~\ref{tab:halphamodelparams}.
-%FIXME TODO gotta get this table being better... and in particular
-%gotta not quite signal where there is nothing.  (mask out transits +
-%secondary eclipses....)
-
-
-The main benefit of this model is that it is
-sufficiently flexible to capture the observed variability in
-circumstellar emission, and 
-
-quantify the exact
-orbital periods, velocities, and velocity dispersions of these clumps.
-
-
-
-Figure~\ref{fig:halphamodel}
-
-functions 
-
+the orbits.  Our main goal in this exercise was to quantify the
+orbital periods and velocity semi-amplitudes of the clumps.
+Figure~\ref{fig:orbits} shows representative results for the
+circular orbit case; we found no reason to extend the exercise to
+eccentric orbits.
+Based on visual inspection of the line profile fits, we manually excluded 
+epochs where we do not believe our gaussian profile fitting provided a
+reliable representation of the circumstellar emission.  We then performed
+the orbit fits using NumPyro to sample over the Gaussian likelihood with the
+NUTS algorithm \cite{Phan2019}.  When performing the fits, we adopted
+the uncertainties on each estimated mean radial velocity value, and
+added a jitter term in quadrature to inflate these nominal measurement
+uncertainties.  This procedure yielded period and semi-amplitude
+values for circular orbits of
+$P_0$=$3.92\pm0.03$\,hr, $K_0/v_{\rm eq}$=2.07$\pm$0.04;
+$P_1$=$3.92\pm0.06$\,hr, $K_1/v_{\rm eq}$=2.88$\pm$0.10;
+and $P_2$=$3.35\pm0.35$\,hr, $K_1/v_{\rm eq}$=4.16$\pm$0.56.
+The periods for the inner double-peaked clump are consistent
+with the photometric 3.930$\pm$0.001\,hr period to a precision of
+about two minutes.
+The ``period'' for the outer clump is more ambiguous because the
+H$\alpha$ data only support the idea of a periodic orbit of material
+well-fit by gaussian emission from $\phi$$\approx$0.5-1.0.
+From $\phi$=0-0.2, there is no detectable emission,
+and from $\phi$=0.2-0.4, the suddenly-detectable emission spans
+1-4\,$v_{\rm eq}$ without taking a clear gaussian shape.
+While the outer-most edge of the $\phi$=0.2-0.4 emission provides a
+closer match to the expectation of a circular orbit, 
+the idea of invoking a particular functional form for this component 
+seems fine-tuned.
+We instead emphasize that although this emission is present, 
+its variability in time is poorly explained by the idea of a
+stable, long-lived clump of material.
+Although additional observations would be needed to conclusively determine whether or not 
+this component of the system
+is long-lived, the lack of any photometric variability in the TESS
+data during its expected transits might suggest that it is not.
 
 
 {\it Constraints on physical dimensions of emitting region}---
-
+%TODO FIXME TODO FIXME
 
 
 IMPLICATIONS:
@@ -1374,7 +1381,8 @@ broad lifetime distribution for such disks
   2460358.173368 & 6.21 & 12.14 \\
   \hline
   \end{tabular}
-  \caption{TIC~141146667 radial velocities relative to the systemic velocity.}
+  \caption{TIC~141146667 radial velocities relative to the systemic
+  velocity based on the 7699\,\AA\ resonance line and TiO bandheads.}
   \label{tab:rv}
 \end{table}
 
@@ -1416,9 +1424,9 @@ broad lifetime distribution for such disks
   3358.177978 & 1.588 $\pm$ 0.037 & 2.828 $\pm$ 0.005 & -4.378 $\pm$ 0.053 & 0.40 $\pm$ 0.03 & 0.02 $\pm$ 0.01 & 0.75 $\pm$ 0.06 & 0.33 $\pm$ 0.01 & 0.11 $\pm$ 0.03 & 0.12 $\pm$ 0.01 \\
   \hline
   \end{tabular}
-  \caption{Multi-gaussian model fit results to H$\alpha$ line
-  profiles.  The results should be treated with caution; only a
-  subset of spectral epochs provide statistically significant
+  \caption{Best-fit parameters from multi-gaussian model fit to H$\alpha$ line
+  profiles.  These results should be treated with caution; only a
+  subset of the spectral epochs provided statistically significant
   detections of the circumstellar emission (see Extended Data
   Figure~\ref{fig:halphamodel}).}
   \label{tab:halphamodelparams}
