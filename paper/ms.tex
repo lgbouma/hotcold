@@ -933,7 +933,7 @@ Neither of these regions shows any notable variability.
 
 \begin{figure}[!tp]
   \centering
-  \includegraphics[width=0.5\textwidth]{figures/sf6.pdf}
+  \includegraphics[width=0.55\textwidth]{figures/sf6.pdf}
   \caption{Time-variable fit to H$\alpha$ line profiles.
   {\it Left column:} Raw spectrum at each epoch $f_{\lambda}$ minus
   the time-averaged spectrum $f_{\langle t \rangle}$ (as in
@@ -1029,68 +1029,90 @@ particular epoch.
   \includegraphics[width=0.7\textwidth]{figures/sf7.pdf}
   \caption{Orbits fit to mean radial velocities (RVs) extracted from 
   H$\alpha$ profile fits in Figure~\ref{fig:halphamodel}.
-  Each marker represents the measured best-fit mean at a given epoch.
-  Solid circles were used in the fits; transparent X markers
-  were excluded due to concerns about their epoch-by-epoch
-  interpretation (see text).  The purpose of this exercise was to
-  quantify the orbital periods and semi-amplitudes of the
-  circumstellar clumps.  The inner double-peaked clump is shown in
+  Radial velocities on the vertical axis are in units of the
+  equatorial velocity, $v_{\rm eq}$=130\,\kms.
+  Each marker denotes the best-fit mean at a given epoch.
+  Solid circles were adopted in the fits; transparent X markers
+  were excluded due to concerns about their reliability
+  (see text).  The inner double-peaked clump is shown in
   orange and blue; the outer clump is shown in green.  Five draws from
-  each posterior probability distribution are plotted.}
+  each posterior probability distribution are shown.}
   \label{fig:orbits}
 \end{figure}
 
-Taking these caveats into account, we used the results from Extended
+Accounting for these caveats, we used the results from Extended
 Data Table~\ref{tab:halphamodelparams} to evaluate various models for
-the orbits.  Our main goal in this exercise was to quantify the
-orbital periods and velocity semi-amplitudes of the clumps.
-Figure~\ref{fig:orbits} shows representative results for the
-circular orbit case; we found no reason to extend the exercise to
-eccentric orbits.
-Based on visual inspection of the line profile fits, we manually excluded 
-epochs where we do not believe our gaussian profile fitting provided a
-reliable representation of the circumstellar emission.  We then performed
-the orbit fits using NumPyro to sample over the Gaussian likelihood with the
-NUTS algorithm \cite{Phan2019}.  When performing the fits, we adopted
-the uncertainties on each estimated mean radial velocity value, and
-added a jitter term in quadrature to inflate these nominal measurement
-uncertainties.  This procedure yielded period and semi-amplitude
-values for circular orbits of
+the orbits.  Our main goal was to quantify the orbital periods and
+velocity semi-amplitudes of the clumps.
+Figure~\ref{fig:orbits} shows representative results for the case of a circular
+orbit; eccentric orbits yielded similar results.  Based on visual
+inspection of Extended Data Figure~\ref{fig:halphamodel}, we manually excluded
+epochs when our gaussian profile fitting failed to either detect or
+else adequately represent the circumstellar emission.  We then used
+NumPyro to sample the Gaussian likelihood for a Keplerian orbit
+with the NUTS algorithm \cite{Phan2019}.  We used the measurement
+uncertainties from each estimated mean radial velocity value and
+included an additional jitter term in quadrature.  This procedure
+yielded orbital periods and semi-amplitudes of
 $P_0$=$3.92\pm0.03$\,hr, $K_0/v_{\rm eq}$=2.07$\pm$0.04;
 $P_1$=$3.92\pm0.06$\,hr, $K_1/v_{\rm eq}$=2.88$\pm$0.10;
 and $P_2$=$3.35\pm0.35$\,hr, $K_1/v_{\rm eq}$=4.16$\pm$0.56.
-The periods for the inner double-peaked clump are consistent
-with the photometric 3.930$\pm$0.001\,hr period to a precision of
-about two minutes.
-The ``period'' for the outer clump is more ambiguous because the
+The periods for the inner double-peaked clump are consistent with the
+photometric $3.930\pm0.001$\,hr period within a precision of two
+minutes.  The ``period'' for the outer clump is ambiguous because the
 H$\alpha$ data only support the idea of a periodic orbit of material
-well-fit by gaussian emission from $\phi$$\approx$0.5-1.0.
-From $\phi$=0-0.2, there is no detectable emission,
-and from $\phi$=0.2-0.4, the suddenly-detectable emission spans
-1-4\,$v_{\rm eq}$ without taking a clear gaussian shape.
-While the outer-most edge of the $\phi$=0.2-0.4 emission provides a
-closer match to the expectation of a circular orbit, 
-the idea of invoking a particular functional form for this component 
-seems fine-tuned.
-We instead emphasize that although this emission is present, 
-its variability in time is poorly explained by the idea of a
-stable, long-lived clump of material.
-Although additional observations would be needed to conclusively determine whether or not 
-this component of the system
-is long-lived, the lack of any photometric variability in the TESS
-data during its expected transits might suggest that it is not.
+well-fit by gaussian emission from $\phi$$\approx$0.5-1.0.  From
+$\phi$=0-0.2, there is no detectable emission, and from
+$\phi$=0.2-0.4, the emission spans 1-4\,$v_{\rm eq}$ without taking a
+clear gaussian shape.  While the outer-most edge of this
+$\phi$=0.2-0.4 emission provides a plausible match to the expectation
+of a circular orbit, the idea of invoking a particular functional form
+for this component seems fine-tuned.  We instead emphasize that
+although this emission is present, its variability in time is poorly
+explained by the idea of a stable, long-lived clump of material.
+Although additional observations would be needed to conclusively
+determine whether or not this component of the system is long-lived,
+the lack of any photometric variability in the TESS data during its
+expected transits suggests that it is not.
 
 
-{\it Constraints on physical dimensions of emitting region}---
+{\it The physical dimensions of emitting region}---The measured
+velocity widths of the emitting circumstellar material contain
+information about the size of the emitting region via the condition
+for rigid corotation.
+Consider a clump in cylindrical coordinates with arbitrary radial
+extent $r$, azimuthal extent $\ell$, and height $z$.
+At quadrature, the observed velocity width is sensitive to the radial
+extent of this material because it is being viewed face-on.
+During transit, the observed velocity width is sensitive to the
+azimuthal extent.
+Although the vertical height is less constrained for an edge-on system, 
+a rough estimate can follow from assuming that the depth of
+the broadband TESS absorption $\delta$ should scale with the product
+$\ell z$.
+
+At quadrature, the inner clumps show $\sigma_i$$\approx$0.24\,$v_{\rm
+eq}$, implying that 68\% of the emission comes from a volume with
+radial extent $r_i$=$2\sigma_i / \Omega$$=$0.48\,$R_\star$, and
+that 95\% of the emission comes from within 0.96\,$R_\star$.
+These values have relative uncertainties of $\approx$5\%, based on the
+uncertainties in the measured velocity
+dispersions.  The two inner clumps are centered at distances of
+2.07\,$R_\star$ and 2.88\,$R_\star$.  There is therefore 
+physical overlap in their spatial distributions.  These
+two clumps could in fact be a single clump with an optically thick H$\alpha$
+line core.
+Regardless of this nuance, the implication is that the combined 
+extent in the radial dimension of these two inner emitting clumps is
+roughly equal to the star's diameter.
+At mid-transit, these inner clumps seem to have a similar velocity
+dispersion, although with greater uncertainty due to the differences
+between the $\phi$=0 and $\phi$=1 transits.  This nonetheless suggests
+a 1$\sigma$ emission contour in the azimuthal dimension of
+$\ell$$\approx$0.5\,$R_\star$.
+
+%TODO FIXME ADD DISCUSSION OF VERTICAL DIMENSION...
 %TODO FIXME TODO FIXME
-
-
-IMPLICATIONS:
-The secondary eclipse of the `inner clump' at $\phi$$\approx$0.5 is not
-associated with a broadband flux dip.   The clump does not therefore
-contribute significant broadband emissivity across the entire TESS
-band; only in H$\alpha$.
-
 
 
 
