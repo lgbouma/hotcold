@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import os
+import os, pickle
 from os.path import join
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
@@ -38,7 +38,7 @@ def load_rvs(component_ix=None, applymask=True):
              0]
     # based on sinusoid
     mask2 = [0,0,0,0,0,
-             0,0,0,0,1, #9 = phi 0.54.  
+             0,0,1,1,1, #9 = phi 0.54.  
              1,1,1,1,1,
              1,0,0,0,0, #16(start) = phi 0.93
              0]
@@ -336,44 +336,102 @@ def main(fittingstyle='leastsquares'):
     df_circ.to_csv(join('results/halpha_to_rv_timerseries', 'circular_summary.csv'), index=False)
     df_ecc = pd.DataFrame(ecc_summary)
     df_ecc.to_csv(join('results/halpha_to_rv_timerseries', 'eccentric_summary.csv'), index=False)
-    
+
+    # load in t0, period
+    pkldir = '/Users/luke/Dropbox/proj/cpv/results/movie_sixpanel_specriver/TIC_141146667_science_wob'
+    pklpath = join(pkldir, '141146667_specriver_cache.pkl')
+    with open(pklpath, 'rb') as f:
+        d = pickle.load(f)
+    t0 = d['t0'] # time of transit center
+    period = d['period'] # period of the transit
+
     # FINAL VISUALIZATION PLOT
-    set_style('science')
-    rcParams['font.family'] = 'Arial'
-    f = 0.85
-    fig, ax = plt.subplots(figsize=(f*3.5, f*3))
-    colors = ['#000000', '#E69F00', '#009E73']
-    for ix, fit in enumerate(all_fits):
-        t = fit['time']
-        rv = fit['rv']
-        rv_err = fit['rv_err']
-        mask = ~np.in1d(fit['_time'], t)
-        _t = fit['_time'][mask]
-        _rv = fit['_rv'][mask]
-        _rv_err = fit['_rv_err'][mask]
-        c = colors[ix]
-        t_fit = np.linspace(fit['_time'].min()-1/24,
-                            fit['_time'].max()+1/24, 5000)
-        fn = lambda x: 24 * (x - fit['_time'].min())
-        ax.errorbar(fn(t), rv, yerr=rv_err, fmt='o', c=c, ms=2)
-        ax.errorbar(fn(_t), _rv, yerr=_rv_err, fmt='x', alpha=0.3, zorder=-1, c=c, ms=4)
-        if fittingstyle == 'leastsquares':
-            popt = fit['popt_circ']
-            ax.plot(fn(t_fit), rv_circular(t_fit, *popt), '-', c=c, zorder=-2, alpha=0.7)
-        elif fittingstyle == 'mcmc':
-            samp = fit['samples']
-            inds = np.linspace(0, samp['K'].shape[0]-1, 6, dtype=int)[1:]
-            for idx in inds:
-                draw = [samp['K'][idx], samp['P'][idx], samp['t0'][idx]]
-                ax.plot(fn(t_fit), rv_circular(t_fit, *draw), '-', c=c, zorder=-2, alpha=0.3, lw=0.4)
-    ax.set_ylim([-4.9, 4.9])
-    ax.set_xlim([-0.22, 5.42])
-    ax.set_xlabel('Time from start [hours]')
-    ax.set_ylabel('Clump RV [v$_{\\mathrm{eq}}$]')
-    combined_plot_path = join('results/halpha_to_rv_timerseries', 'combined_circular_fit.png')
-    savefig(fig, combined_plot_path)
-    plt.clf()
-    
+    for phaseunits in [0, 1]:
+
+        set_style('science')
+        rcParams['font.family'] = 'Arial'
+        f = 0.85
+        fig, ax = plt.subplots(figsize=(f*3.5, f*3))
+        colors = ['#000000', '#E69F00', '#009E73']
+        
+        if phaseunits:
+            # Initialize the global grid and accumulator for combining gaussian images.
+            fn_global = lambda x: ((x - t0) / period - 110)
+            all_times = np.concatenate([fit['_time'] for fit in all_fits])
+            global_min = all_times.min() - 1/24
+            global_max = all_times.max() + 1/24
+            global_t_fit = np.linspace(global_min, global_max, 5000)
+            global_x_vals = fn_global(global_t_fit)
+            y_min = -5
+            y_max = 5
+            y_grid = np.linspace(y_min, y_max, 300)
+            X_global, Y_global = np.meshgrid(global_x_vals, y_grid)
+            gauss_total = np.zeros_like(X_global)
+
+        for ix, fit in enumerate(all_fits):
+            t = fit['time']
+            rv = fit['rv']
+            rv_err = fit['rv_err']
+            mask = ~np.in1d(fit['_time'], t)
+            _t = fit['_time'][mask]
+            _rv = fit['_rv'][mask]
+            _rv_err = fit['_rv_err'][mask]
+            c = colors[ix]
+            t_fit = np.linspace(fit['_time'].min()-1/24,
+                                fit['_time'].max()+1/24, 5000)
+            if not phaseunits:
+                fn = lambda x: 24 * (x - fit['_time'].min())
+            else:
+                fn = lambda x: ((x - t0) / period - 110)
+            ax.errorbar(fn(t), rv, yerr=rv_err, fmt='o', c=c, ms=2)
+            ax.errorbar(fn(_t), _rv, yerr=_rv_err, fmt='x', alpha=0.3, zorder=-1, c=c, ms=4)
+            if fittingstyle == 'leastsquares':
+                popt = fit['popt_circ']
+                ax.plot(fn(t_fit), rv_circular(t_fit, *popt), '-', c=c, zorder=-2, alpha=0.7)
+            elif fittingstyle == 'mcmc':
+                samp = fit['samples']
+                inds = np.linspace(0, samp['K'].shape[0]-1, 6, dtype=int)[1:]
+                for idx in inds:
+                    draw = [samp['K'][idx], samp['P'][idx], samp['t0'][idx]]
+                    if not phaseunits:
+                        ax.plot(fn(t_fit), rv_circular(t_fit, *draw), '-', c=c, zorder=-2, alpha=0.3, lw=0.4)
+                if phaseunits:
+                    popt = fit['popt_circ']
+                    ax.plot(fn(t_fit), rv_circular(t_fit, *popt), '-', c=c, zorder=-2, alpha=0.9, lw=0.8)
+                    sigma = 0.25
+                    # Compute the mean fit over the global t_fit grid.
+                    y_mean = rv_circular(global_t_fit, *popt)
+                    mean_matrix = np.tile(y_mean, (y_grid.size, 1))
+                    local_gauss = (1/(sigma * np.sqrt(2*np.pi))) * np.exp(-0.5 * ((Y_global - mean_matrix)/sigma)**2)
+                    gauss_total += local_gauss
+
+        if phaseunits:
+            cmap_custom = plt.get_cmap("Blues").copy()
+            cmap_custom.set_bad(color='none')
+            extent = [global_x_vals[0], global_x_vals[-1], y_min, y_max]
+            norm = plt.Normalize(0, (1/3) * np.max(gauss_total))  # Normalize for better visualization
+            ax.imshow(gauss_total, extent=extent, origin='lower', aspect='auto', cmap=cmap_custom, alpha=1, zorder=-3, norm=norm)
+
+        ax.set_ylim([-4.9, 4.9])
+        if not phaseunits:
+            ax.set_xlabel('Time from start [hours]')
+            ax.set_xlim([-0.22, 5.42])
+        else:
+            ax.set_xlabel('Phase φ')
+            ax.set_xlim([-0.1, 1.3])
+            ax.minorticks_on()
+            ax.grid(True, which='both', alpha=0.5)
+
+        ax.set_ylabel('Clump RV [v$_{\\mathrm{eq}}$]')
+        s = '' if not phaseunits else '_phaseunits'
+        s1 = '_leastsq' if fittingstyle == 'leastsquares' else ''
+        combined_plot_path = join(
+            'results/halpha_to_rv_timerseries',
+            f'combined_circular_fit{s}{s1}.png'
+        )
+        savefig(fig, combined_plot_path)
+        plt.clf()
+
     # PRINT FINAL CIRCULAR ORBIT FIT RESULTS
     print(df_circ)
 
