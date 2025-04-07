@@ -70,15 +70,15 @@ Here, we present time-series spectroscopy and photometry of a
 rapidly-rotating ($P$=3.9\,hr) CPV, TIC~141146667. The spectra show
 sinusoidal time-varying Balmer emission at twice to four times the
 star's equatorial velocity, directly demonstrating for the first
-time the existence of corotating clumps of circumstellar plasma around a CPV.
+time that corotating clumps of circumstellar plasma exist around a CPV.
 Given that cool ($10^4$ K) plasma can persist in the hot ($10^6$ K)
 coronae of rapidly-rotating stars with a wide range of masses
 \cite{CollierCameron1989,Townsend2005,Dunstone2006,Petit2013,Waugh2022,Daley-Yates2024},
-these data support the idea that the magnetospheres of the
-lowest-mass stars can support long-lived, optically thick
-clumps of material that explain the sharp photometric features seen in
-CPVs.  The origin of this optically thick material and its
-microphysical opacity remain unclear.
+these data support the idea that the magnetospheres of red dwarfs can
+support long-lived, optically thick clumps of material that produce
+the sharp photometric features seen in CPVs.  The origin of this
+optically thick material and its microphysical opacity remain
+unclear.
 \end{abstract}
 
 \maketitle
@@ -268,17 +268,18 @@ spectroscopic emission components is consistent with the photometric
 
 These sinusoidal emission features require circumstellar clumps of
 partially-ionized hydrogen to corotate with the star.  Based on the
-observed sinusoidal periods and peak velocities, this material's motion
+observed sinusoidal periods and velocities, this material's motion
 is not controlled by gravitational attraction to the star; it is more
 readily explained as a partially-ionized plasma being dragged along with
 a rigidly rotating stellar magnetic field.  The velocity semi-amplitude
 of the sinusoids gives the mean distance of each clump from the stellar
 surface: 2.07\,$R_\star$ and 2.88\,$R_\star$ for the inner clumps, and
 3.88\,$R_\star$ for the outer clump.   These clumps transit in front of
-the star when passing from negative to positive velocity.  The innermost
-clump transits over $\approx$15\% of the period, at $\phi$=0 and
-$\phi$=1.  This spectroscopic transit happens during the latter half of
-the complex photometric feature in the TESS data.
+the star when passing from negative to positive velocity.  The
+transits of the two inner clumps last $\approx$22\% of each cycle,
+from $\phi$=-0.1 to $\phi$=+0.12 (see \S~\ref{subsec:halpha}).  This
+spectroscopic transit coincides with the latter half of the complex
+eclipse feature in the TESS data.
 
 % * keck/hires: behavior at v/veq<1
 The H$\alpha$ line core is more complex.  At $|\Delta v / v_{\rm
@@ -412,18 +413,18 @@ modulations.
 Nonetheless, our Keck/HIRES observations are the first reported
 time-series spectra of a CPV, and they show for the first time that
 corotating circumstellar plasma clumps exist around at least one such
-star.  While starspots likely do contribute smooth photometric
-variability signals, a ``starspot-only'' scenario for the CPVs
+star.  While starspots likely do contribute smooth signals to the photometric
+variability, a ``starspot-only'' scenario for the CPVs
 \cite{Koen2021} seems to be incompatible with our observations.
 Scenarios in which the circumstellar material is made only of dust are
 similarly ruled out.  While starspots and dust may both be present,
 the observed H$\alpha$ emission requires clumps of plasma with a
 significant population of hydrogen atoms in the $n$=3 excited state,
-with most H$\alpha$ emission coming from a region half the size of the
-star (see \S~\ref{subsec:halpha}).  The observed H$\alpha$ luminosity
-suggests
+with most H$\alpha$ emission in each clump coming from a region half
+the size of the star (see \S~\ref{subsec:halpha}).  The observed
+H$\alpha$ luminosity suggests
 characteristic densities and masses for the gaseous component of these
-clumps of $n_{\rm H} \sim 10^{11}$-$10^{12}$\,cm$^{-3}$ and $M_{\rm
+clumps of $n_{\rm H} \sim 10^{11}$\,cm$^{-3}$ and $M_{\rm
 gas} \sim 10^{17}$\,g (see \S~\ref{subsec:gas}).  Dust, if present, is
 independently constrained to have a total mass $10^{15}\,{\rm g} <
 M_{\rm dust} < 10^{17}\,{\rm g}$ (see \S~\ref{subsec:dust}).  This
@@ -539,12 +540,14 @@ stars.
   caused by scattered light from the Earth (BTJD 3356-3358.5) and Moon
   (BTJD 3359.5-3360.5).  Raw two minute data are in gray; black
   time-averages to ten minute sampling.
-  {\bf b-c,} Folded light curve before and after spectroscopy.  Raw
+  {\bf b-c,} Folded TESS light curve before and after spectroscopy.  Raw
   two minute data are in gray; black phase-averages to 100 points per
   cycle.  During BTJD 3352-3356, a state switch occurred near BTJD
   3353, in which the dip at $\phi$$\approx$0.8 disappeared.  While the
   large eclipse feature was present both before and after the HIRES
   sequence, its photometric shape evolved during the data gap.
+  The oranges bar denote times of spectroscopic transits for the inner
+  two H$\alpha$ clumps observed with HIRES.
   }
   \label{fig:fulllc}
 \end{figure}
@@ -1010,7 +1013,7 @@ $\mu_2(t) \sim
   K_{\rm outer}\sin(\phi(t) + \pi) - 2v_{\rm eq},
   K_{\rm outer}\sin(\phi(t) + \pi) + 2v_{\rm eq}
 ]$
-for the outer component.  This prior on the means mitigates 
+for the outer component.  This prior on the means mitigates
 multimodality in the likelihood by requiring the mean velocity of each
 component to be within a one or two $v_{\rm eq}$ of the time-variable
 sinusoid suggested by visual inspection.  We fitted each component to
@@ -1021,46 +1024,46 @@ the sample variance of the residuals.  The resulting means,
 amplitudes, and standard deviations for each component are given in
 Extended Data Table~\ref{tab:halphamodelparams}.
 
-Caution is required in interpreting this model's results.  
-At certain epochs the most significant spectral
-feature around any component's prior is not statistically significant.
-During such epochs, e.g.~the ``outer'' clump at $\phi$=1.07,
-the model fits noise, not signal.  At other times, the model
-underfits.  For instance, the sudden blue rise near $\phi$=0.2 is 
-poorly described by a gaussian; the assumed functional form is one of
-convenience.  Finally, the model fits the $i=\{ 0, 1 \}$, and $i=2$
-components independently.  At $\phi$=0.0 and 1.0,
-Figure~\ref{fig:halphamodel} suggests that the emission
-might come from either the inner or outer components.
-Physically however, at this epoch the inner clump
-is in transit, and the outer clump is passing behind
-the star.  At $\phi$=0.0, the double-peaked
-emission profile also matches that seen shortly afterward (at
-$\phi$=0.14) when the
-inner clump is viewed off-disk.  A physical interpretation of the
+Caution is required in interpreting this model's results.  At certain
+epochs the most significant spectral feature around any component's
+prior is not statistically significant.  During such epochs, e.g.~the
+``outer'' clump at $\phi$=1.07, the model fits noise, not signal.  At
+other times, the model underfits.  For instance, the sudden blue rise
+near $\phi$=0.2 is poorly described by a gaussian; the assumed
+functional form is one of convenience.  Finally, the model fits the
+$i=\{ 0, 1 \}$, and $i=2$ components independently.  At $\phi$=0.0 and
+1.0, Figure~\ref{fig:halphamodel} suggests that the emission might
+come from either the inner or outer components.  Physically however,
+at this epoch the inner clump is in transit, and the outer clump is
+passing behind the star.  At $\phi$=0.0, the double-peaked emission
+profile also matches that seen shortly afterward (at $\phi$=0.14) when
+the inner clump is viewed off-disk.  A physical interpretation of the
 model would therefore discard the outer clump results at this
 particular epoch, because its emission would be blocked by the star.
 
 \begin{figure}[!t]
   \centering
-  \includegraphics[width=0.7\textwidth]{figures/sf7.pdf}
-  \caption{Orbits fit to mean radial velocities (RVs) extracted from 
-  H$\alpha$ profile fits in Figure~\ref{fig:halphamodel}.
-  Radial velocities on the vertical axis are in units of the
-  equatorial velocity, $v_{\rm eq}$=130\,\kms.
-  Each marker denotes the best-fit mean at a given epoch.
-  Solid circles were adopted in the fits; transparent X markers
-  were excluded due to concerns about their reliability
-  (see text).  The inner double-peaked clump is shown in
-  black and orange; the outer clump is shown in green.  Five draws from
-  each posterior probability distribution are shown.}
+  \includegraphics[width=0.99\textwidth]{figures/sf7.pdf}
+  \caption{{\bf a,} Orbits fit to mean radial velocities (RVs)
+  extracted from H$\alpha$ profile fits in
+  Figure~\ref{fig:halphamodel}.  Radial velocities on the vertical
+  axis are in units of the equatorial velocity, $v_{\rm
+  eq}$=130\,\kms.  Each marker denotes the best-fit gaussian mean at a
+  given epoch.  Solid circles were adopted in the fits; transparent X
+  markers were excluded due to reliability concerns (see text).  The
+  inner double-peaked clump is shown in violet and orange; the outer
+  clump is shown in green.  Five model draws from each posterior probability
+  distribution are plotted.  {\bf b,} Idealized emissivity from mean
+  model fits in Panel a, assuming a constant emission amplitude and
+  velocity width $\sigma$=0.25\,$v_{\rm eq}$ over the observation
+  sequence.}
   \label{fig:orbits}
 \end{figure}
 
 Accounting for these caveats, we used the results from Extended Data
 Table~\ref{tab:halphamodelparams} to quantify the orbital periods and
 velocity semi-amplitudes of the clumps.
-Figure~\ref{fig:orbits} shows the results assuming circular
+Figure~\ref{fig:orbits}a shows the results assuming circular
 orbits; considering the Bayesian information criterion, we found no
 reason to prefer eccentric orbits.  By visually
 inspecting Extended Data Figure~\ref{fig:halphamodel}, we excluded
@@ -1090,6 +1093,18 @@ inconsistent with the idea of a stable clump of material.
 Additional observations would be needed to conclusively
 determine whether or not this component of the system is long-lived.
 
+For Figure~\ref{fig:orbits}b, we then used the mean orbits
+from Figure~\ref{fig:orbits}a to generate sinusoidal-in-time
+gaussians, similar to the observations.  We assumed a constant
+emission amplitude and velocity width $\sigma$=0.25\,$v_{\rm eq}$ for
+this exercise, and normalized each gaussian to unit amplitude;  the
+colorbar in Figure~\ref{fig:orbits}b thus masks the non-physical
+additive contribution near the zero-crossing of velocity.
+Compared to the behavior of the data at $\phi$=0.2-0.5
+(Figure~\ref{fig:spec}), this is highly idealized.
+Nonetheless, this exercise indicates that the transit of the inner
+clump lasts $\approx$22\% of each cycle, with a slight asymmetry
+around $\phi$=0.
 
 {\it Physical dimensions of the emitting region}---The measured velocity
 widths from the circumstellar emission contain information about the
@@ -1201,7 +1216,7 @@ $r$, we can write
   \label{eq:numdensity}
 \end{align}
 For a uniform density clump, this suggests a total gas mass of $M_{\rm
-gas}\approx 8\times10^{16}$\,g.
+gas}\approx 2\times10^{17}$\,g.
 We emphasize that Equation~\ref{eq:numdensity} in intended to provide
 only an order of magnitude estimate for the number density implied by
 the observed H$\alpha$ emission.  In detail, the effective
@@ -1309,7 +1324,7 @@ toward the Sun due to Poynting-Robertson drag.
 To summarize, if dust is responsible for
 the broadband variability of CPVs, it would need to be concentrated in
 clumps with masses in the range of $10^{15}$-$10^{17}$\,g.  Given
-$M_{\rm gas}$$\approx$8$\times$10$^{16}$\,g from
+$M_{\rm gas}$$\approx$2$\times$10$^{17}$\,g from
 \S~\ref{subsec:gas}, the allowed dust masses imply $M_{\rm
 gas}/M_{\rm dust}$ ranges of 1-100.  More careful measurements of this
 ratio---in particular by inferring the dust mass through high

@@ -33,4 +33,4 @@ cp $r/lineevolnpanel/TIC141146667_j537_lineevolnpanel_removecosmic.pdf figures/s
 
 cp $r/halpha_to_rv_timerseries/halpha_stack_3clumps.pdf figures/sf6.pdf
 
-cp $r/halpha_to_rv_timerseries/combined_circular_fit.pdf figures/sf7.pdf
+cp $r/halpha_to_rv_timerseries/merged_circular_fit.pdf figures/sf7.pdf
