@@ -398,15 +398,21 @@ def main(fittingstyle='leastsquares'):
                 for idx in inds:
                     draw = [samp['K'][idx], samp['P'][idx], samp['t0'][idx]]
                     if not phaseunits:
-                        ax.plot(fn(t_fit), rv_circular(t_fit, *draw), '-', c=c, zorder=-2, alpha=0.3, lw=0.4)
+                        ax.plot(fn(t_fit), rv_circular(t_fit, *draw), '-', c=c,
+                                zorder=-2, alpha=0.3, lw=0.4)
                 if phaseunits:
                     popt = fit['popt_circ']
-                    ax.plot(fn(t_fit), rv_circular(t_fit, *popt), '-', c=c, zorder=-2, alpha=0.9, lw=0.8)
+                    ax.plot(fn(t_fit), rv_circular(t_fit, *popt), '-', c=c,
+                            zorder=-2, alpha=0.9, lw=0.8)
                     sigma = 0.25
                     # Compute the mean fit over the global t_fit grid.
                     y_mean = rv_circular(global_t_fit, *popt)
                     mean_matrix = np.tile(y_mean, (y_grid.size, 1))
-                    local_gauss = (1/(sigma * np.sqrt(2*np.pi))) * np.exp(-0.5 * ((Y_global - mean_matrix)/sigma)**2)
+                    local_gauss = (
+                        (1/(sigma * np.sqrt(2*np.pi)))
+                        * np.exp(-0.5 * ((Y_global - mean_matrix)/sigma)**2)
+                    )
+
                     local_gauss /= local_gauss.max()
                     gauss_total += local_gauss
 
