@@ -454,9 +454,9 @@ $\langle$EW$_{\rm H\alpha}$$\rangle$    & Time-averaged H$\alpha$ line core     
 Provenances are:
 1: SED fit \citep{Bouma2024}.
 2: Gaia DR3 photometry shows the star is on the pre-main sequence,
-   while the spectrum lacks lithium (see \S~\ref{sec:stparams}).
+   while the spectrum lacks lithium (Appendix~\ref{sec:stparams}).
 3: PARSEC v1.2S \citep{Chen2014}.
-4: Keck/HIRES (see \S~\ref{subsec:halpha}).
+4: Keck/HIRES (Appendix~\ref{subsec:halpha}).
 5: TESS light curve.
 6: Derived quantity.
 7: Gaia DR3 geometric \citep{GaiaDR3}.
@@ -470,46 +470,46 @@ Provenances are:
 \section{Discussion}
 \label{sec:disc}
 
-\subsection{Corotating Plasma Clumps}
+\subsection{Physical Properties of the Corotating Plasma Clumps}
+
+% this paragraph: physical properties that can be inferred with
+% confidence
 
 Our Keck/HIRES observations are the first reported time-series spectra
 of a CPV, and they demonstrate that corotating circumstellar plasma
-clumps exist around at least one such star.  While starspots do
-contribute smooth signals to the photometric variability, a
-``starspot-only'' scenario to explain the complexity of the CPVs
-\citep{Koen2021} is incompatible with our observations.  Scenarios in
-which the circumstellar material is made only of dust are similarly
-ruled out.  While starspots and dust may both be present, our HIRES
-spectra require plasma with a significant population of hydrogen atoms
-in the $n$=3 excited state, with no evidence for significant
+clumps exist around at least one such star.  More specifically, our
+HIRES spectra require plasma with a significant population of hydrogen
+in the $n$=3 excited state, with minimal evidence for 
 higher-order excitations (see Appendix~\ref{subsec:specvar}).  Most of
 this H$\alpha$ emission originates in ``clumps'' with size similar to
 that of the star; radial ``spokes'' or azimuthally-extended ``arcs''
-for the emitting material are ruled out by the observed H$\alpha$
-velocity dispersion (see Appendix~\ref{subsec:halpha}).  The observed
-H$\alpha$ luminosity suggests characteristic densities and masses for
-the gaseous component of these clumps of $n_{\rm H} \sim
+for the {\it emitting material} are ruled out by the observed H$\alpha$
+velocity dispersion (see Appendix~\ref{subsec:halpha}).  The H$\alpha$
+line luminosity suggests characteristic densities and masses for the
+gaseous component of these clumps of $n_{\rm H} \sim
 10^{11}$\,cm$^{-3}$ and $M_{\rm gas} \sim 10^{17}$\,g (see
 Appendix~\ref{subsec:gas}).  Dust, if present, is independently
 constrained to have a total mass $10^{15}\,{\rm g} < M_{\rm dust} <
 10^{17}\,{\rm g}$ (see Appendix~\ref{subsec:dust}).  
 
 
-%TODO: improve heading?
-\subsection{Plasma Tori Could Explain Complex Periodic Variables}
+\subsection{Theoretical Context}
 
-While the H$\alpha$ emission appears consistent with clumps, the
-photometric width of the complex flux dips in TIC\,141146667
-specifically, and CPVs more broadly \citep[Figure~4 of][]{Bouma2024},
-raise the possibility that azimuthally-distributed material may be the
-norm for these objects.  In other words, a torus may be a more
+While the H$\alpha$ emission appears to mostly originate from clumps,
+the the complex flux dip in TIC\,141146667 spans roughly half of each
+cyle; in CPVs more broadly, dips typically last 5-50\% of each cycle
+\citep{Bouma2024}.  This raises the possibility that
+azimuthally-distributed material may be the norm for these objects.
+In other words, a warped, azimuthally-asymmetric torus may be a more
 accurate picture than a clump.
 
-\citet{Townsend2005} outline the physics of how such structures can
-exist: for stars with magnetospheric radii $R_{\rm m}$ that exceed
-their corotation radii $R_{\rm c}$, the effective potential
-experienced by a charged particle can have a local minimum outside
-$R_{\rm c}$, enabling material to accumulate in a
+\citet{Townsend2005} outline the physics of how such structures might
+exist for the azimuthally symmetric case.
+A charged particle that orbits a 
+star with a magnetospheric radius $R_{\rm m}$ that exceeds
+its Keplerian corotation radius $R_{\rm c}$ experiences an effective potential
+that has a local minimum outside
+$R_{\rm c}$, which enables material to accumulate in these
 centrifugally-supported magnetosphere
 \citep{Petit2013,Daley-Yates2024}.  Generally speaking, such material
 need neither transit nor be opaque in broadband optical light.  In
@@ -519,16 +519,60 @@ photometric modulation;  the spectroscopic transits happen too fast,
 and at orbital phases that only partially overlap with the photometric
 modulations.
 
-Nonetheless, \citet{Townsend2008} synthesized light curves for plasma
-trapped in rigidly rotating magnetospheres of rapidly rotating stars;
-and found that assuming a dipole magnetic geometry, one can obtain
-W-shaped eclipses similar to those seen for TIC\,141146667.  See in
-particular the
+In a follow-up study, \citet{Townsend2008} synthesized light curves
+for plasma trapped in rigidly rotating magnetospheres of rapidly
+rotating stars; and found that assuming a dipole magnetic geometry,
+one can obtain W-shaped eclipses similar to those seen for
+TIC\,141146667.  See in particular the
 \href{http://user.astro.wisc.edu/~townsend/static.php?ref=rrm-movies#Download_Bundles}{movies}
 associated with their work; for a $\omega/\omega_{\rm c}$$\approx$0.5,
 edge-on system like TIC\,141146667, the eclipses have the correct
 approximate shape, and the H$\alpha$ emission can similarly exhibit
 double-peaked behavior.
+
+
+\subsection{Plasma Tori and Complex Photometric Morphology}
+
+Microphysically, it is not obvious whether hydrogen alone can produce
+the broadband opacities and chromatic flux variations seen in CPVs.
+For detailed discussion of this point, see Section 5.6 in
+\citet{Bouma2024}.
+With that said, Figures~\ref{fig:fulllc} and~\ref{fig:spec} show that
+at least {\it some} of the complex photometric dip for TIC\,141146667
+is temporally coincident with the transit of the inner clump of
+H$\alpha$ emitting material.
+This could be because 
+
+However, the transit lasts $\approx$22\% of the 
+
+$\phi$=-0.1 to $\phi$=+0.12 (see
+Appendix~\ref{subsec:halpha}).  This spectroscopic transit coincides with
+the latter half of the complex eclipse feature in the TESS data.
+
+ suggests that the transits of the
+ cannot explain the entirety of the complex
+photometric modulation;  the spectroscopic transits happen too fast,
+and at orbital phases that only partially overlap with the photometric
+modulations.
+
+is not optically thick.
+ discussed the general issue: CPV dips are chromatic, 
+
+In
+fact, Figure~\ref{fig:spec} suggests that the transits of the
+H$\alpha$ emitting material cannot explain the entirety of the complex
+photometric modulation;  the spectroscopic transits happen too fast,
+and at orbital phases that only partially overlap with the photometric
+modulations.
+
+
+While starspots do
+contribute smooth signals to the photometric variability, a
+``starspot-only'' scenario to explain the complexity of the CPVs
+\citep{Koen2021} is incompatible with our observations.  Scenarios in
+which the circumstellar material is made only of dust are similarly
+ruled out.  While starspots and dust may both be present, 
+
 
 \subsection{Origin of Circumstellar Material and Astrophysical Analogs}
 
