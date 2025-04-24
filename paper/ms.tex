@@ -36,8 +36,7 @@
 %%%%%%%%%%
 % VALUES %
 %%%%%%%%%%
-% NOTE: might need to be ingested before submission 
-\input{vals_manuscript}
+\newcommand{\periodhr}{3.930}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -49,7 +48,7 @@
 
 \correspondingauthor{Luke G. Bouma}
 
-\received{--}
+\received{23 April 2025}
 \revised{--}
 \accepted{--}
 \shorttitle{CPV Plasma Torus} 
@@ -570,7 +569,7 @@ although with a very different composition.
 
 The other analog for the CPVs are the $\sigma$~Ori~E variables, a rare
 subset of B stars with radiatively-driven winds which accumulate into
-warped plasma tori \citep{Townsend2005,Townsend2008}.  These tori tend
+warped plasma tori \citep{Townsend2005}.  These tori tend
 to have dense antipodal accumulations of plasma sculpted by
 tilted-dipole magnetic fields, and the transits of these clumps produce
 broadband photometric variability through bound-free scattering
@@ -622,9 +621,9 @@ are likely to be present in most CPV systems.
 
 The material's composition -- either pure plasma or dusty plasma -- can
 be clarified by time-series optical and infrared spectrophotometry.
-While observations of CPVs in the optical suggest a chromaticity
-consistent with dust \citep{Tanimoto2020,Gunther2022,Koen2023}, a gray
-opacity source such as electron scattering in a plasma transiting over a
+While observations of CPVs in the optical suggest chromaticity
+consistent with dust \citep{Tanimoto2020,Gunther2022,Koen2023}, 
+electron scattering in a plasma transiting over a
 spotted background star might also produce chromatic features
 \citep{Rackham2018}.  The composition and size distribution of any dust
 that is present could be determined by measuring the extinction curve
@@ -633,12 +632,12 @@ distributions similar to debris from rocky bodies seen around white
 dwarfs \citep{Reach2009} would suggest an extrinsic origin channel.
 Compositions and sizes similar to the interstellar medium would suggest
 that dust can condense out from M dwarf winds, similar to processes that
-occur around more evolved stars \citep{Marigo2008}.
+occur around evolved stars \citep{Marigo2008}.
 
 The role of the star's magnetic field could be better understood through
 new observations, and new theory.  From the modeling perspective,
 there is a need for rigid-field magnetohydrodynamic models to
-go beyond previous work \citep{Townsend2005,Townsend2008,Krticka2022}
+go beyond previous work \citep{Townsend2008,Krticka2022}
 and to explore what field topologies explain the observed light
 curve shapes.  In particular, dynamo simulations of
 fully-convective M dwarfs have suggested that global-scale mean fields
@@ -671,15 +670,19 @@ stars.
 \begin{acknowledgements}
   We thank M.~Jardine, A.~Weinberger, B.~Tofflemire,
   J.~Spake, J.~Winn, and L.~Hillenbrand for insightful conversations
-  that significantly informed this work, and to A.~Howard and
+  that significantly informed this work, as well as A.~Howard and
   H.~Isaacson for their assistance reducing the HIRES spectra.
 
   This work was supported by the Carnegie Fellowship and by the
   Heising-Simons 51~Pegasi~b Fellowship.
   %
+
+	The analyses in this article used data from TESS; the specific
+	2-minute cadence observations can be accessed via
+	DOI\,\dataset[10.17909/t9-nmc8-f686]{https://doi.org/10.17909/t9-nmc8-f686}.
   Funding for the TESS mission is provided by NASA’s Science Mission
   directorate.
-  TESS is a product of millions of hours of work by thousands of people;
+  TESS is a product of millions of hours of work by thousands of people, and
   we thank the TESS team for their efforts to make the mission a
   continued success.
   The HIRES data were obtained at the Keck Observatory, which exists
@@ -698,9 +701,13 @@ stars.
 }
 
 \software{
+  astroariadne \citep{Vines2022},
   astropy \citep{astropy:2013,astropy:2018,astropy:2022},
+  chatgpt \citep{chatgpt2025openai},
+	dustmaps \citep{2018JOSS....3..695M},
   matplotlib \citep{matplotlib},
   numpy \citep{numpy},
+  numpyro \citep{Phan2019},
   scipy \citep{scipy}.
 }
 
