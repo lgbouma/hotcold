@@ -1,9 +1,9 @@
 % upon AAS submission
-\documentclass[11pt,twocolumn,tighten,linenumbers]{aastex7}
-%\documentclass[11pt,twocolumn,tighten,linenumbers,trackchanges]{aastex7}
+%\documentclass[11pt,twocolumn,tighten,linenumbers]{aastex7}
+\documentclass[11pt,twocolumn,tighten,linenumbers,trackchanges]{aastex7}
 % drafting / arxiv
 %\documentclass[11pt,twocolumn,modern]{aastex7}
-\turnoffedit
+%\turnoffedit
 
 \usepackage{apjfonts}
 \usepackage{url}
@@ -53,7 +53,7 @@
 \accepted{--}
 \shorttitle{CPV Plasma Torus} 
 
-\shortauthors{Bouma et al.}
+\shortauthors{L.~G.~Bouma}
 
 \author[orcid=0000-0002-0514-5538,sname='Bouma']{Luke~G.~Bouma}
 \altaffiliation{Carnegie Fellow; 51 Pegasi b Fellow}
@@ -176,7 +176,7 @@ online movie,
   years.  The TESS light curve is phased to the \periodhr\ hour period
   in groups of three cycles per frame.  This is the period both of
   stellar rotation, and (we hypothesize) of corotating clumps of
-  circumstellar material.  Raw data acquired at two minute dence
+  circumstellar material.  Raw data acquired at two minute cadence
   are in gray; black averages to 100 points per cycle.  
   The sharp photometric features persist
   for tens to thousands of rotational cycles. }
@@ -495,7 +495,7 @@ limit $M_{\rm dust} > 10^{15}\,{\rm g}$ follows (see
 Appendix~\ref{subsec:dust}).  
 
 
-\subsection{Clumps Within Warped Plasma Torii}
+\subsection{Clumps Within Warped Plasma Tori}
 
 While the H$\alpha$ emission seems to mostly originate from clumps, the
 complex flux dip in TIC\,141146667 spans roughly half of each cycle; in
@@ -611,7 +611,7 @@ have in the case of TIC\,141146667 is a system that finally exhibits
 both sets of phenomena.
 
 
-\subsection{Future Work: Composition, Origin, Modelling}
+\subsection{Future Work: Composition, Origin, Modeling}
 
 Pressing issues include determining the composition and origin of the
 circumstellar material, understanding the exact role of the stellar
@@ -813,10 +813,10 @@ for the scenario of a low-luminosity companion
 {\it Effective temperature, radius, mass, and spectral
 classification}---We adopted the star's effective temperature and
 radius measured using the spectral energy distribution (SED) fitting
-procedure described by \citep{Bouma2024}.  To summarize, this approach
+procedure described by \citet{Bouma2024}.  To summarize, this approach
 used \texttt{astroARIADNE} \citep{Vines2022} with the BT-Settl stellar
-atmosphere models \citep{Allard2012}, assuming the \citep{Asplund2009}
-solar abundances and the \citep{Barber2006} water line lists.  This
+atmosphere models \citep{Allard2012}, assuming the \citet{Asplund2009}
+solar abundances and the \citet{Barber2006} water line lists.  This
 approach fitted for the stellar effective temperature, radius,
 reddening, surface gravity, metallicity, and distance by comparing the
 measured broadband magnitudes against pre-computed model grids.
@@ -828,7 +828,7 @@ temperature (2972 $\pm$ 40\,K) and radius (0.42 $\pm$
 0.02\,$R_\odot$); the surface gravity, metallicity, and reddening are
 only weakly constrained.  We determined the star's spectral type to be
 M5.5Ve by visually comparing the HIRES spectra against the photometric
-standards tabulated by \citep{Bochanski2007}.   This result agrees with
+standards tabulated by \citet{Bochanski2007}.   This result agrees with
 the effective temperature found from the SED fitting
 \citep{Pecaut2013}.  We measured the equivalent width of the H$\alpha$
 line by fitting a range of models to the time-averaged line profile
@@ -896,7 +896,9 @@ T}$$<$5\,\kms\ that share its isochronal youth.
   \citep{Jeffries2023}; rich clusters in these data include NGC\,2264
   (4.5\,Myr), $\lambda$~Ori (8.7\,Myr), ${\rm \gamma}^2$\,Vel
   (16.4\,Myr), NGC\,2547 (35.0\,Myr), IC\,2391 (42.0\,Myr),
-  and NGC\,2451A (50.0\,Myr). }
+  and NGC\,2451A (50.0\,Myr).\added{ Measurement uncertainties are
+  large below $+$50\,m\AA; negative EW does not correspond to significant
+  emission.}}
   \label{fig:age_diagnostics}
 \end{figure}
 
