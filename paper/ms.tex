@@ -31,6 +31,7 @@
 %%%%%%%%%%%%%%%%
 \newcommand{\carnegie}{Observatories of the Carnegie Institution for Science, Pasadena, CA 91101, USA}
 \newcommand{\caltech}{Department of Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
+\newcommand{\standrews}{School of Physics and Astronomy, University of St Andrews, North Haugh, St Andrews, Fife, Scotland KY16 YSS, UK}
 %%%%%%%%%%%%%%%%
 
 %%%%%%%%%%
@@ -53,13 +54,17 @@
 \accepted{--}
 \shorttitle{CPV Plasma Torus} 
 
-\shortauthors{L.~G.~Bouma}
+\shortauthors{Bouma et al.}
 
 \author[orcid=0000-0002-0514-5538,sname='Bouma']{Luke~G.~Bouma}
 \altaffiliation{Carnegie Fellow; 51 Pegasi b Fellow}
 \affiliation{\carnegie}
 \affiliation{\caltech}
 \email{lbouma@carnegiescience.edu}
+
+\author[orcid=0000-0002-1466-5236,sname='Jardine']{Moira~M.~Jardine}
+\affiliation{\standrews}
+\email{mmj@st-andrews.ac.uk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -566,6 +571,11 @@ Plausible external sources include an undetected old disk, comets, or a
 close-in exoplanet.  This latter scenario would make CPVs extrasolar
 analogs of the Jupiter-Io torus (e.g.~\citealt{Bagenal1981}),
 although with a very different composition.
+% (Because the Io ring has lots of sodium and S II (6717) emission.
+% Sodium is ambiguous in HIRES due to order placement, but the sulfur
+% is not there.  With that said, it is much hotter in an M dwarf
+% magnetosphere than around Jupiter; the ionization balance would be
+% quite different.)
 
 The other analog for the CPVs are the $\sigma$~Ori~E variables, a rare
 subset of B stars with radiatively-driven winds which accumulate into
@@ -590,7 +600,7 @@ magnetic fields with highly multipolar contributions.
 Spectra of magnetically-active, rapidly rotating stars with a wide range
 of masses have been previously observed to exhibit sinusoidal
 time-varying Balmer emission
-\citep{Donati2000,Townsend2005,Dunstone2006,Skelly2008}, similar to 
+\citep{Donati2000,Townsend2005b,Dunstone2006,Skelly2008}, similar to 
 Figure~\ref{fig:spec}.  No such stars were previously known to show
 complex light curves \citep{Bouma2024}.   One interpretation for the
 spectroscopic variability of these stars, and that of the analogous
@@ -668,13 +678,15 @@ understanding the complex environments of these young
 stars.
 
 \begin{acknowledgements}
-  We thank M.~Jardine, A.~Weinberger, B.~Tofflemire,
+  We thank B.~Tofflemire, A.~Weinberger, 
   J.~Spake, J.~Winn, and L.~Hillenbrand for insightful conversations
   that significantly informed this work, as well as A.~Howard and
   H.~Isaacson for their assistance reducing the HIRES spectra.
 
-  This work was supported by the Carnegie Fellowship and by the
+  LGB acknowledges support from the Carnegie Fellowship and the
   Heising-Simons 51~Pegasi~b Fellowship.
+  MMJ acknowledges support from STFC consolidated grant
+  number ST/R000824/1.
   %
 
 	The analyses in this article used data from TESS; the specific
@@ -691,6 +703,11 @@ stars.
   within the indigenous Hawaiian community, and we are deeply grateful 
   for the opportunity to conduct observations from this mountain.
 \end{acknowledgements}
+
+{\it \large Contributions}: 
+LGB led the inception, design, execution, and interpretation of the
+research.  MMJ contributed to the interpretation.
+
 
 \facilities{
   Gaia \citep{GaiaDR3},
@@ -1241,7 +1258,7 @@ Higher order Balmer lines including H$\gamma$ and H$\delta$
 ($n=5\rightarrow2$ and $n=6\rightarrow2$) do show variability outside
 the line core.  However, this variability is not clearly periodic in the
 same manner as the emission seen in H$\alpha$.  This could be because
-there are insufficient hydrogen ions in the relevant excited states, or
+there are insufficient hydrogen atoms in the relevant excited states, or
 because the spectra have lower precision in these bluer regions.  The Ca
 HK doublet is also detected in emission, while the continuum near it is
 not.  Chromospheric emission from the magnesium triplet is also
@@ -1264,7 +1281,7 @@ The gap in the TESS photometry (Figure~\ref{fig:fulllc}) additionally
 clouds the interpretability of this event.
 
 
-Finally, the Li\,\textsc{I} 6708\,\AA\ doublet, which shows no obvious
+Finally, the Li\,\textsc{I} 6708\,\AA\ region, which shows no obvious
 absorption, as well as the broad K\,\textsc{I} 7699\,\AA\ resonance
 line are both visible in Figure~\ref{fig:hirescuts}.  In
 the latter, narrow telluric absorption features overlap the blue wing
