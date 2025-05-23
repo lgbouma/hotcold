@@ -1,7 +1,23 @@
-Abstract: Removed word "Rough"
+----------
+Authorship:
 
+Added Moira Jardine.
+
+----------
+Minor clarifications:
+
+Discussion 4.2: clarified wording regarding location of local minimum in effective potential
+
+Added reference to Kislyakova+2018 regarding exoplanet-fed plasma tori.
+
+Figure 5b: Added sentence clarifying uncertainties in <50mA measurements.
+
+----------
+Typos:
+
+Sentence#1 of Section4.4: Fixed typo Townsend & Owocki05->Townsend et al 2005
 Figure 1 typo "dence" -> "cadence"
 Section 4.2 typo "torii" -> "tori"
 Section 4.5 typo "modelling" -> "modeling"
-
-Figure 5b: Added sentence clarifying uncertainties in <50mA measurements.
+Appendix C: hydrogen ions -> hydrogen atoms
+Appendix C: doublet -> region
