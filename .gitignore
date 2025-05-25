@@ -17,3 +17,4 @@ data/
 literature_review/
 *.code-workspace
 drivers/sandbox/profile_check_inner.csv
+paper_review/moira/
