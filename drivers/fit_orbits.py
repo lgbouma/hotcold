@@ -404,6 +404,17 @@ def main(fittingstyle='leastsquares'):
                     popt = fit['popt_circ']
                     ax.plot(fn(t_fit), rv_circular(t_fit, *popt), '-', c=c,
                             zorder=-2, alpha=0.9, lw=0.8)
+
+                    outdf = pd.DataFrame(
+                        {'phase': fn(t_fit), 'rv': rv_circular(t_fit, *popt)}
+                    )
+                    csvpath = join(
+                        'results/halpha_to_rv_timerseries',
+                        f'circular_fit_compt_{ix}.csv'
+                    )
+                    outdf.to_csv(csvpath, index=False)
+                    print(f'wrote {csvpath}')
+
                     sigma = 0.25
                     # Compute the mean fit over the global t_fit grid.
                     y_mean = rv_circular(global_t_fit, *popt)
