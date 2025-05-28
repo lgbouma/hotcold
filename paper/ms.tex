@@ -493,28 +493,28 @@ Our Keck/HIRES observations are the first reported time-series spectra
 of a CPV, and they demonstrate that corotating circumstellar plasma
 clumps exist around at least one such star.  More specifically, the
 spectra require plasma with a significant population of hydrogen in the
-$n$=3 excited state, with minimal evidence for higher-order excitations
-(see Appendix~\ref{subsec:specvar}).  Most of this H$\alpha$ emission
-originates in ``clumps'' with size comparable to the star; radial
-``spokes'' or azimuthally-extended ``arcs'' for the emitting material
-are ruled out by the $\approx$30\,\kms\ H$\alpha$ velocity dispersion
-(see Appendix~\ref{subsec:halpha}).  The H$\alpha$ line luminosity
-suggests characteristic number densities and masses for the gaseous
-component of these clumps of $n_{\rm H} \sim 10^{11}$\,cm$^{-3}$ and
-$M_{\rm gas} \sim 10^{17}$\,g (see Appendix~\ref{subsec:gas}).  Dust is
+$n$=3 excited state, \added{with }minimal evidence for
+higher-order excitations.  Most of this H$\alpha$ emission originates
+in ``clumps'' with size comparable to the star; radial ``spokes'' or
+azimuthally extended ``arcs'' for the emitting material are ruled out
+by the $\approx$30\,\kms\ H$\alpha$ velocity dispersion (see
+Appendix~\ref{subsec:halpha}).  The H$\alpha$ line luminosity suggests
+characteristic number densities and masses for the gaseous component
+of these clumps of $n_{\rm H} \sim 10^{11}$\,cm$^{-3}$ and $M_{\rm
+gas} \sim 10^{17}$\,g (see Appendix~\ref{subsec:gas}).  Dust is
 independently constrained to have a total mass $M_{\rm dust} <
 10^{17}\,{\rm g}$ based on the lack of a WISE infrared excess; if one
-assumes that the opacity in the TESS flux dips comes from dust, a lower
-limit $M_{\rm dust} > 10^{15}\,{\rm g}$ follows (see
+assumes that the opacity in the TESS flux dips comes from dust, a
+lower limit $M_{\rm dust} > 10^{15}\,{\rm g}$ follows (see
 Appendix~\ref{subsec:dust}).  
 
 
 \subsection{Clumps Within Warped Plasma Tori}
 
-While the H$\alpha$ emission seems to mostly originate from clumps,
-the complex flux dip in Figure~\ref{fig:spec} spans roughly half of
-each cycle; in CPVs more broadly, individual dips can last 5-50\% of
-each cycle \citep{Bouma2024}.  This implies that
+While the H$\alpha$ emission mostly comes from clumps,
+the broadband flux dip in Figure~\ref{fig:spec} spans roughly half of
+each cycle.  In CPVs more generally, individual flux dips last 5-50\% of
+each cycle\added{, and there are often multiple dips per cycle }\citep{Bouma2024}.  This implies that
 azimuthally-distributed material may be the norm for CPVs; a warped
 torus may be a more accurate picture than a clump.
 
@@ -548,20 +548,19 @@ rotational and magnetic planes (see Equation~22 of
 \citealt{Townsend2005}).  
 
 To summarize, the evidence for warped plasma tori
-in TIC\,141146667 and CPVs more broadly is that {\it i)}
-Figure~\ref{fig:spec} shows two emitting plasma clumps separated
-180$^\circ$ in phase, with double-peaked H$\alpha$ morphology at
-quadrature; {\it ii)} ``W'' shaped photometric eclipses are
-predictions of such a model; {\it iii)} CPV dips last 5-50\% of each
-cycle, suggesting an azimuthally-extended distribution of circumstellar
-material.  \added{Two key challenges however are that the warped torus
-model predicts two W-shaped eclipses per cycle, and it also predicts
-that the antipodal clumps should be equidistant from the star.
-Plausible resolutions could invoke different opacities for each clump, 
-and non-dipolar stellar magnetic fields.
-Generally, the evidence seems to support a warped torus as a
-reasonable first approximation, which we hope will be refined by
-future efforts.}
+in TIC\,141146667 and CPVs more broadly is that 
+Figure~\ref{fig:spec} shows two plasma clumps separated
+by 180$^\circ$ in phase; the warped-torus model predicts both
+``W'' shaped photometric eclipses and double-peaked H$\alpha$
+morphology at quadrature; and CPV dips last 5-50\% of each cycle,
+indicating an azimuthally extended distribution of material.
+\added{However, two challenges remain. First, the model predicts {\it
+two} W-shaped eclipses per cycle.  Second, it predicts that the
+antipodal clumps should lie at equal distances from the star.
+Different clump opacities or non-dipolar magnetic fields might resolve
+these discrepancies.  Overall, the evidence suggests a warped torus is
+a good first approximation---one that will need refinement in future
+work.}
 
 \subsection{Origin of CPV Photometric Variability and Astrophysical Analogs}
 
@@ -595,16 +594,16 @@ although with a very different composition.
 % magnetosphere than around Jupiter; the ionization balance would be
 % quite different.)
 
-The other analog for the CPVs are the $\sigma$~Ori~E variables, a rare
-subset of B stars with radiatively-driven winds which accumulate into
+The other CPV analog is the $\sigma$~Ori~E variables, a rare
+subset of B stars with radiatively-driven winds that accumulate into
 warped plasma tori \citep{Townsend2005}.  These tori tend
 to have dense antipodal accumulations of plasma sculpted by
-tilted-dipole magnetic fields, and the transits of these clumps produce
-broadband photometric variability through bound-free scattering
+tilted-dipole magnetic fields; these clumps produce
+broadband optical variability through bound-free scattering
 \citep{Townsend2005} and Thomson scattering \citep{Berry2022}.  For
-$\sigma$~Ori~E and almost all of its analogs, the result is simple
-light curves that resemble those of eclipsing binaries, and time-dynamic
-H$\alpha$ spectra similar to those in Figure~\ref{fig:spec}.  The two
+$\sigma$~Ori~E and most of its analogs, the result is simple
+light curves that resemble eclipsing binaries, and time-dynamic
+H$\alpha$ spectra similar to Figure~\ref{fig:spec}.  The two
 known exceptions, HD~37776 and HD~64740, 
 have spectropolarimetric magnetic field maps indicating strong
 contributions from higher-order magnetic moments
@@ -798,19 +797,16 @@ project.  MMJ contributed to the interpretation.
 \label{sec:stparams}
 
 {\it Radial Velocity}---We measured the radial velocities of
-TIC\,141146667 from our HIRES spectra using a pipeline that we
-developed for rapidly rotating stars.  Our method is based on
-template-matching against synthetic spectra produced by the PHOENIX
-stellar atmosphere code \citep{Husser2013}.  We used the PHOENIX models
-with solar metallicity and alpha element abundances, and calibrated
-our pipeline using the standard stars described by \citet{Chubak2012}.
-We used velocity standards spanning spectral types from G2 to M4
-(Barnard's Star), irrespective of rotation rate.  We used
-\texttt{barycorrpy} \citep{Kanodia2018} to calculate the velocity
-corrections due to Earth's motion around the solar system barycenter
-and due to Earth's daily rotation about its axis.  Our analysis code
-reproduces the systemic velocities of known velocity standards
-\citep{Chubak2012} with an RMS of 0.66\,\kms.
+TIC\,141146667 from our HIRES spectra using a \added{custom }pipeline.
+Our method is based on template-matching against synthetic
+\added{PHOENIX }spectra \citep{Husser2013}, \added{and is }calibrated
+\added{against }the standard stars described by \citet{Chubak2012}.
+We used velocity standards spanning G2-M4, irrespective of rotation
+rate.  We included velocity corrections due to Earth's motion around
+the solar system barycenter and due to Earth's daily rotation about
+its axis, calculated using \texttt{barycorrpy} \citep{Kanodia2018}.
+Our analysis code reproduces the systemic velocities of known velocity
+standards \citep{Chubak2012} with an RMS of 0.66\,\kms.
 
 For TIC\,141146667, we measured the radial velocities using regions
 near the K~I (7700\,\AA) resonance line and three TiO bandheads
@@ -822,7 +818,7 @@ used the scatter of resulting velocity measurements between orders to
 assign the RV uncertainty at each epoch.  The uncertainty-weighted
 mean systemic velocity over all epochs on 17~February~2024 was
 $\gamma$=0.6$\pm$1.5\,\kms.  The relative radial velocities about this
-mean are given in Table~\ref{tab:rv}.
+mean are listed in Table~\ref{tab:rv}.
 
 {\it Viewing Orientation}---We fitted the rotational broadening of the
 K~I (7700\,\AA) resonance line using the kernel suggested by
@@ -854,18 +850,18 @@ subtracting the mean CPV signal over each sector and performing a
 phase-dispersion minimization analysis
 \citep{Stellingwerf1978,2021zndo...1011188B}.  There were no secondary
 periods in the TESS data.  Previous work \citep{Bouma2024} has shown
-that about 30\% of CPVs show evidence for excess noise above the Gaia
-single-source astrometric model, and about 40\% of CPVs show evidence
-for unresolved binary companions based on the presence of secondary
-photometric periods.  This agrees with analyses showing that
+that $\approx$30\% of CPVs show evidence for excess noise above the
+Gaia single-source astrometric model, and $\approx$40\% of CPVs show
+evidence for unresolved binary companions based on the presence of
+secondary photometric periods.  This agrees with analyses showing that
 multi-periodic low-mass stars are generally unresolved binaries
 \citep{Tokovinin2018}.  Overall, the CPV binary fraction seems
 consistent with that for field M dwarfs \citep{Winters2019}, pointing
 to a weak or non-existent connection between the CPV phenomenon and
-(wide) binarity.  For TIC\,141146667 specifically, although we find no
-evidence for stellar multiplicity, our data are minimally constraining
-for the scenario of a low-luminosity companion
-($F_1$/$F_2$$\lesssim$0.1) with apparent separation below 0$\farcs$1.
+(wide) binarity.  For TIC\,141146667 specifically, we find no
+evidence for stellar multiplicity. %, our data are minimally constraining
+%for the scenario of a low-luminosity companion
+%($F_1$/$F_2$$\lesssim$0.1) with apparent separation below 0$\farcs$1.
 
 
 \begin{figure}[!t]
@@ -892,50 +888,43 @@ for the scenario of a low-luminosity companion
 classification}---We adopted the star's effective temperature and
 radius measured using the spectral energy distribution (SED) fitting
 procedure described by \citet{Bouma2024}.  To summarize, this approach
-used \texttt{astroARIADNE} \citep{Vines2022} with the BT-Settl stellar
-atmosphere models \citep{Allard2012}, assuming the \citet{Asplund2009}
-solar abundances and the \citet{Barber2006} water line lists.  This
-approach fitted for the stellar effective temperature, radius,
-reddening, surface gravity, metallicity, and distance by comparing the
-measured broadband magnitudes against pre-computed model grids.
-Specifically, we performed the fit using the broadband magnitudes from
-Gaia DR2, APASS, 2MASS, SDSS, and WISE $W1$ and $W2$.  The resulting
-best-fit SED is shown in Figure~\ref{fig:sed}.
-This method has the most constraining power for the star's effective
-temperature (2972 $\pm$ 40\,K) and radius (0.42 $\pm$
-0.02\,$R_\odot$); the surface gravity, metallicity, and reddening are
-only weakly constrained.  We determined the star's spectral type to be
-M5.5Ve by visually comparing the HIRES spectra against the photometric
-standards tabulated by \citet{Bochanski2007}.   This result agrees with
-the effective temperature found from the SED fitting
-\citep{Pecaut2013}.  We measured the equivalent width of the H$\alpha$
-line by fitting a range of models to the time-averaged line profile
-shown in Figure~\ref{fig:spec}, selecting the model that minimized the
-Bayesian information criterion, and numerically integrating this best
-fit model.  We found a sum of two Gaussians to be the preferred model;
-our quoted result, EW$_{{\rm H}\alpha}$=7.2$\pm$0.2\,\AA, comes from
-numerically integrating within $|\Delta v/v_{\rm eq}|<1$.  Integrating
-over the entire line profile, including the broad wings, would yield
-EW$_{{\rm H}\alpha}$=10.2$\pm$0.3\,\AA. Either value would classify
-the star as a weak-lined T Tauri \citep{Briceno2019}.
+used \texttt{astroARIADNE} \citep{Vines2022} \added{to fit broadband magnitudes
+from Gaia DR2, APASS, 2MASS, SDSS, and WISE $W1$ and $W2$ with the
+BT-Settl stellar atmosphere models \citep{Allard2012}}.  \added{Free
+parameters included } the stellar effective temperature, radius,
+reddening, surface gravity, and metallicity.  The resulting best-fit
+SED is shown in Figure~\ref{fig:sed}.  This method has the most
+constraining power for the star's effective temperature (2972 $\pm$
+40\,K) and radius (0.42 $\pm$ 0.02\,$R_\odot$).  We measured
+the star's spectral type to be M5.5Ve by visually comparing the HIRES
+spectra against the photometric standards tabulated by
+\citet{Bochanski2007}.   We measured the equivalent width of the
+H$\alpha$ line by fitting a range of models to the time-averaged line
+profile shown in Figure~\ref{fig:spec}, selecting the model that
+minimized the Bayesian information criterion, and numerically
+integrating this best fit model.  We found a sum of two Gaussians to
+be preferred; our quoted result, EW$_{{\rm
+H}\alpha}$=7.2$\pm$0.2\,\AA, comes from numerically integrating within
+$|\Delta v/v_{\rm eq}|<1$.  Integrating over the entire line profile,
+including the broad wings, would yield EW$_{{\rm
+H}\alpha}$=10.2$\pm$0.3\,\AA. Either value would classify the star as
+a weak-lined T Tauri \citep{Briceno2019}.
 
 Given the effective temperature, stellar radius, and age range
 (35-150\,Myr) derived below, we then estimated the stellar mass by
-interpolating against the PARSEC v1.2S isochrones \citep{Chen2014}.
-Specifically, we used the distance metric defined in Equation~8 of
-\citet{Bouma2024} to select the model mass closest to a given observed
-temperature, radius, and age.  This exercise yielded a mass of
+interpolating against the PARSEC v1.2S isochrones \citep{Chen2014}, as
+in \citet{Bouma2024}.  This exercise yielded a mass of
 $M_\star$=$0.20\pm0.01$\,$M_\odot$ assuming an age of 35\,Myr, or a
 mass of $0.25\pm0.01$\,$M_\odot$ assuming an age of 150\,Myr.  These
 masses imply Keplerian corotation radii $R_{\rm
 cr}/R_\star$=1.75$\pm$0.07 and $R_{\rm cr}/R_\star$=1.89$\pm$0.07,
-respectively; this size scale is relevant because it is theoretically
-expected to set the inner boundary at which corotating material might
-accumulate (e.g.~\citealt{Townsend2005,Daley-Yates2024}).  Our final
-quoted $M_\star$ and $R_{\rm cr}$ values adopt the average of these
-extremes and a quadrature sum of their statistical uncertainties; we
-caution however that a more precise age would be needed to resolve the
-systematic uncertainties in these parameters.
+respectively; this size scale is expected to set the inner boundary at
+which corotating material might accumulate
+(e.g.~\citealt{Townsend2005,Daley-Yates2024}).  Our final quoted
+$M_\star$ and $R_{\rm cr}$ values adopt the average of these extremes
+and a quadrature sum of their statistical uncertainties; a more
+precise age would be needed to resolve the systematic uncertainties in
+these parameters.
 
 
 {\it Age: No Obvious Association Membership}---In
@@ -1021,46 +1010,43 @@ take the star's location in the color--absolute magnitude diagram
 to suggest age bounds $t_{\rm CAMD}$$\sim$30-150\,Myr.
 
 
-{\it Age: Lithium}---The depletion of lithium due to $^7$Li(p,
-$\alpha$)$^4$He burning in the cores of low-mass stars has been
+{\it Age: Lithium}---Lithium burning in the cores of low-mass stars has been
 studied for over sixty years
-\citep{Hayashi1963,Bildsten1997,Burke2004}.  \citet{Wood2023} provided a
-recent overview: an abbreviated summary is that sufficiently cool and
+\citep[e.g.][]{Hayashi1963,Bildsten1997}.  \citet{Wood2023} provided a
+recent overview; the brief summary is that sufficiently cool and
 young M dwarfs show the 6707.8\,\AA\ doublet in absorption,
 $\gtrsim$10\% below their continua.  However, unlike for Sun-like
 stars, the continuum for M dwarfs is challenging to define due to
 their molecular absorption.  We therefore attempted a lithium
 measurement by constructing a wavelength-binned and Doppler-corrected
-TIC\,141146667 spectrum, assigning its uncertainties based on the
+TIC\,141146667 spectrum, and assigned its uncertainties based on the
 measured scatter across the five hour dataset.  We then compared this
 average spectrum against the nearest matching M6 template from
 \citet{Bochanski2007}.  The data show a small depression near the
 expected lithium wavelength, potentially consistent with the $\Delta
-\lambda$$\approx$3\,\AA\ line broadening.  This feature nominally
+\lambda$$\approx$3\,\AA\ line broadening.  This feature 
 yields ${\rm EW}_{\rm Li}$=71$^{+18}_{-13}$\,m\AA, where the
 statistical uncertainties are evaluated using a bootstrap resampling
 technique from the statistical uncertainties in the HIRES spectrum.
-However, the systematic uncertainties associated with the continuum
-normalization are likely comparable to the amplitude of this feature;
-we therefore treat the result of this measurement as a $2\sigma$ upper
+However, the systematic uncertainty associated with the continuum
+normalization is likely comparable to the amplitude of the feature;
+we therefore treat this measurement as a $2\sigma$ upper
 limit: ${\rm EW}_{\rm Li}$$<$107\,m\AA.
 
 
-Despite ambiguity in the details, what can be stated with
-confidence is that lithium is not abundant in the spectrum of
-TIC\,141146667.  Figure~\ref{fig:age_diagnostics}
+What can be stated with confidence is that lithium is not abundant in
+the spectrum of TIC\,141146667.  Figure~\ref{fig:age_diagnostics}
 compares our upper limit against the equivalent width measurements
 reported by \citet{Jeffries2023} based on the Gaia-ESO spectroscopic
-survey; Figure~\ref{fig:hirescuts} shows the associated
-raw spectra.  If the star were $\lesssim$20\,Myr old, at its
-temperature we would expect to see lithium in abundance
-($>$400\,m\AA).  Since we do not, we can set an empirical bound on the
-lithium-derived age of $t_{\rm Li,emp}$$\gtrsim$20\,Myr.  The
-\citet{Feiden2016} lithium isochrones provide a point for theoretical
-comparison, and suggest that since $M_{\rm K}$$\approx$6.67\,mag,
-$t_{\rm Li,th}$$\gtrsim$35\,Myr is the theoretical age at which
-complete depletion occurs in a star with this luminosity (see
-e.g.~Figure 7 from \citealt{Wood2023}).
+survey.  If the star were $\lesssim$20\,Myr old, at its temperature we
+would expect to see lithium in abundance ($>$400\,m\AA).  Since we do
+not, we can set an empirical bound on the lithium-derived age of
+$t_{\rm Li,emp}$$\gtrsim$20\,Myr.  The \citet{Feiden2016} lithium
+isochrones provide a point for theoretical comparison, and suggest
+that since $M_{\rm K}$$\approx$6.67\,mag, $t_{\rm
+Li,th}$$\gtrsim$35\,Myr is the theoretical age at which complete
+depletion occurs in a star with this luminosity (see e.g.~Figure 7
+from \citealt{Wood2023}).
 
 
 {\it Age: Summary}---The main indicators for the youth of
@@ -1157,9 +1143,11 @@ sinusoid suggested by visual inspection.  We fitted each component to
 the data {\it independently} using scipy's non-linear least squares
 \texttt{curve\_fit} implementation \citep{Virtanen2020}, and scaled the
 resulting parameter covariance matrix by a constant factor to match
-the sample variance of the residuals.  The resulting means,
-amplitudes, and standard deviations for each component are given in
-Table~\ref{tab:halphamodelparams}.
+the sample variance of the residuals.
+\added{The results are shown in the middle columns of
+Figure~\ref{fig:halphamodel}, and a table of the fitted means,
+amplitudes, and standard deviations for each component is available
+upon request.}
 
 Caution is required in interpreting this model's results.  At some
 epochs there are no significant spectral features around any component's
@@ -1197,8 +1185,8 @@ particular epoch, because its emission would be blocked by the star.
   \label{fig:orbits}
 \end{figure*}
 
-Accounting for these caveats, we used the results from
-Table~\ref{tab:halphamodelparams} to quantify the orbital periods and
+Accounting for these caveats, we used the \added{best-fit parameters
+from the multi-gaussian model }to quantify the orbital periods and
 velocity semi-amplitudes of the clumps.  Figure~\ref{fig:orbits}a
 shows the results assuming circular orbits; considering the Bayesian
 information criterion, we found no reason to prefer eccentric orbits.
@@ -1297,60 +1285,60 @@ assumes that the optically thick material is well-mixed with the
 hydrogen, which may not be accurate.
 
 
-\section{Spectroscopic Variability}
-\label{subsec:specvar}
-
-\begin{figure*}[!t]
-  \centering
-  \includegraphics[width=\textwidth]{f8.pdf}
-  \vspace{-0.5cm}
-  \caption{{\bf Time evolution of the Keck/HIRES spectra
-  from 17 February 2024.}  We made this plot by applying a windowed
-  outlier rejection to remove cosmic rays and then smoothing each
-  spectrum with a Gaussian filter.  The horizontal axis shows the
-  velocity relative to each line's rest wavelength, normalized by the
-  stellar equatorial velocity.  H$\alpha$ is the only Balmer line to
-  show periodic variability similar to Figure~\ref{fig:spec}.
-	The He 5876\,\AA\ line shows a time-dynamic blueshift.  Li 6708\,\AA\ shows
-	no obvious absorption. }
-  \label{fig:hirescuts}
-\end{figure*}
-
-Figure~\ref{fig:hirescuts} shows a few regions of
-interest in the HIRES spectra, which cover 3650-7960\,\AA.  
-H$\beta$ falls in an inter-order gap and was not observed.
-Higher order Balmer lines including H$\gamma$ and H$\delta$
-($n=5\rightarrow2$ and $n=6\rightarrow2$) do show variability outside
-the line core.  However, this variability is not clearly periodic in the
-same manner as the emission seen in H$\alpha$.  This could be because
-there are insufficient hydrogen atoms in the relevant excited states, or
-because the spectra have lower precision in these bluer regions.  The Ca
-HK doublet is also detected in emission, while the continuum near it is
-not.  Chromospheric emission from the magnesium triplet is also
-detected, but these lines are too blended to be usable.
-
-Figure~\ref{fig:hirescuts} provides a novel view on the
-blue excess that appeared at $\phi$$\approx$0.2 in H$\alpha$,
-H$\gamma$, H$\delta$, and He 5876\,\AA.  At the same epoch, H$\alpha$
-additionally shows a red clump of emission, and H$\gamma$ and
-H$\delta$ are also broadened on the red wing.  The rise of this
-emission in $<$15\,minutes might suggest a more sudden flow, rather
-than a stable, periodic component.  For instance, a stellar flare
-might be connected to such a sudden rise.  However, this idea seems
-incompatible with the sinusoidal emission seen from
-$\phi$$\approx$0.3-1.0, and with the fact that flares typically excite
-iron lines in the blue HIRES orders, which are not observed.  More
-time-series spectroscopy would be needed to clarify this type of
-variability, in particular whether it is periodic or stochastic.
-The gap in the TESS photometry (Figure~\ref{fig:fulllc}) additionally
-clouds the interpretability of this event.
-
-
-Finally, the Li\,\textsc{I} 6708\,\AA\ region, which shows no obvious
-absorption, as well as the broad K\,\textsc{I} 7699\,\AA\ resonance
-line are both visible in Figure~\ref{fig:hirescuts}.  In
-the latter, narrow telluric absorption features overlap the blue wing
-of the line.  Neither of these regions shows any notable variability.
+%  \section{Spectroscopic Variability}
+%  \label{subsec:specvar}
+%  
+%  \begin{figure*}[!t]
+%    \centering
+%    \includegraphics[width=\textwidth]{f8.pdf}
+%    \vspace{-0.5cm}
+%    \caption{{\bf Time evolution of the Keck/HIRES spectra
+%    from 17 February 2024.}  We made this plot by applying a windowed
+%    outlier rejection to remove cosmic rays and then smoothing each
+%    spectrum with a Gaussian filter.  The horizontal axis shows the
+%    velocity relative to each line's rest wavelength, normalized by the
+%    stellar equatorial velocity.  H$\alpha$ is the only Balmer line to
+%    show periodic variability similar to Figure~\ref{fig:spec}.
+%  	The He 5876\,\AA\ line shows a time-dynamic blueshift.  Li 6708\,\AA\ shows
+%  	no obvious absorption. }
+%    \label{fig:hirescuts}
+%  \end{figure*}
+%  
+%  Figure~\ref{fig:hirescuts} shows a few regions of
+%  interest in the HIRES spectra, which cover 3650-7960\,\AA.  
+%  H$\beta$ falls in an inter-order gap and was not observed.
+%  Higher order Balmer lines including H$\gamma$ and H$\delta$
+%  ($n=5\rightarrow2$ and $n=6\rightarrow2$) do show variability outside
+%  the line core.  However, this variability is not clearly periodic in the
+%  same manner as the emission seen in H$\alpha$.  This could be because
+%  there are insufficient hydrogen atoms in the relevant excited states, or
+%  because the spectra have lower precision in these bluer regions.  The Ca
+%  HK doublet is also detected in emission, while the continuum near it is
+%  not.  Chromospheric emission from the magnesium triplet is also
+%  detected, but these lines are too blended to be usable.
+%  
+%  Figure~\ref{fig:hirescuts} provides a novel view on the
+%  blue excess that appeared at $\phi$$\approx$0.2 in H$\alpha$,
+%  H$\gamma$, H$\delta$, and He 5876\,\AA.  At the same epoch, H$\alpha$
+%  additionally shows a red clump of emission, and H$\gamma$ and
+%  H$\delta$ are also broadened on the red wing.  The rise of this
+%  emission in $<$15\,minutes might suggest a more sudden flow, rather
+%  than a stable, periodic component.  For instance, a stellar flare
+%  might be connected to such a sudden rise.  However, this idea seems
+%  incompatible with the sinusoidal emission seen from
+%  $\phi$$\approx$0.3-1.0, and with the fact that flares typically excite
+%  iron lines in the blue HIRES orders, which are not observed.  More
+%  time-series spectroscopy would be needed to clarify this type of
+%  variability, in particular whether it is periodic or stochastic.
+%  The gap in the TESS photometry (Figure~\ref{fig:fulllc}) additionally
+%  clouds the interpretability of this event.
+%  
+%  
+%  Finally, the Li\,\textsc{I} 6708\,\AA\ region, which shows no obvious
+%  absorption, as well as the broad K\,\textsc{I} 7699\,\AA\ resonance
+%  line are both visible in Figure~\ref{fig:hirescuts}.  In
+%  the latter, narrow telluric absorption features overlap the blue wing
+%  of the line.  Neither of these regions shows any notable variability.
 
 
 
@@ -1371,7 +1359,7 @@ work, but are beyond the scope of this article.
 Circumstellar H$\alpha$ emission might be sourced either from resonant
 scattering of stellar H$\alpha$ photons, or from radiative
 recombination.  We neglect scattering because Figure~\ref{fig:spec}
-and Figure~\ref{fig:hirescuts} show the amplitude of the
+shows the amplitude of the
 circumstellar H$\alpha$ emission varying by a factor of $\approx$5, in
 a manner uncorrelated with any variability in the chromospheric line
 core.  The volume emissivity under case B recombination can be written
@@ -1642,45 +1630,45 @@ distribution for such disks
 \end{table}
 
 
-\begin{sidewaystable}
-  \footnotesize
-  \centering
-  \begin{tabular}{lccccccccc}
-  % from results/halpha_to_rv_timerseries/multigauss_parametertable.tex
-  \hline
-  BTJD & $\mu_0$ & $\mu_1$ & $\mu_2$ & $\sigma_0$ & $\sigma_1$ & $\sigma_2$ & $A_0$ & $A_1$ & $A_2$ \\
-  \hline
-  3357.960099 & -0.725 $\pm$ 0.028 & -1.416 $\pm$ 0.026 & 0.177 $\pm$ 0.019 & 0.39 $\pm$ 0.03 & 0.18 $\pm$ 0.03 & 0.59 $\pm$ 0.02 & 0.51 $\pm$ 0.01 & 0.23 $\pm$ 0.04 & 0.29 $\pm$ 0.01 \\
-  3357.970746 & -0.192 $\pm$ 0.007 & 0.498 $\pm$ 0.010 & 0.100 $\pm$ 0.014 & 0.23 $\pm$ 0.01 & 0.24 $\pm$ 0.01 & 0.55 $\pm$ 0.01 & 0.50 $\pm$ 0.01 & 0.37 $\pm$ 0.01 & 0.42 $\pm$ 0.01 \\
-  3357.981672 & 0.895 $\pm$ 0.051 & 1.771 $\pm$ 0.076 & -1.470 $\pm$ 0.113 & 0.40 $\pm$ 0.02 & 0.40 $\pm$ 0.10 & 0.09 $\pm$ 0.11 & 0.67 $\pm$ 0.05 & 0.34 $\pm$ 0.04 & 0.03 $\pm$ 0.03 \\
-  3357.993524 & 1.536 $\pm$ 0.011 & 2.202 $\pm$ 0.015 & -3.787 $\pm$ 0.049 & 0.25 $\pm$ 0.01 & 0.29 $\pm$ 0.01 & 0.72 $\pm$ 0.05 & 0.55 $\pm$ 0.01 & 0.46 $\pm$ 0.01 & 0.05 $\pm$ 0.00 \\
-  3358.003594 & 1.974 $\pm$ 0.007 & 2.588 $\pm$ 0.006 & -2.749 $\pm$ 0.020 & 0.26 $\pm$ 0.01 & 0.22 $\pm$ 0.00 & 1.00 $\pm$ 0.02 & 0.64 $\pm$ 0.01 & 0.67 $\pm$ 0.01 & 0.43 $\pm$ 0.01 \\
-  3358.015249 & 2.027 $\pm$ 0.003 & 2.666 $\pm$ 0.003 & -2.370 $\pm$ 0.015 & 0.24 $\pm$ 0.00 & 0.20 $\pm$ 0.00 & 1.00 $\pm$ 0.01 & 0.62 $\pm$ 0.00 & 0.60 $\pm$ 0.00 & 0.56 $\pm$ 0.00 \\
-  3358.024971 & 1.790 $\pm$ 0.004 & 2.469 $\pm$ 0.006 & -2.138 $\pm$ 0.011 & 0.24 $\pm$ 0.00 & 0.26 $\pm$ 0.00 & 0.77 $\pm$ 0.01 & 0.53 $\pm$ 0.00 & 0.38 $\pm$ 0.00 & 0.31 $\pm$ 0.00 \\
-  3358.036522 & 0.584 $\pm$ 0.008 & 1.399 $\pm$ 0.009 & -1.584 $\pm$ 0.009 & 0.18 $\pm$ 0.01 & 0.40 $\pm$ 0.01 & 0.89 $\pm$ 0.01 & 0.35 $\pm$ 0.01 & 0.39 $\pm$ 0.00 & 0.62 $\pm$ 0.00 \\
-  3358.047668 & 0.328 $\pm$ 0.014 & 0.685 $\pm$ 0.010 & -0.969 $\pm$ 0.017 & 0.07 $\pm$ 0.01 & 0.13 $\pm$ 0.01 & 0.46 $\pm$ 0.02 & 0.14 $\pm$ 0.02 & 0.28 $\pm$ 0.02 & 0.52 $\pm$ 0.02 \\
-  3358.058824 & -0.646 $\pm$ 0.005 & -1.474 $\pm$ 0.066 & 0.891 $\pm$ 0.079 & 0.23 $\pm$ 0.00 & 0.25 $\pm$ 0.07 & 0.14 $\pm$ 0.08 & 0.51 $\pm$ 0.01 & 0.10 $\pm$ 0.01 & 0.09 $\pm$ 0.04 \\
-  3358.069519 & -0.388 $\pm$ 0.104 & -1.669 $\pm$ 0.023 & 2.646 $\pm$ 0.020 & 0.40 $\pm$ 0.07 & 0.40 $\pm$ 0.02 & 0.53 $\pm$ 0.02 & 0.47 $\pm$ 0.04 & 0.33 $\pm$ 0.01 & 0.22 $\pm$ 0.01 \\
-  3358.080468 & -1.748 $\pm$ 0.009 & -2.483 $\pm$ 0.010 & 3.526 $\pm$ 0.009 & 0.25 $\pm$ 0.01 & 0.33 $\pm$ 0.01 & 0.55 $\pm$ 0.01 & 0.28 $\pm$ 0.01 & 0.32 $\pm$ 0.00 & 0.32 $\pm$ 0.00 \\
-  3358.091255 & -2.119 $\pm$ 0.007 & -2.868 $\pm$ 0.007 & 3.960 $\pm$ 0.005 & 0.26 $\pm$ 0.01 & 0.23 $\pm$ 0.01 & 0.40 $\pm$ 0.01 & 0.34 $\pm$ 0.01 & 0.29 $\pm$ 0.01 & 0.39 $\pm$ 0.00 \\
-  3358.101671 & -2.019 $\pm$ 0.006 & -2.731 $\pm$ 0.008 & 3.758 $\pm$ 0.005 & 0.20 $\pm$ 0.01 & 0.24 $\pm$ 0.01 & 0.43 $\pm$ 0.01 & 0.29 $\pm$ 0.01 & 0.25 $\pm$ 0.01 & 0.23 $\pm$ 0.00 \\
-  3358.112713 & -1.581 $\pm$ 0.020 & -2.141 $\pm$ 0.043 & 2.867 $\pm$ 0.019 & 0.19 $\pm$ 0.02 & 0.29 $\pm$ 0.03 & 0.40 $\pm$ 0.02 & 0.18 $\pm$ 0.02 & 0.13 $\pm$ 0.01 & 0.12 $\pm$ 0.00 \\
-  3358.123928 & -0.624 $\pm$ 0.006 & -1.312 $\pm$ 0.076 & 0.824 $\pm$ 0.012 & 0.09 $\pm$ 0.01 & 0.22 $\pm$ 0.08 & 0.44 $\pm$ 0.01 & 0.18 $\pm$ 0.01 & 0.02 $\pm$ 0.01 & 0.32 $\pm$ 0.01 \\
-  3358.135236 & -0.012 $\pm$ 0.011 & -0.208 $\pm$ 0.012 & -0.192 $\pm$ 0.012 & 0.03 $\pm$ 0.01 & 0.11 $\pm$ 0.01 & 0.12 $\pm$ 0.01 & 0.12 $\pm$ 0.04 & 0.25 $\pm$ 0.02 & 0.25 $\pm$ 0.02 \\
-  3358.146555 & 1.007 $\pm$ 0.100 & 1.622 $\pm$ 0.048 & -1.789 $\pm$ 0.045 & 0.06 $\pm$ 0.11 & 0.31 $\pm$ 0.06 & 0.04 $\pm$ 0.05 & 0.02 $\pm$ 0.04 & 0.12 $\pm$ 0.02 & 0.05 $\pm$ 0.05 \\
-  3358.156693 & 1.603 $\pm$ 0.018 & 2.444 $\pm$ 0.024 & -4.408 $\pm$ 0.197 & 0.14 $\pm$ 0.02 & 0.23 $\pm$ 0.03 & 1.00 $\pm$ 0.17 & 0.14 $\pm$ 0.02 & 0.14 $\pm$ 0.01 & 0.05 $\pm$ 0.00 \\
-  3358.169147 & 1.543 $\pm$ 0.007 & 2.152 $\pm$ 0.013 & -3.885 $\pm$ 0.031 & 0.14 $\pm$ 0.01 & 0.39 $\pm$ 0.01 & 1.00 $\pm$ 0.04 & 0.23 $\pm$ 0.01 & 0.27 $\pm$ 0.00 & 0.10 $\pm$ 0.00 \\
-  3358.177978 & 1.588 $\pm$ 0.037 & 2.828 $\pm$ 0.005 & -4.378 $\pm$ 0.053 & 0.40 $\pm$ 0.03 & 0.02 $\pm$ 0.01 & 0.75 $\pm$ 0.06 & 0.33 $\pm$ 0.01 & 0.11 $\pm$ 0.03 & 0.12 $\pm$ 0.01 \\
-  \hline
-  \end{tabular}
-  \caption{Best-fit parameters from multi-gaussian model fit to H$\alpha$ line
-  profiles.  Units for $\mu_i$ and $\sigma_i$ are $v_{\rm eq}$
-  (130\,\kms). These results should be treated with caution; only a
-  subset of the spectral epochs yielded statistically significant
-  detections of the circumstellar emission (see
-  Figure~\ref{fig:halphamodel}).}
-  \label{tab:halphamodelparams}
-\end{sidewaystable}
+%  \begin{sidewaystable}
+%    \footnotesize
+%    \centering
+%    \begin{tabular}{lccccccccc}
+%    % from results/halpha_to_rv_timerseries/multigauss_parametertable.tex
+%    \hline
+%    BTJD & $\mu_0$ & $\mu_1$ & $\mu_2$ & $\sigma_0$ & $\sigma_1$ & $\sigma_2$ & $A_0$ & $A_1$ & $A_2$ \\
+%    \hline
+%    3357.960099 & -0.725 $\pm$ 0.028 & -1.416 $\pm$ 0.026 & 0.177 $\pm$ 0.019 & 0.39 $\pm$ 0.03 & 0.18 $\pm$ 0.03 & 0.59 $\pm$ 0.02 & 0.51 $\pm$ 0.01 & 0.23 $\pm$ 0.04 & 0.29 $\pm$ 0.01 \\
+%    3357.970746 & -0.192 $\pm$ 0.007 & 0.498 $\pm$ 0.010 & 0.100 $\pm$ 0.014 & 0.23 $\pm$ 0.01 & 0.24 $\pm$ 0.01 & 0.55 $\pm$ 0.01 & 0.50 $\pm$ 0.01 & 0.37 $\pm$ 0.01 & 0.42 $\pm$ 0.01 \\
+%    3357.981672 & 0.895 $\pm$ 0.051 & 1.771 $\pm$ 0.076 & -1.470 $\pm$ 0.113 & 0.40 $\pm$ 0.02 & 0.40 $\pm$ 0.10 & 0.09 $\pm$ 0.11 & 0.67 $\pm$ 0.05 & 0.34 $\pm$ 0.04 & 0.03 $\pm$ 0.03 \\
+%    3357.993524 & 1.536 $\pm$ 0.011 & 2.202 $\pm$ 0.015 & -3.787 $\pm$ 0.049 & 0.25 $\pm$ 0.01 & 0.29 $\pm$ 0.01 & 0.72 $\pm$ 0.05 & 0.55 $\pm$ 0.01 & 0.46 $\pm$ 0.01 & 0.05 $\pm$ 0.00 \\
+%    3358.003594 & 1.974 $\pm$ 0.007 & 2.588 $\pm$ 0.006 & -2.749 $\pm$ 0.020 & 0.26 $\pm$ 0.01 & 0.22 $\pm$ 0.00 & 1.00 $\pm$ 0.02 & 0.64 $\pm$ 0.01 & 0.67 $\pm$ 0.01 & 0.43 $\pm$ 0.01 \\
+%    3358.015249 & 2.027 $\pm$ 0.003 & 2.666 $\pm$ 0.003 & -2.370 $\pm$ 0.015 & 0.24 $\pm$ 0.00 & 0.20 $\pm$ 0.00 & 1.00 $\pm$ 0.01 & 0.62 $\pm$ 0.00 & 0.60 $\pm$ 0.00 & 0.56 $\pm$ 0.00 \\
+%    3358.024971 & 1.790 $\pm$ 0.004 & 2.469 $\pm$ 0.006 & -2.138 $\pm$ 0.011 & 0.24 $\pm$ 0.00 & 0.26 $\pm$ 0.00 & 0.77 $\pm$ 0.01 & 0.53 $\pm$ 0.00 & 0.38 $\pm$ 0.00 & 0.31 $\pm$ 0.00 \\
+%    3358.036522 & 0.584 $\pm$ 0.008 & 1.399 $\pm$ 0.009 & -1.584 $\pm$ 0.009 & 0.18 $\pm$ 0.01 & 0.40 $\pm$ 0.01 & 0.89 $\pm$ 0.01 & 0.35 $\pm$ 0.01 & 0.39 $\pm$ 0.00 & 0.62 $\pm$ 0.00 \\
+%    3358.047668 & 0.328 $\pm$ 0.014 & 0.685 $\pm$ 0.010 & -0.969 $\pm$ 0.017 & 0.07 $\pm$ 0.01 & 0.13 $\pm$ 0.01 & 0.46 $\pm$ 0.02 & 0.14 $\pm$ 0.02 & 0.28 $\pm$ 0.02 & 0.52 $\pm$ 0.02 \\
+%    3358.058824 & -0.646 $\pm$ 0.005 & -1.474 $\pm$ 0.066 & 0.891 $\pm$ 0.079 & 0.23 $\pm$ 0.00 & 0.25 $\pm$ 0.07 & 0.14 $\pm$ 0.08 & 0.51 $\pm$ 0.01 & 0.10 $\pm$ 0.01 & 0.09 $\pm$ 0.04 \\
+%    3358.069519 & -0.388 $\pm$ 0.104 & -1.669 $\pm$ 0.023 & 2.646 $\pm$ 0.020 & 0.40 $\pm$ 0.07 & 0.40 $\pm$ 0.02 & 0.53 $\pm$ 0.02 & 0.47 $\pm$ 0.04 & 0.33 $\pm$ 0.01 & 0.22 $\pm$ 0.01 \\
+%    3358.080468 & -1.748 $\pm$ 0.009 & -2.483 $\pm$ 0.010 & 3.526 $\pm$ 0.009 & 0.25 $\pm$ 0.01 & 0.33 $\pm$ 0.01 & 0.55 $\pm$ 0.01 & 0.28 $\pm$ 0.01 & 0.32 $\pm$ 0.00 & 0.32 $\pm$ 0.00 \\
+%    3358.091255 & -2.119 $\pm$ 0.007 & -2.868 $\pm$ 0.007 & 3.960 $\pm$ 0.005 & 0.26 $\pm$ 0.01 & 0.23 $\pm$ 0.01 & 0.40 $\pm$ 0.01 & 0.34 $\pm$ 0.01 & 0.29 $\pm$ 0.01 & 0.39 $\pm$ 0.00 \\
+%    3358.101671 & -2.019 $\pm$ 0.006 & -2.731 $\pm$ 0.008 & 3.758 $\pm$ 0.005 & 0.20 $\pm$ 0.01 & 0.24 $\pm$ 0.01 & 0.43 $\pm$ 0.01 & 0.29 $\pm$ 0.01 & 0.25 $\pm$ 0.01 & 0.23 $\pm$ 0.00 \\
+%    3358.112713 & -1.581 $\pm$ 0.020 & -2.141 $\pm$ 0.043 & 2.867 $\pm$ 0.019 & 0.19 $\pm$ 0.02 & 0.29 $\pm$ 0.03 & 0.40 $\pm$ 0.02 & 0.18 $\pm$ 0.02 & 0.13 $\pm$ 0.01 & 0.12 $\pm$ 0.00 \\
+%    3358.123928 & -0.624 $\pm$ 0.006 & -1.312 $\pm$ 0.076 & 0.824 $\pm$ 0.012 & 0.09 $\pm$ 0.01 & 0.22 $\pm$ 0.08 & 0.44 $\pm$ 0.01 & 0.18 $\pm$ 0.01 & 0.02 $\pm$ 0.01 & 0.32 $\pm$ 0.01 \\
+%    3358.135236 & -0.012 $\pm$ 0.011 & -0.208 $\pm$ 0.012 & -0.192 $\pm$ 0.012 & 0.03 $\pm$ 0.01 & 0.11 $\pm$ 0.01 & 0.12 $\pm$ 0.01 & 0.12 $\pm$ 0.04 & 0.25 $\pm$ 0.02 & 0.25 $\pm$ 0.02 \\
+%    3358.146555 & 1.007 $\pm$ 0.100 & 1.622 $\pm$ 0.048 & -1.789 $\pm$ 0.045 & 0.06 $\pm$ 0.11 & 0.31 $\pm$ 0.06 & 0.04 $\pm$ 0.05 & 0.02 $\pm$ 0.04 & 0.12 $\pm$ 0.02 & 0.05 $\pm$ 0.05 \\
+%    3358.156693 & 1.603 $\pm$ 0.018 & 2.444 $\pm$ 0.024 & -4.408 $\pm$ 0.197 & 0.14 $\pm$ 0.02 & 0.23 $\pm$ 0.03 & 1.00 $\pm$ 0.17 & 0.14 $\pm$ 0.02 & 0.14 $\pm$ 0.01 & 0.05 $\pm$ 0.00 \\
+%    3358.169147 & 1.543 $\pm$ 0.007 & 2.152 $\pm$ 0.013 & -3.885 $\pm$ 0.031 & 0.14 $\pm$ 0.01 & 0.39 $\pm$ 0.01 & 1.00 $\pm$ 0.04 & 0.23 $\pm$ 0.01 & 0.27 $\pm$ 0.00 & 0.10 $\pm$ 0.00 \\
+%    3358.177978 & 1.588 $\pm$ 0.037 & 2.828 $\pm$ 0.005 & -4.378 $\pm$ 0.053 & 0.40 $\pm$ 0.03 & 0.02 $\pm$ 0.01 & 0.75 $\pm$ 0.06 & 0.33 $\pm$ 0.01 & 0.11 $\pm$ 0.03 & 0.12 $\pm$ 0.01 \\
+%    \hline
+%    \end{tabular}
+%    \caption{Best-fit parameters from multi-gaussian model fit to H$\alpha$ line
+%    profiles.  Units for $\mu_i$ and $\sigma_i$ are $v_{\rm eq}$
+%    (130\,\kms). These results should be treated with caution; only a
+%    subset of the spectral epochs yielded statistically significant
+%    detections of the circumstellar emission (see
+%    Figure~\ref{fig:halphamodel}).}
+%    \label{tab:halphamodelparams}
+%  \end{sidewaystable}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
