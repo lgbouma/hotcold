@@ -89,10 +89,6 @@
   in these plasma tori explain CPV light curves, and
   whether the tori originate from the star or are fed by external
   sources.}
-  %It remains unclear whether these structures originate intrinsically
-  %from the star or are fed by external sources. Likewise,
-  %the mechanism by which their optically thick clumps arise is still
-  %unknown.
   Rough estimates suggest $\gtrsim$10\% of M dwarfs host
   similar structures during their early lives.
 \end{abstract}
@@ -206,7 +202,7 @@ discusses their interpretation and highlights future directions.
 \small
 \setlength{\tabcolsep}{2pt}
 \centering
-\caption{Selected system parameters for TIC\,141146667.}
+  \caption{Selected properties of TIC\,141146667.}
 \vspace{-0.2cm}
 \label{tab:params}
 \begin{tabular}{llcc}
@@ -531,12 +527,12 @@ In general, the\added{ regions} in these centrifugally-supported
 magnetospheres\added{ with the densest plasma accumulations} need
 neither transit nor be opaque in broadband optical light.  
 
-In a follow-up study, \citet{Townsend2008} synthesized light curves for
-these systems, assuming that the optical depth scaled linearly with
-plasma density.  They found that W-shaped eclipses, similar to those seen for
-TIC\,141146667, can occur when the spin and magnetic axes are moderately
-(15-45$^\circ$) misaligned.  The movies associated with their work are
-available
+In a follow-up study, \citet{Townsend2008} made synthetic light
+curves, assuming that the optical depth scaled linearly with plasma
+density.  They found that W-shaped eclipses, similar to those seen for
+TIC\,141146667, can occur when the spin and magnetic axes are
+moderately (15-45$^\circ$) misaligned.  The movies associated with
+their work are available
 online\footnote{\url{http://user.astro.wisc.edu/\~townsend/static.php?ref=rrm-movies\#Download\_Bundles}
 last accessed 23 April 2025.}; for a $\omega/\omega_{\rm
 c}$$\approx$0.5, edge-on system like TIC\,141146667, the photometric
@@ -559,7 +555,7 @@ two} W-shaped eclipses per cycle.  Second, it predicts that the
 antipodal clumps should lie at equal distances from the star.
 Different clump opacities or non-dipolar magnetic fields might resolve
 these discrepancies.  Overall, the evidence suggests a warped torus is
-a good first approximation---one that will need refinement in future
+a good first approximation, but one that will need refinement in future
 work.}
 
 \subsection{Origin of CPV Photometric Variability and Astrophysical Analogs}
@@ -719,7 +715,7 @@ It is currently unclear what, if any, relationship CPVs have to the
 close-in rocky exoplanets that exist around most M dwarfs
 \citep{Dressing2015}.  However, a few percent of young M dwarfs show
 the CPV phenomenon \citep{Rebull2020}, and our data show that some of
-the complex photometric features occur when clumps of circumstellar
+the flux dips occur when clumps of circumstellar
 material transit the star.  The geometric correction implies
 that an appreciable minority ($\gtrsim$10\%) of young M dwarfs---the
 rapidly rotating ones with centrifugal magnetospheres---host
@@ -797,23 +793,24 @@ project.  MMJ contributed to the interpretation.
 \label{sec:stparams}
 
 {\it Radial Velocity}---We measured the radial velocities of
-TIC\,141146667 from our HIRES spectra using a \added{custom }pipeline.
-Our method is based on template-matching against synthetic
-\added{PHOENIX }spectra \citep{Husser2013}, \added{and is }calibrated
-\added{against }the standard stars described by \citet{Chubak2012}.
-We used velocity standards spanning G2-M4, irrespective of rotation
-rate.  We included velocity corrections due to Earth's motion around
-the solar system barycenter and due to Earth's daily rotation about
-its axis, calculated using \texttt{barycorrpy} \citep{Kanodia2018}.
-Our analysis code reproduces the systemic velocities of known velocity
+TIC\,141146667 \added{(Gaia DR3 860453786736413568) }from our HIRES
+spectra using a \added{custom }pipeline.  Our method was based on
+template-matching against synthetic \added{PHOENIX }spectra
+\citep{Husser2013}, \added{and was }calibrated \added{against }the
+standard stars described by \citet{Chubak2012}.  We used velocity
+standards spanning G2-M4, irrespective of rotation rate.  We included
+velocity corrections due to Earth's motion around the solar system
+barycenter and due to Earth's daily rotation about its axis,
+calculated using \texttt{barycorrpy} \citep{Kanodia2018}.  Our
+analysis code reproduced the systemic velocities of known velocity
 standards \citep{Chubak2012} with an RMS of 0.66\,\kms.
 
 For TIC\,141146667, we measured the radial velocities using regions
 near the K~I (7700\,\AA) resonance line and three TiO bandheads
 (5160\,\AA, 5450\,\AA, and 5600\,\AA).  We selected these regions
 because they provided the best matches between the synthetic and
-observed spectra.  We then averaged the resulting redshift
-measurements over each order to produce the final measurement.  We
+observed spectra.  We averaged the redshift
+measurements over each order, and
 used the scatter of resulting velocity measurements between orders to
 assign the RV uncertainty at each epoch.  The uncertainty-weighted
 mean systemic velocity over all epochs on 17~February~2024 was
@@ -838,11 +835,10 @@ inclination posterior).
 {\it No Evidence For Binarity}---Any periodicity in the radial
 velocity time-series is ruled out at the rotation period for
 semi-amplitudes above 2.85\,\kms\ (at 3$\sigma$ confidence).  This
-sets an upper limit on the mass of any putative companion at the four
-hour period of $m \sin i $$<$2.4\,$M_{\rm Jup}$.  Regarding possible
+sets an upper limit on the mass of any putative companion on a four
+hour orbit of $m \sin i $$<$2.4\,$M_{\rm Jup}$.  Regarding possible
 companions at wider separations, the Gaia DR3 renormalized unit weight
-error (RUWE), a proxy for the goodness of fit for a single-source
-astrometric model to the Gaia astrometry, is 1.23, within the usual
+error (RUWE) is 1.23, within the usual
 range for apparently single sources.  There are no resolved companions
 in the Gaia DR3 point source catalog.  Finally, we checked the TESS
 light curve for evidence of secondary photometric periods by
@@ -850,13 +846,12 @@ subtracting the mean CPV signal over each sector and performing a
 phase-dispersion minimization analysis
 \citep{Stellingwerf1978,2021zndo...1011188B}.  There were no secondary
 periods in the TESS data.  Previous work \citep{Bouma2024} has shown
-that $\approx$30\% of CPVs show evidence for excess noise above the
-Gaia single-source astrometric model, and $\approx$40\% of CPVs show
-evidence for unresolved binary companions based on the presence of
+that $\approx$30\% of CPVs show evidence for binarity from RUWE, and $\approx$40\% of CPVs show
+evidence for binarity based on the presence of
 secondary photometric periods.  This agrees with analyses showing that
-multi-periodic low-mass stars are generally unresolved binaries
+multi-periodic low-mass stars are usually unresolved binaries
 \citep{Tokovinin2018}.  Overall, the CPV binary fraction seems
-consistent with that for field M dwarfs \citep{Winters2019}, pointing
+consistent with that of field M dwarfs \citep{Winters2019}, pointing
 to a weak or non-existent connection between the CPV phenomenon and
 (wide) binarity.  For TIC\,141146667 specifically, we find no
 evidence for stellar multiplicity. %, our data are minimally constraining
@@ -1144,8 +1139,8 @@ the data {\it independently} using scipy's non-linear least squares
 \texttt{curve\_fit} implementation \citep{Virtanen2020}, and scaled the
 resulting parameter covariance matrix by a constant factor to match
 the sample variance of the residuals.
-\added{The results are shown in the middle columns of
-Figure~\ref{fig:halphamodel}, and a table of the fitted means,
+\added{The middle columns of
+Figure~\ref{fig:halphamodel} show the results; a table of the fitted means,
 amplitudes, and standard deviations for each component is available
 upon request.}
 
@@ -1200,7 +1195,7 @@ value and included an additional jitter term in quadrature.  This
 procedure yielded orbital periods and semi-amplitudes of
 $P_0$=$3.92\pm0.03$\,hr, $K_0/v_{\rm eq}$=2.07$\pm$0.04;
 $P_1$=$3.92\pm0.06$\,hr, $K_1/v_{\rm eq}$=2.88$\pm$0.10;
-and $P_2$=$3.88\pm0.20$\,hr, $K_1/v_{\rm eq}$=3.88$\pm$0.25.
+and $P_2$=$3.88\pm0.20$\,hr, $K_2/v_{\rm eq}$=3.88$\pm$0.25.
 The periods for the inner double-peaked clump are therefore consistent
 with the photometric $3.930\pm0.001$\,hr period within a precision of
 two minutes.  The ``period'' for the outer clump is ambiguous because
@@ -1229,9 +1224,9 @@ is highly idealized.  Nonetheless, this exercise indicates that the
 transit of the inner clump lasts $\approx$22\% of each cycle, with a
 slight asymmetry around $\phi$=0.
 
-{\it Physical dimensions of the emitting region}---The measured
-velocity widths from the circumstellar emission contain information
-about the size of the emitting region via the condition for rigid
+{\it Physical dimensions of emitting region}---The H$\alpha$
+velocity widths in Figure~\ref{fig:halphamodel} constrain
+the size of the emitting region via the condition for rigid
 corotation.  Consider a clump in cylindrical coordinates with
 arbitrary radial extent $r$, azimuthal extent $\ell$, and height $z$.
 A range of shapes, including an ``arc'' with $\ell \gg r$, a ``spoke''
@@ -1242,8 +1237,8 @@ circumstellar material.  At mid-transit, the observed velocity width
 is sensitive to the azimuthal extent.  An arc configuration would
 minimize the observed velocity width $\sigma$ at quadrature, and
 maximize it during transit, with $\gtrsim$100\,\kms\ variations in
-between.  This is not observed.   The arc geometry, and by a similar
-argument the spoke geometry, can thus be discarded.  
+between.  Since this is not observed, the arc geometry, and by a similar
+argument the spoke geometry, can be discarded.  
 
 At quadrature, the inner clumps show $\sigma_i$$\approx$0.24\,$v_{\rm
 eq}$, implying that 68\% of the emission comes from a volume with
@@ -1255,9 +1250,9 @@ dispersions.  The two inner clumps are centered at orbital distances
 of 2.07\,$R_\star$ and 2.88\,$R_\star$.  There is therefore physical
 overlap in their spatial distributions.  These two clumps could in
 fact be a single clump with an optically thick H$\alpha$ line core.
-Regardless of this nuance, the implication is that the full length in
-the radial dimension of these two inner emitting clumps is
-approximately equal to the star's diameter.  At mid-transit, these
+Regardless, the implication is that the full length in the radial
+dimension of these two inner emitting clumps is approximately equal to
+the star's diameter.  At mid-transit, these
 inner clumps have a similar velocity dispersion, although with
 greater uncertainty due to the differences between the $\phi$=0 and
 $\phi$=1 transits (see Figure~\ref{fig:halphamodel}).
@@ -1266,7 +1261,7 @@ with a length of $\ell$$\approx$0.5\,$R_\star$.
 
 The vertical height of the emitting region is less constrained because
 the system is consistent with being viewed edge-on.  However, one
-constraint does come if one assumes that the TESS transit depth scales
+possible constraint follows by assuming that the TESS transit depth scales
 with the projected H$\alpha$ emission area $\ell z$.  
 More specifically, one can evaluate an ``effective area'' blocked by a
 two-dimensional gaussian blob passing over a star by integrating the
@@ -1277,8 +1272,8 @@ $\iint \exp \left(
 \right) {\rm d}x \, {\rm d}y$
 suggests 11.5\% of the star being ``blocked'', a geometric factor
 which would need to be in turn multiplied by an unknown opacity factor
-to produce the observed transit depth ($\delta$$\approx$5\%).  In
-general though, there is a degeneracy between $z$ and this opacity
+to produce the observed transit depth ($\delta$$\approx$5\%).  
+There is a degeneracy between $z$ and this opacity
 factor; larger vertical heights are allowed for lower optical depths
 in absorption, and vice-versa.  This constraint also implicitly
 assumes that the optically thick material is well-mixed with the
@@ -1348,41 +1343,39 @@ hydrogen, which may not be accurate.
 \section{Properties of the Plasma and Magnetospheric Environment}
 \label{subsec:gas}
 
-The physical conditions inside the plasma clumps, in particular the
-hydrogen number density, plasma temperature, ionization fraction, and
-magnetic field strength can be estimated from the available data.  We
-caution that the following estimates are order of magnitude
-calculations that assume a simple uniform-density plasma: detailed
+The hydrogen number density, plasma temperature, and magnetic field
+strength inside the clumps can be estimated from the available data.  
+The following order-of-magnitude calculations assume a simple
+uniform-density plasma in a spherical geometry: more careful
 considerations of radiative transfer are a worthy topic for future
-work, but are beyond the scope of this article.
+work.
 
-Circumstellar H$\alpha$ emission might be sourced either from resonant
+Circumstellar H$\alpha$ emission could come either from resonant
 scattering of stellar H$\alpha$ photons, or from radiative
 recombination.  We neglect scattering because Figure~\ref{fig:spec}
-shows the amplitude of the
-circumstellar H$\alpha$ emission varying by a factor of $\approx$5, in
-a manner uncorrelated with any variability in the chromospheric line
-core.  The volume emissivity under case B recombination can be written
-\begin{equation} j_{\rm H\alpha} = n_{\rm e} n_{\rm p} \alpha^{\rm
-eff}_{\rm H\alpha} h \nu_{\rm H\alpha}, \end{equation} where $n_{\rm
-e}$ and $n_{\rm p}$ are the electron and proton densities, and
-$\alpha^{\rm eff}_{\rm H\alpha}$ is the effective recombination
-coefficient, defined to include all recombination routes that produce
-an H$\alpha$ photon.  For hydrogen with temperatures between
-1,000-10,000\,K, $\alpha^{\rm eff}_{\rm H\alpha}$ is typically on the
-order of $10^{-12}$ to $10^{-13}$\,cm$^3$\,s$^{-1}$
-\citep{Hummer1987,Draine2011}.  Neglecting the effects of atoms other
-than hydrogen, we can assume an ionization fraction $x$, such that
-$n_{\rm e} = n_{\rm p} = x n_{\rm H}$, for $n_{\rm H}$ the hydrogen
-number density.  Let $L_{\rm H\alpha} = j_{\rm H\alpha} V$, for $V$
-the volume of the emitting hydrogen.  The luminosity of circumstellar
-hydrogen emission, $L_{\rm H\alpha}$, is an observable: our SED
-fitting routine yields $L_\star$$\approx$0.012\,$L_\odot$, which
-implies that the stellar H$\alpha$ line radiates at
-$\approx$1.0$\times$$10^{28}$erg\,s$^{-1}$.  The luminosity of the
-clumps $L_{\rm H\alpha}$ are of order one tenth that of the star.  If
-we approximate the emitting volume as a homogeneous sphere of radius
-$r$, we can write
+shows the
+circumstellar H$\alpha$ emission varying by a factor of $\approx$5
+while the chromospheric line core is stable.  The volume emissivity
+under case B recombination can be written \begin{equation}
+  j_{\rm H\alpha} = n_{\rm e} n_{\rm p} \alpha^{\rm eff}_{\rm H\alpha} h \nu_{\rm H\alpha},
+\end{equation} where $n_{\rm e}$ and $n_{\rm p}$ are the electron and
+proton densities, and $\alpha^{\rm eff}_{\rm H\alpha}$ is the
+effective recombination coefficient, defined to include all
+recombination routes that produce an H$\alpha$ photon.  For hydrogen
+with temperatures between 1,000-10,000\,K, $\alpha^{\rm eff}_{\rm
+H\alpha}$ is typically $10^{-12}$ to
+$10^{-13}$\,cm$^3$\,s$^{-1}$ \citep{Hummer1987,Draine2011}.
+Neglecting atoms other than hydrogen, we can assume an
+ionization fraction $x$, such that $n_{\rm e} = n_{\rm p} = x n_{\rm
+H}$, for $n_{\rm H}$ the hydrogen number density.  Let $L_{\rm
+H\alpha} = j_{\rm H\alpha} V$, for $V$ the volume of the emitting
+hydrogen.  The luminosity of circumstellar hydrogen emission, $L_{\rm
+H\alpha}$, is an observable: our SED fitting routine yields
+$L_\star$$\approx$0.012\,$L_\odot$, which implies that the stellar
+H$\alpha$ line radiates at $\approx$1.0$\times$$10^{28}$erg\,s$^{-1}$.
+The luminosity of the clumps $L_{\rm H\alpha}$ are of order one tenth
+that of the star.  If we approximate the emitting volume as a
+homogeneous sphere of radius $r$, we can write
 \begin{align}
   n_{\rm H} &= 
   1 \cdot 10^{11}\,{\rm cm}^{-3}
@@ -1400,7 +1393,7 @@ $r$, we can write
 \end{align}
 For a uniform density clump, this suggests a total gas mass of $M_{\rm
 gas}\approx 2\times10^{17}$\,g\added{, which is similar to masses derived for
-plasma clumps around other cool stars \citep{VillarrealDAngelo2019}.}.  We emphasize that
+plasma clumps around other cool stars \citep{VillarrealDAngelo2019}}.  We emphasize that
 Equation~\ref{eq:numdensity} in intended to provide only an order of
 magnitude estimate for the number density implied by the observed
 H$\alpha$ emission.  In detail, the effective recombination rate and
@@ -1412,7 +1405,7 @@ and potentially also consider departures from local thermodynamic equilibrium.
 Finally, a constraint on the magnetic field strength at the site of
 the clump follows from the requirement that the magnetic pressure
 exceed the thermal pressure, $B_{\rm c}^2 / 8\pi > n_{\rm H} k T$.
-Although we do not know the plasma temperature, if it were
+Although we do not know the exact plasma temperature, if it were
 significantly beyond 1,000-10,000\,K, we would either fully ionize the
 hydrogen, or not ionize enough of it.  The field strength at the clump
 must therefore exceed
@@ -1525,74 +1518,75 @@ distribution for such disks
 % Supplementary Tables %
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{table}
-    \centering
-    \begin{tabular}{lcr}
-    \hline 
-    \hline
-    Parameter & Host & Source \\
-    \hline 
-    \multicolumn{3}{c}{Identifiers} \\
-    \hline
-    TIC & 141146667 & TESS \\
-    Gaia & 860453786736413568 & Gaia\ DR3 \\
-    \hline
-    \multicolumn{3}{c}{Astrometry \& Radial Velocity} \\ 
-    \hline
-    $\alpha_{2000}$ & 11:05:15.09   & Gaia\ DR3 \\
-    $\delta_{2000}$ & +59 15 05.57  & Gaia\ DR3 \\
-    $\mu_{\alpha}$ (mas yr$^{-1}$ ) & -73.933 $\pm$ 0.022 & Gaia\ DR3 \\
-    $\mu_{\delta}$ (mas yr$^{-1}$ ) &  32.262 $\pm$ 0.024 & Gaia\ DR3 \\
-    $\pi$ (mas)                     &  17.324 $\pm$ 0.025 & Gaia\ DR3 \\
-    RUWE                            &  1.23               & Gaia\ DR3 \\
-    RV (\kms)                       & 0.61 $\pm$ 1.47     & HIRES \\
-    \hline
-    \multicolumn{3}{c}{Photometry} \\
-    \hline
-    $TESS$ (mag)                    & 13.283 $\pm$ 0.010 & TIC8\     \\
-    $G$ (mag)                       & 14.701 $\pm$ 0.002 & Gaia\ DR3 \\
-    $G_{\rm BP}$ (mag)              & 16.664 $\pm$ 0.008 & Gaia\ DR3 \\
-    $G_{\rm RP}$ (mag)              & 13.398 $\pm$ 0.006 & Gaia\ DR3 \\
-    $G_{\rm BP}$-$G_{\rm RP}$ (mag) &  3.276 $\pm$ 0.010 & Gaia\ DR3 \\
-    $J$ (mag)                       & 11.401 $\pm$ 0.022 & 2MASS     \\
-    $H$ (mag)                       & 10.793 $\pm$ 0.021 & 2MASS     \\
-    $K_s$ (mag)                     & 10.473 $\pm$ 0.016 & 2MASS     \\
-    $W1$ (mag)                      & 10.276 $\pm$ 0.023 & ALLWISE   \\ % Cutri+2013 II/328/allwise
-    $W2$ (mag)                      & 10.070 $\pm$ 0.020 & ALLWISE   \\
-    $W3$ (mag)                      &  9.838 $\pm$ 0.045 & ALLWISE   \\
-    %$W4$ (mag)                      &  8.392 $\pm$ NOUNC & ALLWISE \\
-	  %
-    % NOTE: ROSAT is an emitter.  GALEX detection.
-    % ROSAT: 3.25e-13 mW/m^2 = erg/cm^2/s
-    % Ofek+2011 1.4Ghz emitter.  Helfand+2015 ditto.  Bruzewski+2021.
-    \hline
-    \multicolumn{3}{c}{Physical Properties} \\
-    \hline
-    $T_{\rm eff}$ (K) & 2972 $\pm$ 40 & SED fit \\
-    $R_\star$ ($R_{\odot}$) & 0.42 $\pm$ 0.02 & SED fit  \\
-    $L_\star$ ($L_\odot$) & 0.0126 $\pm$ 0.0012 & SED fit \\
-    $P_{\rm rot}$ (hours) & 3.930 $\pm$ 0.001 & TESS \\ 
-    $v_{\rm eq}$ (\kms)  &  130$\pm$4  & Derived \\
-    $v_{\rm eq} \sin i_\star$ (\kms) & 138 $\pm$ 8 & HIRES \\
-    $i_\star$($^\circ$) & $>$63 & Derived \\
-    $A_V$ (mag) & 0 & \citep{Green2019} \\
-    $M_\star$ ($M_{\odot}$)  & 0.22 $\pm$ 0.02  & PARSEC \citep{Chen2014}\\
-    ${\rm EW}_{\rm Li}$ (m\AA) & $<$107 & HIRES (2$\sigma$)\\
-    $t_{\rm CAMD}$ (Myr) & 30-150 &  Gaia DR3 \\
-    $t_{\rm Li,emp}$ (Myr) & $>$20 &  HIRES, \citep{Jeffries2023} \\
-    $t_{\rm Li,th}$ (Myr) & $>$35 &  HIRES, \citep{Feiden2016} \\
-    $t_{\rm adopted}$ (Myr) & 35-150 &  -- \\
-    \hline
-    \end{tabular}
-		\caption{Properties of TIC\,141146667.  References:
-    Gaia DR3 \citep{GaiaDR3}, TESS \citep{Ricker2015},
-    TIC8 \citep{Stassun2019}, 2MASS \citep{Skrutskie2006}, ALLWISE
-    \citep{Cutri2014}.}
-    \label{tab:stparams}
-\end{table}
+%\begin{table}
+%    \centering
+%    \begin{tabular}{lcr}
+%    \hline 
+%    \hline
+%    Parameter & Host & Source \\
+%    \hline 
+%    \multicolumn{3}{c}{Identifiers} \\
+%    \hline
+%    TIC & 141146667 & TESS \\
+%    Gaia & 860453786736413568 & Gaia\ DR3 \\
+%    \hline
+%    \multicolumn{3}{c}{Astrometry \& Radial Velocity} \\ 
+%    \hline
+%    $\alpha_{2000}$ & 11:05:15.09   & Gaia\ DR3 \\
+%    $\delta_{2000}$ & +59 15 05.57  & Gaia\ DR3 \\
+%    $\mu_{\alpha}$ (mas yr$^{-1}$ ) & -73.933 $\pm$ 0.022 & Gaia\ DR3 \\
+%    $\mu_{\delta}$ (mas yr$^{-1}$ ) &  32.262 $\pm$ 0.024 & Gaia\ DR3 \\
+%    $\pi$ (mas)                     &  17.324 $\pm$ 0.025 & Gaia\ DR3 \\
+%    RUWE                            &  1.23               & Gaia\ DR3 \\
+%    RV (\kms)                       & 0.61 $\pm$ 1.47     & HIRES \\
+%    \hline
+%    \multicolumn{3}{c}{Photometry} \\
+%    \hline
+%    $TESS$ (mag)                    & 13.283 $\pm$ 0.010 & TIC8\     \\
+%    $G$ (mag)                       & 14.701 $\pm$ 0.002 & Gaia\ DR3 \\
+%    $G_{\rm BP}$ (mag)              & 16.664 $\pm$ 0.008 & Gaia\ DR3 \\
+%    $G_{\rm RP}$ (mag)              & 13.398 $\pm$ 0.006 & Gaia\ DR3 \\
+%    $G_{\rm BP}$-$G_{\rm RP}$ (mag) &  3.276 $\pm$ 0.010 & Gaia\ DR3 \\
+%    $J$ (mag)                       & 11.401 $\pm$ 0.022 & 2MASS     \\
+%    $H$ (mag)                       & 10.793 $\pm$ 0.021 & 2MASS     \\
+%    $K_s$ (mag)                     & 10.473 $\pm$ 0.016 & 2MASS     \\
+%    $W1$ (mag)                      & 10.276 $\pm$ 0.023 & ALLWISE   \\ % Cutri+2013 II/328/allwise
+%    $W2$ (mag)                      & 10.070 $\pm$ 0.020 & ALLWISE   \\
+%    $W3$ (mag)                      &  9.838 $\pm$ 0.045 & ALLWISE   \\
+%    %$W4$ (mag)                      &  8.392 $\pm$ NOUNC & ALLWISE \\
+%	  %
+%    % NOTE: ROSAT is an emitter.  GALEX detection.
+%    % ROSAT: 3.25e-13 mW/m^2 = erg/cm^2/s
+%    % Ofek+2011 1.4Ghz emitter.  Helfand+2015 ditto.  Bruzewski+2021.
+%    \hline
+%    \multicolumn{3}{c}{Physical Properties} \\
+%    \hline
+%    $T_{\rm eff}$ (K) & 2972 $\pm$ 40 & SED fit \\
+%    $R_\star$ ($R_{\odot}$) & 0.42 $\pm$ 0.02 & SED fit  \\
+%    $L_\star$ ($L_\odot$) & 0.0126 $\pm$ 0.0012 & SED fit \\
+%    $P_{\rm rot}$ (hours) & 3.930 $\pm$ 0.001 & TESS \\ 
+%    $v_{\rm eq}$ (\kms)  &  130$\pm$4  & Derived \\
+%    $v_{\rm eq} \sin i_\star$ (\kms) & 138 $\pm$ 8 & HIRES \\
+%    $i_\star$($^\circ$) & $>$63 & Derived \\
+%    $A_V$ (mag) & 0 & \citep{Green2019} \\
+%    $M_\star$ ($M_{\odot}$)  & 0.22 $\pm$ 0.02  & PARSEC \citep{Chen2014}\\
+%    ${\rm EW}_{\rm Li}$ (m\AA) & $<$107 & HIRES (2$\sigma$)\\
+%    $t_{\rm CAMD}$ (Myr) & 30-150 &  Gaia DR3 \\
+%    $t_{\rm Li,emp}$ (Myr) & $>$20 &  HIRES, \citep{Jeffries2023} \\
+%    $t_{\rm Li,th}$ (Myr) & $>$35 &  HIRES, \citep{Feiden2016} \\
+%    $t_{\rm adopted}$ (Myr) & 35-150 &  -- \\
+%    \hline
+%    \end{tabular}
+%		\caption{Properties of TIC\,141146667.  References:
+%    Gaia DR3 \citep{GaiaDR3}, TESS \citep{Ricker2015},
+%    TIC8 \citep{Stassun2019}, 2MASS \citep{Skrutskie2006}, ALLWISE
+%    \citep{Cutri2014}.}
+%    \label{tab:stparams}
+%\end{table}
 
 
 \begin{table}
+  \footnotesize
   \centering
   \begin{tabular}{lcr}
   \hline 
@@ -1674,7 +1668,7 @@ distribution for such disks
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\clearpage
+%\clearpage
 
 \bibliographystyle{aasjournal}
 \bibliography{cpvbib.bib}
