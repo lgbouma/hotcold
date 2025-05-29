@@ -456,7 +456,7 @@ def plot_hrd(deredden=0, smalllims=0, cpvcomparison=0, addngc2516=0, showgrp=0,
         r = 0
         _l = l
         if '1411' in l:
-            s = 110
+            s = 140
             m = '*'
             lw = 0.3
         if 'Nearby' in l:
@@ -545,12 +545,11 @@ def plot_hrd(deredden=0, smalllims=0, cpvcomparison=0, addngc2516=0, showgrp=0,
 
 if __name__ == "__main__":
 
-    for showgrp in [0,1]:
-        plot_hrd(cpvcomparison=0, smalllims=1, deredden=1, addngc2516=0,
-                 showgrp=showgrp, addngc6475=0, addngc2632=1)
-    assert 0
-
     # cluster comparison
     for smalllim in [1,0]:
         for dr in [1,0]:
             plot_hrd(smalllims=smalllim, deredden=dr)
+
+    for showgrp in [0,1]:
+        plot_hrd(cpvcomparison=0, smalllims=1, deredden=1, addngc2516=0,
+                 showgrp=showgrp, addngc6475=0, addngc2632=1)

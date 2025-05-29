@@ -19,6 +19,7 @@ cp $r/movie_sixpanel_specriver/TIC_141146667_science/specriver_141146667_Hα_001
 
 # Animated supporting: Movie of spectral timeseries
 cp $r/movie_sixpanel_specriver/TIC_141146667_science_wob/TIC141146667_sixpanel.mov m3.mov
+cp $r/movie_sixpanel_specriver/TIC_141146667_science_wob/TIC141146667_sixpanel_sinusoids.mov m3_bonus.mov
 
 ##########################################
 # supplementary
@@ -27,7 +28,7 @@ r="/Users/luke/Dropbox/proj/hotcold/drivers/results"
 
 cp $r/sed_fit/TIC_141146667/plots_irexcess/SED.pdf f4.pdf
 
-cp $r/hrd/hrd_smalllim_dereddened.pdf f5a.pdf
+cp $r/hrd/hrd_bprp_smalllim_dereddened.pdf f5a.pdf
 
 cp $r/li_ew/li_vs_population.pdf f5b.pdf
 
