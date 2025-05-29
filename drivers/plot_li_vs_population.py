@@ -114,9 +114,13 @@ def plot_li_vs_population() -> None:
         )
 
     ax.scatter(
-        2972, 107, marker='*', linewidth=0.5, color='yellow', s=110,
+        2972, 107, marker='v', linewidth=0.5, color='yellow', s=80,
         zorder=99, edgecolor='k'
     )
+    #ax.scatter(
+    #    2972, 107, marker='*', linewidth=0.5, color='yellow', s=110,
+    #    zorder=99, edgecolor='k'
+    #)
 
     # Add legend to indicate the age bins.
     ax.legend(loc="upper left", fontsize='x-small', framealpha=1,
