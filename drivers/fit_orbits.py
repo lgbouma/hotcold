@@ -30,7 +30,7 @@ def load_rvs(component_ix=None, applymask=True):
              0]
     # outer clump
     # 8&9 : absorption cancelled out the emission??
-    
+
     # based on "is there a good signal"?
     mask2 = [0,0,0,0,1,
              1,1,1,0,1, #9 = phi 0.54.  
@@ -201,12 +201,12 @@ def main(fittingstyle='leastsquares'):
         # store original error arrays for scaling separately in each fit
         original_rv_err = rv_err.copy()
         original__rv_err = _rv_err.copy()
-        
+
         # Estimate initial parameters
         K0 = (np.max(rv) - np.min(rv)) / 2
         P0 = 4/24
         t0_0 = time.min()
-        
+
         if fittingstyle == 'leastsquares':
             # Circular orbit fit using curve_fit
             try:
@@ -222,7 +222,7 @@ def main(fittingstyle='leastsquares'):
                 continue
         else:
             raise ValueError("Invalid fittingstyle. Choose 'leastsquares' or 'mcmc'.")
-        
+
         # Compute stats and scale errors for circular fit (leastsquares only)
         perr_circ = np.sqrt(np.diag(pcov_circ))
         red_chi2_circ, bic_circ = compute_stats(rv_circular, time, rv, original_rv_err, popt_circ)
@@ -238,7 +238,7 @@ def main(fittingstyle='leastsquares'):
         circ_csv = join('results/halpha_to_rv_timerseries', f'circular_fit_component_{ix}.csv')
         param_names_circ = ['K', 'P', 't0']
         save_fit_table(circ_csv, popt_circ, perr_circ, red_chi2_circ, bic_circ, param_names_circ)
-        
+
         # Append data for combined plot (use scaled _rv_err for consistency)
         if fittingstyle == 'leastsquares':
             rv_err = rv_err * scale_circ
@@ -259,7 +259,7 @@ def main(fittingstyle='leastsquares'):
             # For MCMC, store the posterior samples for plotting draws.
             **({'samples': samples} if fittingstyle=='mcmc' else {})
         })
-        
+
         t_fit = np.linspace(time.min(), time.max(), 1000)
         plt.errorbar(time, rv, yerr=rv_err, fmt='o', label='Data')
         plt.plot(t_fit, rv_circular(t_fit, *popt_circ), 'r-', label='Circular Fit')
@@ -270,7 +270,7 @@ def main(fittingstyle='leastsquares'):
         plot_path = join('results/halpha_to_rv_timerseries', f'circular_fit_component_{ix}.png')
         plt.savefig(plot_path)
         plt.clf()
-        
+
         circ_summary.append({
             'component_ix': ix,
             'K': popt_circ[0],
@@ -281,7 +281,7 @@ def main(fittingstyle='leastsquares'):
             'Reduced_Chi2': red_chi2_circ,
             'BIC': bic_circ
         })
-        
+
         # Eccentric orbit fit: add initial guess for eccentricity
         e0 = 0.1
         if fittingstyle == 'leastsquares':
@@ -310,7 +310,7 @@ def main(fittingstyle='leastsquares'):
         ecc_csv = join('results/halpha_to_rv_timerseries', f'eccentric_fit_component_{ix}.csv')
         param_names_ecc = ['K', 'P', 't_peri', 'e']
         save_fit_table(ecc_csv, popt_ecc, perr_ecc, red_chi2_ecc, bic_ecc, param_names_ecc)
-        
+
         plt.errorbar(time, rv, yerr=rv_err, fmt='o', label='Data')
         plt.plot(t_fit, rv_eccentric(t_fit, *popt_ecc), 'r-', label='Eccentric Fit')
         plt.xlabel('Time')
@@ -320,7 +320,7 @@ def main(fittingstyle='leastsquares'):
         plot_path = join('results/halpha_to_rv_timerseries', f'eccentric_fit_component_{ix}.png')
         plt.savefig(plot_path)
         plt.clf()
-        
+
         ecc_summary.append({
             'component_ix': ix,
             'K': popt_ecc[0],
@@ -332,7 +332,7 @@ def main(fittingstyle='leastsquares'):
             'Reduced_Chi2': red_chi2_ecc,
             'BIC': bic_ecc
         })
-    
+
     df_circ = pd.DataFrame(circ_summary)
     df_circ.to_csv(join('results/halpha_to_rv_timerseries', 'circular_summary.csv'), index=False)
     df_ecc = pd.DataFrame(ecc_summary)

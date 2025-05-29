@@ -622,18 +622,6 @@ def halpha_to_rv_timeseries():
              0,0,0,0,0, #16(start) = phi 0.93
              0]
 
-    ##########################################
-    # Fit some sinusoids to RV vs time...
-    import IPython; IPython.embed()
-
-
-
-    #FIXME FIXME FIXME TODO TODO TODO
-    # GOTTA FIGURE OUT HOW TO DEAL WITH THE TRANSIT / SEOCONDAARY ECLIPSE WINDOW MASK.
-    # E.G. AROUND PHI = 0.0, THERE IS SUPPOSED EMISSION FROM TH EOUTER CLUMP WHICH SHOULD BE GONE 
-
-
-
 
 if __name__ == "__main__":
     halpha_to_rv_timeseries()
