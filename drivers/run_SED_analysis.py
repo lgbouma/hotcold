@@ -5,7 +5,8 @@ environment: (py38_ariadne)
 Citations: https://github.com/jvines/astroARIADNE/blob/master/citations.md
 """
 
-from astroARIADNE.star import Star
+#from astroARIADNE.star import Star
+from astroARIADNE.bonusstar import Star
 from astroARIADNE.fitter import Fitter
 #from astroARIADNE.plotter import SEDPlotter
 from astroARIADNE.bonusplotter import SEDPlotter
@@ -52,7 +53,7 @@ knownfailures = {
     ] },
 }
 
-def run_SED_analysis(ticid, trimlist=None, uniformpriors=0):
+def run_SED_analysis(ticid, trimlist=None, uniformpriors=0, dropWISE=0):
     """
     Run CQV-specific SED analysis.  Priors assume the star is a nearby M-dwarf
     if uniformpriors==0, else assumes uniform priors.
@@ -68,6 +69,9 @@ def run_SED_analysis(ticid, trimlist=None, uniformpriors=0):
 
     Args:
         ticid (str): e.g. "402980664"
+
+        dropWISE (bool): if true, drops WISE (all bands) from the fitting (not from
+        plots).  Drops 2MASS KS too.
 
     Kwargs: list of quad tuples, each entry in form (>xmin, <xmax, >ymin, <ymax).
     E.g., to exclude everything above 1e-9 erg/cm2/s, and below 0.4 micron in
@@ -89,13 +93,15 @@ def run_SED_analysis(ticid, trimlist=None, uniformpriors=0):
     starname = f'TIC_{ticid}'
     g_id = int(gdr2_df.dr2_source_id)
 
-    out_folder = join(RESULTSDIR, f'{starname}')
+    dwise = '' if not dropWISE else '_dropWISE'
+    out_folder = join(RESULTSDIR, f'{starname}{dwise}')
     if not os.path.exists(out_folder): os.mkdir(out_folder)
 
     if ticid != '368129164':
         # NOTE: the "g_id" constructor here is actually (incorrectly!) assuming Gaia DR3 source_id's.
         # for TIC 141146667, this is ok because they are the same.
-        s = Star(starname.replace("_"," "), ra, dec, g_id=g_id)
+        s = Star(starname.replace("_"," "), ra, dec, g_id=g_id,
+                 dropWISE=dropWISE)
 
     if ticid == '368129164':
         # missing parallax
@@ -294,9 +300,8 @@ def run_SED_analysis(ticid, trimlist=None, uniformpriors=0):
     ##############
     # make plots #
     ##############
-    out_folder = join(RESULTSDIR,  f'{starname}')
 
-    plots_out_folder = join(out_folder, 'plots')
+    plots_out_folder = join(RESULTSDIR, f'{starname}{dwise}', 'plots')
     if not os.path.exists(plots_out_folder): os.mkdir(plots_out_folder)
 
     artist = SEDPlotter(cache_file, plots_out_folder, model='btsettl')
@@ -309,7 +314,7 @@ def run_SED_analysis(ticid, trimlist=None, uniformpriors=0):
     if (not pd.isnull(W3mag)):
         print(42*'-')
         print('Found WISE W3 and/or W4; making IR excess plot')
-        plots_out_folder = join(out_folder, 'plots_irexcess')
+        plots_out_folder = join(RESULTSDIR, f'{starname}{dwise}', 'plots_irexcess')
         if not os.path.exists(plots_out_folder): os.mkdir(plots_out_folder)
         artist = SEDPlotter(cache_file, plots_out_folder, ir_excess=True, model='btsettl')
         artist.plot_SED_tic1411()
@@ -320,4 +325,11 @@ def run_SED_analysis(ticid, trimlist=None, uniformpriors=0):
     print(42*'-')
 
 if __name__ == "__main__":
-    run_SED_analysis('141146667', uniformpriors=1)
+
+    # TIC 141146667 SED used in the hotcold paper
+    run_SED_analysis('141146667', uniformpriors=1, dropWISE=0)
+
+    # bonus tests to check effects of dropping Ks, W1, W2
+    run_SED_analysis('141146667', uniformpriors=1, dropWISE=1)
+
+    #run_SED_analysis('402980664', uniformpriors=1, dropWISE=1)
