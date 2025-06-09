@@ -1,8 +1,8 @@
 % upon AAS submission
-\documentclass[11pt,twocolumn,tighten,linenumbers]{aastex7}
+%\documentclass[11pt,twocolumn,tighten,linenumbers]{aastex7}
 %\documentclass[11pt,twocolumn,tighten,linenumbers,trackchanges]{aastex7}
 % drafting / arxiv
-%\documentclass[11pt,twocolumn,modern]{aastex7}
+\documentclass[11pt,twocolumn,tighten]{aastex7}
 %\turnoffedit
 
 \usepackage{apjfonts}
@@ -51,7 +51,7 @@
 
 \received{23 April 2025}
 \revised{29 May 2025}
-\accepted{--}
+\accepted{6 June 2025}
 \shorttitle{CPV Plasma Torus} 
 
 \shortauthors{Bouma et al.}
@@ -273,7 +273,7 @@ Provenances are:
   \centering
   \includegraphics[width=0.925\textwidth]{f2.pdf}
   \vspace{-0.2cm}
-  \caption{{\bf Photometric evolution of TIC\,141146667 during the Keck/HIRES
+  \caption{{\bf Photometric evolution of TIC\,141146667 around the Keck/HIRES
   observation (green bar).}  {\bf a,} TESS simple aperture photometry.
   Data gaps were caused by stray light from the Earth (BTJD 3356-3358.5) and
   Moon (BTJD 3359.5-3360.5).  Raw two minute data are in gray; black
@@ -320,7 +320,8 @@ TIC\,141146667.}
   advancing from the blue to red wings.
   The asymmetric color stretch mirrors the dynamic range of the data.
   {\bf f,} Individual epochs of Panel e, visible in the online
-  movie.  \added{A separate version with best-fit sinusoids overplotted is also
+  movie.  \added{A separate version with best-fit sinusoids from
+  Appendix~\ref{subsec:halpha} overplotted is also
   \href{https://lgbouma.com/movies/TIC141146667_sixpanel_sinusoids.mp4}{{\bf
   available}}.}}
   \label{fig:spec}
@@ -573,15 +574,15 @@ fields; these clumps produce broadband optical variability through
 bound-free scattering \citep{Townsend2005} and Thomson scattering
 \citep{Berry2022}.  For $\sigma$~Ori~E and most of its analogs, the
 result is simple light curves that resemble eclipsing binaries, and
-time-dynamic H$\alpha$ spectra similar to Figure~\ref{fig:spec}.  The
-two known exceptions, HD~37776 and HD~64740, have spectropolarimetric
-magnetic field maps indicating strong contributions from higher-order
-magnetic moments \citep{Kochukhov2011,Shultz2018} and complex light
-curves resembling CPVs \citep{Mikulasek2020,Bouma2024}.  This suggests
-that the photometric complexity of CPVs may be related to magnetic
-fields with highly multipolar contributions.  \added{While this
-suggestion is consistent with the wide range of axisymmetric and
-non-axisymmetric topologies seen in mid- and late-M dwarfs
+time-dynamic H$\alpha$ spectra similar to Figure~\ref{fig:spec}. 
+\added{The few known exceptions---HD~37776, HD~64740, and HD~176582---}have complex
+light curves resembling CPVs \citep{Mikulasek2020,Bouma2024} and
+spectropolarimetric measurements that suggest non-dipolar field
+contributions \citep{Kochukhov2011,Shultz2018}.  This suggests that
+the photometric complexity of CPVs may be related to magnetic fields
+with highly multipolar contributions.  \added{While this suggestion is
+consistent with the wide range of axisymmetric and non-axisymmetric
+topologies seen in mid- and late-M dwarfs
 (e.g.~\citealt{Donati2006,Kochukhov2017,Shulyak2019,Bellotti2024}),
 future work is needed to verify whether CPVs indeed select for
 complex, non-axisymmetric fields.}
@@ -681,7 +682,7 @@ these young stars.
 \begin{acknowledgements}
   We thank B.~Tofflemire, A.~Weinberger, and L.~Hillenbrand for
   conversations that significantly informed this work; J.~Spake,
-  J.~Winn, J.-F~Donati, and R.~Townsend for feedback on the
+  J.~Winn, J.-F~Donati, R.~Townsend, and O.~Kochukhov for feedback on the
   manuscript; and A.~Howard and H.~Isaacson for their assistance
   reducing the HIRES spectra.
 
